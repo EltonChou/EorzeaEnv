@@ -15,15 +15,25 @@ class EorzeaTime:
     __MILLISECOND_EORZEA_PER_MINUTE = (2 + 11/12) * 1000
 
     @classmethod
-    def current_stamp(cls, lts=None):
+    def current_time_stamp(cls, lts=None):
         if not lts:
             lts = _dt.now().timestamp()
         return lts * cls.__EORZEA_TIME_CONSTANT
 
     @classmethod
+    def current_stamp_to_local(cls, cts):
+        return cts / cls.__EORZEA_TIME_CONSTANT
+
+    @classmethod
     def current_hour(cls, lts=None):
-        return int(cls.current_stamp(lts) / cls.__HOUR % cls.__EORZEA_SUN)
+        return int(cls.current_time_stamp(lts) / cls.__HOUR % cls.__EORZEA_SUN)
 
     @classmethod
     def current_minute(cls, lts=None):
-        return int(cls.current_stamp(lts) / cls.__MINUTE % cls.__EORZEA_BELL)
+        return int(cls.current_time_stamp(lts) / cls.__MINUTE % cls.__EORZEA_BELL)
+
+    @classmethod
+    def current_weather_period_start(cls, lts=None):
+        return cls.current_stamp_to_local(
+            int(cls.current_time_stamp(lts) / cls.__HOUR)
+            * cls.__HOUR)
