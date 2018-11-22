@@ -1,5 +1,4 @@
 from datetime import datetime as _dt
-from numpy import arange
 
 
 class EorzeaTime:
