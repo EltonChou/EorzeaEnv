@@ -1,4 +1,5 @@
 from datetime import datetime as _dt
+from numpy import arange
 
 
 class EorzeaTime:
@@ -11,29 +12,52 @@ class EorzeaTime:
     __EORZEA_MINUTE = 60
     __EORZEA_BELL = 60
     __EORZEA_SUN = 24
-    __EORZEA_TIME_CONSTANT = 3600.0 / 175.0
+    __EORZEA_TIME_CONST = 3600.0 / 175.0
     __MILLISECOND_EORZEA_PER_MINUTE = (2 + 11/12) * 1000
 
-    @classmethod
-    def current_time_stamp(cls, lts=None):
-        if not lts:
-            lts = _dt.now().timestamp()
-        return lts * cls.__EORZEA_TIME_CONSTANT
+    def __init__(self, lts=None):
+        self._localtimestamp = lts or _dt.now().timestamp()
+        self._current_stamp = self._localtimestamp * self.__EORZEA_TIME_CONST
+
+    @property
+    def localtimestamp(self):
+        return self._localtimestamp
+
+    @property
+    def current_stamp(self):
+        return self._current_stamp
+
+    @localtimestamp.setter
+    def localtimestamp(self, x):
+        self._localtimestamp = x
+
+    @current_stamp.setter
+    def current_stamp(self, x):
+        self._current_stamp = x
 
     @classmethod
-    def current_stamp_to_local(cls, cts):
-        return cts / cls.__EORZEA_TIME_CONSTANT
+    def current_hour(cls):
+        return int(_dt.now().timestamp() / cls.__HOUR % cls.__EORZEA_SUN)
 
     @classmethod
-    def current_hour(cls, lts=None):
-        return int(cls.current_time_stamp(lts) / cls.__HOUR % cls.__EORZEA_SUN)
+    def current_minute(cls):
+        return int(_dt.now().timestamp() / cls.__MINUTE % cls.__EORZEA_BELL)
 
-    @classmethod
-    def current_minute(cls, lts=None):
-        return int(cls.current_time_stamp(lts) / cls.__MINUTE % cls.__EORZEA_BELL)
+    def current_stamp_to_local(self, cts):
+        return cts / self.__EORZEA_TIME_CONST
 
-    @classmethod
-    def current_weather_period_start(cls, lts=None):
-        return cls.current_stamp_to_local(
-            int(cls.current_time_stamp(lts) / cls.__HOUR)
-            * cls.__HOUR)
+    def weather_period_start(self):
+        return self.current_stamp_to_local(
+            (int(self.current_stamp / 28800) * 28800))
+
+    def next_weather_period_start(self, step=None):
+        if not step:
+            step = 5
+        if step > 10:
+            step = 10
+        nextTime = list(range(step))
+        for i in range(step):
+            if i is not 0:
+                self.current_stamp = (self.current_stamp + 28800)
+            nextTime[i] = self.weather_period_start()
+        return nextTime

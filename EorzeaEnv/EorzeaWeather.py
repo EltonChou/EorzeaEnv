@@ -5,7 +5,7 @@ import json
 
 class EorzeaWeather:
     def __init__(self):
-        self._fieldRates = {
+        self.__fieldRates = {
             "Limsa Lominsa": [20, 50, 80, 90, 100],
             "Middle La Noscea": [20, 50, 70, 80, 90, 100],
             "Lower La Noscea": [20, 50, 70, 80, 90, 100],
@@ -51,7 +51,7 @@ class EorzeaWeather:
             "Eureka Pagos": [10, 28, 46, 64, 82, 100],
             "Eureka Pyros": [10, 28, 46, 64, 82, 100]
         }
-        self._fieldWeathers = {
+        self.__fieldWeathers = {
             "Limsa Lominsa": ["Clouds", "Clear Skies", "Fair Skies", "Fog", "Rain"],
             "Middle La Noscea": ["Clouds", "Clear Skies", "Fair Skies", "Wind", "Fog", "Rain"],
             "Lower La Noscea": ["Clouds", "Clear Skies", "Fair Skies", "Wind", "Fog", "Rain"],
@@ -98,8 +98,12 @@ class EorzeaWeather:
             "Eureka Pyros": ["Fair Skies", "Heat Waves", "Thunder", "Blizzards", "Umbral Wind", "Snow"]
         }
 
+    @property
+    def field(self):
+        return self.__fieldWeathers.keys()
+
     def forecast_weather(self, field, local_time_stamp=None):
-        field_rates = self._fieldRates[field]
+        field_rates = self.__fieldRates[field]
         if not local_time_stamp:
             target = self._calculate_forecast_target(_dt.now().timestamp())
         else:
@@ -108,14 +112,15 @@ class EorzeaWeather:
         for rate in field_rates:
             if target < rate:
                 index = field_rates.index(rate)
-                return self._fieldWeathers[field][index]
+                return self.__fieldWeathers[field][index]
 
     def _calculate_forecast_target(self, local_time_stamp=None):
         '''
         Thanks to Rogueadyn's SaintCoinach library for this calculation.
         '''
         bell = local_time_stamp / 175
-        # Do the magic 'cause for calculations 16:00 is 0, 00:00 is 8 and 08:00 is 16
+        # Do the magic 'cause for calculations
+        # 16:00 is 0, 00:00 is 8 and 08:00 is 16
         increment = uint32(bell + 8 - (bell % 8)) % 24
         # Take Eorzea days since unix epoch
         total_days = uint32(local_time_stamp / 4200)

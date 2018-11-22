@@ -22,8 +22,11 @@ class TestForecast (unittest.TestCase):
 
     def test_pyros(self):
         weather = self.ew.forecast_weather(
-            "Eureka Pyros", self.et.current_weather_period_start())
+            "Eureka Pyros", self.et.next_weather_period_start(1)[0])
         self.assertEqual(weather, "Snow")
+
+    def test_list_len(self):
+        self.assertEqual(len(self.et.next_weather_period_start()), 5)
 
 
 if __name__ == "__main__":
