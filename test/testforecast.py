@@ -1,8 +1,7 @@
-import datetime
-import time
 import unittest
 
-from EorzeaEnv import EorzeaTime, EorzeaWeather
+from EorzeaEnv.EorzeaTime import EorzeaTime
+from EorzeaEnv.EorzeaWeather import EorzeaWeather
 
 
 class TestForecast (unittest.TestCase):
@@ -16,8 +15,7 @@ class TestForecast (unittest.TestCase):
 
     def test_field(self):
         for t in (EorzeaTime.next_weather_period_start(10)):
-            weather = EorzeaWeather.forecast_weather(
-                "Eureka Pyros", t)
+            weather = EorzeaWeather.forecast_weather("Eureka Pyros", t)
             self.assertIsInstance(weather, str)
 
     def test_step(self):
@@ -33,6 +31,7 @@ class TestForecast (unittest.TestCase):
             EorzeaTime(8, 70)
         with self.assertRaises(TypeError):
             EorzeaTime("kappa", 40)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

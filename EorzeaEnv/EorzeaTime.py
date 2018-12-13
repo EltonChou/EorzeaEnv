@@ -2,8 +2,7 @@ from time import time as _time
 
 
 class EorzeaTime:
-    '''EorzeaTime(hour, minute)
-    '''
+    """EorzeaTime(hour, minute)"""
 
     __slots__ = '_hour', '_minute'
 
@@ -14,6 +13,7 @@ class EorzeaTime:
     _EORZEA_MINUTE = 60
     _EORZEA_BELL = 60
     _EORZEA_SUN = 24
+    _EORZEA_MOON = 32
     _EORZEA_TIME_CONST = 3600.0 / 175.0
     _MILLISECOND_EORZEA_PER_MINUTE = (2 + 11/12) * 1000
 
@@ -34,8 +34,8 @@ class EorzeaTime:
 
     @classmethod
     def now(cls):
-        '''Eorzea current time
-        '''
+        """Eorzea current time."""
+
         t = _time()
         return cls._fromtimestamp(t)
 
@@ -48,9 +48,8 @@ class EorzeaTime:
 
     @classmethod
     def next_weather_period_start(cls, step=5):
-        '''
-        default step value is 5
-        '''
+        """default step value is 5"""
+
         if not isinstance(step, int):
             raise ValueError("step argument must be an 'int' instance")
 
@@ -69,13 +68,18 @@ class EorzeaTime:
             self.__class__.__qualname__,
             self._hour, self._minute)
 
+    def __str__(self):
+        return "{}({}, {})".format(
+            self.__class__.__qualname__,
+            self._hour, self._minute)
+
 
 def _weather_period_generator(min, step):
-        n, i = 0, min
-        while n < step:
-            yield i
-            i += 1400
-            n += 1
+    n, i = 0, min
+    while n < step:
+        yield i
+        i += 1400
+        n += 1
 
 
 def _check_time_field(hour, minute):
