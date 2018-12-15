@@ -1,6 +1,5 @@
 from time import time as _time
 import math
-from decimal import Decimal
 
 
 class EorzeaTime:
@@ -53,7 +52,7 @@ class EorzeaTime:
         hh = int(et / cls._HOUR % cls._EORZEA_SUN)
         mm = int(et / cls._MINUTE % cls._EORZEA_BELL)
         sun = math.ceil(et / cls._DAY % cls._EORZEA_MOON)
-        moon_phase = _calculate_pphase(sun)
+        moon_phase = _calculate_phase(sun)
         return cls(hh, mm, moon_phase)
 
     @classmethod
