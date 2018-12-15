@@ -23,7 +23,7 @@ EorzeaTime.now().minute #35
 ```python
 weather_list = []
 
-for t in EorzeaTime.next_weather_period_start():
+for t in EorzeaTime.weather_period():
     weather = EorzeaWeather.forecast_weather("Eureka Pyros", t)
     weather_list.append(weather)
 

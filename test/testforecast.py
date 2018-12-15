@@ -14,12 +14,12 @@ class TestForecast (unittest.TestCase):
         self.assertEqual(pyros_weather, "Umbral Wind")
 
     def test_field(self):
-        for t in (EorzeaTime.next_weather_period_start(10)):
+        for t in (EorzeaTime.weather_period(10)):
             weather = EorzeaWeather.forecast_weather("Eureka Pyros", t)
             self.assertIsInstance(weather, str)
 
     def test_step(self):
-        timelist = [t for t in (EorzeaTime.next_weather_period_start(10))]
+        timelist = [t for t in (EorzeaTime.weather_period(10))]
         self.assertEqual(len(timelist), 10)
 
     def test_time(self):
