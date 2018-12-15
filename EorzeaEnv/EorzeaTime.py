@@ -1,12 +1,16 @@
 from time import time as _time
 import math
 
+# TODO: the twelve EorzeaTime(First Umbral Moon, 24, 08, 20, 0.75, Menphina )
+
 
 class EorzeaTime:
     """EorzeaTime(hour, minute)"""
 
-    __slots__ = '_hour', '_minute', '_phase'
+    __slots__ = '_moon', '_sun', '_hour', '_minute', '_phase', '_guardian'
 
+    _YEAR = 33177600
+    _MOON = 2764800
     _DAY = 86400
     _HOUR = 3600
     _MINUTE = 60
@@ -15,16 +19,20 @@ class EorzeaTime:
     _EORZEA_BELL = 60
     _EORZEA_SUN = 24
     _EORZEA_MOON = 32
+    _EORZEA_YEAR = 12
     _EORZEA_TIME_CONST = 3600.0 / 175.0
     _MILLISECOND_EORZEA_PER_MINUTE = (2 + 11/12) * 1000
 
-    def __new__(cls, hour, minute, phase):
+    def __new__(cls, moon, sun, hour, minute, phase, guardian):
         self = object.__new__(cls)
         hour, minute = _check_time_field(hour, minute)
         phase = _check_phase_field(phase)
+        self._moon = moon
+        self._sun = sun
         self._hour = hour
         self._minute = minute
         self._phase = phase
+        self._guardian = guardian
         return self
 
     @property
@@ -49,11 +57,14 @@ class EorzeaTime:
     @classmethod
     def _fromtimestamp(cls, t):
         et = t * cls._EORZEA_TIME_CONST
+        moon = math.ceil(et / cls._MOON % cls._EORZEA_YEAR)
+        guardian = _the_twelve(moon)
+        moon = _calculate_moon(moon)
+        sun = math.ceil(et / cls._DAY % cls._EORZEA_MOON)
         hh = int(et / cls._HOUR % cls._EORZEA_SUN)
         mm = int(et / cls._MINUTE % cls._EORZEA_BELL)
-        sun = math.ceil(et / cls._DAY % cls._EORZEA_MOON)
         moon_phase = _calculate_phase(sun)
-        return cls(hh, mm, moon_phase)
+        return cls(moon, sun, hh, mm, moon_phase, guardian)
 
     @classmethod
     def weather_period(cls, step=5):
@@ -73,9 +84,11 @@ class EorzeaTime:
         return lt
 
     def _cls_to_str(self):
-        return "{}({:02d}, {:02d}, {:.2f})".format(
+        return "{}({}, {}, {:02d}, {:02d}, {:.2f}, {})".format(
             self.__class__.__qualname__,
-            self._hour, self._minute, self._phase)
+            self._moon, self._sun,
+            self._hour, self._minute, self._phase,
+            self._guardian)
 
     def __repr__(self):
         return self._cls_to_str()
@@ -90,6 +103,38 @@ def _weather_period_generator(min, step):
         yield i
         i += 1400
         n += 1
+
+
+def _the_twelve(moon):
+    the_twelve = [
+        "Halone",
+        "Menphina",
+        "Thaliak",
+        "Nymeia",
+        "Llymlaen",
+        "Oschon",
+        "Byregot",
+        "Rhalgr",
+        "Azeyma",
+        "Nald'thal",
+        "Nophica",
+        "Althyk"
+    ]
+    return the_twelve[moon - 1]
+
+
+def _calculate_moon(moon):
+    th = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth"]
+    M_th = th[math.ceil(moon / 2) - 1]
+    M_type = astral_or_embral(moon)
+    return "{} {} Moon".format(M_th, M_type)
+
+
+def astral_or_embral(moon):
+    if moon % 2:
+        return "Astral"
+    else:
+        return "Embral"
 
 
 def _calculate_phase(sun):
