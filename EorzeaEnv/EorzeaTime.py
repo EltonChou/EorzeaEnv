@@ -1,4 +1,6 @@
 from time import time as _time
+import math
+from decimal import Decimal
 
 
 class EorzeaTime:
@@ -50,12 +52,12 @@ class EorzeaTime:
         et = t * cls._EORZEA_TIME_CONST
         hh = int(et / cls._HOUR % cls._EORZEA_SUN)
         mm = int(et / cls._MINUTE % cls._EORZEA_BELL)
-        sun = int(et / cls._DAY % cls._EORZEA_MOON) + 1
-        moon_phase = _calculate_phase(sun)
+        sun = math.ceil(et / cls._DAY % cls._EORZEA_MOON)
+        moon_phase = _calculate_pphase(sun)
         return cls(hh, mm, moon_phase)
 
     @classmethod
-    def next_weather_period_start(cls, step=5):
+    def weather_period(cls, step=5):
         """default step value is 5"""
 
         if not isinstance(step, int):
@@ -73,8 +75,8 @@ class EorzeaTime:
 
     def _cls_to_str(self):
         return "{}({:02d}, {:02d}, {:.2f})".format(
-                self.__class__.__qualname__,
-                self._hour, self._minute, self._phase)
+            self.__class__.__qualname__,
+            self._hour, self._minute, self._phase)
 
     def __repr__(self):
         return self._cls_to_str()
@@ -91,6 +93,21 @@ def _weather_period_generator(min, step):
         n += 1
 
 
+def _calculate_phase(sun):
+    sun = _check_sun_field(sun)
+    if sun <= 20:
+        return 1 - int(abs(20 - sun) / 4) / 4
+    if sun > 20:
+        return int(abs(36 - sun) / 4) / 4
+
+
+def _calculate_pphase(sun):
+    if sun <= 20:
+        return round((sun - 1) / 19, 2)
+    if sun >= 20:
+        return round(1 - (sun - 20) / 13, 2)
+
+
 def _check_time_field(hour, minute):
     hour = _check_int_field(hour)
     minute = _check_int_field(minute)
@@ -101,17 +118,19 @@ def _check_time_field(hour, minute):
     return hour, minute
 
 
+def _check_sun_field(sun):
+    if not 1 <= sun <= 32:
+        raise ValueError('sun must be in 1..32', sun)
+    return sun
+
+
 def _check_phase_field(phase):
     if not 0 <= phase <= 1:
         raise ValueError('phase must be in 0..1', phase)
     return phase
 
 
-def _calculate_phase(sun):
-    return 1 - int(abs(16 - sun) / 4) / 4
-
-
 def _check_int_field(value):
-    if isinstance(value, int):
-        return value
-    raise TypeError("integer argument required")
+    if not isinstance(value, int):
+        raise TypeError("integer argument required")
+    return value
