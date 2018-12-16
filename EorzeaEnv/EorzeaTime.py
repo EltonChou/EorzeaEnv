@@ -1,8 +1,6 @@
 from time import time as _time
 import math
 
-# TODO: the twelve EorzeaTime(First Umbral Moon, 24, 08, 20, 0.75, Menphina )
-
 
 class EorzeaTime:
     """EorzeaTime(hour, minute)"""
@@ -36,6 +34,14 @@ class EorzeaTime:
         return self
 
     @property
+    def moon(self):
+        return self._moon
+
+    @property
+    def sun(self):
+        return self._sun
+
+    @property
     def hour(self):
         return self._hour
 
@@ -46,6 +52,10 @@ class EorzeaTime:
     @property
     def phase(self):
         return self._phase
+
+    @property
+    def guardian(self):
+        return self._guardian
 
     @classmethod
     def now(cls):
@@ -58,13 +68,13 @@ class EorzeaTime:
     def _fromtimestamp(cls, t):
         et = t * cls._EORZEA_TIME_CONST
         moon = math.ceil(et / cls._MOON % cls._EORZEA_YEAR)
-        guardian = _the_twelve(moon)
-        moon = _calculate_moon(moon)
+        e_moon = _calculate_moon(moon)
         sun = math.ceil(et / cls._DAY % cls._EORZEA_MOON)
         hh = int(et / cls._HOUR % cls._EORZEA_SUN)
         mm = int(et / cls._MINUTE % cls._EORZEA_BELL)
         moon_phase = _calculate_phase(sun)
-        return cls(moon, sun, hh, mm, moon_phase, guardian)
+        guardian = _the_twelve(moon)
+        return cls(e_moon, sun, hh, mm, moon_phase, guardian)
 
     @classmethod
     def weather_period(cls, step=5):
@@ -126,11 +136,11 @@ def _the_twelve(moon):
 def _calculate_moon(moon):
     th = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth"]
     M_th = th[math.ceil(moon / 2) - 1]
-    M_type = astral_or_embral(moon)
+    M_type = _astral_or_embral(moon)
     return "{} {} Moon".format(M_th, M_type)
 
 
-def astral_or_embral(moon):
+def _astral_or_embral(moon):
     if moon % 2:
         return "Astral"
     else:
