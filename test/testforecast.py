@@ -26,12 +26,21 @@ class TestForecast (unittest.TestCase):
         self.assertIsInstance(EorzeaTime.now().minute, int)
         self.assertIsInstance(EorzeaTime.now().hour, int)
         with self.assertRaises(ValueError):
-            EorzeaTime(26, 77, 1)
+            EorzeaTime(13, 1, 10, 50)
         with self.assertRaises(ValueError):
-            EorzeaTime(8, 70, 1)
+            EorzeaTime(12, 35, 10, 50)
+        with self.assertRaises(ValueError):
+            EorzeaTime(12, 1, 25, 50)
+        with self.assertRaises(ValueError):
+            EorzeaTime(12, 1, 10, 61)
         with self.assertRaises(TypeError):
-            EorzeaTime("kappa", 40, 1)
-
+            EorzeaTime("kappa", 1, 10, 50)
+        with self.assertRaises(TypeError):
+            EorzeaTime(12, "kappa", 10, 50)
+        with self.assertRaises(TypeError):
+            EorzeaTime(12, 1, "kappa", 50)
+        with self.assertRaises(TypeError):
+            EorzeaTime(12, 1, 10, "kappa")
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

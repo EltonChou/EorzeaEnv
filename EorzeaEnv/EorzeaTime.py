@@ -3,7 +3,7 @@ import math
 
 
 class EorzeaTime:
-    """EorzeaTime(hour, minute)"""
+    """EorzeaTime(moon, sun, hour, minute)"""
 
     __slots__ = '_moon', '_sun', '_hour', '_minute', '_phase', '_guardian'
 
@@ -21,16 +21,18 @@ class EorzeaTime:
     _EORZEA_TIME_CONST = 3600.0 / 175.0
     _MILLISECOND_EORZEA_PER_MINUTE = (2 + 11/12) * 1000
 
-    def __new__(cls, moon, sun, hour, minute, phase, guardian):
+    def __new__(cls, moon, sun, hour, minute):
+        """Kappa"""
         self = object.__new__(cls)
         hour, minute = _check_time_field(hour, minute)
-        phase = _check_phase_field(phase)
-        self._moon = moon
+        moon, sun = _check_date_field(moon, sun)
+        phase = _calculate_phase(sun)
+        self._moon = _calculate_moon(moon)
         self._sun = sun
         self._hour = hour
         self._minute = minute
-        self._phase = phase
-        self._guardian = guardian
+        self._phase = _check_phase_field(phase)
+        self._guardian = _the_twelve(moon)
         return self
 
     @property
@@ -68,20 +70,16 @@ class EorzeaTime:
     def _fromtimestamp(cls, t):
         et = t * cls._EORZEA_TIME_CONST
         moon = math.ceil(et / cls._MOON % cls._EORZEA_YEAR)
-        e_moon = _calculate_moon(moon)
         sun = math.ceil(et / cls._DAY % cls._EORZEA_MOON)
         hh = int(et / cls._HOUR % cls._EORZEA_SUN)
         mm = int(et / cls._MINUTE % cls._EORZEA_BELL)
-        moon_phase = _calculate_phase(sun)
-        guardian = _the_twelve(moon)
-        return cls(e_moon, sun, hh, mm, moon_phase, guardian)
+        return cls(moon, sun, hh, mm)
 
     @classmethod
     def weather_period(cls, step=5):
         """default step value is 5"""
 
-        if not isinstance(step, int):
-            raise ValueError("step argument must be an 'int' instance")
+        step = _check_int_field(step)
 
         time = _weather_period_generator(cls._weather_period_start(), step)
         return time
@@ -148,7 +146,6 @@ def _astral_or_embral(moon):
 
 
 def _calculate_phase(sun):
-    sun = _check_sun_field(sun)
     if sun <= 20:
         return 1 - int(abs(20 - sun) / 4) / 4
     if sun > 20:
@@ -172,10 +169,14 @@ def _check_time_field(hour, minute):
     return hour, minute
 
 
-def _check_sun_field(sun):
+def _check_date_field(moon, sun):
+    moon = _check_int_field(moon)
+    sun = _check_int_field(sun)
+    if not 1 <= moon <= 12:
+        raise ValueError('moon must be in 1..12', moon)
     if not 1 <= sun <= 32:
         raise ValueError('sun must be in 1..32', sun)
-    return sun
+    return moon, sun
 
 
 def _check_phase_field(phase):
