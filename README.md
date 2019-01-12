@@ -10,12 +10,11 @@ pip install EorzeaEnv
 ```
 
 ## Usage
-```python
-from EorzeaEnv.EorzeaTime import EorzeaTime
-from EorzeaEnv.EorzeaWeather import EorzeaWeather
-```
+
 ### Eorzea Time
 ```python
+from EorzeaEnv.EorzeaTime import EorzeaTime
+
 EorzeaTime.now() #EorzeaTime(Sixth Embral Moon, 11, 21, 56, 0.50, Althyk)
 EorzeaTime.now().moon #Sixth Embral Moon
 EorzeaTime.now().sun #11
@@ -27,6 +26,8 @@ EorzeaTime.now().guardian #Althyk
 
 ### Weather Forecast
 ```python
+from EorzeaEnv.EorzeaWeather import EorzeaWeather
+
 weather_list = []
 
 for t in EorzeaTime.weather_period():
