@@ -7,16 +7,27 @@ from EorzeaEnv.EorzeaWeather import EorzeaWeather
 class TestForecast (unittest.TestCase):
     def test_forecast(self):
         pagos_weather = EorzeaWeather.forecast_weather(
-            "Eureka Pagos", 1542651599.999)
+            "Eureka Pagos", 1542651599.999
+        )
         pyros_weather = EorzeaWeather.forecast_weather(
-            "Eureka Pyros", 1542591400.045)
+            "Eureka Pyros", 1542591400.045
+        )
+        sigma_weather = EorzeaWeather.forecast_weather(
+            "Sigmascape V4.0", 1542591400.045
+        )
         self.assertEqual(pagos_weather, "Fog")
         self.assertEqual(pyros_weather, "Umbral Wind")
+        self.assertEqual(sigma_weather, "Dimensional Disruption")
 
     def test_field(self):
         for t in (EorzeaTime.weather_period(10)):
             weather = EorzeaWeather.forecast_weather("Eureka Pyros", t)
             self.assertIsInstance(weather, str)
+
+        with self.assertRaises(KeyError):
+            pyros_weather = EorzeaWeather.forecast_weather(
+                "EuPyros", 1542591400.045
+            )
 
     def test_step(self):
         timelist = [t for t in (EorzeaTime.weather_period(10))]
@@ -35,12 +46,6 @@ class TestForecast (unittest.TestCase):
             EorzeaTime(12, 1, 10, 61)
         with self.assertRaises(TypeError):
             EorzeaTime("kappa", 1, 10, 50)
-        with self.assertRaises(TypeError):
-            EorzeaTime(12, "kappa", 10, 50)
-        with self.assertRaises(TypeError):
-            EorzeaTime(12, 1, "kappa", 50)
-        with self.assertRaises(TypeError):
-            EorzeaTime(12, 1, 10, "kappa")
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
