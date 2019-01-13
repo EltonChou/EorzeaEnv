@@ -1,20 +1,23 @@
 from numpy import uint32
-from EorzeaEnv.Data.WeatherInfos import weather_infos
+from EorzeaEnv.Data.TerritoryWeather import territory as _territory
+from EorzeaEnv.Data.WeatherRate import weather_rate as _wr
 
 
 class EorzeaWeather:
     """Class EorzeaWeather"""
 
-    _weather_infos = weather_infos
-
     @classmethod
     def forecast_weather(cls, field, local_time_stamp):
-        weather_infos = cls._weather_infos[field]
+        try:
+            weather_group = _territory[field]
+        except KeyError:
+            raise KeyError("real FFXIV placename required")
+
         target = _calculate_forecast_target(local_time_stamp)
 
-        for info in weather_infos:
-            if target < info[0]:
-                return info[1]
+        for rate in _wr[weather_group]:
+            if target < rate[0]:
+                return rate[1]
 
 
 def _calculate_forecast_target(lt):

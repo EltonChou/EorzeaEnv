@@ -1,22 +1,27 @@
 language: python
-
-virtualenv:
-  system_site_packages: true
   
 python:
 - '3.6'
-- '3.7'
 
 install:
-- pip install -r requriements.txt
+- pip install -r requirements.txt
 
 script:
 - python -m unittest test.testforecast
 
 deploy:
   provider: pypi
-  user: "EltonChou"
+  user: "Elton_Chou"
   password:
     secure: VoYW1kNrImkyDGYxGp3JhGc+FOJLDkFIVqCvEUYB9FpOyYTdr5nTT2v+4V9HiC2B0qR9J+s81cIsVcTtHgza86ZrIiO6zKm5oo+odgLJ3iauIY/TX+dd/f7QSDzxGrUSP0obxrTT6eE0UoktCQp8IgsWOsCKfpstGCtfXK6+GeCdU146iMXyhzchNxfAGvJva2K6uFX/BbGcPCZoJsrcxrNOUY8U74RcpGa4H+sTeE+uLeyBOvJ/T5dljDHBOaksaXzkctu2p/FhWNhIGW0or+0pE7YijeCXBxZ8GIV+P+zgKN7bl0gHxukmDGpgmcskqI6H/ABuU6o6Go1+oxBVnCnMghoo8CXO4iDRmR+aTc1aFfxAPcGLhSjfQuZ0HINpnpVbNP36LS0cnx1EG/hZg/GEMAflLDu8GPfkJoXXsaktXesVBBrtMYqyC2Qk4TAP+WFIsJo7pDDaPYiUKkZcyZbbtQiUpJ9rsO6FF1XXfrivO2gz6pggFYhZrKDwqUM8/AGZ59wINDFpa6s877dsjUMWoiL6xxATesW/+biu5RrKyYs+tUgc+MvmYEaz1m1CzZCYEmp6jyuIFS6U+XxV1Lx2FJtQwBpUEzJlJdUV5goBbFczaQz6mj4YEhTm0nCsbqyJ0KRoGV/37qzpjBhjQSyamW0s/aKLuybSj9Qpxng=
   on:
     tags: true
+
+after_success:
+  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+  - chmod +x send.sh
+  - ./send.sh success $WEBHOOK_URL
+after_failure:
+  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+  - chmod +x send.sh
+  - ./send.sh failure $WEBHOOK_URL
