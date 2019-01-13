@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setuptools.setup(
     name="EorzeaEnv",
-    version="1.1.0",
+    version="1.1.1",
     author="Elton H.Y. Chou",
     author_email="plscd748@gmail.com",
     license="MIT",
@@ -28,7 +28,7 @@ setuptools.setup(
     ],
     project_urls={
         'Bug Reports': 'https://github.com/EltonChou/EorzeaEnv/issues',
-        'Thanks!': 'https://github.com/Rogueadyn/SaintCoinach',
         'Source': 'https://github.com/EltonChou/EorzeaEnv',
+        'Thanks!': 'https://github.com/Rogueadyn/SaintCoinach',
     },
 )
