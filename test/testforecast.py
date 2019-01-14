@@ -2,6 +2,7 @@ import unittest
 
 from EorzeaEnv.EorzeaTime import EorzeaTime
 from EorzeaEnv.EorzeaWeather import EorzeaWeather
+from EorzeaEnv.EorzeaLocalize import EorzeaLocalize
 
 
 class TestForecast (unittest.TestCase):
@@ -33,8 +34,25 @@ class TestForecast (unittest.TestCase):
                 "EuPyros", 1542591400.045
             )
 
+    def test_localize(self):
+        localized_jp_weather = EorzeaLocalize.weather(
+            "Beyond Time",
+            lang="jp"
+        )
+        localized_de_weather = EorzeaLocalize.weather(
+            "White Cyclones",
+            lang="de"
+        )
+        localized_fr_weather = EorzeaLocalize.weather(
+            "Dimensional Disruption",
+            lang="fr"
+        )
+        self.assertEqual(localized_jp_weather, "時流")
+        self.assertEqual(localized_fr_weather, "Perturbation dimensionnelle")
+        self.assertEqual(localized_de_weather, "Weißer Zyklon")
+
     def test_step(self):
-        timelist = [t for t in (EorzeaTime.weather_period(10))]
+        timelist = [t for t in EorzeaTime.weather_period(10)]
         self.assertEqual(len(timelist), 10)
 
     def test_time(self):

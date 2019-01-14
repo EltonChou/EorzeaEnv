@@ -139,10 +139,7 @@ def _calculate_moon(moon):
 
 
 def _astral_or_embral(moon):
-    if moon % 2:
-        return "Astral"
-    else:
-        return "Embral"
+    return "Astral" if moon % 2 else "Embral"
 
 
 def _calculate_phase(sun):
