@@ -26,6 +26,7 @@ EorzeaTime.now().guardian #Althyk
 
 ### Weather Forecast
 ```python
+from EorzeaEnv.EorzeaTime import EorzeaTime
 from EorzeaEnv.EorzeaWeather import EorzeaWeather
 
 weather_list = []
