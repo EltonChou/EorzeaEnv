@@ -15,9 +15,13 @@ class TestForecast (unittest.TestCase):
         sigma_weather = EorzeaWeather.forecast_weather(
             "Sigmascape V4.0", 1542591400.045
         )
+        ember_weather = EorzeaWeather.forecast_weather(
+            "Bowl of Embers", 1542591400.045
+        )
         self.assertEqual(pagos_weather, "Fog")
         self.assertEqual(pyros_weather, "Umbral Wind")
         self.assertEqual(sigma_weather, "Dimensional Disruption")
+        self.assertEqual(ember_weather, "Heat Waves")
 
     def test_field(self):
         for t in (EorzeaTime.weather_period(10)):

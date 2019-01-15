@@ -1,7 +1,7 @@
 
 [![Pypi](https://img.shields.io/pypi/v/eorzeaenv.svg?style=flat-square)](https://pypi.org/project/EorzeaEnv/)
 [![Pypi](https://img.shields.io/pypi/pyversions/eorzeaenv.svg?style=flat-square)](https://pypi.org/project/EorzeaEnv/)
-
+[![Build Status](https://travis-ci.org/EltonChou/EorzeaEnv.svg?branch=1.2.0)](https://travis-ci.org/EltonChou/EorzeaEnv)
 
 # EorzeaEnv
 ## Installation
