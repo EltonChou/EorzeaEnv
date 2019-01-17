@@ -2,7 +2,6 @@ import unittest
 
 from EorzeaEnv.EorzeaTime import EorzeaTime
 from EorzeaEnv.EorzeaWeather import EorzeaWeather
-from EorzeaEnv.EorzeaLocalize import EorzeaLocalize
 
 
 class TestForecast (unittest.TestCase):
@@ -35,21 +34,29 @@ class TestForecast (unittest.TestCase):
             )
 
     def test_localize(self):
-        localized_jp_weather = EorzeaLocalize.weather(
-            "Beyond Time",
+        localized_en_weather = EorzeaWeather.forecast_weather(
+            "Eureka Pagos",
+            1542651599.999,
+            lang="en"
+        )
+        localized_jp_weather = EorzeaWeather.forecast_weather(
+            "Eureka Pagos",
+            1542651599.999,
             lang="jp"
         )
-        localized_de_weather = EorzeaLocalize.weather(
-            "White Cyclones",
+        localized_de_weather = EorzeaWeather.forecast_weather(
+            "Eureka Pagos",
+            1542651599.999,
             lang="de"
         )
-        localized_fr_weather = EorzeaLocalize.weather(
-            "Dimensional Disruption",
+        localized_fr_weather = EorzeaWeather.forecast_weather(
+            "Eureka Pagos",
+            1542651599.999,
             lang="fr"
         )
-        self.assertEqual(localized_jp_weather, "時流")
-        self.assertEqual(localized_fr_weather, "Perturbation dimensionnelle")
-        self.assertEqual(localized_de_weather, "Weißer Zyklon")
+        self.assertEqual(localized_jp_weather, "霧")
+        self.assertEqual(localized_fr_weather, "Brouillard")
+        self.assertEqual(localized_de_weather, "Neblig")
 
     def test_step(self):
         timelist = [t for t in EorzeaTime.weather_period(10)]
