@@ -1,23 +1,46 @@
 from numpy import uint32
 from EorzeaEnv.Data.TerritoryWeather import territory as _territory
 from EorzeaEnv.Data.WeatherRate import weather_rate as _wr
+from EorzeaEnv.Data.WeatherLocalize import weather_localize as _localize
 
 
 class EorzeaWeather:
-    """Class EorzeaWeather"""
+    """About XIV Weather"""
 
-    @classmethod
-    def forecast_weather(cls, field, local_time_stamp):
+    @staticmethod
+    def forecast_weather(placename, timestamp, lang='en'):
+        """Genrate forecast result.
+
+        Parameters
+        ----------
+        field : str
+            The placename of FFXIV.
+        timestamp : float
+            The timestamp of weather changing.
+        lang: Optional str
+            The language of result.
+
+        Returns:
+        ----------
+        string
+            The result of forecast.
+
+        Raises:
+        ----------
+        KeyError
+            When placename invalid.
+
+        """
         try:
-            weather_group = _territory[field]
+            weather_group = _territory[placename]
         except KeyError:
-            raise KeyError("real FFXIV placename required")
+            raise KeyError("valid FFXIV placename required")
 
-        target = _calculate_forecast_target(local_time_stamp)
+        target = _calculate_forecast_target(timestamp)
 
         for rate in _wr[weather_group]:
             if target < rate[0]:
-                return rate[1]
+                return _localize[rate[1]][lang]
 
 
 def _calculate_forecast_target(lt):
