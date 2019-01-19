@@ -79,8 +79,6 @@ class EorzeaTime:
     def weather_period(cls, step=5):
         """default step value is 5"""
 
-        step = _check_int_field(step)
-
         time = _weather_period_generator(cls._weather_period_start(), step)
         return time
 
@@ -105,7 +103,18 @@ class EorzeaTime:
         return self._cls_to_str()
 
 
+def check_int(func):
+    def wrap(*values):
+        for value in values:
+            if not isinstance(value, int):
+                raise TypeError("integer argument required")
+        return func(*values)
+    return wrap
+
+
 def _weather_period_generator(min, step):
+    if not isinstance(step, int):
+        raise TypeError("integer argument required")
     n, i = 0, min
     while n < step:
         yield i
@@ -156,9 +165,8 @@ def _calculate_pphase(sun):
         return round(1 - (sun - 20) / 13, 2)
 
 
+@check_int
 def _check_time_field(hour, minute):
-    hour = _check_int_field(hour)
-    minute = _check_int_field(minute)
     if not 0 <= hour <= 23:
         raise ValueError('hour must be in 0..23', hour)
     if not 0 <= minute <= 59:
@@ -166,9 +174,8 @@ def _check_time_field(hour, minute):
     return hour, minute
 
 
+@check_int
 def _check_date_field(moon, sun):
-    moon = _check_int_field(moon)
-    sun = _check_int_field(sun)
     if not 1 <= moon <= 12:
         raise ValueError('moon must be in 1..12', moon)
     if not 1 <= sun <= 32:
@@ -180,9 +187,3 @@ def _check_phase_field(phase):
     if not 0 <= phase <= 1:
         raise ValueError('phase must be in 0..1', phase)
     return phase
-
-
-def _check_int_field(value):
-    if not isinstance(value, int):
-        raise TypeError("integer argument required")
-    return value
