@@ -1,9 +1,10 @@
 import requests
 
+
 API_BASE = 'https://xivapi.com/'
 
 
-class Xivapi:
+class Client:
 
     __slots__ = 'api_key', 'language'
 
@@ -18,11 +19,20 @@ class Xivapi:
             'language': self.language
         }
 
-    def get(self, endpoint):
+    def get(self, endpoint, params={}):
         url = request_url(endpoint)
-        r = requests.get(url, params=self.params)
+        r = requests.get(url, params={**self.params, **params})
         return r
+
+    def search(self, **kwargs):
+        return self.get('search', kwargs)
+
+    def content(self, content="", **kwargs):
+        if not content:
+            return self.get('content')
+
+        return self.get(content, kwargs)
 
 
 def request_url(endpoint):
-    return "{}{}".format(API_BASE, endpoint)
+    return '{}{}'.format(API_BASE, endpoint)
