@@ -13,7 +13,6 @@ pip install EorzeaEnv
 ```python
 from EorzeaEnv.EorzeaTime import EorzeaTime
 from EorzeaEnv.EorzeaWeather import EorzeaWeather
-from EorzeaEnv.EorzeaLocalize import EorzeaLocalize
 ```
 
 ### Eorzea Time

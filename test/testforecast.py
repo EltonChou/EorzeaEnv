@@ -1,7 +1,7 @@
 import unittest
 
-from EorzeaEnv.EorzeaTime import EorzeaTime
-from EorzeaEnv.EorzeaWeather import EorzeaWeather
+from EorzeaEnv import EorzeaTime
+from EorzeaEnv import EorzeaWeather
 
 
 class TestForecast (unittest.TestCase):
