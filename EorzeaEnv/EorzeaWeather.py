@@ -1,7 +1,7 @@
 from numpy import uint32
-from EorzeaEnv.Data.TerritoryWeather import territory as _territory
-from EorzeaEnv.Data.WeatherRate import weather_rate as _wr
-from EorzeaEnv.Data.WeatherLocalize import weather_localize as _localize
+from .Data.TerritoryWeather import territory as _territory
+from .Data.WeatherRate import weather_rate as _wr
+from .Data.WeatherLocalize import weather_localize as _localize
 
 
 class EorzeaWeather:
