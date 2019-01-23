@@ -9,6 +9,11 @@ install:
 script:
 - python -m unittest test.testforecast
 
+branches:
+  only:
+    - master
+    - dev
+
 deploy:
   provider: pypi
   user: "Elton_Chou"
