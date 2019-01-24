@@ -2,9 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
-/.vscode
+.vscode/
 .DS_Store
-/eorzea
+eorzea/
 
 # C extensions
 *.so
