@@ -6,19 +6,33 @@ API_BASE = 'https://xivapi.com/'
 
 class Client:
 
-    __slots__ = 'api_key'
+    __slots__ = 'api_key', 'language', 'pretty', 'snake_case', 'test_mode'
 
-    def __init__(self, api_key):
+    SUPPORT_LANGUAGE = ['en', 'jp', 'de', 'fr']
+    CHARACTER_DATA = ['AR', 'FR', 'FC', 'FCM', 'PVP']
+
+    def __init__(self, api_key, **kwargs):
         self.api_key = api_key
+        self.language = kwargs.get('language', None)
+        self.pretty = kwargs.get('pretty', False)
+        self.snake_case = kwargs.get('snake_case', False)
+        self.test_mode = kwargs.get('test_mode', False)
 
     @property
-    def key(self):
-        return {'key': self.api_key}
+    def params(self):
+        return {
+            'key': self.api_key,
+            'language': self.language,
+            'pretty': self.pretty,
+            'snake_case': self.snake_case
+        }
 
     def get(self, endpoint, params={}):
         url = request_url(endpoint)
-        r = requests.get(url, params={**self.key, **params})
-        return r
+        r = requests.get(url, params={**self.params, **params})
+        if self.test_mode:
+            return r
+        return r.json()
 
     def search(self, **kwargs):
         return self.get('search', kwargs)
@@ -35,11 +49,9 @@ class Client:
     def schema(self, content):
         return self.get('{}/schema'.format(content))
 
-    def servers(self):
-        return self.get('servers')
-
-    def servers_dc(self):
-        return self.get('servers/dc')
+    def servers(self, group=False):
+        endpoint = 'servers/dc' if group else 'server'
+        return self.get(endpoint)
 
     def character(self, id, **kwargs):
         return self.get('character/{}'.format(id), params=kwargs)

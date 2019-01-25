@@ -5,6 +5,7 @@ __pycache__/
 .vscode/
 .DS_Store
 eorzea/
+test.py
 
 # C extensions
 *.so
