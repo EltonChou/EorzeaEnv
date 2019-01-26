@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setuptools.setup(
     name="EorzeaEnv",
-    version="1.2.4",
+    version="1.2.5",
     author="Elton H.Y. Chou",
     author_email="plscd748@gmail.com",
     license="MIT",
