@@ -1,4 +1,4 @@
-weather_localize = {
+weather = {
  0: {'de': None, 'en': None, 'fr': None, 'jp': None},
  1: {'de': 'Klar',
      'en': 'Clear Skies',

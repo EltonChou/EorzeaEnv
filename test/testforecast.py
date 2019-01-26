@@ -18,10 +18,18 @@ class TestForecast (unittest.TestCase):
         ember_weather = EorzeaWeather.forecast_weather(
             "Bowl of Embers", 1542591400.045
         )
+        ruby_weather = EorzeaWeather.forecast_weather(
+            "the ruby sea", 1542591400.045
+        )
+        sea_weather = EorzeaWeather.forecast_weather(
+            "sea of clouds", 1542591400.045
+        )
         self.assertEqual(pagos_weather, "Fog")
         self.assertEqual(pyros_weather, "Umbral Wind")
         self.assertEqual(sigma_weather, "Dimensional Disruption")
         self.assertEqual(ember_weather, "Heat Waves")
+        self.assertEqual(ruby_weather, 'Fair Skies')
+        self.assertEqual(sea_weather, 'Fog')
 
     def test_field(self):
         for t in (EorzeaTime.weather_period(10)):
@@ -77,4 +85,4 @@ class TestForecast (unittest.TestCase):
             EorzeaTime("kappa", 1, 10, 50)
 
 if __name__ == "__main__":
-    unittest.main(verbosity=2)
+    unittest.main()

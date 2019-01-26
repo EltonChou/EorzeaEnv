@@ -1,7 +1,9 @@
+import re
+
 from numpy import uint32
 from .Data.TerritoryWeather import territory as _territory
-from .Data.WeatherRate import weather_rate as _wr
-from .Data.WeatherLocalize import weather_localize as _localize
+from .Data.WeatherRate import weather_rate as _weather_rate
+from .Data.Weather import weather as _weather
 
 
 class EorzeaWeather:
@@ -31,16 +33,19 @@ class EorzeaWeather:
             When placename invalid.
 
         """
-        try:
-            weather_group = _territory[placename]
-        except KeyError:
-            raise KeyError("valid FFXIV placename required")
-
+        weather_rate = None
+        placename = placename.lower()
         target = _calculate_forecast_target(timestamp)
+        for p, r in _territory:
+            if re.search(p, placename):
+                weather_rate = r
 
-        for rate in _wr[weather_group]:
-            if target < rate[0]:
-                return _localize[rate[1]][lang]
+        if not weather_rate:
+            raise KeyError('Valid Eorzea placename required')
+
+        for r, w in _weather_rate[weather_rate]:
+            if target < r:
+                return _weather[w][lang]
 
 
 def _calculate_forecast_target(lt):
