@@ -12,7 +12,7 @@ class EorzeaWeather:
     """About XIV Weather"""
 
     @staticmethod
-    def forecast_weather(placename, timestamp, lang='en'):
+    def forecast_weather(placename, timestamp, lang='en', strict=True):
         """Genrate forecast result.
 
         Parameters
@@ -46,12 +46,15 @@ class EorzeaWeather:
         try:
             weather_rate = _s_territory[placename]
         except KeyError:
+            if strict:
+                raise KeyError('valid Eorzea placename required')
+
             for p, r in _f_territory:
                 if re.search(p, placename):
                     weather_rate = r
         finally:
             if not weather_rate:
-                raise KeyError('Valid Eorzea placename required')
+                raise KeyError('valid Eorzea placename required')
 
         for r, w in _weather_rate[weather_rate]:
             if target < r:
