@@ -1,5 +1,5 @@
-from time import time as _time
 import math
+from time import time as _time
 
 
 class EorzeaTime:
