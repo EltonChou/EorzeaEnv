@@ -50,10 +50,11 @@ weather_fr = []
 # defalut step value is 5
 for t in EorzeaTime.weather_period(step=3):
     # defalut lang is 'en'
-    w_en = EorzeaWeather.forecast_weather('Eureka Pyros', t)
-    w_jp = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='jp')
-    w_de = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='de')
-    w_fr = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='fr')
+    # defalut strict is True
+    w_en = EorzeaWeather.forecast_weather('Eureka Pyros', t, strict=True)
+    w_jp = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='jp', strict=True)
+    w_de = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='de', strict=True)
+    w_fr = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='fr', strict=True)
     weather_en.append(w_en)
     weather_jp.append(w_jp)
     weather_de.append(w_de)
