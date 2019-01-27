@@ -1,21 +1,23 @@
 import re
 
 from numpy import uint32
-from .Data.TerritoryWeather import territory as _territory
-from .Data.WeatherRate import weather_rate as _weather_rate
+
+from .Data.FuzzyTerritoryWeather import fuzzy_territory as _f_territory
+from .Data.StrictTerritoryWeather import strict_territory as _s_territory
 from .Data.Weather import weather as _weather
+from .Data.WeatherRate import weather_rate as _weather_rate
 
 
 class EorzeaWeather:
     """About XIV Weather"""
 
     @staticmethod
-    def forecast_weather(placename, timestamp, lang='en'):
+    def forecast_weather(placename, timestamp, lang='en', strict=True):
         """Genrate forecast result.
 
         Parameters
         ----------
-        field : str
+        placename : str
             The placename of FFXIV.
         timestamp : float
             The timestamp of weather changing.
@@ -36,12 +38,23 @@ class EorzeaWeather:
         weather_rate = None
         placename = placename.lower()
         target = _calculate_forecast_target(timestamp)
-        for p, r in _territory:
-            if re.search(p, placename):
-                weather_rate = r
+        check_placename = re.search('^the (.*)', placename)
 
-        if not weather_rate:
-            raise KeyError('Valid Eorzea placename required')
+        if check_placename:
+            placename = ''.join(check_placename.groups())
+
+        try:
+            weather_rate = _s_territory[placename]
+        except KeyError:
+            if strict:
+                raise KeyError('valid Eorzea placename required')
+
+            for p, r in _f_territory:
+                if re.search(p, placename):
+                    weather_rate = r
+        finally:
+            if not weather_rate:
+                raise KeyError('valid Eorzea placename required')
 
         for r, w in _weather_rate[weather_rate]:
             if target < r:
