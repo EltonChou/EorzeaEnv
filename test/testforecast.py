@@ -24,12 +24,18 @@ class TestForecast (unittest.TestCase):
         sea_weather = EorzeaWeather.forecast_weather(
             "sea of clouds", 1542591400.045
         )
+        zero_weather = EorzeaWeather.forecast_weather(
+            "asdfUpper aetheroacoustic exploratory sitea dsf",
+            1542591400.045,
+            strict=False
+        )
         self.assertEqual(pagos_weather, "Fog")
         self.assertEqual(pyros_weather, "Umbral Wind")
         self.assertEqual(sigma_weather, "Dimensional Disruption")
         self.assertEqual(ember_weather, "Heat Waves")
         self.assertEqual(ruby_weather, 'Fair Skies')
         self.assertEqual(sea_weather, 'Fog')
+        self.assertEqual(zero_weather, 'Fair Skies')
 
     def test_field(self):
         for t in (EorzeaTime.weather_period(10)):
