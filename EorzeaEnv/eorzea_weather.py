@@ -53,7 +53,7 @@ class EorzeaWeather:
                 if re.search(p, placename):
                     weather_rate = r
         finally:
-            if not weather_rate:
+            if weather_rate is None:
                 raise KeyError('valid Eorzea placename required')
 
         for r, w in _weather_rate[weather_rate]:
