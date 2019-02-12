@@ -1,11 +1,11 @@
 import setuptools
 
-with open("README.md", "r") as f:
+with open("README.md", "r", encoding="UTF-8") as f:
     long_description = f.read()
 
 setuptools.setup(
     name="EorzeaEnv",
-    version="1.2.9",
+    version="1.2.10",
     author="Elton H.Y. Chou",
     author_email="plscd748@gmail.com",
     license="MIT",
