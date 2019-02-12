@@ -43,7 +43,7 @@ from EorzeaEnv import EorzeaWeather
 ### Weather Forecast
 ```python
 weather_en = []
-weather_jp = []
+weather_ja = []
 weather_de = []
 weather_fr = []
 
@@ -52,11 +52,11 @@ for t in EorzeaTime.weather_period(step=3):
     # defalut lang is 'en'
     # defalut strict is True
     w_en = EorzeaWeather.forecast_weather('Eureka Pyros', t, strict=True)
-    w_jp = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='jp', strict=True)
+    w_ja = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='ja', strict=True)
     w_de = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='de', strict=True)
     w_fr = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='fr', strict=True)
     weather_en.append(w_en)
-    weather_jp.append(w_jp)
+    weather_jp.append(w_ja)
     weather_de.append(w_de)
     weather_fr.append(w_fr)
 ```
@@ -66,7 +66,7 @@ for t in EorzeaTime.weather_period(step=3):
 >>> print(weather_en)
 ['Thunder', 'Snow', 'Blizzards']
 
->>> print(weather_jp)
+>>> print(weather_ja)
 ['雷', '雪', '吹雪']
 
 >>> print(weather_de)
