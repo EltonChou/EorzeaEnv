@@ -29,6 +29,9 @@ class TestForecast (unittest.TestCase):
             1542591400.045,
             strict=False
         )
+        hydatos_weather = EorzeaWeather.forecast_weather(
+            "Eureka Hydatos", 1542591400.045
+        )
         self.assertEqual(pagos_weather, "Fog")
         self.assertEqual(pyros_weather, "Umbral Wind")
         self.assertEqual(sigma_weather, "Dimensional Disruption")
@@ -36,6 +39,7 @@ class TestForecast (unittest.TestCase):
         self.assertEqual(ruby_weather, 'Fair Skies')
         self.assertEqual(sea_weather, 'Fog')
         self.assertEqual(zero_weather, 'Fair Skies')
+        self.assertEqual(hydatos_weather, 'Thunderstorms')
 
     def test_field(self):
         for t in (EorzeaTime.weather_period(10)):
@@ -53,10 +57,10 @@ class TestForecast (unittest.TestCase):
             1542651599.999,
             lang="en"
         )
-        localized_jp_weather = EorzeaWeather.forecast_weather(
+        localized_ja_weather = EorzeaWeather.forecast_weather(
             "Eureka Pagos",
             1542651599.999,
-            lang="jp"
+            lang="ja"
         )
         localized_de_weather = EorzeaWeather.forecast_weather(
             "Eureka Pagos",
@@ -68,7 +72,7 @@ class TestForecast (unittest.TestCase):
             1542651599.999,
             lang="fr"
         )
-        self.assertEqual(localized_jp_weather, "霧")
+        self.assertEqual(localized_ja_weather, "霧")
         self.assertEqual(localized_fr_weather, "Brouillard")
         self.assertEqual(localized_de_weather, "Neblig")
 
