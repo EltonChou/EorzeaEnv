@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="UTF-8") as f:
 
 setuptools.setup(
     name="EorzeaEnv",
-    version="1.2.10",
+    version="1.2.11",
     author="Elton H.Y. Chou",
     author_email="plscd748@gmail.com",
     license="MIT",
@@ -15,7 +15,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/EltonChou/EorzeaEnv",
     packages=setuptools.find_packages(),
-    install_requires=['numpy'],
+    install_requires=['numpy', 'pytest'],
     python_requires='>=3.6.0',
     classifiers=[
         "Development Status :: 4 - Beta",
