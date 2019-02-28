@@ -1,4 +1,2 @@
-autopep8==1.4.3
 numpy==1.15.4
-pep8==1.7.1
-pycodestyle==2.4.0
+pytest==4.3.0

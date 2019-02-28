@@ -1,4 +1,4 @@
-from EorzeaEnv.EorzeaTime import EorzeaTime
+from EorzeaEnv import EorzeaTime
 
 
 class K:

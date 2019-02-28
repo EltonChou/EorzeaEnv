@@ -15,7 +15,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/EltonChou/EorzeaEnv",
     packages=setuptools.find_packages(),
-    install_requires=['numpy'],
+    install_requires=['numpy', 'pytest'],
     python_requires='>=3.6.0',
     classifiers=[
         "Development Status :: 4 - Beta",
