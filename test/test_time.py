@@ -15,7 +15,7 @@ class TestTime:
             (13, 1, 10, 50),
             (12, 35, 10, 50),
             (12, 1, 25, 50),
-            (12, 1, 10, 61) 
+            (12, 1, 10, 61)
         )
         with pytest.raises(ValueError):
             for t in test_time:

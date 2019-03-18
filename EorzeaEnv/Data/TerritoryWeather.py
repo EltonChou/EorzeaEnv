@@ -1,4 +1,4 @@
-strict_territory = {
+territory = {
  'aery': 28,
  'aetherochemical research facility': 0,
  'akh afah amphitheatre': 46,
