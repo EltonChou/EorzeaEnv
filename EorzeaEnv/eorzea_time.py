@@ -22,7 +22,6 @@ class EorzeaTime:
     _MILLISECOND_EORZEA_PER_MINUTE = (2 + 11/12) * 1000
 
     def __new__(cls, moon, sun, hour, minute):
-        """Kappa"""
         self = object.__new__(cls)
         hour, minute = _check_time_field(hour, minute)
         moon, sun = _check_date_field(moon, sun)
@@ -187,3 +186,9 @@ def _check_phase_field(phase):
     if not 0 <= phase <= 1:
         raise ValueError('phase must be in 0..1', phase)
     return phase
+
+
+if __name__ == "__main__":
+    while True:
+        t = str(EorzeaTime.now())
+        print("\r"+t, end="")
