@@ -42,25 +42,23 @@ from EorzeaEnv import EorzeaWeather
 
 ### Weather Forecast
 ```python
-weather_en = []
-weather_ja = []
-weather_de = []
-weather_fr = []
-
 # defalut step value is 5
-for t in EorzeaTime.weather_period(step=3):
-    # defalut lang is 'en'
-    # defalut strict is True
-    w_en = EorzeaWeather.forecast_weather('Eureka Pyros', t, strict=True)
-    w_ja = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='ja', strict=True)
-    w_de = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='de', strict=True)
-    w_fr = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='fr', strict=True)
-    weather_en.append(w_en)
-    weather_jp.append(w_ja)
-    weather_de.append(w_de)
-    weather_fr.append(w_fr)
-```
+t = EorzeaTime.weather_period(step=3)
 
+# defalut lang is 'en'
+# defalut strict is True
+weather_en = EorzeaWeather.forecast_weather('Eureka Pyros', t, strict=True)
+weather_jp = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='ja', strict=True)
+weather_de = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='de', strict=True)
+weather_fr = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='fr', strict=True)
+```
+or
+```py
+weather_en = []
+for t in EorzeaTime.weather_period(step=3):
+    w = EorzeaWeather.forecast_weather('Eureka Pyros', t)
+    weather_en.append(w)
+```
 
 ```sh
 >>> print(weather_en)
