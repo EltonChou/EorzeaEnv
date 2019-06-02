@@ -1,3 +1,4 @@
+import warnings
 import re
 
 from numpy import uint32
@@ -8,34 +9,39 @@ from .Data.WeatherRate import weather_rate as _weather_rate
 
 
 class EorzeaWeather:
-    """About XIV Weather"""
+    """
+    EoreaWeather
+    """
 
     @staticmethod
-    def forecast_weather(placename, timestamp, lang='en', strict=True):
-        """Genrate forecast result.
+    def forecast(placename: str, timestamp, lang='en', strict=True) -> str:
+        """
+        forecast
 
         Parameters
         ----------
         placename : str
-            The placename of FFXIV.
-        timestamp : float or iterable
-            Accept float and iterable.
-            The timestamp of weather changing.
-        lang: Optional str
-            The language of result.
+            valid placename from FFXIV
 
-        Returns:
-        ----------
-        string
-            The result of forecast.
+        timestamp : [float or array_like of float]
+            timestamp or timestamp in array_like
 
-        Raises:
-        ----------
+        lang : str, optional
+            languages support [en, jp, de, fr], by default 'en'
+
+        strict : bool, optional
+            search mode, strict or fuzzy, by default True
+
+        Raises
+        -------
         KeyError
-            When placename invalid.
+            when placename invalid
 
+        Returns
+        -------
+        [str or array_like]
+            forecast result in array_like or str
         """
-
         weather_rate = None
         placename = _parse_placename(placename)
         weather_rate = _get_weather_rate(placename, strict)
@@ -52,14 +58,21 @@ class EorzeaWeather:
         finally:
             return result
 
+    @staticmethod
+    def forecast_weather(*args, **kwargs):
+        warnings.warn(
+            'forecast_weather is deprecated, use forecaset instead.',
+            DeprecationWarning
+        )
 
-def _generate_result(target, weather_rate, lang):
+
+def _generate_result(target: int, weather_rate: int, lang: str) -> str:
     for r, w in _weather_rate[weather_rate]:
         if target < r:
             return _weather[w][lang]
 
 
-def _get_weather_rate(placename, strict):
+def _get_weather_rate(placename: str, strict: bool) -> int:
     weather_rate = None
     try:
         weather_rate = _territory[placename]
@@ -76,7 +89,20 @@ def _get_weather_rate(placename, strict):
         return weather_rate
 
 
-def _parse_placename(placename):
+def _parse_placename(placename: str) -> str:
+    """
+    trim `the`
+
+    Parameters
+    ----------
+    placename : str
+        valid placename from FFXIV starts with `the`
+
+    Returns
+    -------
+    str
+        trimmed placename
+    """
     placename = placename.lower()
     check_placename = re.search('^the (.*)', placename)
 
@@ -85,11 +111,25 @@ def _parse_placename(placename):
     return placename
 
 
-def _calculate_forecast_target(lt):
-    """Thanks to Rogueadyn's SaintCoinach library for this calculation.
-        1. Do the magic 'cause for calculations
-        2. 16:00 is 0, 00:00 is 8 and 08:00 is 16.
-        3. Take Eorzea days since unix epoch.
+def _calculate_forecast_target(lt: float) -> int:
+    """
+    Thanks to Rogueadyn's SaintCoinach library for this calculation
+    --------------
+    [1] Do the magic 'cause for calculations
+
+    [2] 16:00 is 0, 00:00 is 8 and 08:00 is 16.
+
+    [3] Take Eorzea days since unix epoch.
+
+    Parameters
+    ----------
+    lt : float
+        local timestamp
+
+    Returns
+    -------
+    int
+        weather period start
     """
 
     bell = lt / 175
