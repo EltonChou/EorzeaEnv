@@ -18,37 +18,45 @@ from EorzeaEnv import EorzeaWeather
 ### Eorzea Time
 
 ```sh
->>> EorzeaTime.now() 
+>>> EorzeaTime.now()
 'EorzeaTime(Sixth Embral Moon, 11, 21, 56, 0.50, Althyk)'
 
->>> EorzeaTime.now().moon 
+>>> EorzeaTime.now().moon
 'Sixth Embral Moon'
 
->>> EorzeaTime.now().sun 
+>>> EorzeaTime.now().sun
 11
 
->>> EorzeaTime.now().hour 
+>>> EorzeaTime.now().hour
 21
 
->>> EorzeaTime.now().minute 
+>>> EorzeaTime.now().minute
 56
 
->>> EorzeaTime.now().phase 
+>>> EorzeaTime.now().phase
 0.50
 
->>> EorzeaTime.now().guardian 
+>>> EorzeaTime.now().guardian
 'Althyk'
 ```
 
 ### Weather Forecast
 ```python
-weather_en = []
-weather_ja = []
-weather_de = []
-weather_fr = []
-
 # defalut step value is 5
+t = EorzeaTime.weather_period(step=3)
+
+# defalut lang is 'en'
+# defalut strict is True
+weather_en = EorzeaWeather.forecast('Eureka Pyros', t, strict=True)
+weather_jp = EorzeaWeather.forecast('Eureka Pyros', t, lang='ja', strict=True)
+weather_de = EorzeaWeather.forecast('Eureka Pyros', t, lang='de', strict=True)
+weather_fr = EorzeaWeather.forecast('Eureka Pyros', t, lang='fr', strict=True)
+```
+or
+```py
+weather_en = []
 for t in EorzeaTime.weather_period(step=3):
+<<<<<<< HEAD
     # defalut lang is 'en'
     # defalut strict is True
     w_en = EorzeaWeather.forecast_weather('Eureka Pyros', t, strict=True)
@@ -59,8 +67,11 @@ for t in EorzeaTime.weather_period(step=3):
     weather_jp.append(w_ja)
     weather_de.append(w_de)
     weather_fr.append(w_fr)
+=======
+    w = EorzeaWeather.forecast('Eureka Pyros', t)
+    weather_en.append(w)
+>>>>>>> dev
 ```
-
 
 ```sh
 >>> print(weather_en)
