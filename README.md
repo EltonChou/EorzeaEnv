@@ -1,4 +1,3 @@
-
 [![Pypi](https://img.shields.io/pypi/v/eorzeaenv.svg?style=flat-square)](https://pypi.org/project/EorzeaEnv/)
 [![Pypi](https://img.shields.io/pypi/pyversions/eorzeaenv.svg?style=flat-square)](https://pypi.org/project/EorzeaEnv/)
 ![Build Status](https://img.shields.io/travis/EltonChou/EorzeaEnv.svg?style=flat-square)
@@ -56,26 +55,8 @@ or
 ```py
 weather_en = []
 for t in EorzeaTime.weather_period(step=3):
-<<<<<<< HEAD
-<<<<<<< HEAD
-    # defalut lang is 'en'
-    # defalut strict is True
-    w_en = EorzeaWeather.forecast_weather('Eureka Pyros', t, strict=True)
-    w_ja = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='ja', strict=True)
-    w_de = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='de', strict=True)
-    w_fr = EorzeaWeather.forecast_weather('Eureka Pyros', t, lang='fr', strict=True)
-    weather_en.append(w_en)
-    weather_jp.append(w_ja)
-    weather_de.append(w_de)
-    weather_fr.append(w_fr)
-=======
     w = EorzeaWeather.forecast('Eureka Pyros', t)
     weather_en.append(w)
->>>>>>> dev
-=======
-    w = EorzeaWeather.forecast_weather('Eureka Pyros', t)
-    weather_en.append(w)
->>>>>>> a9ceb1864c571ea9280fc4fc9aeb83ddf3e48bcc
 ```
 
 ```sh
