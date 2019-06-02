@@ -57,6 +57,7 @@ or
 weather_en = []
 for t in EorzeaTime.weather_period(step=3):
 <<<<<<< HEAD
+<<<<<<< HEAD
     # defalut lang is 'en'
     # defalut strict is True
     w_en = EorzeaWeather.forecast_weather('Eureka Pyros', t, strict=True)
@@ -71,6 +72,10 @@ for t in EorzeaTime.weather_period(step=3):
     w = EorzeaWeather.forecast('Eureka Pyros', t)
     weather_en.append(w)
 >>>>>>> dev
+=======
+    w = EorzeaWeather.forecast_weather('Eureka Pyros', t)
+    weather_en.append(w)
+>>>>>>> a9ceb1864c571ea9280fc4fc9aeb83ddf3e48bcc
 ```
 
 ```sh
