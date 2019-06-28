@@ -58,13 +58,6 @@ class EorzeaWeather:
         finally:
             return result
 
-    @staticmethod
-    def forecast_weather(*args, **kwargs):
-        warnings.warn(
-            'forecast_weather is deprecated, use forecaset instead.',
-            DeprecationWarning
-        )
-
 
 def _generate_result(target: int, weather_rate: int, lang: str) -> str:
     for r, w in _weather_rate[weather_rate]:
