@@ -4,6 +4,9 @@
 ![Build Status](https://img.shields.io/travis/EltonChou/EorzeaEnv.svg?style=flat-square)
 
 # EorzeaEnv
+
++ [CHANGELOG](https://github.com/EltonChou/EorzeaEnv/blob/master/CHANGELOG.md)
+
 ## Installation
 ```
 pip install EorzeaEnv
@@ -73,5 +76,6 @@ for t in EorzeaTime.weather_period(step=3):
 >>> print(weather_fr)
 ['Orages', 'Neige', 'Blizzard']
 ```
+
 ## Thanks
 - [Rogueadyn-SaintCoinach](https://github.com/Rogueadyn/SaintCoinach)
