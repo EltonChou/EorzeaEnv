@@ -510,9 +510,16 @@ weather = {
           'en': 'Everlasting Light',
           'fr': 'Clarté éternelle',
           'ja': '無尽光'},
-    130: {'de': None, 'en': None, 'fr': None, 'ja': None},
+    130: {'de': 'Rauchschwaden',
+          'en': 'Eruptions',
+          'fr': 'Éruptions',
+          'ja': '噴煙'},
     131: {'de': 'Apokalyptisch',
           'en': 'Termination',
           'fr': 'Apocalypse',
-          'ja': '終末'}
+          'ja': '終末'},
+    132: {'de': 'Heiter',
+          'en': 'Fair Skies',
+          'fr': 'Clair',
+          'ja': '晴れ'}
 }
