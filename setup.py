@@ -14,7 +14,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/EltonChou/EorzeaEnv",
-    packages=setuptools.find_packages(exclude=('tests', '.sh')),
+    packages=setuptools.find_packages(exclude=('test', '.sh')),
     install_requires=['numpy'],
     python_requires='>=3.6.0',
     classifiers=[
