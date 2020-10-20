@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.4.3] - 2020-10-20
+### Added
++ 5.35 weather data
+
 ## [1.4.1] - 2019-06-29
 
 ### Added
