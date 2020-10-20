@@ -1,0 +1,11 @@
+version: '3'
+services:
+    eorzea:
+        image: python:3.8.1-buster
+        container_name: eorzea
+        volumes:
+            - .:/eorzea
+        working_dir: /eorzea
+        command: sh .sh/python_init.sh
+        stdin_open: true
+        tty: true
