@@ -1,18 +1,17 @@
 import re
 
 try:
-    from typing_extensions import Iterable, List, Literal, overload
+    from typing import Iterable, List, Literal, overload
+    Lang = Literal['en', 'jp', 'de', 'fr']
 except:
     from typing import Iterable, List, overload
-    from typing_extensions import Literal
+    Lang = str
 
 from numpy import uint32
 
 from .Data.TerritoryWeather import territory as _territory
 from .Data.Weather import weather as _weather
 from .Data.WeatherRate import weather_rate as _weather_rate
-
-Lang = Literal['en', 'jp', 'de', 'fr']
 
 
 class EorzeaWeather:
