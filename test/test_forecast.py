@@ -1,7 +1,5 @@
 import pytest
-
-from EorzeaEnv import EorzeaTime
-from EorzeaEnv import EorzeaWeather
+from EorzeaEnv import EorzeaLang, EorzeaTime, EorzeaWeather
 
 
 class TestForecast:
@@ -29,16 +27,15 @@ class TestForecast:
             1542591400.045,
             strict=False
         ) == 'Fair Skies'
-        assert EorzeaWeather.forecast(
-            'Eureka Hydatos', 1542591400.045
-        ) == 'Thunderstorms'
 
     def test_field(self):
-        for t in (EorzeaTime.weather_period(10)):
-            weather = EorzeaWeather.forecast('Eureka Pyros', t)
+        weathers = EorzeaWeather.forecast(
+            'Eureka Pyros', EorzeaTime.weather_period(10))
+
+        for weather in weathers:
             assert isinstance(weather, str)
 
-        with pytest.raises(KeyError):
+        with pytest.raises(ValueError):
             pyros_weather = EorzeaWeather.forecast(
                 'EuPyros', 1542591400.045
             )
@@ -47,20 +44,20 @@ class TestForecast:
         assert EorzeaWeather.forecast(
             'Eureka Pagos',
             1542651599.999,
-            lang='en'
+            lang=EorzeaLang.EN
         ) == 'Fog'
         assert EorzeaWeather.forecast(
             'Eureka Pagos',
             1542651599.999,
-            lang='ja'
+            lang=EorzeaLang.JA
         ) == '霧'
         assert EorzeaWeather.forecast(
             'Eureka Pagos',
             1542651599.999,
-            lang='de'
+            lang=EorzeaLang.DE
         ) == 'Neblig'
         assert EorzeaWeather.forecast(
             'Eureka Pagos',
             1542651599.999,
-            lang='fr'
+            lang=EorzeaLang.FR
         ) == 'Brouillard'

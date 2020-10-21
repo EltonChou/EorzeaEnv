@@ -1,5 +1,5 @@
-import warnings
 import re
+from typing import Iterable, List, Literal, overload
 
 from numpy import uint32
 
@@ -7,55 +7,103 @@ from .Data.TerritoryWeather import territory as _territory
 from .Data.Weather import weather as _weather
 from .Data.WeatherRate import weather_rate as _weather_rate
 
+Lang = Literal['en', 'jp', 'de', 'fr']
+
 
 class EorzeaWeather:
     """
     EoreaWeather
     """
 
+    @overload
     @staticmethod
-    def forecast(placename: str, timestamp, lang='en', strict=True) -> str:
-        """
-        forecast
+    def forecast(
+        placename: str,
+        timestamp: Iterable[float],
+        lang: Lang = "en",
+        strict: bool = True
+    ) -> List[str]:
+        """Forecast Eorzea weather by place
 
         Parameters
         ----------
         placename : str
-            valid placename from FFXIV
-
-        timestamp : [float or array_like of float]
-            timestamp or timestamp in array_like
-
-        lang : str, optional
-            languages support [en, jp, de, fr], by default 'en'
-
+            [description]
+        timestamp : Iterable[float]
+            [description]
+        lang : Lang, optional
+            Recommend use `EorzeaEnv.EorzeaLang`
+            valid lang from ffxiv , by default "en"
         strict : bool, optional
-            search mode, strict or fuzzy, by default True
-
-        Raises
-        -------
-        KeyError
-            when placename invalid
+            option of search mode, by default True
+            + `True` for strict mode
+            + `False` for fuzzy mode
 
         Returns
         -------
-        [str or array_like]
-            forecast result in array_like or str
+        List[str]
+            result of forecast
+
+        Raises
+        -------
+        ValueError
+            when using invalid place name
         """
-        weather_rate = None
+        ...
+
+    @overload
+    @staticmethod
+    def forecast(
+        placename: str,
+        timestamp: float,
+        lang: Lang = "en",
+        strict: bool = True
+    ) -> str:
+        """Forecast Eorzea weather by place
+
+        Parameters
+        ----------
+        placename : str
+            [description]
+        timestamp : float
+            [description]
+        lang : Lang, optional
+            Recommend use `EorzeaEnv.EorzeaLang`
+            valid lang from ffxiv , by default "en"
+        strict : bool, optional
+            option of search mode, by default True
+            + `True` for strict mode
+            + `False` for fuzzy mode
+
+        Returns
+        -------
+        str
+            result of forecast
+
+        Raises
+        -------
+        ValueError
+            when using invalid place name
+        """
+        ...
+
+    @staticmethod
+    def forecast(placename, timestamp, lang="en", strict=True):
         placename = _parse_placename(placename)
         weather_rate = _get_weather_rate(placename, strict)
 
-        # check timestamp is iterable or not.
-        try:
+        if isinstance(timestamp, Iterable):
             target = (_calculate_forecast_target(t) for t in timestamp)
             result = [
                 _generate_result(ta, weather_rate, lang) for ta in target
             ]
-        except TypeError:
+
+            return result
+
+        if isinstance(timestamp, float):
             target = _calculate_forecast_target(timestamp)
             result = _generate_result(target, weather_rate, lang)
-        finally:
+
             return result
 
 
@@ -71,14 +119,14 @@ def _get_weather_rate(placename: str, strict: bool) -> int:
         weather_rate = _territory[placename]
     except KeyError:
         if strict:
-            raise KeyError('valid Eorzea placename required')
+            raise ValueError('valid Eorzea placename required')
 
         for p, r in _territory.items():
             if re.search(p, placename):
                 weather_rate = r
     finally:
         if weather_rate is None:
-            raise KeyError('valid Eorzea placename required')
+            raise ValueError('valid Eorzea placename required')
         return weather_rate
 
 
@@ -101,6 +149,7 @@ def _parse_placename(placename: str) -> str:
 
     if check_placename:
         placename = ''.join(check_placename.groups())
+
     return placename
 
 
