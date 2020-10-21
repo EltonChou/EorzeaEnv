@@ -32,9 +32,9 @@ class EorzeaWeather:
         Parameters
         ----------
         placename : str
-            [description]
+            a valid Eorzea place name
         timestamp : Iterable[float]
-            [description]
+            unix timestamp
         lang : Lang, optional
             Recommend use `EorzeaEnv.EorzeaLang`
             valid lang from ffxiv , by default "en"
@@ -68,9 +68,9 @@ class EorzeaWeather:
         Parameters
         ----------
         placename : str
-            [description]
+            a valid Eorzea place name
         timestamp : float
-            [description]
+            unix timestamp
         lang : Lang, optional
             Recommend use `EorzeaEnv.EorzeaLang`
             valid lang from ffxiv , by default "en"

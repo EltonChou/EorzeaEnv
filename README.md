@@ -14,6 +14,7 @@ pip install EorzeaEnv
 
 ## Usage
 ```py
+from EorzeaEnv import EorzeaLang
 from EorzeaEnv import EorzeaTime
 from EorzeaEnv import EorzeaWeather
 ```
@@ -50,11 +51,11 @@ t = EorzeaTime.weather_period(step=3)
 
 # defalut lang is 'en'
 # defalut strict is True for strict mode
-# fuzzy mode: `adsfEureka Pyrosadsf` is valid
+# False for fuzzy mode: `adsfEureka Pyrosadsf` is valid
 weather_en = EorzeaWeather.forecast('Eureka Pyros', t, strict=True)
-weather_jp = EorzeaWeather.forecast('Eureka Pyros', t, lang='ja', strict=True)
-weather_de = EorzeaWeather.forecast('Eureka Pyros', t, lang='de', strict=True)
-weather_fr = EorzeaWeather.forecast('Eureka Pyros', t, lang='fr', strict=True)
+weather_jp = EorzeaWeather.forecast('Eureka Pyros', t, lang=EorzeaLang.JA, strict=True)
+weather_de = EorzeaWeather.forecast('Eureka Pyros', t, lang=EorzeaLang.DE, strict=True)
+weather_fr = EorzeaWeather.forecast('Eureka Pyros', t, lang=EorzeaLang.FR, strict=True)
 ```
 or
 ```py
