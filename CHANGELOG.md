@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.4.4] - 2020-10-22
+### Added
++ EorzeaLang
++ EorzeaWeather.forecast with overload
+
 ## [1.4.3] - 2020-10-20
 ### Added
 + 5.35 weather data
