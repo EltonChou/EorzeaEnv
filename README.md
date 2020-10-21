@@ -1,7 +1,7 @@
 
 [![Pypi](https://img.shields.io/pypi/v/eorzeaenv.svg?style=flat-square)](https://pypi.org/project/EorzeaEnv/)
 [![Pypi](https://img.shields.io/pypi/pyversions/eorzeaenv.svg?style=flat-square)](https://pypi.org/project/EorzeaEnv/)
-![[Build Status](https://img.shields.io/travis/EltonChou/EorzeaEnv.svg?style=flat-square)](https://travis-ci.org/EltonChou/EorzeaEnv)
+[![Build Status](https://img.shields.io/travis/EltonChou/EorzeaEnv.svg?style=flat-square)](https://travis-ci.org/EltonChou/EorzeaEnv)
 
 # EorzeaEnv
 
