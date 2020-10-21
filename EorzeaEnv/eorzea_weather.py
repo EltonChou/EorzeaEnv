@@ -1,5 +1,10 @@
 import re
-from typing import Iterable, List, Literal, overload
+
+try:
+    from typing_extensions import Iterable, List, Literal, overload
+except:
+    from typing import Iterable, List, overload
+    from typing_extensions import Literal
 
 from numpy import uint32
 
