@@ -1,6 +1,6 @@
 import math
 from time import time as _time
-from typing import Generator, Tuple
+from typing import Iterator, Tuple
 
 _YEAR = 33177600
 _MOON = 2764800
@@ -81,7 +81,7 @@ class EorzeaTime:
         return cls(moon, sun, hh, mm)
 
     @classmethod
-    def weather_period(cls, step=5) -> Generator[float, int, None]:
+    def weather_period(cls, step=5) -> Iterator[float]:
         """
         generate weather period
 
@@ -92,7 +92,7 @@ class EorzeaTime:
 
         Returns
         -------
-        Generator[float, int, None]
+        Generator[float]
             a generator of weather period
         """
 
@@ -129,10 +129,12 @@ def check_int(func):
     return wrap
 
 
-def _weather_period_generator(min, step: int) -> Generator[float, int, None]:
+def _weather_period_generator(min, step: int) -> Iterator[float]:
     if not isinstance(step, int):
         raise TypeError("integer argument required")
+
     n, i = 0, min
+
     while n < step:
         yield i
         i += 1400
