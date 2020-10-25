@@ -68,26 +68,25 @@ class EorzeaTime:
             current EorzeaTime
         """
 
-        t = _time()
-        return cls._fromtimestamp(t)
+        return cls._fromtimestamp()
 
     @classmethod
-    def _fromtimestamp(cls, t: float):
-        et = t * _EORZEA_TIME_CONST
-        moon = math.ceil(et / _MOON % _EORZEA_YEAR)
-        sun = math.ceil(et / _DAY % _EORZEA_MOON)
-        hh = int(et / _HOUR % _EORZEA_SUN)
-        mm = int(et / _MINUTE % _EORZEA_BELL)
+    def _fromtimestamp(cls):
+        eorzea_timestamp = get_eorzea_timestamp()
+        moon = math.ceil(eorzea_timestamp / _MOON % _EORZEA_YEAR)
+        sun = math.ceil(eorzea_timestamp / _DAY % _EORZEA_MOON)
+        hh = int(eorzea_timestamp / _HOUR % _EORZEA_SUN)
+        mm = int(eorzea_timestamp / _MINUTE % _EORZEA_BELL)
         return cls(moon, sun, hh, mm)
 
     @classmethod
-    def weather_period(cls, step=5) -> Iterator[float]:
+    def weather_period(cls, steps=5) -> Iterator[float]:
         """
         generate weather period
 
         Parameters
         ----------
-        step : int, optional
+        steps : int, optional
             quantity of period you want, by default 5
 
         Returns
@@ -96,15 +95,8 @@ class EorzeaTime:
             a generator of weather period
         """
 
-        period = _weather_period_generator(cls._weather_period_start(), step)
+        period = _weather_period_generator(steps)
         return period
-
-    @classmethod
-    def _weather_period_start(cls) -> float:
-        t = _time()
-        et = t * _EORZEA_TIME_CONST
-        lt = int(et / 28800) * 28800 / _EORZEA_TIME_CONST
-        return lt
 
     def _cls_to_str(self) -> str:
         return "{}({}, {}, {:02d}, {:02d}, {:.2f}, {})".format(
@@ -120,6 +112,9 @@ class EorzeaTime:
         return self._cls_to_str()
 
 
+def get_eorzea_timestamp():
+    return _time() * _EORZEA_TIME_CONST
+
 def check_int(func):
     def wrap(*values):
         for value in values:
@@ -129,16 +124,20 @@ def check_int(func):
     return wrap
 
 
-def _weather_period_generator(min, step: int) -> Iterator[float]:
-    if not isinstance(step, int):
+def _weather_period_generator(steps: int) -> Iterator[float]:
+    period_interval = 1400
+    eorzea_timestamp = get_eorzea_timestamp()
+    period_start_local_timestamp = int(eorzea_timestamp / 28800) * 28800 / _EORZEA_TIME_CONST
+
+    if not isinstance(steps, int):
         raise TypeError("integer argument required")
 
-    n, i = 0, min
+    current_step, current_period_start = 0, period_start_local_timestamp
 
-    while n < step:
-        yield i
-        i += 1400
-        n += 1
+    while current_step < steps:
+        yield current_period_start
+        current_period_start += period_interval
+        current_step += 1
 
 
 def _the_twelve(moon: int) -> str:
@@ -161,9 +160,9 @@ def _the_twelve(moon: int) -> str:
 
 def _calculate_moon(moon: int) -> str:
     th = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth"]
-    M_th = th[math.ceil(moon / 2) - 1]
-    M_type = _astral_or_embral(moon)
-    return "{} {} Moon".format(M_th, M_type)
+    moon_number = th[math.ceil(moon / 2) - 1]
+    moon_type = _astral_or_embral(moon)
+    return "{} {} Moon".format(moon_number, moon_type)
 
 
 def _astral_or_embral(moon: int) -> str:

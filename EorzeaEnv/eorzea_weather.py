@@ -97,9 +97,9 @@ class EorzeaWeather:
         weather_rate = _get_weather_rate(placename, strict)
 
         if isinstance(timestamp, Iterable):
-            target = (_calculate_forecast_target(t) for t in timestamp)
+            targets = (_calculate_forecast_target(t) for t in timestamp)
             result = [
-                _generate_result(ta, weather_rate, lang) for ta in target
+                _generate_result(target, weather_rate, lang) for target in targets
             ]
 
             return result
@@ -112,9 +112,9 @@ class EorzeaWeather:
 
 
 def _generate_result(target: int, weather_rate: int, lang: str) -> str:
-    for r, w in _weather_rate[weather_rate]:
-        if target < r:
-            return _weather[w][lang]
+    for rate, weather in _weather_rate[weather_rate]:
+        if target < rate:
+            return _weather[weather][lang]
 
 
 def _get_weather_rate(placename: str, strict: bool) -> int:
@@ -125,9 +125,9 @@ def _get_weather_rate(placename: str, strict: bool) -> int:
         if strict:
             raise ValueError('valid Eorzea placename required')
 
-        for p, r in _territory.items():
-            if re.search(p, placename):
-                weather_rate = r
+        for place, rate in _territory.items():
+            if re.search(place, placename):
+                weather_rate = rate
     finally:
         if weather_rate is None:
             raise ValueError('valid Eorzea placename required')
@@ -157,7 +157,7 @@ def _parse_placename(placename: str) -> str:
     return placename
 
 
-def _calculate_forecast_target(lt: float) -> int:
+def _calculate_forecast_target(local_timestamp: float) -> int:
     """
     Thanks to Rogueadyn's SaintCoinach library for this calculation
     --------------
@@ -169,7 +169,7 @@ def _calculate_forecast_target(lt: float) -> int:
 
     Parameters
     ----------
-    lt : float
+    local_timestamp : float
         local timestamp
 
     Returns
@@ -178,9 +178,9 @@ def _calculate_forecast_target(lt: float) -> int:
         weather period start
     """
 
-    bell = lt / 175
+    bell = local_timestamp / 175
     increment = uint32(bell + 8 - (bell % 8)) % 24
-    total_days = uint32(lt / 4200)
+    total_days = uint32(local_timestamp / 4200)
     calc_base = total_days * 0x64 + increment
     step1 = uint32(calc_base << 0xB) ^ calc_base
     step2 = (step1 >> 8) ^ step1
