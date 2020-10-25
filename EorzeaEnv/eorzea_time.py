@@ -88,12 +88,12 @@ class EorzeaTime:
 
         Parameters
         ----------
-        steps : int, optional
+        step : int, optional
             quantity of period you want, by default 5
 
         Returns
         -------
-        Generator[float]
+        Iterator[float]
             a generator of weather period
         """
 
