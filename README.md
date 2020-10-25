@@ -22,7 +22,7 @@ from EorzeaEnv import EorzeaWeather
 
 ```sh
 >>> EorzeaTime.now()
-'EorzeaTime(Sixth Embral Moon, 11, 21, 56, 0.50, Althyk)'
+'EorzeaTime(Sixth Embral Moon, 11, 21, 56, Phase:0.50, Althyk)'
 
 >>> EorzeaTime.now().moon
 'Sixth Embral Moon'
@@ -44,26 +44,20 @@ from EorzeaEnv import EorzeaWeather
 ```
 
 ### Weather Forecast
++ Using period as tuple or list
 ```python
 # defalut step value is 5
-t = EorzeaTime.weather_period(step=3)
+# This method return a generator if you need to re-use it save the values as `tuple` or `list`.
+t = tuple(EorzeaTime.weather_period(step=3))
 
 # defalut lang is 'en'
 # defalut strict is True for strict mode
 # False for fuzzy mode: `adsfEureka Pyrosadsf` is valid
 weather_en = EorzeaWeather.forecast('Eureka Pyros', t, strict=True)
-weather_jp = EorzeaWeather.forecast('Eureka Pyros', t, lang=EorzeaLang.JA, strict=True)
+weather_ja = EorzeaWeather.forecast('Eureka Pyros', t, lang=EorzeaLang.JA, strict=True)
 weather_de = EorzeaWeather.forecast('Eureka Pyros', t, lang=EorzeaLang.DE, strict=True)
 weather_fr = EorzeaWeather.forecast('Eureka Pyros', t, lang=EorzeaLang.FR, strict=True)
 ```
-or
-```py
-weather_en = []
-for t in EorzeaTime.weather_period(step=3):
-    w = EorzeaWeather.forecast('Eureka Pyros', t)
-    weather_en.append(w)
-```
-
 ```sh
 >>> print(weather_en)
 ['Thunder', 'Snow', 'Blizzards']
@@ -77,6 +71,34 @@ for t in EorzeaTime.weather_period(step=3):
 >>> print(weather_fr)
 ['Orages', 'Neige', 'Blizzard']
 ```
++ Using period in for-loop
+```py
+weather_en = []
+for t in EorzeaTime.weather_period(step=3):
+    w = EorzeaWeather.forecast('Eureka Pyros', t)
+    weather_en.append(w)
+```
+```sh
+>>> print(weather_en)
+['Thunder', 'Snow', 'Blizzards']
+```
++ Using period generator directly
+```py
+weather = EorzeaWeather.forecast('Eureka Pyros', EorzeaTime.weather_period(step=3))
+```
+```sh
+>>> print(weather_en)
+['Thunder', 'Snow', 'Blizzards']
+```
++ Also support float type
+```py
+weather = EorzeaWeather.forecast('Eureka Pyros', 1603644000.0)
+```
+```sh
+>>> print(weather)
+'Thunder'
+```
+
 
 ## Thanks
 - [Rogueadyn-SaintCoinach](https://github.com/Rogueadyn/SaintCoinach)
