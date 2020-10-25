@@ -15,6 +15,8 @@ _EORZEA_MOON = 32
 _EORZEA_YEAR = 12
 _EORZEA_TIME_CONST = 3600.0 / 175.0
 _MILLISECOND_EORZEA_PER_MINUTE = (2 + 11/12) * 1000
+_LOCAL_WEATHER_INTERVAL = 1400
+_EROZEA_WEATHER_INTERVAL = 28800
 
 
 class EorzeaTime:
@@ -22,7 +24,7 @@ class EorzeaTime:
     EorzeaTime(moon, sun, hour, minute)
     """
 
-    __slots__ = '_moon', '_sun', '_hour', '_minute', '_phase', '_guardian'
+    __slots__ = ('_moon', '_sun', '_hour', '_minute', '_phase', '_guardian')
 
     def __new__(cls, moon: int, sun: int, hour: int, minute: int):
         instance = super().__new__(cls)
@@ -30,31 +32,31 @@ class EorzeaTime:
         moon, instance._sun = _check_date_field(moon, sun)
         instance._moon = _calculate_moon(moon)
         instance._phase = _check_phase_field(_calculate_phase(sun))
-        instance._guardian = _the_twelve(moon)
+        instance._guardian = _get_guardian_by_moon(moon)
         return instance
 
     @property
-    def moon(self):
+    def moon(self) -> str:
         return self._moon
 
     @property
-    def sun(self):
+    def sun(self) -> int:
         return self._sun
 
     @property
-    def hour(self):
+    def hour(self) -> int:
         return self._hour
 
     @property
-    def minute(self):
+    def minute(self) -> int:
         return self._minute
 
     @property
-    def phase(self):
+    def phase(self) -> float:
         return self._phase
 
     @property
-    def guardian(self):
+    def guardian(self) -> str:
         return self._guardian
 
     @classmethod
@@ -80,7 +82,7 @@ class EorzeaTime:
         return cls(moon, sun, hh, mm)
 
     @classmethod
-    def weather_period(cls, steps=5) -> Iterator[float]:
+    def weather_period(cls, step=5) -> Iterator[float]:
         """
         generate weather period
 
@@ -95,7 +97,7 @@ class EorzeaTime:
             a generator of weather period
         """
 
-        return _weather_period_generator(steps)
+        return _weather_period_generator(step)
 
     def _cls_to_str(self) -> str:
         return "{}({}, {}, {:02d}, {:02d}, Phase:{:.2f}, {})".format(
@@ -124,23 +126,23 @@ def check_int(func):
 
 
 def _weather_period_generator(steps: int) -> Iterator[float]:
-    period_interval = 1400
     eorzea_timestamp = get_eorzea_timestamp()
-    period_start_local_timestamp = int(eorzea_timestamp / 28800) * 28800 / _EORZEA_TIME_CONST
+    eorzea_period_start_timestamp = eorzea_timestamp - (eorzea_timestamp % _EROZEA_WEATHER_INTERVAL)
+    local_period_start_timestamp = eorzea_period_start_timestamp / _EORZEA_TIME_CONST
 
     if not isinstance(steps, int):
         raise TypeError("integer argument required")
 
-    current_step, current_period_start = 0, period_start_local_timestamp
+    current_step, current_period_start = 0, local_period_start_timestamp
 
     while current_step < steps:
         yield current_period_start
-        current_period_start += period_interval
+        current_period_start += _LOCAL_WEATHER_INTERVAL
         current_step += 1
 
 
-def _the_twelve(moon: int) -> str:
-    the_twelve = [
+def _get_guardian_by_moon(moon: int) -> str:
+    the_twelve = (
         "Halone",
         "Menphina",
         "Thaliak",
@@ -153,7 +155,7 @@ def _the_twelve(moon: int) -> str:
         "Nald'thal",
         "Nophica",
         "Althyk"
-    ]
+    )
     return the_twelve[moon - 1]
 
 
