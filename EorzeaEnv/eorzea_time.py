@@ -95,11 +95,10 @@ class EorzeaTime:
             a generator of weather period
         """
 
-        period = _weather_period_generator(steps)
-        return period
+        return _weather_period_generator(steps)
 
     def _cls_to_str(self) -> str:
-        return "{}({}, {}, {:02d}, {:02d}, {:.2f}, {})".format(
+        return "{}({}, {}, {:02d}, {:02d}, Phase:{:.2f}, {})".format(
             self.__class__.__qualname__,
             self.moon, self.sun,
             self.hour, self.minute, self.phase,
@@ -159,10 +158,10 @@ def _the_twelve(moon: int) -> str:
 
 
 def _calculate_moon(moon: int) -> str:
-    th = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth"]
-    moon_number = th[math.ceil(moon / 2) - 1]
+    moon_orders = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth"]
+    moon_order = moon_orders[math.ceil(moon / 2) - 1]
     moon_type = _astral_or_embral(moon)
-    return "{} {} Moon".format(moon_number, moon_type)
+    return "{} {} Moon".format(moon_order, moon_type)
 
 
 def _astral_or_embral(moon: int) -> str:
