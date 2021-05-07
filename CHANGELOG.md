@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.6] - 2021-05-05
+### Added
++ 5.5 weather data
+
+## [1.4.5] - 2021-01-15
+### Added
++ 5.4 weather data
+
 ## [1.4.4] - 2020-10-22
 ### Added
 + EorzeaLang
