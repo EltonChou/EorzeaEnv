@@ -395,7 +395,7 @@ weather = {
           'fr': 'Clair de lune',
           'ja': '月夜'},
     101: {'de': 'Roter Mond',
-          'en': 'Fair Skies',
+          'en': 'Red Moon',
           'fr': 'Lune rouge',
           'ja': '紅月下'},
     102: {'de': 'Rotlodernd',
@@ -578,5 +578,11 @@ weather = {
     147: {'de': 'Endzeit',
           'en': 'Climactic',
           'fr': 'Fatidique',
-          'ja': '決戦'}
+          'ja': '決戦'},
+    148: {'de': None, 'en': None, 'fr': None, 'ja': None},
+    149: {'de': None, 'en': None, 'fr': None, 'ja': None},
+    150: {'de': None, 'en': None, 'fr': None, 'ja': None},
+    151: {'de': None, 'en': None, 'fr': None, 'ja': None},
+    152: {'de': None, 'en': None, 'fr': None, 'ja': None},
+    153: {'de': None, 'en': None, 'fr': None, 'ja': None}
 }
