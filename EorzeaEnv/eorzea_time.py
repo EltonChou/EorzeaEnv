@@ -116,6 +116,7 @@ class EorzeaTime:
 def get_eorzea_timestamp():
     return _time() * _EORZEA_TIME_CONST
 
+
 def check_int(func):
     def wrap(*values):
         for value in values:
@@ -125,10 +126,20 @@ def check_int(func):
     return wrap
 
 
+def _calculate_eorzea_period_start_timestamp(et: float) -> float:
+    return et - (et % _EROZEA_WEATHER_INTERVAL)
+
+
+def _calculate_local_period_start_timestamp(et: float) -> float:
+    e_period_start = _calculate_eorzea_period_start_timestamp(et)
+    return e_period_start / _EORZEA_TIME_CONST
+
+
 def _weather_period_generator(steps: int) -> Iterator[float]:
     eorzea_timestamp = get_eorzea_timestamp()
-    eorzea_period_start_timestamp = eorzea_timestamp - (eorzea_timestamp % _EROZEA_WEATHER_INTERVAL)
-    local_period_start_timestamp = eorzea_period_start_timestamp / _EORZEA_TIME_CONST
+    local_period_start_timestamp = _calculate_local_period_start_timestamp(
+        eorzea_timestamp
+    )
 
     if not isinstance(steps, int):
         raise TypeError("integer argument required")
@@ -170,17 +181,17 @@ def _astral_or_embral(moon: int) -> str:
     return "Astral" if moon % 2 else "Embral"
 
 
-def _calculate_phase(sun: int) -> int:
+def _calculate_phase(sun: int) -> float:
     if sun <= 20:
         return 1 - int(abs(20 - sun) / 4) / 4
-    if sun > 20:
+    else:
         return int(abs(36 - sun) / 4) / 4
 
 
-def _calculate_pphase(sun: int) -> int:
+def _calculate_pphase(sun: int) -> float:
     if sun <= 20:
         return round((sun - 1) / 19, 2)
-    if sun >= 20:
+    else:
         return round(1 - (sun - 20) / 13, 2)
 
 
