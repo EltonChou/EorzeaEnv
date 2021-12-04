@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "EorzeaEnv"
-version = "1.4.7"
+version = "1.5.0"
 description = "Final Fantasy XIV weather & time tools."
 keywords = [
     "eorzea",
@@ -41,7 +41,6 @@ numpy = "^1.19.2"
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
 autopep8 = "^1.6.0"
-bump2version = "^1.0.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
