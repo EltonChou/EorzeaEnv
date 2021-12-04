@@ -12,6 +12,7 @@ from numpy import uint32
 from .Data.TerritoryWeather import territory as _territory
 from .Data.Weather import weather as _weather
 from .Data.WeatherRate import weather_rate as _weather_rate
+from .errors import WeatherRateDataError
 
 
 class EorzeaWeather:
@@ -115,6 +116,10 @@ def _generate_result(target: int, weather_rate: int, lang: str) -> str:
     for rate, weather in _weather_rate[weather_rate]:
         if target < rate:
             return _weather[weather][lang]
+
+    raise WeatherRateDataError(
+        "No matched rate in data. Please contact with developer."
+    )
 
 
 def _get_weather_rate(placename: str, strict: bool) -> int:

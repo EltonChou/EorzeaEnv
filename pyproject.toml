@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "EorzeaEnv"
+version = "1.5.0"
+description = "Final Fantasy XIV weather & time tools."
+keywords = [
+    "eorzea",
+    "ffxiv",
+    "ff14",
+    "final fantasy"
+]
+authors = ["Elton Chou <plscd748@gmail.com>"]
+license = "MIT"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Utilities",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+readme = "README.md"
+include = [
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+]
+
+[tool.poetry.urls]
+"Bug Reports" = "https://github.com/EltonChou/EorzeaEnv/issues"
+"Source" = "https://github.com/EltonChou/EorzeaEnv"
+"Thanks!" = "https://github.com/Rogueadyn/SaintCoinach"
+
+[tool.poetry.dependencies]
+python = ">=3.6, <3.10"
+numpy = "^1.19.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+autopep8 = "^1.6.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
