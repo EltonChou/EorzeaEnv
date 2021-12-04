@@ -9,7 +9,7 @@
 
 ## Installation
 ```
-pip install EorzeaEnv
+pip install eorzeaenv
 ```
 
 ## Usage
