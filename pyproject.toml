@@ -9,6 +9,9 @@ keywords = [
     "final fantasy"
 ]
 authors = ["Elton Chou <plscd748@gmail.com>"]
+maintainers = ["Elton Chou <plscd748@gmail.com>"]
+homepage = "https://github.com/EltonChou/EorzeaEnv"
+repository = "https://github.com/EltonChou/EorzeaEnv"
 license = "MIT"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -22,6 +25,9 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 readme = "README.md"
+packages = [
+    { include="EorzeaEnv", from="." },
+]
 include = [
     "README.md",
     "CHANGELOG.md",
@@ -30,7 +36,6 @@ include = [
 
 [tool.poetry.urls]
 "Bug Reports" = "https://github.com/EltonChou/EorzeaEnv/issues"
-"Source" = "https://github.com/EltonChou/EorzeaEnv"
 
 [tool.poetry.dependencies]
 python = ">=3.6, <3.10"
