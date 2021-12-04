@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.4.7] - 2021-12-04
+### Added
++ 6.0 weather data
+
 ## [1.4.6] - 2021-05-05
 ### Added
 + 5.5 weather data
