@@ -22,4 +22,4 @@ class TestTime:
                 M, S, h, m = t
                 EorzeaTime(M, S, h, m)
         with pytest.raises(TypeError):
-            EorzeaTime("kappa", 1, 10, 50)
+            EorzeaTime("kappa", 1, 10, 50)  # type: ignore
