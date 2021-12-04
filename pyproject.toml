@@ -35,7 +35,7 @@ include = [
 "Thanks!" = "https://github.com/Rogueadyn/SaintCoinach"
 
 [tool.poetry.dependencies]
-python = ">=3.6, <3.10"
+python = ">=3.6, <=3.10"
 numpy = "^1.19.2"
 
 [tool.poetry.dev-dependencies]
