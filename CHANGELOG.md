@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.5.2] - 2022-05-08
+### Added
++ 6.1 weather data
+
 ## [1.5.1] - 2021-12-04
 ### Removed
 + Remove python 3.10 support
