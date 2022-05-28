@@ -1,29 +1,32 @@
-import re
-
 try:
-    from typing import Iterable, List, Literal, overload
+    from typing import Iterable, List, Literal, Union, overload
     Lang = Literal['en', 'jp', 'de', 'fr']
 except:
-    from typing import Iterable, List, overload
+    from typing import Iterable, List, Union, overload
     Lang = str
 
+import re
+
 from numpy import uint32
+from rapidfuzz import process as fuzz_process
 
 from .Data.TerritoryWeather import territory as _territory
 from .Data.Weather import weather as _weather
 from .Data.WeatherRate import weather_rate as _weather_rate
-from .errors import WeatherRateDataError
+from .errors import InvalidEorzeaPlaceName, WeatherRateDataError
 
 
 class EorzeaWeather:
     """
     EoreaWeather
     """
+    FUZZY_CUTOFF = 80
 
     @overload
-    @staticmethod
+    @classmethod
     def forecast(
-        placename: str,
+        cls,
+        place_name: str,
         timestamp: Iterable[float],
         lang: Lang = "en",
         strict: bool = True
@@ -32,7 +35,7 @@ class EorzeaWeather:
 
         Parameters
         ----------
-        placename : str
+        place_name : str
             a valid Eorzea place name
         timestamp : Iterable[float]
             unix timestamp
@@ -51,15 +54,16 @@ class EorzeaWeather:
 
         Raises
         -------
-        ValueError
-            when using invalid place name
+        EorzeaEnv.errors.InvalidEorzeaPlaceName
+            When place_name is invalid.
         """
         ...
 
     @overload
-    @staticmethod
+    @classmethod
     def forecast(
-        placename: str,
+        cls,
+        place_name: str,
         timestamp: float,
         lang: Lang = "en",
         strict: bool = True
@@ -68,7 +72,7 @@ class EorzeaWeather:
 
         Parameters
         ----------
-        placename : str
+        place_name : str
             a valid Eorzea place name
         timestamp : float
             unix timestamp
@@ -87,15 +91,15 @@ class EorzeaWeather:
 
         Raises
         -------
-        ValueError
-            when using invalid place name
+        EorzeaEnv.errors.InvalidEorzeaPlaceName
+            When place_name is invalid.
         """
         ...
 
-    @staticmethod
-    def forecast(placename, timestamp, lang="en", strict=True):
-        placename = _parse_placename(placename)
-        weather_rate = _get_weather_rate(placename, strict)
+    @classmethod
+    def forecast(cls, place_name, timestamp, lang="en", strict=True):
+        place_name = _parse_place_name(place_name, strict, cls.FUZZY_CUTOFF)
+        weather_rate = _territory[place_name]
 
         if isinstance(timestamp, Iterable):
             targets = (_calculate_forecast_target(t) for t in timestamp)
@@ -122,44 +126,30 @@ def _generate_result(target: int, weather_rate: int, lang: str) -> str:
     )
 
 
-def _get_weather_rate(placename: str, strict: bool) -> int:
-    weather_rate = None
-    try:
-        weather_rate = _territory[placename]
-    except KeyError:
-        if strict:
-            raise ValueError('valid Eorzea placename required')
+def _parse_place_name(place_name: str, is_strict: bool, fuzzy_cutoff: Union[int, float]) -> str:
+    possible_place_name = None
+    place_name = place_name.lower()
 
-        for place, rate in _territory.items():
-            if re.search(place, placename):
-                weather_rate = rate
-    finally:
-        if weather_rate is None:
-            raise ValueError('valid Eorzea placename required')
-        return weather_rate
+    check_place_name = re.search('^the (.*)', place_name)
+    if check_place_name:
+        place_name = ''.join(check_place_name.groups())
 
+    if is_strict:
+        if place_name in _territory.keys():
+            return place_name
+        else:
+            raise InvalidEorzeaPlaceName(
+                place_name=place_name, is_strict=is_strict)
+    else:
+        result = fuzz_process.extractOne(
+            place_name, _territory.keys(), score_cutoff=fuzzy_cutoff)
+        if not result:
+            raise InvalidEorzeaPlaceName(
+                place_name=place_name, is_strict=is_strict)
 
-def _parse_placename(placename: str) -> str:
-    """
-    trim `the`
+        possible_place_name, score, index = result
 
-    Parameters
-    ----------
-    placename : str
-        valid placename from FFXIV starts with `the`
-
-    Returns
-    -------
-    str
-        trimmed placename
-    """
-    placename = placename.lower()
-    check_placename = re.search('^the (.*)', placename)
-
-    if check_placename:
-        placename = ''.join(check_placename.groups())
-
-    return placename
+    return possible_place_name
 
 
 def _calculate_forecast_target(local_timestamp: float) -> int:
