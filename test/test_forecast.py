@@ -69,3 +69,10 @@ class TestForecast:
 
         with pytest.raises(InvalidEorzeaPlaceName):
             EorzeaWeather.forecast('kappa', 1214, strict=False)
+
+    def test_cutoff_setter(self):
+        EorzeaWeather.set_fuzzy_cutoff(50)
+        assert EorzeaWeather.FUZZY_CUTOFF == 50
+
+        with pytest.raises(ValueError):
+            EorzeaWeather.set_fuzzy_cutoff(500)
