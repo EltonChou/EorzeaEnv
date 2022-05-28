@@ -1,8 +1,8 @@
 try:
-    from typing import Iterable, List, Literal, Union, overload
+    from typing import Iterable, List, Literal, Union, overload, Type
     Lang = Literal['en', 'jp', 'de', 'fr']
 except:
-    from typing import Iterable, List, Union, overload
+    from typing import Iterable, List, Union, overload, Type
     Lang = str
 
 import re
@@ -16,11 +16,18 @@ from .Data.WeatherRate import weather_rate as _weather_rate
 from .errors import InvalidEorzeaPlaceName, WeatherRateDataError
 
 
+FuzzyCutoff = Union[int, float]
+
+
 class EorzeaWeather:
     """
     EoreaWeather
     """
-    FUZZY_CUTOFF = 80
+    FUZZY_CUTOFF: FuzzyCutoff = 80
+
+    @classmethod
+    def set_fuzzy_cutoff(cls, cutoff: FuzzyCutoff):
+        cls.FUZZY_CUTOFF = cutoff
 
     @overload
     @classmethod
@@ -126,7 +133,7 @@ def _generate_result(target: int, weather_rate: int, lang: str) -> str:
     )
 
 
-def _parse_place_name(place_name: str, is_strict: bool, fuzzy_cutoff: Union[int, float]) -> str:
+def _parse_place_name(place_name: str, is_strict: bool, fuzzy_cutoff: FuzzyCutoff) -> str:
     possible_place_name = None
     place_name = place_name.lower()
 
