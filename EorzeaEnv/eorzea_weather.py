@@ -144,7 +144,7 @@ def _parse_place_name(place_name: str, is_strict: bool, fuzzy_cutoff: FuzzyCutof
         place_name = ''.join(check_place_name.groups())
 
     if is_strict:
-        if place_name in _territory.keys():
+        if place_name in _territory:
             return place_name
         else:
             raise InvalidEorzeaPlaceName(
