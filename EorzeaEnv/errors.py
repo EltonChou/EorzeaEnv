@@ -1,2 +1,6 @@
-class WeatherRateDataError(Exception):
+class EorzeaEnvError(Exception):
+    ...
+
+
+class WeatherRateDataError(EorzeaEnvError):
     ...
