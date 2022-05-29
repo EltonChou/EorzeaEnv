@@ -40,6 +40,8 @@ include = [
 [tool.poetry.dependencies]
 python = ">=3.6, <3.10"
 numpy = "^1.19.2"
+rapidfuzz = "^2.0.11"
+dataclasses = { version = "^0.8", python = ">=3.6, <3.7" }
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

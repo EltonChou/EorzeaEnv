@@ -1,17 +1,18 @@
-import re
-
 try:
-    from typing import Iterable, List, Literal, overload
+    from typing import Iterable, List, Literal, Union, overload
     Lang = Literal['en', 'jp', 'de', 'fr']
 except:
-    from typing import Iterable, List, overload
+    from typing import Iterable, List, Union, overload
     Lang = str
+
 
 from numpy import uint32
 
-from .Data.TerritoryWeather import territory as _territory
+from .Data.TerritoryWeather import territory_weather as _territory_weather
 from .Data.Weather import weather as _weather
 from .Data.WeatherRate import weather_rate as _weather_rate
+from .eorzea_lang import EorzeaLang
+from .eorzea_place_name import EorzeaPlaceName
 from .errors import WeatherRateDataError
 
 
@@ -19,20 +20,28 @@ class EorzeaWeather:
     """
     EoreaWeather
     """
+    FUZZY_CUTOFF: Union[int, float] = 80
+
+    @classmethod
+    def set_fuzzy_cutoff(cls, cutoff: Union[int, float]):
+        if cutoff > 100 or cutoff < 0:
+            raise ValueError('cutoff value should be in 0-100.')
+        cls.FUZZY_CUTOFF = cutoff
 
     @overload
-    @staticmethod
+    @classmethod
     def forecast(
-        placename: str,
-        timestamp: Iterable[float],
-        lang: Lang = "en",
+        cls,
+        place_name: Union[str, EorzeaPlaceName],
+        timestamp: Iterable[Union[int, float]],
+        lang: Lang = EorzeaLang.EN,
         strict: bool = True
     ) -> List[str]:
         """Forecast Eorzea weather by place
 
         Parameters
         ----------
-        placename : str
+        place_name : str
             a valid Eorzea place name
         timestamp : Iterable[float]
             unix timestamp
@@ -51,24 +60,25 @@ class EorzeaWeather:
 
         Raises
         -------
-        ValueError
-            when using invalid place name
+        EorzeaEnv.errors.InvalidEorzeaPlaceName
+            When place_name is invalid.
         """
         ...
 
     @overload
-    @staticmethod
+    @classmethod
     def forecast(
-        placename: str,
-        timestamp: float,
-        lang: Lang = "en",
+        cls,
+        place_name: Union[str, EorzeaPlaceName],
+        timestamp: Union[int, float],
+        lang: Lang = EorzeaLang.EN,
         strict: bool = True
     ) -> str:
         """Forecast Eorzea weather by place
 
         Parameters
         ----------
-        placename : str
+        place_name : str
             a valid Eorzea place name
         timestamp : float
             unix timestamp
@@ -87,15 +97,18 @@ class EorzeaWeather:
 
         Raises
         -------
-        ValueError
-            when using invalid place name
+        EorzeaEnv.errors.InvalidEorzeaPlaceName
+            When place_name is invalid.
         """
         ...
 
-    @staticmethod
-    def forecast(placename, timestamp, lang="en", strict=True):
-        placename = _parse_placename(placename)
-        weather_rate = _get_weather_rate(placename, strict)
+    @classmethod
+    def forecast(cls, place_name, timestamp, lang='en', strict=True):
+        if type(place_name) is not EorzeaPlaceName:
+            place_name = EorzeaPlaceName(
+                place_name, strict, fuzzy_cutoff=cls.FUZZY_CUTOFF)
+
+        weather_rate = _territory_weather[place_name.index]
 
         if isinstance(timestamp, Iterable):
             targets = (_calculate_forecast_target(t) for t in timestamp)
@@ -122,47 +135,7 @@ def _generate_result(target: int, weather_rate: int, lang: str) -> str:
     )
 
 
-def _get_weather_rate(placename: str, strict: bool) -> int:
-    weather_rate = None
-    try:
-        weather_rate = _territory[placename]
-    except KeyError:
-        if strict:
-            raise ValueError('valid Eorzea placename required')
-
-        for place, rate in _territory.items():
-            if re.search(place, placename):
-                weather_rate = rate
-    finally:
-        if weather_rate is None:
-            raise ValueError('valid Eorzea placename required')
-        return weather_rate
-
-
-def _parse_placename(placename: str) -> str:
-    """
-    trim `the`
-
-    Parameters
-    ----------
-    placename : str
-        valid placename from FFXIV starts with `the`
-
-    Returns
-    -------
-    str
-        trimmed placename
-    """
-    placename = placename.lower()
-    check_placename = re.search('^the (.*)', placename)
-
-    if check_placename:
-        placename = ''.join(check_placename.groups())
-
-    return placename
-
-
-def _calculate_forecast_target(local_timestamp: float) -> int:
+def _calculate_forecast_target(local_timestamp: Union[int, float]) -> int:
     """
     Thanks to Rogueadyn's SaintCoinach library for this calculation
     --------------

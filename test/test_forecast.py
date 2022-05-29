@@ -1,5 +1,6 @@
 import pytest
 from EorzeaEnv import EorzeaLang, EorzeaTime, EorzeaWeather
+from EorzeaEnv.errors import InvalidEorzeaPlaceName
 
 
 class TestForecast:
@@ -36,7 +37,7 @@ class TestForecast:
             assert isinstance(weather, str)
 
         with pytest.raises(ValueError):
-            pyros_weather = EorzeaWeather.forecast(
+            EorzeaWeather.forecast(
                 'EuPyros', 1542591400.045
             )
 
@@ -61,3 +62,17 @@ class TestForecast:
             1542651599.999,
             lang=EorzeaLang.FR
         ) == 'Brouillard'
+
+    def test_placename_error(self):
+        with pytest.raises(InvalidEorzeaPlaceName):
+            EorzeaWeather.forecast('weird placename', 145354.99, strict=True)
+
+        with pytest.raises(InvalidEorzeaPlaceName):
+            EorzeaWeather.forecast('kappa', 1214, strict=False)
+
+    def test_cutoff_setter(self):
+        EorzeaWeather.set_fuzzy_cutoff(50)
+        assert EorzeaWeather.FUZZY_CUTOFF == 50
+
+        with pytest.raises(ValueError):
+            EorzeaWeather.set_fuzzy_cutoff(500)
