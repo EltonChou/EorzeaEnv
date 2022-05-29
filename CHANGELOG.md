@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.0.0] - 2022-05-30
+### Added
++ EorzeaPlaceName
+
 ## [1.5.2] - 2022-05-08
 ### Added
 + 6.1 weather data

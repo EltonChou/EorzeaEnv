@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "EorzeaEnv"
-version = "1.5.2"
+version = "2.0.0"
 description = "Final Fantasy XIV weather & time tools."
 keywords = [
     "eorzea",
