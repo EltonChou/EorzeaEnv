@@ -1,3 +1,4 @@
+from typing import Type
 import pytest
 from EorzeaEnv import EorzeaLang, EorzeaPlaceName
 from EorzeaEnv.errors import InvalidEorzeaPlaceName
@@ -6,6 +7,8 @@ from EorzeaEnv.errors import InvalidEorzeaPlaceName
 class TestPlaceName:
     def test_default(self):
         EorzeaPlaceName('The Ruby Sea')
+        EorzeaPlaceName('the ruby sea')
+        EorzeaPlaceName('ruby sea')
         EorzeaPlaceName('rubinsee')
         EorzeaPlaceName('紅玉海')
         with pytest.raises(InvalidEorzeaPlaceName):
@@ -44,3 +47,11 @@ class TestPlaceName:
         assert EorzeaPlaceName.validate('The Ruby Sea', is_strict=True)
         assert not EorzeaPlaceName.validate('The Ruby See', is_strict=True)
 
+    def test_place_name_property(self):
+        place_name = EorzeaPlaceName('The Ruby Sea')
+        assert type(place_name.index) is int
+        assert type(place_name.value) is str
+
+    def test_bad_type_place_name(self):
+        with pytest.raises(TypeError):
+            EorzeaPlaceName(1)  # type: ignore

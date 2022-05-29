@@ -89,6 +89,10 @@ def _validate_place_name(
     locale_scopes: list[LocaleScope],
     fuzzy_cutoff: FuzzyCutoff,
 ) -> PlaceInfo:
+    if type(place_name) is not str:
+        raise TypeError(
+            f"place_name should be `str`. ({place_name} is {type(place_name)})")
+
     possible_place_name = None
     place_name = place_name.lower()
     place_name = re.sub('^the ', '', place_name)
