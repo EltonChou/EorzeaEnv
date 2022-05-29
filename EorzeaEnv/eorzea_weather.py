@@ -1,32 +1,29 @@
 try:
-    from typing import Iterable, List, Literal, Union, overload, Type
+    from typing import Iterable, List, Literal, Union, overload
     Lang = Literal['en', 'jp', 'de', 'fr']
 except:
-    from typing import Iterable, List, Union, overload, Type
+    from typing import Iterable, List, Union, overload
     Lang = str
 
-import re
 
 from numpy import uint32
-from rapidfuzz import process as fuzz_process
 
-from .Data.TerritoryWeather import territory as _territory
+from .Data.TerritoryWeather import territory_weather as _territory_weather
 from .Data.Weather import weather as _weather
 from .Data.WeatherRate import weather_rate as _weather_rate
-from .errors import InvalidEorzeaPlaceName, WeatherRateDataError
-
-
-FuzzyCutoff = Union[int, float]
+from .eorzea_lang import EorzeaLang
+from .eorzea_place_name import EorzeaPlaceName
+from .errors import WeatherRateDataError
 
 
 class EorzeaWeather:
     """
     EoreaWeather
     """
-    FUZZY_CUTOFF: FuzzyCutoff = 80
+    FUZZY_CUTOFF: Union[int, float] = 80
 
     @classmethod
-    def set_fuzzy_cutoff(cls, cutoff: FuzzyCutoff):
+    def set_fuzzy_cutoff(cls, cutoff: Union[int, float]):
         if cutoff > 100 or cutoff < 0:
             raise ValueError('cutoff value should be in 0-100.')
         cls.FUZZY_CUTOFF = cutoff
@@ -35,9 +32,9 @@ class EorzeaWeather:
     @classmethod
     def forecast(
         cls,
-        place_name: str,
-        timestamp: Iterable[float],
-        lang: Lang = "en",
+        place_name: Union[str, EorzeaPlaceName],
+        timestamp: Iterable[Union[int, float]],
+        lang: Lang = EorzeaLang.EN,
         strict: bool = True
     ) -> List[str]:
         """Forecast Eorzea weather by place
@@ -72,9 +69,9 @@ class EorzeaWeather:
     @classmethod
     def forecast(
         cls,
-        place_name: str,
-        timestamp: float,
-        lang: Lang = "en",
+        place_name: Union[str, EorzeaPlaceName],
+        timestamp: Union[int, float],
+        lang: Lang = EorzeaLang.EN,
         strict: bool = True
     ) -> str:
         """Forecast Eorzea weather by place
@@ -106,9 +103,12 @@ class EorzeaWeather:
         ...
 
     @classmethod
-    def forecast(cls, place_name, timestamp, lang="en", strict=True):
-        place_name = _parse_place_name(place_name, strict, cls.FUZZY_CUTOFF)
-        weather_rate = _territory[place_name]
+    def forecast(cls, place_name, timestamp, lang='en', strict=True):
+        if type(place_name) is not EorzeaPlaceName:
+            place_name = EorzeaPlaceName(
+                place_name, strict, fuzzy_cutoff=cls.FUZZY_CUTOFF)
+
+        weather_rate = _territory_weather[place_name.index]
 
         if isinstance(timestamp, Iterable):
             targets = (_calculate_forecast_target(t) for t in timestamp)
@@ -135,33 +135,7 @@ def _generate_result(target: int, weather_rate: int, lang: str) -> str:
     )
 
 
-def _parse_place_name(place_name: str, is_strict: bool, fuzzy_cutoff: FuzzyCutoff) -> str:
-    possible_place_name = None
-    place_name = place_name.lower()
-
-    check_place_name = re.search('^the (.*)', place_name)
-    if check_place_name:
-        place_name = ''.join(check_place_name.groups())
-
-    if is_strict:
-        if place_name in _territory:
-            return place_name
-        else:
-            raise InvalidEorzeaPlaceName(
-                place_name=place_name, is_strict=is_strict)
-    else:
-        result = fuzz_process.extractOne(
-            place_name, _territory.keys(), score_cutoff=fuzzy_cutoff)
-        if not result:
-            raise InvalidEorzeaPlaceName(
-                place_name=place_name, is_strict=is_strict)
-
-        possible_place_name, score, index = result
-
-    return possible_place_name
-
-
-def _calculate_forecast_target(local_timestamp: float) -> int:
+def _calculate_forecast_target(local_timestamp: Union[int, float]) -> int:
     """
     Thanks to Rogueadyn's SaintCoinach library for this calculation
     --------------
