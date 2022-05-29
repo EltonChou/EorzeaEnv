@@ -28,6 +28,10 @@ class PlaceInfo:
 
 
 class EorzeaPlaceName:
+    """EorzeaPlaceName
+
+    An EorzeaPlaceName instance is always a valid place name in EorzeaEnv.
+    """
     __index: int
     __value: str
 
@@ -55,18 +59,6 @@ class EorzeaPlaceName:
     def index(self):
         return self.__index
 
-    def __str__(self):
-        return self.value
-
-    def __eq__(self, that: object) -> bool:
-        if isinstance(that, EorzeaPlaceName):
-            return that.index == self.index and that.value == self.value
-
-        return False
-
-    def __repr__(self) -> str:
-        return f"{self.__class__.__name__}('{self.value}')"
-
     @staticmethod
     def validate(
             place_name: str,
@@ -81,6 +73,18 @@ class EorzeaPlaceName:
 
         except InvalidEorzeaPlaceName:
             return False
+
+    def __str__(self):
+        return self.value
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}('{self.value}')"
+
+    def __eq__(self, that: object) -> bool:
+        if isinstance(that, EorzeaPlaceName):
+            return that.index == self.index and that.value == self.value
+
+        return False
 
 
 def _validate_place_name(
