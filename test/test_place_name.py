@@ -1,4 +1,3 @@
-from typing import Type
 import pytest
 from EorzeaEnv import EorzeaLang, EorzeaPlaceName
 from EorzeaEnv.errors import InvalidEorzeaPlaceName
