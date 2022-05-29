@@ -43,8 +43,8 @@ class TestPlaceName:
         assert the_ruby_sea == the_ruby_see
 
     def test_validate_method(self):
-        assert EorzeaPlaceName.validate('The Ruby Sea', is_strict=True)
-        assert not EorzeaPlaceName.validate('The Ruby See', is_strict=True)
+        assert EorzeaPlaceName.validate('The Ruby Sea', strict=True)
+        assert not EorzeaPlaceName.validate('The Ruby See', strict=True)
 
     def test_place_name_property(self):
         place_name = EorzeaPlaceName('The Ruby Sea')

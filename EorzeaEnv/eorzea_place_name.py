@@ -1,6 +1,6 @@
 import re
 from dataclasses import dataclass
-from typing import Union
+from typing import List, Union
 
 from rapidfuzz import process as fuzz_process
 
@@ -13,7 +13,7 @@ FuzzyCutoff = Union[int, float]
 LocaleScope = Union[EorzeaLang, str]
 
 DEFAULT_CUTOFF = 80
-DEFAULT_LOCALE_SCOPES: list[LocaleScope] = [
+DEFAULT_LOCALE_SCOPES: List[LocaleScope] = [
     EorzeaLang.EN,
     EorzeaLang.JA,
     EorzeaLang.FR,
@@ -39,7 +39,7 @@ class EorzeaPlaceName:
             self,
             place_name: str,
             strict: bool = True,
-            locale_scopes: list[LocaleScope] = DEFAULT_LOCALE_SCOPES,
+            locale_scopes: List[LocaleScope] = DEFAULT_LOCALE_SCOPES,
             fuzzy_cutoff: FuzzyCutoff = DEFAULT_CUTOFF
     ) -> None:
         place_info = _validate_place_name(
@@ -62,12 +62,12 @@ class EorzeaPlaceName:
     @staticmethod
     def validate(
             place_name: str,
-            is_strict: bool,
-            locale_scopes: list[LocaleScope] = DEFAULT_LOCALE_SCOPES,
+            strict: bool,
+            locale_scopes: List[LocaleScope] = DEFAULT_LOCALE_SCOPES,
             fuzzy_cutoff: FuzzyCutoff = DEFAULT_CUTOFF,
     ) -> bool:
         try:
-            place_info = _validate_place_name(place_name, is_strict,
+            place_info = _validate_place_name(place_name, strict,
                                               locale_scopes, fuzzy_cutoff)
             return bool(place_info)
 
@@ -90,7 +90,7 @@ class EorzeaPlaceName:
 def _validate_place_name(
     place_name: str,
     is_strict: bool,
-    locale_scopes: list[LocaleScope],
+    locale_scopes: List[LocaleScope],
     fuzzy_cutoff: FuzzyCutoff,
 ) -> PlaceInfo:
     if type(place_name) is not str:
@@ -120,7 +120,7 @@ def _validate_place_name(
         place_name=place_name, is_strict=is_strict)
 
 
-def _bulid_dictionary_by_locales(locales: list[LocaleScope]):
+def _bulid_dictionary_by_locales(locales: List[LocaleScope]):
     dictionary = {}
     for localce in locales:
         dictionary.update(_place_names[localce])
