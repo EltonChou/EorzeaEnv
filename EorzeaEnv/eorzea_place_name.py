@@ -9,7 +9,6 @@ from .eorzea_lang import EorzeaLang
 from .errors import InvalidEorzeaPlaceName
 
 FuzzyCutoff = Union[int, float]
-
 LocaleScope = Union[EorzeaLang, str]
 
 DEFAULT_CUTOFF = 80
@@ -31,6 +30,25 @@ class EorzeaPlaceName:
     """EorzeaPlaceName
 
     An EorzeaPlaceName instance is always a valid place name in EorzeaEnv.
+
+
+    Parameters
+    ----------
+    place_name : str
+        should be a valid Eorzea place name.
+    strict : bool
+        True: strict mode.
+        False: fuzzy mode.
+        by default True.
+    locale_scopes : List[LocaleScope]
+        Locale scope for searching placename, by default full scopes.
+    fuzzy_cutoff : int | float
+        The cutoff score used in fuzzy mode, should be 100 <= value <= 0, by default 80.
+
+    Raises
+    ----------
+    :class:`EorzeaEnv.errors.InvalidEorzeaPlaceName`
+        When place_name is invalid.
     """
     __index: int
     __value: str
@@ -96,6 +114,8 @@ def _validate_place_name(
     if type(place_name) is not str:
         raise TypeError(
             f"place_name should be `str`. ({place_name} is {type(place_name)})")
+    if fuzzy_cutoff > 100 or fuzzy_cutoff < 0:
+        raise ValueError('Cutoff value should be in 0-100.')
 
     possible_place_name = None
     place_name = place_name.lower()
