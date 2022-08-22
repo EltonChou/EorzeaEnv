@@ -1,10 +1,5 @@
-try:
-    from typing import Iterable, List, Literal, Union, overload
-    Lang = Literal['en', 'jp', 'de', 'fr']
-except:
-    from typing import Iterable, List, Union, overload
-    Lang = str
-
+import sys
+from typing import Iterable, List, TypeAlias, Union, overload
 
 from numpy import uint32
 
@@ -14,6 +9,13 @@ from .Data.WeatherRate import weather_rate as _weather_rate
 from .eorzea_lang import EorzeaLang
 from .eorzea_place_name import EorzeaPlaceName
 from .errors import WeatherRateDataError
+
+if sys.version_info < (3, 7, 0):
+    Lang: TypeAlias = Union[str, EorzeaLang]
+else:
+    from typing import Literal
+    Lang: TypeAlias = Union[Literal['en', 'jp', 'de', 'fr'], EorzeaLang]
+
 
 
 class EorzeaWeather:

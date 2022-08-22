@@ -134,7 +134,8 @@ def _validate_place_name(
         if result:
             possible_place_name, score, index = result
             place_info = place_names_dictionary.get(possible_place_name)
-            return PlaceInfo(**place_info)
+            if place_info:
+                return PlaceInfo(**place_info)
 
     raise InvalidEorzeaPlaceName(
         place_name=place_name, is_strict=is_strict)
@@ -142,7 +143,7 @@ def _validate_place_name(
 
 def _bulid_dictionary_by_locales(locales: List[LocaleScope]):
     dictionary = {}
-    for localce in locales:
-        dictionary.update(_place_names[localce])
+    for locale in locales:
+        dictionary.update(_place_names[locale])
 
     return dictionary
