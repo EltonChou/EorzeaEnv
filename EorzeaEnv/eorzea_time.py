@@ -82,7 +82,7 @@ class EorzeaTime:
         return cls(moon, sun, hh, mm)
 
     @classmethod
-    def weather_period(cls, step=5) -> Iterator[float]:
+    def weather_period(cls, step=5) -> Iterator[int]:
         """
         generate weather period
 
@@ -126,16 +126,16 @@ def check_int(func):
     return wrap
 
 
-def _calculate_eorzea_period_start_timestamp(et: float) -> float:
-    return et - (et % _EROZEA_WEATHER_INTERVAL)
+def _calculate_eorzea_period_start_timestamp(et: float) -> int:
+    return round(et - (et % _EROZEA_WEATHER_INTERVAL))
 
 
-def _calculate_local_period_start_timestamp(et: float) -> float:
+def _calculate_local_period_start_timestamp(et: float) -> int:
     e_period_start = _calculate_eorzea_period_start_timestamp(et)
-    return e_period_start / _EORZEA_TIME_CONST
+    return round(e_period_start / _EORZEA_TIME_CONST)
 
 
-def _weather_period_generator(steps: int) -> Iterator[float]:
+def _weather_period_generator(steps: int) -> Iterator[int]:
     eorzea_timestamp = get_eorzea_timestamp()
     local_period_start_timestamp = _calculate_local_period_start_timestamp(
         eorzea_timestamp
@@ -144,7 +144,8 @@ def _weather_period_generator(steps: int) -> Iterator[float]:
     if not isinstance(steps, int):
         raise TypeError("integer argument required")
 
-    current_step, current_period_start = 0, local_period_start_timestamp
+    current_step = 0
+    current_period_start = local_period_start_timestamp
 
     while current_step < steps:
         yield current_period_start
