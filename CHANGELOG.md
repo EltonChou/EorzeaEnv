@@ -9,6 +9,7 @@
 + Fix type hint.
 ### Removed
 + Discard python3.6 supporting
++ Discard python3.7 supporting
 
 ## [2.0.0] - 2022-05-30
 ### Added
