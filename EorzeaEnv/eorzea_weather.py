@@ -17,7 +17,6 @@ else:
     Lang: TypeAlias = Union[Literal['en', 'jp', 'de', 'fr'], EorzeaLang]
 
 
-
 class EorzeaWeather:
     """
     EoreaWeather
@@ -120,7 +119,7 @@ class EorzeaWeather:
 
             return result
 
-        if isinstance(timestamp, float):
+        if isinstance(timestamp, (float, int)):
             target = _calculate_forecast_target(timestamp)
             result = _generate_result(target, weather_rate, lang)
 

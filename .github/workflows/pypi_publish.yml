@@ -26,6 +26,10 @@ jobs:
         poetry config virtualenvs.create false
         poetry install
 
+    - name: Lint code
+      run: |
+        flake8
+
     - name: Run pytest
       run: |
         pytest

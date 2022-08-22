@@ -21,7 +21,7 @@ class TestForecast:
             'the ruby sea', 1542591400.045
         ) == 'Fair Skies'
         assert EorzeaWeather.forecast(
-            'sea of clouds', 1542591400.045
+            'sea of clouds', 1542591400
         ) == 'Fog'
         assert EorzeaWeather.forecast(
             'asdfUpper aetheroacoustic exploratory sitea dsf',

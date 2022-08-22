@@ -6,7 +6,7 @@ from EorzeaEnv import EorzeaTime
 class TestTime:
     def test_step(self):
         timelist = [t for t in EorzeaTime.weather_period(10)]
-        assert len(timelist) is 10
+        assert len(timelist) == 10
         assert all((type(t) is int for t in timelist))
 
     def test_time(self):

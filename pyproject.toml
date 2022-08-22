@@ -27,7 +27,7 @@ include = ["README.md", "CHANGELOG.md", "LICENSE"]
 "Bug Reports" = "https://github.com/EltonChou/EorzeaEnv/issues"
 
 [tool.poetry.dependencies]
-python = ">=3.6, <3.11"
+python = ">=3.6.1, <3.11"
 numpy = [
     { version = "^1.19.2", python = "<3.10" },
     { version = "^1.23.0", python = ">=3.10, <3.11" },
@@ -39,6 +39,8 @@ dataclasses = { version = "^0.8", python = ">=3.6, <3.7" }
 pytest = "^6.2.5"
 autopep8 = "^1.6.0"
 tox = "^3.25.1"
+coverage = { version = "^6.4.4", python = ">3.6, <3.11" }
+flake8 = "^5.0.4"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
