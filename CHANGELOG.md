@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.0.1] - 2022-05-23
+## [2.1.0] - 2022-08-23
 ### Added
 + Add python3.10 supporting
 ### Fixed
