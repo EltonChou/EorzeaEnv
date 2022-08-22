@@ -1,9 +1,10 @@
 import re
 from dataclasses import dataclass
-from typing import List, Union
+from typing import List, Mapping, Union
 
 from rapidfuzz import process as fuzz_process
 
+from .Data.PlaceName import PlaceInfoDict
 from .Data.PlaceName import place_name as _place_names
 from .eorzea_lang import EorzeaLang
 from .errors import InvalidEorzeaPlaceName
@@ -141,9 +142,9 @@ def _validate_place_name(
         place_name=place_name, is_strict=is_strict)
 
 
-def _bulid_dictionary_by_locales(locales: List[LocaleScope]):
-    dictionary = {}
+def _bulid_dictionary_by_locales(locales: List[LocaleScope]) -> Mapping[str, PlaceInfoDict]:
+    dictionary: Mapping[str, PlaceInfoDict] = {}
     for locale in locales:
-        dictionary.update(_place_names[locale])
+        dictionary.update(_place_names[locale])  # type: ignore
 
     return dictionary

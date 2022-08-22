@@ -1,4 +1,19 @@
-place_name = {
+from typing import Mapping, TypedDict
+
+
+class PlaceInfoDict(TypedDict):
+    index: int
+    place_name: str
+
+
+class PlaceNameDict(TypedDict):
+    de: Mapping[str, PlaceInfoDict]
+    en: Mapping[str, PlaceInfoDict]
+    fr: Mapping[str, PlaceInfoDict]
+    ja: Mapping[str, PlaceInfoDict]
+
+
+place_name: PlaceNameDict = {
     'de': {'abalathisches wolkenmeer': {'index': 2100,
                                         'place_name': 'Abalathisches '
                                         'Wolkenmeer'},
