@@ -2,11 +2,13 @@
 
 ## [2.0.1] - 2022-05-23
 ### Added
-+ Add python3.10 support
++ Add python3.10 supporting
 ### Fixed
 + Fix EorzeaWeather.forecast timestamp type issue.
 + Fix EorzeaTime.weather_period timestamp type issue.
 + Fix type hint.
+### Removed
++ Discard python3.6 supporting
 
 ## [2.0.0] - 2022-05-30
 ### Added
