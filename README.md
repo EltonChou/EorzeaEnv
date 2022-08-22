@@ -98,9 +98,10 @@ weather = EorzeaWeather.forecast('Eureka Pyros', EorzeaTime.weather_period(step=
 >>> print(weather_en)
 ['Thunder', 'Snow', 'Blizzards']
 ```
-+ Also support float type
++ Also support float and int type
 ```py
 weather = EorzeaWeather.forecast('Eureka Pyros', 1603644000.0)
+weather = EorzeaWeather.forecast('Eureka Pyros', 1603644000)
 ```
 ```sh
 >>> print(weather)
@@ -174,9 +175,13 @@ from EorzeaEnv.errors import \
     InvalidEorzeaPlaceName, \
     WeatherRateDataError
 ```
-`EorzeaEnvError` is base exception.
-Other exceptions are inherited from it.
 
+```
+Exception
+    |- EorzeaEnvError
+        |- InvalidEorzeaPlaceName
+        |- WeatherRateDataError
+```
 
 ## Thanks
 - [Rogueadyn-SaintCoinach](https://github.com/Rogueadyn/SaintCoinach)

@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.1] - 2022-05-23
+### Added
++ Add python3.10 support
+### Fixed
++ Fix EorzeaWeather.forecast timestamp type issue.
++ Fix EorzeaTime.weather_period timestamp type issue.
++ Fix type hint.
+
 ## [2.0.0] - 2022-05-30
 ### Added
 + EorzeaPlaceName
