@@ -2,12 +2,7 @@
 name = "EorzeaEnv"
 version = "2.0.0"
 description = "Final Fantasy XIV weather & time tools."
-keywords = [
-    "eorzea",
-    "ffxiv",
-    "ff14",
-    "final fantasy"
-]
+keywords = ["eorzea", "ffxiv", "ff14", "final fantasy"]
 authors = ["Elton Chou <plscd748@gmail.com>"]
 maintainers = ["Elton Chou <plscd748@gmail.com>"]
 homepage = "https://github.com/EltonChou/EorzeaEnv"
@@ -25,27 +20,25 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 readme = "README.md"
-packages = [
-    { include="EorzeaEnv", from="." },
-]
-include = [
-    "README.md",
-    "CHANGELOG.md",
-    "LICENSE"
-]
+packages = [{ include = "EorzeaEnv", from = "." }]
+include = ["README.md", "CHANGELOG.md", "LICENSE"]
 
 [tool.poetry.urls]
 "Bug Reports" = "https://github.com/EltonChou/EorzeaEnv/issues"
 
 [tool.poetry.dependencies]
-python = ">=3.6, <3.10"
-numpy = "^1.19.2"
+python = ">=3.6, <3.11"
+numpy = [
+    { version = "^1.19.2", python = "<3.10" },
+    { version = "^1.23.0", python = ">=3.10, <3.11" },
+]
 rapidfuzz = "^2.0.11"
 dataclasses = { version = "^0.8", python = ">=3.6, <3.7" }
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
 autopep8 = "^1.6.0"
+tox = "^3.25.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
