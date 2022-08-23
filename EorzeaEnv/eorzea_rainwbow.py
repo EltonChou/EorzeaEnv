@@ -51,7 +51,7 @@ class EorzeaRainbow:
     def append(self, timestamp: Union[int, float], raw_weather: int):
         self._weather_slot.append(
             WeatherInfo(
-                time=EorzeaTime.from_timestamp(timestamp),
+                time=EorzeaTime(timestamp),
                 raw_weather=raw_weather)
         )
 

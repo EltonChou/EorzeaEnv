@@ -1,5 +1,6 @@
 import pytest
 from EorzeaEnv import EorzeaTime
+import time
 
 
 class TestTime:
@@ -24,18 +25,46 @@ class TestTime:
             for _ in EorzeaTime.weather_period([1, 2, 3]):  # type: ignore
                 pass
 
-    def test_time(self):
-        assert isinstance(EorzeaTime.now().minute, int)
-        assert isinstance(EorzeaTime.now().hour, int)
-        test_time = (
-            (13, 1, 10, 50),
-            (12, 35, 10, 50),
-            (12, 1, 25, 50),
-            (12, 1, 10, 61)
-        )
-        with pytest.raises(ValueError):
-            for t in test_time:
-                M, S, h, m = t
-                EorzeaTime(M, S, h, m)
-        with pytest.raises(TypeError):
-            EorzeaTime("kappa", 1, 10, 50)  # type: ignore
+    def test_time_operator(self):
+        t1 = EorzeaTime(12345678)
+        t2 = EorzeaTime(12345700)
+
+        assert t1 < t2
+        assert t1 <= t2
+        assert t1 != t2
+        assert not t1 >= t2
+        assert not t1 > t1
+
+        fixed_ts = time.time()
+        t1 = EorzeaTime(fixed_ts)
+        t2 = EorzeaTime(fixed_ts)
+        assert t1 == t2
+
+        t1 = EorzeaTime.now()
+        t2 = EorzeaTime.now()
+        assert t1 == t2
+
+    def test_property(self):
+        ts = 12700000
+        et = EorzeaTime(ts)
+        assert et.guardian == 'Nophica'
+        assert et.moon_phase == 0.75
+        assert et.moon_name == 'Sixth Astral Moon'
+
+        ts = 12879000
+        et = EorzeaTime(ts)
+        assert et.guardian == 'Althyk'
+        assert et.moon_phase == 0.50
+        assert et.moon_name == 'Sixth Embral Moon'
+
+    def test_get_eorzea_timestamp(self):
+        ts = time.time()
+        assert EorzeaTime.get_eorzea_timestamp(ts) == int(round(ts * (3600 / 175)))
+
+    def test_repr(self):
+        et = EorzeaTime.now()
+        assert repr(et) == f'EorzeaTime({et.get_unix_time()})'
+
+    def test_act_as_str(self):
+        et = EorzeaTime.now()
+        assert str(et)

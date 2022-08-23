@@ -1,85 +1,98 @@
 import math
+from datetime import datetime, timezone
 from time import time as _time
-from typing import Iterator, Literal, Optional, Tuple, Union
+from typing import Iterator, Literal, Optional, Union
 
-_YEAR = 33177600
-_MOON = 2764800
-_DAY = 86400
-_HOUR = 3600
-_MINUTE = 60
-_SECOND = 1
-_EORZEA_MINUTE = 60
-_EORZEA_BELL = 60
-_EORZEA_SUN = 24
-_EORZEA_MOON = 32
-_EORZEA_YEAR = 12
 _EORZEA_TIME_CONST = 3600.0 / 175.0
-_MILLISECOND_EORZEA_PER_MINUTE = (2 + 11/12) * 1000
 _LOCAL_WEATHER_INTERVAL = 1400
-_EROZEA_WEATHER_INTERVAL = 28800
+# _EROZEA_WEATHER_INTERVAL = 28800
+_DATETIME_ZERO = datetime(1970, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
 
 
 class EorzeaTime:
     """
-    EorzeaTime(moon, sun, hour, minute)
+    EorzeaTime
     """
+    _bell: int
+    _minute: int
+    _moon: int
+    _sun: int
+    _year: int
 
-    __slots__ = ('_moon', '_sun', '_hour', '_minute', '_phase', '_guardian')
+    _last_now_update: int = int(round(_time()))
+    _now: Optional['EorzeaTime'] = None
 
-    def __new__(cls, moon: int, sun: int, hour: int, minute: int):
-        instance = super().__new__(cls)
-        instance._hour, instance._minute = _check_time_field(hour, minute)
-        moon, instance._sun = _check_date_field(moon, sun)
-        instance._moon = _calculate_moon(moon)
-        instance._phase = _check_phase_field(_calculate_phase(sun))
-        instance._guardian = _get_guardian_by_moon(moon)
-        return instance
+    def __init__(self, timestamp: Optional[float] = None):
+        ts = timestamp or _time()
+        et = ts * _EORZEA_TIME_CONST
+        minutes = et / 60
+        bells = minutes / 60
+        suns = bells / 24
+        moons = suns / 32
+        years = moons / 12
+
+        self._minute = int(minutes % 60)
+        self._bell = int(bells % 24)
+        self._sun = int(suns % 32) + 1
+        self._moon = int(moons % 12) + 1
+        self._year = int(years)
 
     @property
-    def moon(self) -> str:
+    def year(self):
+        return self._year
+
+    @property
+    def moon(self):
         return self._moon
 
     @property
-    def sun(self) -> int:
+    def sun(self):
         return self._sun
 
     @property
-    def hour(self) -> int:
-        return self._hour
+    def hour(self):
+        return self.bell
 
     @property
-    def minute(self) -> int:
+    def bell(self):
+        return self._bell
+
+    @property
+    def minute(self):
         return self._minute
 
     @property
-    def phase(self) -> float:
-        return self._phase
+    def moon_phase(self):
+        return _calculate_phase(self.sun)
 
     @property
-    def guardian(self) -> str:
-        return self._guardian
+    def guardian(self):
+        return _get_guardian_by_moon(self.moon)
+
+    @property
+    def moon_name(self):
+        return _calculate_moon(self.moon)
+
+    def get_unix_time(self) -> float:
+        years = self.year
+        moons = (years * 12) + self.moon - 1
+        suns = (moons * 32) + self.sun - 1
+        bells = (suns * 24) + self.bell
+        minutes = (bells * 60) + self.minute
+        seconds = minutes * 60
+
+        return seconds / _EORZEA_TIME_CONST
 
     @classmethod
     def now(cls):
-        """
-        get current EorzeaTime
+        now = _time()
+        diff = now - cls._last_now_update
+        if diff <= 1 and cls._now:
+            return cls._now
 
-        Returns
-        -------
-        [EorzeaTime object]
-            current EorzeaTime
-        """
-
-        return cls.from_timestamp(timestamp=_time())
-
-    @classmethod
-    def from_timestamp(cls, timestamp: float):
-        et = _get_eorzea_timestamp(timestamp)
-        moon = math.ceil(et / _MOON % _EORZEA_YEAR)
-        sun = math.ceil(et / _DAY % _EORZEA_MOON)
-        hh = int(et / _HOUR % _EORZEA_SUN)
-        mm = int(et / _MINUTE % _EORZEA_BELL)
-        return cls(moon, sun, hh, mm)
+        cls._now = cls()
+        cls._last_now_update = int(round(now))
+        return cls._now
 
     @classmethod
     def weather_period(cls, step: Union[int, Literal['inf']] = 5) -> Iterator[int]:
@@ -98,69 +111,59 @@ class EorzeaTime:
             a generator of weather period
         """
 
-        return _weather_period_generator(step)
+        ts = int(round(_time()))
+        weather_start_ts = ts - (ts % _LOCAL_WEATHER_INTERVAL)
 
-    @staticmethod
-    def get_eorzea_timestamp(timestamp: Optional[float] = None) -> float:
-        return _get_eorzea_timestamp(timestamp=timestamp)
-
-    def _cls_to_str(self) -> str:
-        return "{}({}, {}, {:02d}, {:02d}, Phase:{:.2f}, {})".format(
-            self.__class__.__qualname__,
-            self.moon, self.sun,
-            self.hour, self.minute, self.phase,
-            self.guardian)
-
-    def __repr__(self):
-        return self._cls_to_str()
-
-    def __str__(self):
-        return self._cls_to_str()
-
-
-def _get_eorzea_timestamp(timestamp: Optional[float] = None) -> float:
-    ts = timestamp or _time()
-    return ts * _EORZEA_TIME_CONST
-
-
-def check_int(func):
-    def wrap(*values):
-        for value in values:
-            if not isinstance(value, int):
-                raise TypeError("integer argument required")
-        return func(*values)
-    return wrap
-
-
-def _calculate_eorzea_period_start_timestamp(et: float) -> int:
-    return round(et - (et % _EROZEA_WEATHER_INTERVAL))
-
-
-def _calculate_local_period_start_timestamp(et: float) -> int:
-    e_period_start = _calculate_eorzea_period_start_timestamp(et)
-    return round(e_period_start / _EORZEA_TIME_CONST)
-
-
-def _weather_period_generator(steps: Union[int, Literal['inf']] = 5) -> Iterator[int]:
-    eorzea_timestamp = _get_eorzea_timestamp()
-    local_period_start_timestamp = _calculate_local_period_start_timestamp(
-        eorzea_timestamp
-    )
-
-    if not isinstance(steps, (int, str)):
-        raise TypeError("integer or Literal['inf'] argument required")
-
-    if type(steps) is str:
-        if steps != 'inf':
+        if not isinstance(step, (int, str)):
             raise TypeError("integer or Literal['inf'] argument required")
 
-    current_step = 0
-    current_period_start = local_period_start_timestamp
+        if type(step) is str:
+            if step != 'inf':
+                raise TypeError("integer or Literal['inf'] argument required")
 
-    while True if steps == 'inf' else current_step < steps:
-        yield current_period_start
-        current_period_start += _LOCAL_WEATHER_INTERVAL
-        current_step += 1
+        current_step = 0
+
+        while True if step == 'inf' else current_step < step:
+            yield weather_start_ts
+            weather_start_ts += _LOCAL_WEATHER_INTERVAL
+            current_step += 1
+
+    @staticmethod
+    def get_eorzea_timestamp(timestamp: Optional[float] = None) -> int:
+        ts = timestamp or _time()
+        return int(round(ts * _EORZEA_TIME_CONST))
+
+    def __repr__(self):
+        return "{}({})".format(
+            self.__class__.__qualname__,
+            self.get_unix_time()
+        )
+
+    def __str__(self):
+        return "{}({}, {}, {:02d}, {:02d}, Phase:{:.2f}, {})".format(
+            self.__class__.__qualname__,
+            self.moon_name, self.sun,
+            self.hour, self.minute, self.moon_phase,
+            self.guardian
+        )
+
+    def __lt__(self, that: 'EorzeaTime'):
+        return self.get_unix_time() < that.get_unix_time()
+
+    def __le__(self, that: 'EorzeaTime'):
+        return self.get_unix_time() <= that.get_unix_time()
+
+    def __eq__(self, that: 'EorzeaTime'):
+        return self.get_unix_time() == that.get_unix_time()
+
+    def __ne__(self, that: 'EorzeaTime'):
+        return self.get_unix_time() != that.get_unix_time()
+
+    def __ge__(self, that: 'EorzeaTime'):
+        return self.get_unix_time() >= that.get_unix_time()
+
+    def __gt__(self, that: 'EorzeaTime'):
+        return self.get_unix_time() > that.get_unix_time()
 
 
 def _get_guardian_by_moon(moon: int) -> str:
@@ -197,40 +200,3 @@ def _calculate_phase(sun: int) -> float:
         return 1 - int(abs(20 - sun) / 4) / 4
     else:
         return int(abs(36 - sun) / 4) / 4
-
-
-def _calculate_pphase(sun: int) -> float:
-    if sun <= 20:
-        return round((sun - 1) / 19, 2)
-    else:
-        return round(1 - (sun - 20) / 13, 2)
-
-
-@check_int
-def _check_time_field(hour: int, minute: int) -> Tuple[int, int]:
-    if not 0 <= hour <= 23:
-        raise ValueError('hour must be in 0..23', hour)
-    if not 0 <= minute <= 59:
-        raise ValueError('minute must be in 0..59', minute)
-    return hour, minute
-
-
-@check_int
-def _check_date_field(moon: int, sun: int) -> Tuple[int, int]:
-    if not 1 <= moon <= 12:
-        raise ValueError('moon must be in 1..12', moon)
-    if not 1 <= sun <= 32:
-        raise ValueError('sun must be in 1..32', sun)
-    return moon, sun
-
-
-def _check_phase_field(phase: float) -> float:
-    if not 0 <= phase <= 1:
-        raise ValueError('phase must be in 0..1', phase)
-    return phase
-
-
-if __name__ == "__main__":
-    while True:
-        t = str(EorzeaTime.now())
-        print("\r"+t, end="")
