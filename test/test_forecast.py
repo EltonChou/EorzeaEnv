@@ -29,6 +29,11 @@ class TestForecast:
             strict=False
         ) == 'Fair Skies'
 
+        with pytest.raises(TypeError):
+            EorzeaWeather.forecast(
+                'sea of clouds', '1542591400'  # type: ignore
+            )
+
     def test_field(self):
         weathers = EorzeaWeather.forecast(
             'Eureka Pyros', EorzeaTime.weather_period(10))

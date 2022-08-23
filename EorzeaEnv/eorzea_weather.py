@@ -146,7 +146,7 @@ class EorzeaWeather:
                     for target in targets
                 ]
 
-            return result  # type: ignore
+                return result  # type: ignore
 
         if isinstance(timestamp, (float, int)):
             target = _calculate_forecast_target(timestamp)
@@ -155,7 +155,7 @@ class EorzeaWeather:
             return result
 
         raise TypeError(
-            "timestamp should be type of Sequence[Union[int, flaot]], int, float."
+            "timestamp should be type of Iterable[Union[int, flaot]], int, float."
         )
 
     @staticmethod
