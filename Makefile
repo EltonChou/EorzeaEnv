@@ -7,7 +7,7 @@ help: # Show this help message.
 install: # Install requirements of project.
 	poetry install
 
-test: # Run the tests.
+cov-test: # Run the tests.
 	coverage run -m pytest
 
 cov-report: # Show the coverage of tests.

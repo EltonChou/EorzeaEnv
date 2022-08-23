@@ -31,7 +31,8 @@ class EorzeaWeather:
         place_name: Union[str, EorzeaPlaceName],
         timestamp: Iterable[Union[int, float]],
         lang: Lang = EorzeaLang.EN,
-        strict: bool = True
+        strict: bool = True,
+        raw: bool = False
     ) -> List[str]:
         """Forecast Eorzea weather by place
 
@@ -48,6 +49,8 @@ class EorzeaWeather:
             option of search mode, by default True
             + `True` for strict mode
             + `False` for fuzzy mode
+        raw : bool, optional
+            option for return raw weather value instead of weather name.
 
         Returns
         -------
@@ -68,7 +71,8 @@ class EorzeaWeather:
         place_name: Union[str, EorzeaPlaceName],
         timestamp: Union[int, float],
         lang: Lang = EorzeaLang.EN,
-        strict: bool = True
+        strict: bool = True,
+        raw: bool = False
     ) -> str:
         """Forecast Eorzea weather by place
 
@@ -85,6 +89,8 @@ class EorzeaWeather:
             option of search mode, by default True
             + `True` for strict mode
             + `False` for fuzzy mode
+        raw : bool, optional
+            option for return raw weather value instead of weather name.
 
         Returns
         -------
@@ -99,7 +105,7 @@ class EorzeaWeather:
         ...
 
     @classmethod
-    def forecast(cls, place_name, timestamp, lang='en', strict=True):
+    def forecast(cls, place_name, timestamp, lang='en', strict=True, raw=False):
         if type(place_name) is not EorzeaPlaceName:
             place_name = EorzeaPlaceName(
                 place_name, strict, fuzzy_cutoff=cls.FUZZY_CUTOFF)
@@ -109,22 +115,26 @@ class EorzeaWeather:
         if isinstance(timestamp, Iterable):
             targets = (_calculate_forecast_target(t) for t in timestamp)
             result = [
-                _generate_result(target, weather_rate, lang) for target in targets
+                _generate_result(target, weather_rate, lang, raw=raw) for target in targets
             ]
 
             return result
 
         if isinstance(timestamp, (float, int)):
             target = _calculate_forecast_target(timestamp)
-            result = _generate_result(target, weather_rate, lang)
+            result = _generate_result(target, weather_rate, lang, raw=raw)
 
             return result
 
+    @staticmethod
+    def get_weather(index: int, lang: Lang):
+        return _weather[index][lang]
 
-def _generate_result(target: int, weather_rate: int, lang: str) -> str:
+
+def _generate_result(target: int, weather_rate: int, lang: str, raw: bool = False) -> str:
     for rate, weather in _weather_rate[weather_rate]:
         if target < rate:
-            return _weather[weather][lang]
+            return weather if raw else _weather[weather][lang]
 
     raise WeatherRateDataError(
         "No matched rate in data. Please contact with developer."

@@ -76,3 +76,15 @@ class TestForecast:
 
         with pytest.raises(ValueError):
             EorzeaWeather.set_fuzzy_cutoff(500)
+
+    def test_get_weather_name_by_weather_index_and_lang(self):
+        weather = EorzeaWeather.get_weather(index=10, lang=EorzeaLang.JA)
+        assert weather == "雷雨"
+
+    def test_get_weather_result_as_raw_value(self):
+        raw_weather = EorzeaWeather.forecast(
+            'Eureka Pagos',
+            1542651599.999,
+            raw=True
+        )
+        assert raw_weather == 4
