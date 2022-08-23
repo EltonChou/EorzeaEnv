@@ -70,14 +70,15 @@ class EorzeaTime:
             current EorzeaTime
         """
 
-        return cls.from_timestamp(timestamp=_get_eorzea_timestamp())
+        return cls.from_timestamp(timestamp=_time())
 
     @classmethod
     def from_timestamp(cls, timestamp: float):
-        moon = math.ceil(timestamp / _MOON % _EORZEA_YEAR)
-        sun = math.ceil(timestamp / _DAY % _EORZEA_MOON)
-        hh = int(timestamp / _HOUR % _EORZEA_SUN)
-        mm = int(timestamp / _MINUTE % _EORZEA_BELL)
+        et = _get_eorzea_timestamp(timestamp)
+        moon = math.ceil(et / _MOON % _EORZEA_YEAR)
+        sun = math.ceil(et / _DAY % _EORZEA_MOON)
+        hh = int(et / _HOUR % _EORZEA_SUN)
+        mm = int(et / _MINUTE % _EORZEA_BELL)
         return cls(moon, sun, hh, mm)
 
     @classmethod
