@@ -32,8 +32,12 @@ class EorzeaRainbow:
         return self._place_name
 
     @property
+    def is_possible(self):
+        return self._is_possible
+
+    @property
     def is_appear(self):
-        if len(self._weather_slot) == 2 and self._is_possible:
+        if len(self._weather_slot) == 2 and self.is_possible:
             prev_weather, current_weather = self._weather_slot
             if _check_sun(current_weather.time.sun):
                 time_ticket = current_weather.time.hour*100 + current_weather.time.minute
