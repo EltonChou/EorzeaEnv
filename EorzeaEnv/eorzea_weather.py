@@ -9,7 +9,7 @@ from .eorzea_lang import EorzeaLang
 from .eorzea_place_name import EorzeaPlaceName
 from .errors import WeatherRateDataError
 
-Lang = Union[Literal['en', 'jp', 'de', 'fr'], EorzeaLang]
+Lang = Union[Literal['en', 'ja', 'de', 'fr'], EorzeaLang]
 
 
 class EorzeaWeather:
