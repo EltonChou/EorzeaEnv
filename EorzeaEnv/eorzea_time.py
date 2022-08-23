@@ -1,6 +1,6 @@
 import math
 from time import time as _time
-from typing import Iterator, Tuple
+from typing import Iterator, Optional, Tuple
 
 _YEAR = 33177600
 _MOON = 2764800
@@ -70,15 +70,14 @@ class EorzeaTime:
             current EorzeaTime
         """
 
-        return cls._fromtimestamp()
+        return cls.from_timestamp(timestamp=_get_eorzea_timestamp())
 
     @classmethod
-    def _fromtimestamp(cls):
-        eorzea_timestamp = get_eorzea_timestamp()
-        moon = math.ceil(eorzea_timestamp / _MOON % _EORZEA_YEAR)
-        sun = math.ceil(eorzea_timestamp / _DAY % _EORZEA_MOON)
-        hh = int(eorzea_timestamp / _HOUR % _EORZEA_SUN)
-        mm = int(eorzea_timestamp / _MINUTE % _EORZEA_BELL)
+    def from_timestamp(cls, timestamp: float):
+        moon = math.ceil(timestamp / _MOON % _EORZEA_YEAR)
+        sun = math.ceil(timestamp / _DAY % _EORZEA_MOON)
+        hh = int(timestamp / _HOUR % _EORZEA_SUN)
+        mm = int(timestamp / _MINUTE % _EORZEA_BELL)
         return cls(moon, sun, hh, mm)
 
     @classmethod
@@ -99,6 +98,10 @@ class EorzeaTime:
 
         return _weather_period_generator(step)
 
+    @staticmethod
+    def get_eorzea_timestamp(timestamp: Optional[float] = None) -> float:
+        return _get_eorzea_timestamp(timestamp=timestamp)
+
     def _cls_to_str(self) -> str:
         return "{}({}, {}, {:02d}, {:02d}, Phase:{:.2f}, {})".format(
             self.__class__.__qualname__,
@@ -113,8 +116,9 @@ class EorzeaTime:
         return self._cls_to_str()
 
 
-def get_eorzea_timestamp():
-    return _time() * _EORZEA_TIME_CONST
+def _get_eorzea_timestamp(timestamp: Optional[float] = None) -> float:
+    ts = timestamp or _time()
+    return ts * _EORZEA_TIME_CONST
 
 
 def check_int(func):
@@ -136,7 +140,7 @@ def _calculate_local_period_start_timestamp(et: float) -> int:
 
 
 def _weather_period_generator(steps: int) -> Iterator[int]:
-    eorzea_timestamp = get_eorzea_timestamp()
+    eorzea_timestamp = _get_eorzea_timestamp()
     local_period_start_timestamp = _calculate_local_period_start_timestamp(
         eorzea_timestamp
     )
