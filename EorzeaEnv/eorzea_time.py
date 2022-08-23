@@ -1,6 +1,6 @@
 import math
 from time import time as _time
-from typing import Iterator, Optional, Tuple
+from typing import Iterator, Literal, Optional, Tuple, Union
 
 _YEAR = 33177600
 _MOON = 2764800
@@ -82,14 +82,15 @@ class EorzeaTime:
         return cls(moon, sun, hh, mm)
 
     @classmethod
-    def weather_period(cls, step=5) -> Iterator[int]:
+    def weather_period(cls, step: Union[int, Literal['inf']] = 5) -> Iterator[int]:
         """
         generate weather period
 
         Parameters
         ----------
-        step : int, optional
-            quantity of period you want, by default 5
+        step : Union[int, Literal['inf']], optional
+            quantity of period you want, by default 5.
+            'inf' means infinite.
 
         Returns
         -------
@@ -140,19 +141,23 @@ def _calculate_local_period_start_timestamp(et: float) -> int:
     return round(e_period_start / _EORZEA_TIME_CONST)
 
 
-def _weather_period_generator(steps: int) -> Iterator[int]:
+def _weather_period_generator(steps: Union[int, Literal['inf']] = 5) -> Iterator[int]:
     eorzea_timestamp = _get_eorzea_timestamp()
     local_period_start_timestamp = _calculate_local_period_start_timestamp(
         eorzea_timestamp
     )
 
-    if not isinstance(steps, int):
-        raise TypeError("integer argument required")
+    if not isinstance(steps, (int, str)):
+        raise TypeError("integer or Literal['inf'] argument required")
+
+    if type(steps) is str:
+        if steps != 'inf':
+            raise TypeError("integer or Literal['inf'] argument required")
 
     current_step = 0
     current_period_start = local_period_start_timestamp
 
-    while current_step < steps:
+    while True if steps == 'inf' else current_step < steps:
         yield current_period_start
         current_period_start += _LOCAL_WEATHER_INTERVAL
         current_step += 1
