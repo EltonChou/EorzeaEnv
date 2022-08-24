@@ -1,6 +1,6 @@
 from collections import deque
 from dataclasses import dataclass
-from typing import MutableSequence, Union
+from typing import MutableSequence
 
 from .Data.TerritoryWeather import territory_weather as _territory_weather
 from .Data.WeatherRate import weather_rate as _weather_rate
