@@ -16,4 +16,4 @@ __all__ = [
 __title__ = 'EorzeaEnv'
 __author__ = 'Elton H.Y. Chou'
 __license__ = 'MIT'
-__version__ = '2.1.0'
+__version__ = '2.2.0'

@@ -9,6 +9,9 @@
 + Instance of `EorzeaTime` can compare to each other. (b20519c)
 + Add argument in `EorzeaWeather.forecast` that can return weather index instead of weather name. (602da0c)
 + `EorzeaWeather.weather_period` can generate infinite period with argument `step='inf'`. (42e9681)
++ `timestamp` argument in `EorzeaWeather.forecast` accepts `EorzeaTime` instance.
+### Deprecated
++ float and int type of `timestamp` argument supporting  in `EorzeaWeather.forecast` would be removed from 2.5.0.
 
 ## [2.1.0] - 2022-08-23
 ### Added
