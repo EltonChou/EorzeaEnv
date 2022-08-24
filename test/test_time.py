@@ -7,7 +7,6 @@ class TestTime:
     def test_weather_period(self):
         timelist = [t for t in EorzeaTime.weather_period(10)]
         assert len(timelist) == 10
-        # assert all((type(t) is int for t in timelist))
 
         count = 0
         for _ in EorzeaTime.weather_period(step='inf'):
@@ -56,10 +55,6 @@ class TestTime:
         assert et.guardian == 'Althyk'
         assert et.moon_phase == 0.50
         assert et.moon_name == 'Sixth Embral Moon'
-
-    def test_get_eorzea_timestamp(self):
-        ts = time.time()
-        assert EorzeaTime.get_eorzea_timestamp(ts) == int(round(ts * (3600 / 175)))
 
     def test_repr(self):
         et = EorzeaTime.now()

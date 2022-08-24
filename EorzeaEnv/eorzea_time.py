@@ -41,13 +41,39 @@ class EorzeaTime:
     def year(self):
         return self._year
 
+    @year.setter
+    def year(self, value):
+        self._year = value
+
     @property
     def moon(self):
         return self._moon
 
+    @moon.setter
+    def moon(self, value):
+        self._moon = value
+        while self._moon < 1:
+            self._moon += 12
+            self.year = self.year - 1
+
+        while self._moon > 12:
+            self._moon -= 12
+            self.year = self.year + 1
+
     @property
     def sun(self):
         return self._sun
+
+    @sun.setter
+    def sun(self, value):
+        self._sun = value
+        while self._sun < 1:
+            self._sun += 32
+            self.moon = self.moon - 1
+
+        while self._sun > 32:
+            self._sun -= 32
+            self.moon = self.moon + 1
 
     @property
     def hour(self):
@@ -57,9 +83,31 @@ class EorzeaTime:
     def bell(self):
         return self._bell
 
+    @bell.setter
+    def bell(self, value):
+        self._bell = value
+        while self._bell < 0:
+            self._bell += 24
+            self.sun = self.sun - 1
+
+        while self._bell > 24:
+            self._bell -= 24
+            self.sun = self.sun + 1
+
     @property
     def minute(self):
         return self._minute
+
+    @minute.setter
+    def minute(self, value):
+        self._minute = value
+        while self._minute < 0:
+            self._minute += 60
+            self.bell = self.bell - 1
+
+        while self._minute > 60:
+            self._minute -= 60
+            self.bell = self.bell + 1
 
     @property
     def moon_phase(self):
@@ -73,7 +121,7 @@ class EorzeaTime:
     def moon_name(self):
         return _calculate_moon(self.moon)
 
-    def get_unix_time(self) -> float:
+    def get_eorzea_time(self) -> int:
         years = self.year
         moons = (years * 12) + self.moon - 1
         suns = (moons * 32) + self.sun - 1
@@ -81,7 +129,11 @@ class EorzeaTime:
         minutes = (bells * 60) + self.minute
         seconds = minutes * 60
 
-        return seconds / _EORZEA_TIME_CONST
+        return seconds
+
+    def get_unix_time(self) -> int:
+        et = self.get_eorzea_time()
+        return round(et / _EORZEA_TIME_CONST)
 
     @classmethod
     def now(cls):
@@ -95,7 +147,7 @@ class EorzeaTime:
         return cls._now
 
     @classmethod
-    def weather_period(cls, step: Union[int, Literal['inf']] = 5) -> Iterator[int]:
+    def weather_period(cls, step: Union[int, Literal['inf']] = 5) -> Iterator['EorzeaTime']:
         """
         generate weather period
 
@@ -111,9 +163,6 @@ class EorzeaTime:
             a generator of weather period
         """
 
-        ts = int(round(_time()))
-        weather_start_ts = ts - (ts % _LOCAL_WEATHER_INTERVAL)
-
         if not isinstance(step, (int, str)):
             raise TypeError("integer or Literal['inf'] argument required")
 
@@ -121,17 +170,14 @@ class EorzeaTime:
             if step != 'inf':
                 raise TypeError("integer or Literal['inf'] argument required")
 
+        ts = _time()
+        weather_start = cls(timestamp=ts - (ts % _LOCAL_WEATHER_INTERVAL))
+
         current_step = 0
-
         while True if step == 'inf' else current_step < step:
-            yield weather_start_ts
-            weather_start_ts += _LOCAL_WEATHER_INTERVAL
+            yield weather_start
+            weather_start.bell = weather_start.bell + 8
             current_step += 1
-
-    @staticmethod
-    def get_eorzea_timestamp(timestamp: Optional[float] = None) -> int:
-        ts = timestamp or _time()
-        return int(round(ts * _EORZEA_TIME_CONST))
 
     def __repr__(self):
         return "{}({})".format(

@@ -1,3 +1,4 @@
+import warnings
 from typing import Iterable, List, Literal, Union, overload
 
 from numpy import uint32
@@ -7,6 +8,7 @@ from .Data.Weather import weather as _weather
 from .Data.WeatherRate import weather_rate as _weather_rate
 from .eorzea_lang import EorzeaLang
 from .eorzea_place_name import EorzeaPlaceName
+from .eorzea_time import EorzeaTime
 from .errors import WeatherRateDataError
 
 Lang = Union[Literal['en', 'ja', 'de', 'fr'], EorzeaLang]
@@ -29,7 +31,7 @@ class EorzeaWeather:
     def forecast(
         cls,
         place_name: Union[str, EorzeaPlaceName],
-        timestamp: Iterable[Union[int, float]],
+        timestamp: Iterable[Union[int, float, EorzeaTime]],
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: Literal[False] = False
@@ -40,7 +42,7 @@ class EorzeaWeather:
     def forecast(
         cls,
         place_name: Union[str, EorzeaPlaceName],
-        timestamp: Iterable[Union[int, float]],
+        timestamp: Iterable[Union[int, float, EorzeaTime]],
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: Literal[True] = True
@@ -51,7 +53,7 @@ class EorzeaWeather:
     def forecast(
         cls,
         place_name: Union[str, EorzeaPlaceName],
-        timestamp: Iterable[Union[int, float]],
+        timestamp: Iterable[Union[int, float, EorzeaTime]],
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: bool = False
@@ -62,7 +64,7 @@ class EorzeaWeather:
     def forecast(
         cls,
         place_name: Union[str, EorzeaPlaceName],
-        timestamp: Union[int, float],
+        timestamp: Union[int, float, EorzeaTime],
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: Literal[False] = False
@@ -73,7 +75,7 @@ class EorzeaWeather:
     def forecast(
         cls,
         place_name: Union[str, EorzeaPlaceName],
-        timestamp: Union[int, float],
+        timestamp: Union[int, float, EorzeaTime],
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: Literal[True] = True
@@ -84,7 +86,7 @@ class EorzeaWeather:
     def forecast(
         cls,
         place_name: Union[str, EorzeaPlaceName],
-        timestamp: Union[int, float],
+        timestamp: Union[int, float, EorzeaTime],
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: bool = False
@@ -94,7 +96,7 @@ class EorzeaWeather:
     def forecast(
             cls,
             place_name: Union[str, EorzeaPlaceName],
-            timestamp: Union[int, float, Iterable[Union[int, float]]],
+            timestamp: Union[int, float, EorzeaTime, Iterable[Union[int, float, EorzeaTime]]],
             lang: Lang = EorzeaLang.EN,
             strict: bool = True,
             raw: bool = False
@@ -105,8 +107,9 @@ class EorzeaWeather:
         ----------
         place_name : Union[str, EorzeaPlaceName]
             a valid Eorzea place name
-        timestamp : Union[int, float, Iterable[Union[int, float]]]
-            unix timestamp
+        timestamp : Union[int, float, EorzeaTime, Iterable[Union[int, float, EorzeaTime]]]
+            unix timestamp or EorzeaTime instance.
+            int and float type supporting would be removed from 2.5.0
         lang : Lang, optional
             Recommend use `EorzeaEnv.EorzeaLang`
             valid lang from ffxiv , by default "en"
@@ -148,7 +151,7 @@ class EorzeaWeather:
 
                 return result  # type: ignore
 
-        if isinstance(timestamp, (float, int)):
+        if isinstance(timestamp, (float, int, EorzeaTime)):
             target = _calculate_forecast_target(timestamp)
             result = _generate_result(target, weather_rate, lang, raw=raw)
 
@@ -163,9 +166,9 @@ class EorzeaWeather:
         return _weather[index][lang]
 
 
-def _check_iterable_timestamp(timestamp: Iterable[Union[int, float]]) -> bool:
+def _check_iterable_timestamp(timestamp: Iterable[Union[int, float, EorzeaTime]]) -> bool:
     return all(
-        type(t) is int or type(t) is float
+        type(t) is int or type(t) is float or type(t) is EorzeaTime
         for t in timestamp
     )
 
@@ -188,7 +191,7 @@ def _generate_result(target: int, weather_rate: int, lang: str, raw: bool = Fals
     )
 
 
-def _calculate_forecast_target(local_timestamp: Union[int, float]) -> int:
+def _calculate_forecast_target(local_timestamp: Union[int, float, EorzeaTime]) -> int:
     """
     Thanks to Rogueadyn's SaintCoinach library for this calculation
     --------------
@@ -209,10 +212,15 @@ def _calculate_forecast_target(local_timestamp: Union[int, float]) -> int:
         weather period start
     """
 
+    if isinstance(local_timestamp, EorzeaTime):
+        local_timestamp = local_timestamp.get_unix_time()
+    else:
+        warnings.warn("timestamp in float and int type would be deprecated at 2.5.0", DeprecationWarning)
+
     bell = local_timestamp / 175
     increment = uint32(bell + 8 - (bell % 8)) % 24
     total_days = uint32(local_timestamp / 4200)
     calc_base = total_days * 0x64 + increment
     step1 = uint32(calc_base << 0xB) ^ calc_base
-    step2 = (step1 >> 8) ^ step1
+    step2 = uint32(step1 >> 8) ^ step1
     return int(step2 % 100)
