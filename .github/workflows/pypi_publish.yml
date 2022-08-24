@@ -4,7 +4,6 @@ on:
   push:
     tags: ["*.*.*"]
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,28 +11,43 @@ jobs:
       matrix:
         python-version: ["3.9"]
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install poetry==1.1.8
-        poetry config virtualenvs.create false
-        poetry install
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry==1.1.8
+          poetry config virtualenvs.create false
+          poetry install
 
-    - name: Lint code
-      run: |
-        flake8
+      - name: Lint code
+        run: |
+          flake8
 
-    - name: Run pytest
-      run: |
-        pytest
+      - name: Run pytest
+        run: |
+          pytest
 
-    - name: Publish package
-      run: |
-        poetry publish --build -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }}
+      - name: Publish package
+        run: |
+          poetry publish --build -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }}
+
+      - name: Set release data
+        id: release_settings
+        run: |
+          BODY_FILE=release_note.md
+          make print-changelog >> ${BODY_FILE}
+          echo "::set-output name=version::${GITHUB_REF#refs/*/}"
+          echo "::set-output name=body_file::${BODY_FILE}"
+
+      - name: Create Repository Release
+        uses: ncipollo/release-action@v1
+        with:
+          name: "EorzeaEnv ${{ steps.release_settings.outputs.version }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          bodyFile: ${{ steps.release_settings.outputs.body_file }}
