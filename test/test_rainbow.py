@@ -13,8 +13,8 @@ class TestRainbow:
         assert the_rainbow.place_name is place_name1
         assert impossible_rainbow.place_name is place_name2
 
-        et1 = EorzeaTime(datetime(2022, 8, 23, 00, 00).timestamp())
-        et2 = EorzeaTime(datetime(2022, 8, 23, 00, 24).timestamp())
+        et1 = EorzeaTime(1661184000)
+        et2 = EorzeaTime(1661185440)
 
         weather1 = EorzeaWeather.forecast(place_name1, et1, raw=True)
         weather2 = EorzeaWeather.forecast(place_name1, et2, raw=True)
