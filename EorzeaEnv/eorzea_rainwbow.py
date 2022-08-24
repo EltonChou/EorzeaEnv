@@ -38,7 +38,6 @@ class EorzeaRainbow:
     def is_appear(self):
         if len(self._weather_slot) == 2 and self.is_possible:
             prev_weather, current_weather = self._weather_slot
-            print(prev_weather.time.get_unix_time(), current_weather.time.get_unix_time())
             if _check_sun(current_weather.time.sun):
                 time_ticket = current_weather.time.hour*100 + current_weather.time.minute
                 if 600 <= time_ticket <= 1800:

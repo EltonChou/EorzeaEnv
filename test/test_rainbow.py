@@ -1,5 +1,6 @@
-from datetime import datetime
-from EorzeaEnv import EorzeaWeather, EorzeaPlaceName, EorzeaRainbow, EorzeaTime
+from datetime import datetime, timezone
+
+from EorzeaEnv import EorzeaPlaceName, EorzeaRainbow, EorzeaTime, EorzeaWeather
 
 
 class TestRainbow:
@@ -13,8 +14,11 @@ class TestRainbow:
         assert the_rainbow.place_name is place_name1
         assert impossible_rainbow.place_name is place_name2
 
-        et1 = EorzeaTime(datetime(2022, 8, 23, 00, 00).timestamp())
-        et2 = EorzeaTime(datetime(2022, 8, 23, 00, 24).timestamp())
+        et1 = EorzeaTime(datetime(2022, 8, 23, 00, 00, tzinfo=timezone.utc).timestamp())
+        et2 = EorzeaTime(datetime(2022, 8, 23, 00, 24, tzinfo=timezone.utc).timestamp())
+
+        print(et1, et2)
+        print(et1.get_unix_time(), et2.get_unix_time())
 
         weather1 = EorzeaWeather.forecast(place_name1, et1, raw=True)
         weather2 = EorzeaWeather.forecast(place_name1, et2, raw=True)
