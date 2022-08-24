@@ -168,6 +168,31 @@ EorzeaPlaceName('紅玉貝', strict=False) # raises error
 EorzeaPlaceName('紅玉貝', strict=False, fuzzy_cutoff=66) # valid `紅玉海`
 ```
 
+### Eorzea rainbow predict
+
+Use EorzeaRainbow to predict when will the rainbow appears.
+
+```py
+from datetime import datetime
+
+from EorzeaEnv import EorzeaPlaceName, EorzeaRainbow, EorzeaTime, EorzeaWeather
+
+rainbow_times: list[datetime] = []
+
+place = EorzeaPlaceName("東ラノシア")
+the_rainbow = EorzeaRainbow(place_name=place)
+
+
+for t in EorzeaTime.weather_period(step='inf'):
+    the_rainbow.append(t, EorzeaWeather.forecast(place, t, raw=True))
+    if the_rainbow.is_appear:
+        rainbow_times.append(datetime.fromtimestamp(t))
+    if len(rainbow_times) == 20:
+        break
+
+print(rainbow_times)
+```
+
 ### Errors
 ```py
 from EorzeaEnv.errors import \
