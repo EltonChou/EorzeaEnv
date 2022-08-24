@@ -17,12 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Sync time
-        run: |
-          sudo apt update
-          sudo apt upgrade
-          sudo apt install ntpdate
-          sudo ntpdate pool.ntp.org
+      - name: Set timezone
+        uses: szenius/set-timezone@v1.0
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
