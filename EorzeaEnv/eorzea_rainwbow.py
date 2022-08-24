@@ -1,6 +1,6 @@
 from collections import deque
 from dataclasses import dataclass
-from typing import Union
+from typing import MutableSequence, Union
 
 from EorzeaEnv.eorzea_place_name import EorzeaPlaceName
 from EorzeaEnv.eorzea_time import EorzeaTime
@@ -18,7 +18,7 @@ class WeatherInfo:
 
 
 class EorzeaRainbow:
-    _weather_slot: deque[WeatherInfo]
+    _weather_slot: MutableSequence[WeatherInfo]
     _is_possible: bool
     _place_name: EorzeaPlaceName
 
