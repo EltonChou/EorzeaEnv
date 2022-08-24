@@ -17,6 +17,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Sync time
+        run: |
+          apt update
+          apt upgrade
+          apt install ntpdate
+          ntpdate pool.ntp.org
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
