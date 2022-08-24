@@ -70,10 +70,10 @@ class TestForecast:
 
     def test_placename_error(self):
         with pytest.raises(InvalidEorzeaPlaceName):
-            EorzeaWeather.forecast('weird placename', 145354.99, strict=True)
+            EorzeaWeather.forecast('!!!!!!!!!!!!!!', 145354.99, strict=True)
 
         with pytest.raises(InvalidEorzeaPlaceName):
-            EorzeaWeather.forecast('kappa', 1214, strict=False)
+            EorzeaWeather.forecast('kadsf', 1214, strict=False)
 
     def test_cutoff_setter(self):
         EorzeaWeather.set_fuzzy_cutoff(50)

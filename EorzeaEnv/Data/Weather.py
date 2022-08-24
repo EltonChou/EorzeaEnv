@@ -484,5 +484,8 @@ weather = {
     170: {'de': 'Hass',
           'en': 'Dragonstorms',
           'fr': 'Tempête de haine',
-          'ja': '邪天'}
+          'ja': '邪天'},
+    171: {'de': 'Leere', 'en': 'Vacuity', 'fr': 'Néant', 'ja': '虚無'},
+    172: {'de': 'Leere', 'en': 'Vacuity', 'fr': 'Néant', 'ja': '虚無'},
+    173: {'de': 'Leere', 'en': 'Vacuity', 'fr': 'Néant', 'ja': '虚無'}
 }

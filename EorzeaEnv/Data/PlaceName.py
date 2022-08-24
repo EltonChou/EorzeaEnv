@@ -201,6 +201,7 @@ place_name: PlaceNameDict = {
                                     'place_name': 'Dravanisches '
                                     'Vorland'},
            'dun scaith': {'index': 1868, 'place_name': 'Dun Scaith'},
+           'einsame insel': {'index': 4043, 'place_name': 'Einsame Insel'},
            'elle des sohnes': {'index': 1714,
                                'place_name': 'Elle des Sohnes'},
            'elle des vaters': {'index': 1633,
@@ -231,6 +232,13 @@ place_name: PlaceNameDict = {
                                         '(Eingangshalle)'},
            'fockmast (wohnung)': {'index': 1812,
                                   'place_name': 'Fockmast (Wohnung)'},
+           'forschungstrakt für die geheimnisse des lebens': {'index': 4250,
+                                                              'place_name': 'Forschungstrakt '
+                                                              'für '
+                                                              'die '
+                                                              'Geheimnisse '
+                                                              'des '
+                                                              'Lebens'},
            'frohehalde': {'index': 2082, 'place_name': 'Frohehalde'},
            'frondales physiatrische akademie': {'index': 695,
                                                 'place_name': 'Frondales '
@@ -288,6 +296,10 @@ place_name: PlaceNameDict = {
            'grund des mondes': {'index': 3684,
                                 'place_name': 'Grund des Mondes'},
            'gulg': {'index': 2997, 'place_name': 'Gulg'},
+           'gästezimmer des meghaduta-tempels': {'index': 4039,
+                                                 'place_name': 'Gästezimmer '
+                                                 'des '
+                                                 'Meghaduta-Tempels'},
            'halatali': {'index': 49, 'place_name': 'Halatali'},
            'halle der beschwörung': {'index': 379,
                                      'place_name': 'Halle der '
@@ -339,6 +351,11 @@ place_name: PlaceNameDict = {
                                        'Riss'},
            'irrungen der qitari': {'index': 3018,
                                    'place_name': 'Irrungen der Qitari'},
+           'isolationstrakt für parasitäre lebensformen': {'index': 4196,
+                                                           'place_name': 'Isolationstrakt '
+                                                           'für '
+                                                           'parasitäre '
+                                                           'Lebensformen'},
            'isomorph-quartiere': {'index': 3222,
                                   'place_name': 'Isomorph-Quartiere'},
            'jadelichtung': {'index': 2354, 'place_name': 'Jadelichtung'},
@@ -588,16 +605,29 @@ place_name: PlaceNameDict = {
            'schloss kugane': {'index': 2298,
                               'place_name': 'Schloss Kugane'},
            'schneekleid': {'index': 404, 'place_name': 'Schneekleid'},
+           'schwarzer hof von troia': {'index': 4180,
+                                       'place_name': 'Schwarzer Hof von '
+                                       'Troia'},
            'schwebende stadt nym': {'index': 2527,
                                     'place_name': 'Schwebende Stadt '
                                     'Nym'},
            'seele des schöpfers': {'index': 1853,
                                    'place_name': 'Seele des Schöpfers'},
            'seenland': {'index': 2953, 'place_name': 'Seenland'},
+           'separationstrakt für pflanzliche lebensformen': {'index': 4198,
+                                                             'place_name': 'Separationstrakt '
+                                                             'für '
+                                                             'pflanzliche '
+                                                             'Lebensformen'},
            'shirogane': {'index': 2412, 'place_name': 'Shirogane'},
            'shirogane - zimmer': {'index': 2270,
                                   'place_name': 'Shirogane - Zimmer'},
            'shisui-palast': {'index': 2779, 'place_name': 'Shisui-Palast'},
+           'sicherheitstrakt für toxische lebenformen': {'index': 4249,
+                                                         'place_name': 'Sicherheitstrakt '
+                                                         'für '
+                                                         'toxische '
+                                                         'Lebenformen'},
            'sigmametrie 1.0': {'index': 2717,
                                'place_name': 'Sigmametrie 1.0'},
            'sigmametrie 2.0': {'index': 2718,
@@ -611,6 +641,9 @@ place_name: PlaceNameDict = {
            'singularitäts-reaktor': {'index': 2178,
                                      'place_name': 'Singularitäts-Reaktor'},
            'sirenen-see': {'index': 2297, 'place_name': 'Sirenen-See'},
+           'sitz der hohepriesterin': {'index': 4185,
+                                       'place_name': 'Sitz der '
+                                       'Hohepriesterin'},
            'smileton': {'index': 3770, 'place_name': 'Smileton'},
            'sohm al': {'index': 2031, 'place_name': 'Sohm Al'},
            'sohr khai': {'index': 2090, 'place_name': 'Sohr Khai'},
@@ -625,6 +658,7 @@ place_name: PlaceNameDict = {
                                                 'Makellosigkeit'},
            'strategieraum': {'index': 4023, 'place_name': 'Strategieraum'},
            'strebewerk': {'index': 2301, 'place_name': 'Strebewerk'},
+           'sturmes krone': {'index': 4045, 'place_name': 'Sturmes Krone'},
            'syrcus-schlucht': {'index': 3221,
                                'place_name': 'Syrcus-Schlucht'},
            'syrcus-turm': {'index': 493, 'place_name': 'Syrcus-Turm'},
@@ -682,6 +716,9 @@ place_name: PlaceNameDict = {
                                        'Ghiah'},
            'verlorene ruinen': {'index': 3542,
                                 'place_name': 'Verlorene Ruinen'},
+           'versteck der kürbishexe': {'index': 4040,
+                                       'place_name': 'Versteck der '
+                                       'Kürbishexe'},
            'versunkener tempel von qarn': {'index': 50,
                                            'place_name': 'Versunkener '
                                            'Tempel von '
@@ -740,6 +777,8 @@ place_name: PlaceNameDict = {
                                    'place_name': 'Zentrales La Noscea'},
            'zentrales thanalan': {'index': 43,
                                   'place_name': 'Zentrales Thanalan'},
+           'zeros unterschlupf': {'index': 4038,
+                                  'place_name': 'Zeros Unterschlupf'},
            'zum wolkenschäfchen': {'index': 2310,
                                    'place_name': 'Zum Wolkenschäfchen'},
            'ätherochemisches forschungslabor': {'index': 2147,
@@ -831,6 +870,8 @@ place_name: PlaceNameDict = {
                                         'Drydocks'},
            'castrum meridianum': {'index': 260,
                                   'place_name': 'Castrum Meridianum'},
+           'caustic purgatory': {'index': 4249,
+                                 'place_name': 'The Caustic Purgatory'},
            'central azys lla': {'index': 2179,
                                 'place_name': 'Central Azys Lla'},
            'central decks': {'index': 1303, 'place_name': 'Central Decks'},
@@ -979,6 +1020,9 @@ place_name: PlaceNameDict = {
                                    'Nym'},
            'feasting grounds': {'index': 1664,
                                 'place_name': 'The Feasting Grounds'},
+           'fell court of troia': {'index': 4180,
+                                   'place_name': 'The Fell Court of '
+                                   'Troia'},
            'fervid limbo': {'index': 3797,
                             'place_name': 'The Fervid Limbo'},
            'fields of glory': {'index': 1740,
@@ -1053,6 +1097,8 @@ place_name: PlaceNameDict = {
            "heroes' gauntlet": {'index': 3511,
                                 'place_name': "The Heroes' Gauntlet"},
            'hidden gorge': {'index': 2589, 'place_name': 'Hidden Gorge'},
+           'hollow purgatory': {'index': 4198,
+                                'place_name': 'The Hollow Purgatory'},
            'holminster switch': {'index': 3050,
                                  'place_name': 'Holminster Switch'},
            'holocharts': {'index': 1304, 'place_name': 'The Holocharts'},
@@ -1169,6 +1215,9 @@ place_name: PlaceNameDict = {
            "matoya's relict": {'index': 3590,
                                'place_name': "Matoya's Relict"},
            'medias res': {'index': 4098, 'place_name': 'Medias Res'},
+           'meghaduta guest chambers': {'index': 4039,
+                                        'place_name': 'Meghaduta Guest '
+                                        'Chambers'},
            'middle la noscea': {'index': 30,
                                 'place_name': 'Middle La Noscea'},
            'misery': {'index': 1960, 'place_name': 'The Misery'},
@@ -1208,6 +1257,9 @@ place_name: PlaceNameDict = {
            'pendants personal suite': {'index': 3222,
                                        'place_name': 'The Pendants '
                                        'Personal Suite'},
+           'pestilent purgatory': {'index': 4196,
+                                   'place_name': 'The Pestilent '
+                                   'Purgatory'},
            "phantoms' feast": {'index': 3696,
                                'place_name': "The Phantoms' Feast"},
            'pharos sirius': {'index': 230, 'place_name': 'Pharos Sirius'},
@@ -1380,6 +1432,9 @@ place_name: PlaceNameDict = {
            'seat of the first bow': {'index': 346,
                                      'place_name': 'Seat of the First '
                                      'Bow'},
+           'seat of the foremost': {'index': 4185,
+                                    'place_name': 'Seat of the '
+                                    'Foremost'},
            'seat of the lord commander': {'index': 2335,
                                           'place_name': 'Seat of the '
                                           'Lord '
@@ -1411,6 +1466,7 @@ place_name: PlaceNameDict = {
            'sirensong sea': {'index': 2297,
                              'place_name': 'The Sirensong Sea'},
            'smileton': {'index': 3770, 'place_name': 'Smileton'},
+           'sneaky hollow': {'index': 4040, 'place_name': 'Sneaky Hollow'},
            'snowcloak': {'index': 404, 'place_name': 'Snowcloak'},
            'sohm al': {'index': 2031, 'place_name': 'Sohm Al'},
            'sohr khai': {'index': 2090, 'place_name': 'Sohr Khai'},
@@ -1427,9 +1483,14 @@ place_name: PlaceNameDict = {
            'stigma dreamscape': {'index': 3783,
                                  'place_name': 'The Stigma Dreamscape'},
            'stone vigil': {'index': 401, 'place_name': 'Stone Vigil'},
+           "storm's crown": {'index': 4045, 'place_name': "Storm's Crown"},
            'strategy room': {'index': 4023, 'place_name': 'Strategy Room'},
            'striking tree': {'index': 1363,
                              'place_name': 'The Striking Tree'},
+           'stygian insenescence cells': {'index': 4250,
+                                          'place_name': 'Stygian '
+                                          'Insenescence '
+                                          'Cells'},
            "sultana's breath apartment": {'index': 1816,
                                           'place_name': "Sultana's "
                                           'Breath '
@@ -1493,6 +1554,8 @@ place_name: PlaceNameDict = {
                                       'Thal'},
            'ultima thule': {'index': 3712, 'place_name': 'Ultima Thule'},
            'ultimacy': {'index': 2449, 'place_name': 'Ultimacy'},
+           'unnamed island': {'index': 4043,
+                              'place_name': 'Unnamed Island'},
            'upper aetheroacoustic exploratory site': {'index': 464,
                                                       'place_name': 'Upper '
                                                       'Aetheroacoustic '
@@ -1524,7 +1587,8 @@ place_name: PlaceNameDict = {
                                 'place_name': 'The Wreath of Snakes'},
            'xelphatol': {'index': 1792, 'place_name': 'Xelphatol'},
            'yanxia': {'index': 2410, 'place_name': 'Yanxia'},
-           'zadnor': {'index': 3662, 'place_name': 'Zadnor'}},
+           'zadnor': {'index': 3662, 'place_name': 'Zadnor'},
+           "zero's domain": {'index': 4038, 'place_name': "Zero's Domain"}},
     'fr': {'abîme infini de bahamut': {'index': 1759,
                                        'place_name': 'Abîme infini de '
                                        'Bahamut'},
@@ -1542,6 +1606,12 @@ place_name: PlaceNameDict = {
            "antichambre de l'épreuve": {'index': 3471,
                                         'place_name': 'Antichambre de '
                                         "l'épreuve"},
+           'appartements du palais du meghaduta': {'index': 4039,
+                                                   'place_name': 'Appartements '
+                                                   'du '
+                                                   'palais '
+                                                   'du '
+                                                   'Meghaduta'},
            'aquapole': {'index': 1799, 'place_name': 'Aquapole'},
            'arboretum sainte-mocianne': {'index': 2034,
                                          'place_name': 'Arboretum '
@@ -1615,6 +1685,20 @@ place_name: PlaceNameDict = {
                                'place_name': 'Bassin cendreux'},
            'bivouac de brayflox': {'index': 36,
                                    'place_name': 'Bivouac de Brayflox'},
+           'bloc des créations arborescentes': {'index': 4198,
+                                                'place_name': 'Bloc des '
+                                                'créations '
+                                                'arborescentes'},
+           'bloc des créatures extrêmement nocives': {'index': 4249,
+                                                      'place_name': 'Bloc '
+                                                      'des '
+                                                      'créatures '
+                                                      'extrêmement '
+                                                      'nocives'},
+           'bloc des organismes parasites': {'index': 4196,
+                                             'place_name': 'Bloc des '
+                                             'organismes '
+                                             'parasites'},
            'briseur de marées': {'index': 1334,
                                  'place_name': 'Briseur de marées'},
            'brumée': {'index': 425, 'place_name': 'Brumée'},
@@ -1698,6 +1782,8 @@ place_name: PlaceNameDict = {
                                  'place_name': 'Château de Ganlag'},
            'château de kugane': {'index': 2298,
                                  'place_name': 'Château de Kugane'},
+           'château de troïa': {'index': 4180,
+                                'place_name': 'Château de Troïa'},
            'ciel azur': {'index': 2548, 'place_name': 'Ciel azur'},
            'cité croulante de nym': {'index': 2527,
                                      'place_name': 'Cité croulante de '
@@ -1763,6 +1849,15 @@ place_name: PlaceNameDict = {
                                'place_name': 'Deltastice v4.0'},
            'delubrum reginae': {'index': 3597,
                                 'place_name': 'Delubrum Reginae'},
+           'demeure de la femme à tête de citrouille': {'index': 4040,
+                                                        'place_name': 'Demeure '
+                                                        'de '
+                                                        'la '
+                                                        'femme '
+                                                        'à '
+                                                        'tête '
+                                                        'de '
+                                                        'citrouille'},
            'dohn mheg': {'index': 2979, 'place_name': 'Dohn Mheg'},
            'domaine divin - aglaé': {'index': 4167,
                                      'place_name': 'Domaine divin - '
@@ -1920,6 +2015,13 @@ place_name: PlaceNameDict = {
            'la coupe': {'index': 427, 'place_name': 'La Coupe'},
            'la tempête': {'index': 2958, 'place_name': 'La Tempête'},
            'la voûte': {'index': 2327, 'place_name': 'La Voûte'},
+           "laboratoire d'études des secrets du vivant": {'index': 4250,
+                                                          'place_name': 'Laboratoire '
+                                                          "d'études "
+                                                          'des '
+                                                          'secrets '
+                                                          'du '
+                                                          'vivant'},
            'laboratoire de magismologie': {'index': 2147,
                                            'place_name': 'Laboratoire '
                                            'de '
@@ -2273,6 +2375,9 @@ place_name: PlaceNameDict = {
            'salle des opérations': {'index': 4023,
                                     'place_name': 'Salle des '
                                     'opérations'},
+           'salle des primiciers': {'index': 4185,
+                                    'place_name': 'Salle des '
+                                    'primiciers'},
            'salle des sentences': {'index': 2336,
                                    'place_name': 'Salle des sentences'},
            "salon de l'amiral": {'index': 351,
@@ -2341,6 +2446,8 @@ place_name: PlaceNameDict = {
            "temple sacré d'uznair": {'index': 2485,
                                      'place_name': 'Temple sacré '
                                      "d'Uznair"},
+           'territoire de zero': {'index': 4038,
+                                  'place_name': 'Territoire de Zero'},
            'thanalan central': {'index': 43,
                                 'place_name': 'Thanalan central'},
            'thanalan méridional': {'index': 45,
@@ -2354,6 +2461,8 @@ place_name: PlaceNameDict = {
                                       'septentrional'},
            'thavnair': {'index': 3709, 'place_name': 'Thavnair'},
            'thok ast thok': {'index': 2081, 'place_name': 'Thok ast Thok'},
+           'toison des tempêtes': {'index': 4045,
+                                   'place_name': 'Toison des tempêtes'},
            'tour de babil': {'index': 4118, 'place_name': 'Tour de Babil'},
            'tour de la contingence': {'index': 3647,
                                       'place_name': 'Tour de la '
@@ -2419,7 +2528,8 @@ place_name: PlaceNameDict = {
            'yanxia': {'index': 2410, 'place_name': 'Yanxia'},
            'émanation': {'index': 2299, 'place_name': 'Émanation'},
            'île de crèvecarène': {'index': 1377,
-                                  'place_name': 'Île de Crèvecarène'}},
+                                  'place_name': 'Île de Crèvecarène'},
+           'île sans nom': {'index': 4043, 'place_name': 'Île sans nom'}},
     'ja': {'gセイヴァー戦闘甲板': {'index': 3663, 'place_name': 'Gセイヴァー戦闘甲板'},
            'かいはつしつ': {'index': 1660, 'place_name': 'かいはつしつ'},
            'アイズ・オブ・アレキサンダー': {'index': 1835,
@@ -2560,6 +2670,7 @@ place_name: PlaceNameDict = {
            'スマイルトン': {'index': 3770, 'place_name': 'スマイルトン'},
            'セイレーン海': {'index': 2297, 'place_name': 'セイレーン海'},
            'ゼルファトル': {'index': 1792, 'place_name': 'ゼルファトル'},
+           'ゼロの領域': {'index': 4038, 'place_name': 'ゼロの領域'},
            'ゼーメル要塞': {'index': 64, 'place_name': 'ゼーメル要塞'},
            'ソウル・オブ・アレキサンダー': {'index': 1853,
                               'place_name': 'ソウル・オブ・アレキサンダー'},
@@ -2576,6 +2687,7 @@ place_name: PlaceNameDict = {
            'トップマスト：ロビー': {'index': 1811, 'place_name': 'トップマスト：ロビー'},
            'トップマスト：部屋': {'index': 1812, 'place_name': 'トップマスト：部屋'},
            'トトラクの千獄': {'index': 61, 'place_name': 'トトラクの千獄'},
+           'トロイアコート': {'index': 4180, 'place_name': 'トロイアコート'},
            'ドォーヌ・メグ': {'index': 2979, 'place_name': 'ドォーヌ・メグ'},
            'ドマ町人地': {'index': 2813, 'place_name': 'ドマ町人地'},
            'ドラゴンズエアリー': {'index': 2050, 'place_name': 'ドラゴンズエアリー'},
@@ -2649,6 +2761,7 @@ place_name: PlaceNameDict = {
            'メテオの陰地': {'index': 1301, 'place_name': 'メテオの陰地'},
            'メテオ探査坑浅部': {'index': 464, 'place_name': 'メテオ探査坑浅部'},
            'メテオ探査坑深部': {'index': 465, 'place_name': 'メテオ探査坑深部'},
+           'メーガドゥータ宮の客間': {'index': 4039, 'place_name': 'メーガドゥータ宮の客間'},
            'モルディオン監獄': {'index': 153, 'place_name': 'モルディオン監獄'},
            'モードゥナ': {'index': 67, 'place_name': 'モードゥナ'},
            'ヤンサ': {'index': 2410, 'place_name': 'ヤンサ'},
@@ -2710,6 +2823,7 @@ place_name: PlaceNameDict = {
            '低地ラノシア': {'index': 31, 'place_name': '低地ラノシア'},
            '作戦立案室': {'index': 4023, 'place_name': '作戦立案室'},
            '供物穴': {'index': 2083, 'place_name': '供物穴'},
+           '創生樹隔離棟': {'index': 4198, 'place_name': '創生樹隔離棟'},
            '劇場艇プリマビスタ・ブリッジ': {'index': 2371,
                               'place_name': '劇場艇プリマビスタ・ブリッジ'},
            '劇場艇プリマビスタ・大道具部屋': {'index': 2370,
@@ -2723,6 +2837,8 @@ place_name: PlaceNameDict = {
            '古代の民の迷宮': {'index': 478, 'place_name': '古代の民の迷宮'},
            '古城アムダプール': {'index': 128, 'place_name': '古城アムダプール'},
            '古木の神判地': {'index': 1363, 'place_name': '古木の神判地'},
+           '名もなき島': {'index': 4043, 'place_name': '名もなき島'},
+           '呪髪の風塔': {'index': 4045, 'place_name': '呪髪の風塔'},
            '嘆きの海': {'index': 3711, 'place_name': '嘆きの海'},
            '外地ラノシア': {'index': 350, 'place_name': '外地ラノシア'},
            '大トゥパサの崇神所': {'index': 3228, 'place_name': '大トゥパサの崇神所'},
@@ -2736,6 +2852,7 @@ place_name: PlaceNameDict = {
            '宝物殿': {'index': 2295, 'place_name': '宝物殿'},
            '宿屋「ミズンマスト」': {'index': 733, 'place_name': '宿屋「ミズンマスト」'},
            '宿屋「砂時計亭」': {'index': 617, 'place_name': '宿屋「砂時計亭」'},
+           '寄生生物隔離棟': {'index': 4196, 'place_name': '寄生生物隔離棟'},
            '対リヴァイアサン双胴船': {'index': 1334, 'place_name': '対リヴァイアサン双胴船'},
            '封じられた聖塔 リドルアナ': {'index': 2483, 'place_name': '封じられた聖塔 リドルアナ'},
            '希望ノ砲台：「塔」': {'index': 3647, 'place_name': '希望ノ砲台：「塔」'},
@@ -2767,9 +2884,11 @@ place_name: PlaceNameDict = {
            '炎帝祭跡': {'index': 357, 'place_name': '炎帝祭跡'},
            '烈士庵': {'index': 2805, 'place_name': '烈士庵'},
            '無の大地': {'index': 3225, 'place_name': '無の大地'},
+           '猛毒生物隔離棟': {'index': 4249, 'place_name': '猛毒生物隔離棟'},
            '獄之底': {'index': 2496, 'place_name': '獄之底'},
            '獄之蓋': {'index': 2762, 'place_name': '獄之蓋'},
            '獣闘の間': {'index': 694, 'place_name': '獣闘の間'},
+           '生命神秘研究棟': {'index': 4250, 'place_name': '生命神秘研究棟'},
            '白帝の竹林': {'index': 2354, 'place_name': '白帝の竹林'},
            '石の家': {'index': 481, 'place_name': '石の家'},
            '砂の家': {'index': 356, 'place_name': '砂の家'},
@@ -2780,6 +2899,7 @@ place_name: PlaceNameDict = {
            '禁絶幻想': {'index': 2449, 'place_name': '禁絶幻想'},
            '稼働隔壁': {'index': 467, 'place_name': '稼働隔壁'},
            '第一艦橋': {'index': 469, 'place_name': '第一艦橋'},
+           '筆頭神官の間': {'index': 4185, 'place_name': '筆頭神官の間'},
            '紅梅御殿：ロビー': {'index': 2272, 'place_name': '紅梅御殿：ロビー'},
            '紅梅御殿：部屋': {'index': 2273, 'place_name': '紅梅御殿：部屋'},
            '紅玉海': {'index': 2409, 'place_name': '紅玉海'},
@@ -2819,6 +2939,7 @@ place_name: PlaceNameDict = {
            '雲廊': {'index': 406, 'place_name': '雲廊'},
            '高地ドラヴァニア': {'index': 2000, 'place_name': '高地ドラヴァニア'},
            '高地ラノシア': {'index': 34, 'place_name': '高地ラノシア'},
+           '魔人の隠れ家': {'index': 4040, 'place_name': '魔人の隠れ家'},
            '魔大陸中枢': {'index': 2179, 'place_name': '魔大陸中枢'},
            '魔導城プラエトリウム': {'index': 430, 'place_name': '魔導城プラエトリウム'},
            '魔導雀荘「マンダヴィル」': {'index': 2549, 'place_name': '魔導雀荘「マンダヴィル」'},
