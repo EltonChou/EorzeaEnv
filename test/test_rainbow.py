@@ -4,8 +4,8 @@ from EorzeaEnv import EorzeaWeather, EorzeaPlaceName, EorzeaRainbow
 
 class TestRainbow:
     def test_rainbow(self):
-        place_name1 = EorzeaPlaceName("東ラノシア")
-        place_name2 = EorzeaPlaceName("フィールド・オブ・グローリー")
+        place_name1 = EorzeaPlaceName("eastern la noscea")
+        place_name2 = EorzeaPlaceName("fields of glory")
 
         the_rainbow = EorzeaRainbow(place_name1)
         impossible_rainbow = EorzeaRainbow(place_name2)
