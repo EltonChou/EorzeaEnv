@@ -1,4 +1,3 @@
-from datetime import datetime
 from EorzeaEnv import EorzeaWeather, EorzeaPlaceName, EorzeaRainbow, EorzeaTime
 
 
