@@ -19,3 +19,5 @@ freeze: # Export the requirements.txt file.
 lint: # Lint the code.
 	flake8
 
+print-changelog: # Print changelog of current version.
+	@awk -v ver=$$(poetry version --short) '/^#+ \[/ { if (p) { exit }; if ($$2 == "["ver"]") { p=1; next } } p && NF' CHANGELOG.md
