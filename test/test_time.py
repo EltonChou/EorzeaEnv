@@ -62,6 +62,16 @@ class TestTime:
         assert et.moon_phase == 0.50
         assert et.moon_name == 'Sixth Embral Moon'
 
+        et = EorzeaTime()
+        et.moon += 13
+        et.sun += 33
+        et.bell += 26
+        et.minute += 65
+        et.moon -= 13
+        et.sun -= 33
+        et.bell -= 26
+        et.minute -= 65
+
     def test_repr(self):
         et = EorzeaTime.now()
         assert repr(et) == f'EorzeaTime({et.get_unix_time()})'

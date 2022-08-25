@@ -1,6 +1,13 @@
+from unittest import mock
+
 import pytest
 from EorzeaEnv import EorzeaLang, EorzeaTime, EorzeaWeather
-from EorzeaEnv.errors import InvalidEorzeaPlaceName
+from EorzeaEnv.errors import InvalidEorzeaPlaceName, WeatherRateDataError
+
+
+class MockDict(dict):
+    def __getitem__(self, __k):
+        return ()
 
 
 class TestForecast:
@@ -93,3 +100,12 @@ class TestForecast:
             raw=True
         )
         assert raw_weather == 4
+
+    @mock.patch('EorzeaEnv.eorzea_weather._weather_rate', MockDict())
+    def test_weather_data_missing(self):
+        with pytest.raises(WeatherRateDataError):
+            EorzeaWeather.forecast(
+                'Eureka Pagos',
+                1542651599.999,
+                raw=True
+            )

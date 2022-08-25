@@ -186,9 +186,7 @@ def _generate_result(target: int, weather_rate: int, lang: str, raw: bool = Fals
         if target < rate:
             return weather if raw else _weather[weather][lang]
 
-    raise WeatherRateDataError(
-        "No matched rate in data. Please contact with developer."
-    )
+    raise WeatherRateDataError("No matched rate in data. Please contact with developer.")
 
 
 def _calculate_forecast_target(local_timestamp: Union[int, float, EorzeaTime]) -> int:

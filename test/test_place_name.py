@@ -41,10 +41,13 @@ class TestPlaceName:
         the_ruby_sea = EorzeaPlaceName('The Ruby Sea')
         the_ruby_see = EorzeaPlaceName('ruby sea', strict=False)
         assert the_ruby_sea == the_ruby_see
+        assert not the_ruby_sea == 'The Ruby Sea'
 
     def test_validate_method(self):
         assert EorzeaPlaceName.validate('The Ruby Sea', strict=True)
         assert not EorzeaPlaceName.validate('The Ruby See', strict=True)
+        with pytest.raises(ValueError):
+            EorzeaPlaceName.validate('The Ruby Sea', strict=True, fuzzy_cutoff=120)
 
     def test_place_name_property(self):
         place_name = EorzeaPlaceName('The Ruby Sea')
@@ -54,3 +57,7 @@ class TestPlaceName:
     def test_bad_type_place_name(self):
         with pytest.raises(TypeError):
             EorzeaPlaceName(1)  # type: ignore
+
+    def test_repr(self):
+        place = EorzeaPlaceName('The Ruby Sea')
+        assert eval(repr(place)) == place
