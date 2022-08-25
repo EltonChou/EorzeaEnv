@@ -7,7 +7,7 @@
 ## [2.2.1] - 2022-08-XX
 ### Changed
 + `EorzeaTime.weather_period` accepts base timestamp. (a6cbb3e)
-+ Make `EorzeaRainbow` stricter. (22d015b)
++ Make `EorzeaRainbow` stricter. (22d015b)(c72a32b)
 
 ## [2.2.0] - 2022-08-25
 ### Added
