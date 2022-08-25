@@ -11,7 +11,7 @@ cov-test: # Run the tests.
 	coverage run -m pytest
 
 cov-report: # Show the coverage of tests.
-	coverage report -m
+	coverage run -m pytest && coverage report -m
 
 freeze: # Export the requirements.txt file.
 	poetry export --dev --without-hashes -f requirements.txt --output requirements.txt
