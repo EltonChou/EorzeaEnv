@@ -189,7 +189,7 @@ def _generate_result(target: int, weather_rate: int, lang: str, raw: bool = Fals
     raise WeatherRateDataError("No matched rate in data. Please contact with developer.")
 
 
-def _calculate_forecast_target(local_timestamp: Union[int, float, EorzeaTime]) -> int:
+def _calculate_forecast_target(the_time: Union[int, float, EorzeaTime]) -> int:
     """
     Thanks to Rogueadyn's SaintCoinach library for this calculation
     --------------
@@ -201,8 +201,8 @@ def _calculate_forecast_target(local_timestamp: Union[int, float, EorzeaTime]) -
 
     Parameters
     ----------
-    local_timestamp : float
-        local timestamp
+    the_time : EorzeaTime
+        time to calculate the target.
 
     Returns
     -------
@@ -210,14 +210,14 @@ def _calculate_forecast_target(local_timestamp: Union[int, float, EorzeaTime]) -
         weather period start
     """
 
-    if isinstance(local_timestamp, EorzeaTime):
-        local_timestamp = local_timestamp.get_unix_time()
+    if isinstance(the_time, EorzeaTime):
+        the_time = the_time.get_unix_time()
     else:
         warnings.warn("timestamp in float and int type would be deprecated at 2.5.0", DeprecationWarning)
 
-    bell = local_timestamp / 175
+    bell = the_time / 175
     increment = uint32(bell + 8 - (bell % 8)) % 24
-    total_days = uint32(local_timestamp / 4200)
+    total_days = uint32(the_time / 4200)
     calc_base = total_days * 0x64 + increment
     step1 = uint32(calc_base << 0xB) ^ calc_base
     step2 = uint32(step1 >> 8) ^ step1
