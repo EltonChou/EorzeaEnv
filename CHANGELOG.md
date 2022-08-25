@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
++ Diamondust predictor.
++ Aurora predictor.
+
+## [2.2.1] - 2022-08-XX
+### Changed
++ `EorzeaTime.weather_period` accepts base timestamp. (a6cbb3e)
++ Make `EorzeaRainbow` stricter. (22d015b)
+
 ## [2.2.0] - 2022-08-25
 ### Added
 + Add patch 6.2 weather data. (14799ec)
@@ -11,7 +20,7 @@
 + `EorzeaWeather.weather_period` can generate infinite period with argument `step='inf'`. (42e9681)
 + `timestamp` argument in `EorzeaWeather.forecast` accepts `EorzeaTime` instance.
 ### Deprecated
-+ float and int type of `timestamp` argument supporting  in `EorzeaWeather.forecast` would be removed from 2.5.0.
++ float and int type of `timestamp` argument supporting in `EorzeaWeather.forecast` would be removed from 2.5.0.
 
 ## [2.1.0] - 2022-08-23
 ### Added
@@ -21,8 +30,8 @@
 + Fix EorzeaTime.weather_period timestamp type issue.
 + Fix type hint.
 ### Removed
-+ Discard python3.6 supporting
-+ Discard python3.7 supporting
++ **Discard python3.6 supporting.**
++ **Discard python3.7 supporting.**
 
 ## [2.0.0] - 2022-05-30
 ### Added
