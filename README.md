@@ -42,6 +42,16 @@ from EorzeaEnv import EorzeaLang, EorzeaTime, EorzeaWeather, EorzeaPlaceName
 >>> EorzeaTime.now().guardian
 'Althyk'
 ```
++ Get the unix timestamp (int not float)
+```sh
+>>> EorzeaTime.now().get_unix_time()
+1661114514
+```
++ Get the eorzea timestamp (int not float)
+```sh
+>>> EorzeaTime.now().get_eorzea_time()
+34177649220
+```
 
 ### Weather Forecast
 + Using period as tuple or list
@@ -91,6 +101,12 @@ for t in EorzeaTime.weather_period(step=3):
 >>> print(weather_en)
 ['Thunder', 'Snow', 'Blizzards']
 ```
++ Provide a desired base time to calculate.
+```py
+for t in EorzeaTime.weather_period(step=3, from_=datetime(2025, 10, 25).timestamp()):
+    w = EorzeaWeather.forecast('Eureka Pyros', t)
+    print(w)
+```
 + Using period generator directly
 ```py
 weather = EorzeaWeather.forecast('Eureka Pyros', EorzeaTime.weather_period(step=3))
@@ -98,15 +114,6 @@ weather = EorzeaWeather.forecast('Eureka Pyros', EorzeaTime.weather_period(step=
 ```sh
 >>> print(weather_en)
 ['Thunder', 'Snow', 'Blizzards']
-```
-+ Also support float and int type
-```py
-weather = EorzeaWeather.forecast('Eureka Pyros', 1603644000.0)
-weather = EorzeaWeather.forecast('Eureka Pyros', 1603644000)
-```
-```sh
->>> print(weather)
-'Thunder'
 ```
 
 ### Eorzea place name
