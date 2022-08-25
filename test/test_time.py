@@ -1,6 +1,8 @@
+import time
+from datetime import datetime
+
 import pytest
 from EorzeaEnv import EorzeaTime
-import time
 
 
 class TestTime:
@@ -23,6 +25,10 @@ class TestTime:
         with pytest.raises(TypeError):
             for _ in EorzeaTime.weather_period([1, 2, 3]):  # type: ignore
                 pass
+
+        future_date = datetime(3000, 3, 3, 3, 3)
+        for t in EorzeaTime.weather_period(step=10, from_=future_date.timestamp()):
+            assert t.get_unix_time() > datetime.now().timestamp()
 
     def test_time_operator(self):
         t1 = EorzeaTime(12345678)

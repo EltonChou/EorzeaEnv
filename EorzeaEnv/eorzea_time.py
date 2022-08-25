@@ -147,7 +147,11 @@ class EorzeaTime:
         return cls._now
 
     @classmethod
-    def weather_period(cls, step: Union[int, Literal['inf']] = 5) -> Iterator['EorzeaTime']:
+    def weather_period(
+        cls,
+        step: Union[int, Literal['inf']] = 5,
+        from_: Optional[float] = None
+    ) -> Iterator['EorzeaTime']:
         """
         generate weather period
 
@@ -157,10 +161,13 @@ class EorzeaTime:
             quantity of period you want, by default 5.
             'inf' means infinite.
 
+        from_ : Optional[float]
+            The base timestamp for calculate the weather period.
+
         Returns
         -------
-        Iterator[float]
-            a generator of weather period
+        Iterator[EorzeaTime]
+            a generator of weather period.
         """
 
         if not isinstance(step, (int, str)):
@@ -170,7 +177,7 @@ class EorzeaTime:
             if step != 'inf':
                 raise TypeError("integer or Literal['inf'] argument required")
 
-        ts = _time()
+        ts = from_ or _time()
         weather_start = cls(timestamp=ts - (ts % _LOCAL_WEATHER_INTERVAL))
 
         current_step = 0
