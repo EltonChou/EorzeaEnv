@@ -1,3 +1,4 @@
+import copy
 from collections import deque
 from dataclasses import dataclass
 from typing import MutableSequence
@@ -38,21 +39,17 @@ class EorzeaRainbow:
     def is_appear(self):
         if len(self._weather_slot) == 2 and self.is_possible:
             prev_weather, current_weather = self._weather_slot
-            if _check_sun(current_weather.time.sun) and current_weather.time > prev_weather.time:
-                time_ticket = current_weather.time.hour*100 + current_weather.time.minute
-                if 600 <= time_ticket <= 1800:
-                    return all((
-                        prev_weather.raw_weather in RAINY_WEATHERS,
-                        current_weather.raw_weather not in RAINY_WEATHERS
-                    ))
+            if prev_weather.raw_weather in RAINY_WEATHERS and current_weather.raw_weather not in RAINY_WEATHERS:
+                if _check_sun(current_weather.time.sun) and current_weather.time > prev_weather.time:
+                    time_ticket = _generate_time_ticket(current_weather.time)
+                    return 600 <= time_ticket <= 1800
         return False
 
     def append(self, time: EorzeaTime, raw_weather: int):
-        self._weather_slot.append(
-            WeatherInfo(
-                time=time,
-                raw_weather=raw_weather)
-        )
+        self._weather_slot.append(WeatherInfo(
+            time=copy.copy(time),
+            raw_weather=raw_weather
+        ))
 
 
 def _is_rainbow_possible(place_name: EorzeaPlaceName) -> bool:
@@ -67,3 +64,7 @@ def _is_rainbow_possible(place_name: EorzeaPlaceName) -> bool:
 
 def _check_sun(sun: int):
     return sun >= 27 or sun <= 6
+
+
+def _generate_time_ticket(time: EorzeaTime) -> int:
+    return time.hour * 100 + time.minute

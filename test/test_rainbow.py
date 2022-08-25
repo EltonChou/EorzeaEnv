@@ -1,4 +1,7 @@
-from EorzeaEnv import EorzeaWeather, EorzeaPlaceName, EorzeaRainbow, EorzeaTime
+import random
+from datetime import datetime
+
+from EorzeaEnv import EorzeaPlaceName, EorzeaRainbow, EorzeaTime, EorzeaWeather
 
 
 class TestRainbow:
@@ -27,3 +30,18 @@ class TestRainbow:
 
         assert the_rainbow.is_appear
         assert not impossible_rainbow.is_appear
+
+    def test_used_with_weather_period_generator(self):
+        place = EorzeaPlaceName("東ラノシア")
+        the_rainbow = EorzeaRainbow(place_name=place)
+        rainbow_times: list[datetime] = []
+        expected_rainbow_count = random.randint(1, 20)
+
+        for et in EorzeaTime.weather_period(step='inf', from_=datetime(2022, 8, 25, 0, 0).timestamp()):
+            the_rainbow.append(et, EorzeaWeather.forecast(place, et, raw=True))
+            if the_rainbow.is_appear:
+                rainbow_times.append(datetime.fromtimestamp(et.get_unix_time()))
+            if len(rainbow_times) == expected_rainbow_count:
+                break
+
+        assert len(rainbow_times) == expected_rainbow_count
