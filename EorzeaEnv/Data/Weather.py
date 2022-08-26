@@ -1,14 +1,8 @@
-from typing import Mapping, Optional, TypedDict
+from typing import Literal, Mapping, Optional, Union
 
+from ..eorzea_lang import EorzeaLang
 
-class LocaleWeather(TypedDict):
-    de: Optional[str]
-    en: Optional[str]
-    fr: Optional[str]
-    ja: Optional[str]
-
-
-weather: Mapping[int, LocaleWeather] = {
+weather: Mapping[int, Mapping[Union[EorzeaLang, Literal['de', 'en', 'fr', 'ja']], Optional[str]]] = {
     0: {'de': None, 'en': None, 'fr': None, 'ja': None},
     1: {'de': 'Klar', 'en': 'Clear Skies', 'fr': 'Dégagé', 'ja': '快晴'},
     2: {'de': 'Heiter', 'en': 'Fair Skies', 'fr': 'Clair', 'ja': '晴れ'},

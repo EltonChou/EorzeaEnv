@@ -174,17 +174,19 @@ def _check_iterable_timestamp(timestamp: Iterable[Union[int, float, EorzeaTime]]
 
 
 @overload
-def _generate_result(target: int, weather_rate: int, lang: str, raw: Literal[True]) -> int: ...
+def _generate_result(target: int, weather_rate: int, lang: Lang, raw: Literal[True]) -> int: ...
 @overload
-def _generate_result(target: int, weather_rate: int, lang: str, raw: Literal[False]) -> str: ...
+def _generate_result(target: int, weather_rate: int, lang: Lang, raw: Literal[False]) -> str: ...
 @overload
-def _generate_result(target: int, weather_rate: int, lang: str, raw: bool = False) -> Union[int, str]: ...
+def _generate_result(target: int, weather_rate: int, lang: Lang, raw: bool = False) -> Union[int, str]: ...
 
 
-def _generate_result(target: int, weather_rate: int, lang: str, raw: bool = False) -> Union[int, str]:
+def _generate_result(target: int, weather_rate: int, lang: Lang, raw: bool = False) -> Union[int, str]:
     for rate, weather in _weather_rate[weather_rate]:
         if target < rate:
-            return weather if raw else _weather[weather][lang]
+            weather_value = weather if raw else _weather[weather][lang]
+            if weather_value:
+                return weather_value
 
     raise WeatherRateDataError("No matched rate in data. Please contact with developer.")
 
