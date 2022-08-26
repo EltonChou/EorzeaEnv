@@ -1,4 +1,14 @@
-weather = {
+from typing import Mapping, Optional, TypedDict
+
+
+class LocaleWeather(TypedDict):
+    de: Optional[str]
+    en: Optional[str]
+    fr: Optional[str]
+    ja: Optional[str]
+
+
+weather: Mapping[int, LocaleWeather] = {
     0: {'de': None, 'en': None, 'fr': None, 'ja': None},
     1: {'de': 'Klar', 'en': 'Clear Skies', 'fr': 'Dégagé', 'ja': '快晴'},
     2: {'de': 'Heiter', 'en': 'Fair Skies', 'fr': 'Clair', 'ja': '晴れ'},

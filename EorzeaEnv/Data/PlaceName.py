@@ -1,4 +1,7 @@
-from typing import Mapping, TypedDict
+
+from typing import Literal, Mapping, TypedDict, Union
+
+from ..eorzea_lang import EorzeaLang
 
 
 class PlaceInfoDict(TypedDict):
@@ -6,14 +9,10 @@ class PlaceInfoDict(TypedDict):
     place_name: str
 
 
-class PlaceNameDict(TypedDict):
-    de: Mapping[str, PlaceInfoDict]
-    en: Mapping[str, PlaceInfoDict]
-    fr: Mapping[str, PlaceInfoDict]
-    ja: Mapping[str, PlaceInfoDict]
-
-
-place_name: PlaceNameDict = {
+place_name: Mapping[
+    Union[EorzeaLang, Literal['de', 'en', 'fr', 'ja']],
+    Mapping[str, PlaceInfoDict]
+] = {
     'de': {'abalathisches wolkenmeer': {'index': 2100,
                                         'place_name': 'Abalathisches '
                                         'Wolkenmeer'},

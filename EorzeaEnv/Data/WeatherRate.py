@@ -1,4 +1,6 @@
-weather_rate = {
+from typing import Mapping, Sequence, Tuple
+
+weather_rate: Mapping[int, Sequence[Tuple[int, int]]] = {
     0: [(100, 2)],
     1: [(5, 7), (20, 7), (30, 4), (40, 3), (55, 2), (85, 1), (100, 2)],
     2: [(5, 7), (20, 7), (30, 4), (40, 3), (55, 2), (85, 1), (100, 2)],
