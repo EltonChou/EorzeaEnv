@@ -4,6 +4,10 @@
 - Diamondust predictor.
 - Aurora predictor.
 
+## [2.2.2] - 2022-08-27
+### Fixed
+- Fixed WeatherRate data missing. (452d11b)
+
 ## [2.2.1] - 2022-08-26
 ### Changed
 - `EorzeaTime.weather_period` accepts base timestamp. (a6cbb3e)
