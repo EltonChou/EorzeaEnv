@@ -1,5 +1,5 @@
 import warnings
-from typing import (Any, Callable, Iterable, List, Literal, TypeVar, Union,
+from typing import (Any, Iterable, List, Literal, Union,
                     overload)
 
 from numpy import uint32
@@ -15,8 +15,6 @@ from .errors import WeatherRateDataError
 Lang = Union[Literal['en', 'ja', 'de', 'fr'], EorzeaLang]
 ValidPlaceName = Union[str, EorzeaPlaceName]
 Timestamp = Union[EorzeaTime, float, int]
-Transform_T = TypeVar('Transform_T')
-WeatherTransform_Func = Callable[[int], Transform_T]
 
 
 class EorzeaWeather:
