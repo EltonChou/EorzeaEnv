@@ -123,7 +123,7 @@ class EorzeaWeather:
         assert type(place_name) is EorzeaPlaceName
         weather_rate = _territory_weather[place_name.index]
 
-        def make_result(timestamp: Timestamp):
+        def make_result(timestamp: EorzeaTime):
             target = _calculate_forecast_target(timestamp)
             result = _generate_result(target, weather_rate)
             if not raw:
@@ -135,13 +135,13 @@ class EorzeaWeather:
             results = []
 
             for t in timestamp:
-                t = ensure_timestamp(t)
+                t = _ensure_timestamp(t)
                 result = make_result(t)
                 results.append(result)
 
             return results
 
-        timestamp = ensure_timestamp(timestamp)
+        timestamp = _ensure_timestamp(timestamp)
         result = make_result(timestamp)
         return result
 
@@ -150,20 +150,17 @@ class EorzeaWeather:
         return _weather[index][lang]
 
 
-def ensure_timestamp(timestamp: Any) -> Timestamp:
+def _ensure_timestamp(timestamp: Any) -> EorzeaTime:
     if type(timestamp) is EorzeaTime:
         return timestamp
     if type(timestamp) in (float, int):
+        warnings.warn(
+            "timestamp in float and int type is deprecated. It will be unsupported at 2.5.0. Please use EorzeaTime instead.",
+            DeprecationWarning
+        )
         return EorzeaTime(timestamp=timestamp)
     raise TypeError(
         "timestamp should be type of int, float, EorzeaTime."
-    )
-
-
-def _check_iterable_timestamp(timestamp: Iterable[Timestamp]) -> bool:
-    return all(
-        type(t) is int or type(t) is float or type(t) is EorzeaTime
-        for t in timestamp
     )
 
 
@@ -178,7 +175,7 @@ def _generate_result(
     raise WeatherRateDataError("No matched rate in data. Please contact with developer.")
 
 
-def _calculate_forecast_target(the_time: Timestamp) -> int:
+def _calculate_forecast_target(the_time: EorzeaTime) -> int:
     """
     Thanks to Rogueadyn's SaintCoinach library for this calculation
     --------------
@@ -199,14 +196,11 @@ def _calculate_forecast_target(the_time: Timestamp) -> int:
         weather period start
     """
 
-    if isinstance(the_time, EorzeaTime):
-        the_time = the_time.get_unix_time()
-    else:
-        warnings.warn("timestamp in float and int type would be deprecated at 2.5.0", DeprecationWarning)
+    ts = the_time.get_unix_time()
 
-    bell = the_time / 175
+    bell = ts / 175
     increment = uint32(bell + 8 - (bell % 8)) % 24
-    total_days = uint32(the_time / 4200)
+    total_days = uint32(ts / 4200)
     calc_base = total_days * 0x64 + increment
     step1 = uint32(calc_base << 0xB) ^ calc_base
     step2 = uint32(step1 >> 8) ^ step1
