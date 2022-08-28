@@ -10,14 +10,17 @@ install: # Install requirements of project.
 cov-test: # Run the tests.
 	coverage run -m pytest
 
-cov-report: # Show the coverage of tests.
-	coverage run -m pytest && coverage report -m
+cov-report: cov-test # Show the coverage of tests.
+	coverage report -m
 
 freeze: # Export the requirements.txt file.
 	poetry export --dev --without-hashes -f requirements.txt --output requirements.txt
 
 lint: # Lint the code.
 	flake8
+
+type-check: # Check the type.
+	mypy
 
 print-changelog: # Print changelog of current version.
 	@awk -v ver=$$(poetry version --short) '/^#+ \[/ { if (p) { exit }; if ($$2 == "["ver"]") { p=1; next } } p && NF' CHANGELOG.md

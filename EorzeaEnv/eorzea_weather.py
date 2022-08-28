@@ -1,5 +1,6 @@
 import warnings
-from typing import Iterable, List, Literal, Union, overload
+from typing import (Any, Callable, Iterable, List, Literal, TypeVar, Union,
+                    overload)
 
 from numpy import uint32
 
@@ -12,6 +13,10 @@ from .eorzea_time import EorzeaTime
 from .errors import WeatherRateDataError
 
 Lang = Union[Literal['en', 'ja', 'de', 'fr'], EorzeaLang]
+ValidPlaceName = Union[str, EorzeaPlaceName]
+Timestamp = Union[EorzeaTime, float, int]
+Transform_T = TypeVar('Transform_T')
+WeatherTransform_Func = Callable[[int], Transform_T]
 
 
 class EorzeaWeather:
@@ -30,8 +35,8 @@ class EorzeaWeather:
     @classmethod
     def forecast(
         cls,
-        place_name: Union[str, EorzeaPlaceName],
-        timestamp: Iterable[Union[int, float, EorzeaTime]],
+        place_name: ValidPlaceName,
+        timestamp: Iterable[Timestamp],
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: Literal[False] = False
@@ -41,30 +46,20 @@ class EorzeaWeather:
     @classmethod
     def forecast(
         cls,
-        place_name: Union[str, EorzeaPlaceName],
-        timestamp: Iterable[Union[int, float, EorzeaTime]],
+        place_name: ValidPlaceName,
+        timestamp: Iterable[Timestamp],
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
-        raw: Literal[True] = True
+        *,
+        raw: Literal[True]
     ) -> List[int]: ...
 
     @overload
     @classmethod
     def forecast(
         cls,
-        place_name: Union[str, EorzeaPlaceName],
-        timestamp: Iterable[Union[int, float, EorzeaTime]],
-        lang: Lang = EorzeaLang.EN,
-        strict: bool = True,
-        raw: bool = False
-    ) -> Union[List[int], List[str]]: ...
-
-    @overload
-    @classmethod
-    def forecast(
-        cls,
-        place_name: Union[str, EorzeaPlaceName],
-        timestamp: Union[int, float, EorzeaTime],
+        place_name: ValidPlaceName,
+        timestamp: Timestamp,
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: Literal[False] = False
@@ -74,33 +69,23 @@ class EorzeaWeather:
     @classmethod
     def forecast(
         cls,
-        place_name: Union[str, EorzeaPlaceName],
-        timestamp: Union[int, float, EorzeaTime],
+        place_name: ValidPlaceName,
+        timestamp: Timestamp,
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
-        raw: Literal[True] = True
+        *,
+        raw: Literal[True]
     ) -> int: ...
 
-    @overload
     @classmethod
     def forecast(
         cls,
-        place_name: Union[str, EorzeaPlaceName],
-        timestamp: Union[int, float, EorzeaTime],
+        place_name: ValidPlaceName,
+        timestamp: Union[Timestamp, Iterable[Timestamp]],
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: bool = False
-    ) -> Union[str, int]: ...
-
-    @classmethod
-    def forecast(
-            cls,
-            place_name: Union[str, EorzeaPlaceName],
-            timestamp: Union[int, float, EorzeaTime, Iterable[Union[int, float, EorzeaTime]]],
-            lang: Lang = EorzeaLang.EN,
-            strict: bool = True,
-            raw: bool = False
-    ) -> Union[str, int, List[str], List[int]]:
+    ):
         """Forecast Eorzea weather by place
 
         Parameters
@@ -138,60 +123,62 @@ class EorzeaWeather:
         assert type(place_name) is EorzeaPlaceName
         weather_rate = _territory_weather[place_name.index]
 
-        if isinstance(timestamp, Iterable):
-            if _check_iterable_timestamp(timestamp):
-                targets = (
-                    _calculate_forecast_target(t)
-                    for t in timestamp
-                )
-                result = [
-                    _generate_result(target, weather_rate, lang, raw=raw)
-                    for target in targets
-                ]
-
-                return result  # type: ignore
-
-        if isinstance(timestamp, (float, int, EorzeaTime)):
+        def make_result(timestamp: Timestamp):
             target = _calculate_forecast_target(timestamp)
-            result = _generate_result(target, weather_rate, lang, raw=raw)
-
+            result = _generate_result(target, weather_rate)
+            if not raw:
+                result = cls.get_weather(result, lang)
+                assert result
             return result
 
-        raise TypeError(
-            "timestamp should be type of Iterable[Union[int, flaot]], int, float."
-        )
+        if isinstance(timestamp, Iterable):
+            results = []
+
+            for t in timestamp:
+                t = ensure_timestamp(t)
+                result = make_result(t)
+                results.append(result)
+
+            return results
+
+        timestamp = ensure_timestamp(timestamp)
+        result = make_result(timestamp)
+        return result
 
     @staticmethod
     def get_weather(index: int, lang: Lang):
         return _weather[index][lang]
 
 
-def _check_iterable_timestamp(timestamp: Iterable[Union[int, float, EorzeaTime]]) -> bool:
+def ensure_timestamp(timestamp: Any) -> Timestamp:
+    if type(timestamp) is EorzeaTime:
+        return timestamp
+    if type(timestamp) in (float, int):
+        return EorzeaTime(timestamp=timestamp)
+    raise TypeError(
+        "timestamp should be type of int, float, EorzeaTime."
+    )
+
+
+def _check_iterable_timestamp(timestamp: Iterable[Timestamp]) -> bool:
     return all(
         type(t) is int or type(t) is float or type(t) is EorzeaTime
         for t in timestamp
     )
 
 
-@overload
-def _generate_result(target: int, weather_rate: int, lang: Lang, raw: Literal[True]) -> int: ...
-@overload
-def _generate_result(target: int, weather_rate: int, lang: Lang, raw: Literal[False]) -> str: ...
-@overload
-def _generate_result(target: int, weather_rate: int, lang: Lang, raw: bool = False) -> Union[int, str]: ...
-
-
-def _generate_result(target: int, weather_rate: int, lang: Lang, raw: bool = False) -> Union[int, str]:
+def _generate_result(
+    target: int,
+    weather_rate: int
+) -> int:
     for rate, weather in _weather_rate[weather_rate]:
         if target < rate:
-            weather_value = weather if raw else _weather[weather][lang]
-            if weather_value:
-                return weather_value
+            return weather
 
     raise WeatherRateDataError("No matched rate in data. Please contact with developer.")
 
 
-def _calculate_forecast_target(the_time: Union[int, float, EorzeaTime]) -> int:
+def _calculate_forecast_target(the_time: Timestamp) -> int:
     """
     Thanks to Rogueadyn's SaintCoinach library for this calculation
     --------------

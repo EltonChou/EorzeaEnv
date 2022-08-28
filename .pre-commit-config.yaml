@@ -5,3 +5,7 @@ repos:
       - id: flake8
       - id: check-merge-conflict
       - id: check-yaml
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: ''
+    hooks:
+      - id: mypy

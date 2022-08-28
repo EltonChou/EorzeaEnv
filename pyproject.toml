@@ -27,17 +27,40 @@ include = ["README.md", "CHANGELOG.md", "LICENSE"]
 
 [tool.poetry.dependencies]
 python = ">=3.8, <3.11"
-numpy =   "^1.19.0"
+numpy = "^1.19.0"
 rapidfuzz = "^2.0.11"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
 autopep8 = "^1.6.0"
 tox = "^3.25.1"
-coverage = "^6.4.4"
+coverage = { extras = ["toml"], version = "^6.4.4" }
 flake8 = "^5.0.4"
 pre-commit = "^2.20.0"
+mypy = "^0.971"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+files = ["EorzeaEnv/**/*.py"]
+
+[tool.pytest.ini_options]
+junit_family = "xunit2"
+addopts = "-ra -q"
+testpaths = ["test"]
+
+[tool.coverage.run]
+omit = ["*/site-packages/*", "*/tests/*", "*/test/*"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+exclude_lines = [
+    "pragma: no cover",
+    "@abstract",
+    "@overload",
+    "pass",
+    "raise NotImplementedError",
+]
