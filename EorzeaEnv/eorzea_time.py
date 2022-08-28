@@ -200,23 +200,35 @@ class EorzeaTime:
             self.guardian
         )
 
-    def __lt__(self, that: 'EorzeaTime'):
-        return self.get_unix_time() < that.get_unix_time()
+    def __lt__(self, that: object):
+        if isinstance(that, self.__class__):
+            return self.get_unix_time() < that.get_unix_time()
+        return NotImplemented
 
-    def __le__(self, that: 'EorzeaTime'):
-        return self.get_unix_time() <= that.get_unix_time()
+    def __le__(self, that: object):
+        if isinstance(that, self.__class__):
+            return self.get_unix_time() <= that.get_unix_time()
+        return NotImplemented
 
-    def __eq__(self, that: 'EorzeaTime'):
-        return self.get_unix_time() == that.get_unix_time()
+    def __eq__(self, that: object):
+        if isinstance(that, self.__class__):
+            return self.get_unix_time() == that.get_unix_time()
+        return NotImplemented
 
-    def __ne__(self, that: 'EorzeaTime'):
-        return self.get_unix_time() != that.get_unix_time()
+    def __ne__(self, that: object):
+        if isinstance(that, self.__class__):
+            return self.get_unix_time() != that.get_unix_time()
+        return NotImplemented
 
-    def __ge__(self, that: 'EorzeaTime'):
-        return self.get_unix_time() >= that.get_unix_time()
+    def __ge__(self, that: object):
+        if isinstance(that, self.__class__):
+            return self.get_unix_time() >= that.get_unix_time()
+        return NotImplemented
 
-    def __gt__(self, that: 'EorzeaTime'):
-        return self.get_unix_time() > that.get_unix_time()
+    def __gt__(self, that: object):
+        if isinstance(that, self.__class__):
+            return self.get_unix_time() > that.get_unix_time()
+        return NotImplemented
 
 
 def _get_guardian_by_moon(moon: int) -> str:

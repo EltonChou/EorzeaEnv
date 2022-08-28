@@ -49,6 +49,17 @@ class TestTime:
         t2 = EorzeaTime.now()
         assert t1 == t2
 
+        with pytest.raises(TypeError):
+            assert t1 > 1
+        with pytest.raises(TypeError):
+            assert t1 >= 1
+        with pytest.raises(TypeError):
+            assert not t1 <= 1
+        with pytest.raises(TypeError):
+            assert t1 < 1
+        assert t1 != 1
+        assert not t1 == 1
+
     def test_property(self):
         ts = 12700000
         et = EorzeaTime(ts)
