@@ -1,7 +1,7 @@
 import copy
 from collections import deque
 from dataclasses import dataclass
-from typing import MutableSequence
+from typing import MutableSequence, Set
 
 from .Data.TerritoryWeather import territory_weather as _territory_weather
 from .Data.WeatherRate import weather_rate as _weather_rate
@@ -55,7 +55,7 @@ class EorzeaRainbow:
 def _is_rainbow_possible(place_name: EorzeaPlaceName) -> bool:
     weather_rate_index = _territory_weather[place_name.index]
     weather_rate = _weather_rate[weather_rate_index]
-    possible_weathers: set[int] = {
+    possible_weathers: Set[int] = {
         w[1]
         for w in weather_rate
     }
