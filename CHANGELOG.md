@@ -4,6 +4,10 @@
 - Diamondust predictor.
 - Aurora predictor.
 
+## [2.2.3] - 2022-08-29
+### Changed
+- Refined type hint
+
 ## [2.2.2] - 2022-08-27
 ### Fixed
 - Fixed WeatherRate data missing. (452d11b)
@@ -14,6 +18,7 @@
 - Make `EorzeaRainbow` stricter. (22d015b)(c72a32b)
 ### Fixed
 - Fixed `EorzeaRainbow` bug. (c72a32b)
+
 ## [2.2.0] - 2022-08-25
 ### Added
 - Add patch 6.2 weather data. (14799ec)

@@ -28,13 +28,9 @@ jobs:
         run: |
           poetry run flake8
 
-      - name: Run pytest and collect coverage
+      - name: Type check
         run: |
-          poetry run coverage run -m pytest
-          poetry run coverage xml
-
-      - name: Upload coverage reports to Codecov with GitHub Action
-        uses: codecov/codecov-action@v3
+          poetry run mypy
 
       - name: Publish package
         run: |

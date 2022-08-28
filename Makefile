@@ -22,5 +22,8 @@ lint: # Lint the code.
 type-check: # Check the type.
 	mypy
 
+update-version: # Sync package file version.
+	sed -i "s/[0-9]\.[0-9]\.[0-9]/$$(poetry version --short)/1" EorzeaEnv/__init__.py
+
 print-changelog: # Print changelog of current version.
 	@awk -v ver=$$(poetry version --short) '/^#+ \[/ { if (p) { exit }; if ($$2 == "["ver"]") { p=1; next } } p && NF' CHANGELOG.md
