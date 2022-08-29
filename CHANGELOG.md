@@ -4,6 +4,10 @@
 - Diamondust predictor.
 - Aurora predictor.
 
+## [2.2.4] - 2022-08-29
+### Fixed
+- Fix package python requirement.
+
 ## [2.2.3] - 2022-08-29
 ### Changed
 - Refined type hint
