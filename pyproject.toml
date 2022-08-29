@@ -26,7 +26,7 @@ include = ["README.md", "CHANGELOG.md", "LICENSE"]
 "Bug Reports" = "https://github.com/EltonChou/EorzeaEnv/issues"
 
 [tool.poetry.dependencies]
-python = ">=3.8, <3.11"
+python = ">=3.8"
 numpy = "^1.19.0"
 rapidfuzz = "^2.0.11"
 
