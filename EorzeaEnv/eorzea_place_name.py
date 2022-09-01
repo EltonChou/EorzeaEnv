@@ -55,11 +55,11 @@ class EorzeaPlaceName:
     __value: str
 
     def __init__(
-            self,
-            place_name: str,
-            strict: bool = True,
-            locale_scopes: List[LocaleScope] = DEFAULT_LOCALE_SCOPES,
-            fuzzy_cutoff: FuzzyCutoff = DEFAULT_CUTOFF
+        self,
+        place_name: str,
+        strict: bool = True,
+        locale_scopes: List[LocaleScope] = DEFAULT_LOCALE_SCOPES,
+        fuzzy_cutoff: FuzzyCutoff = DEFAULT_CUTOFF
     ) -> None:
         place_info = _validate_place_name(
             place_name,
@@ -80,18 +80,26 @@ class EorzeaPlaceName:
 
     @staticmethod
     def validate(
-            place_name: str,
-            strict: bool,
-            locale_scopes: List[LocaleScope] = DEFAULT_LOCALE_SCOPES,
-            fuzzy_cutoff: FuzzyCutoff = DEFAULT_CUTOFF,
+        place_name: Union[str, 'EorzeaPlaceName'],
+        strict: bool,
+        locale_scopes: List[LocaleScope] = DEFAULT_LOCALE_SCOPES,
+        fuzzy_cutoff: FuzzyCutoff = DEFAULT_CUTOFF,
     ) -> bool:
-        try:
-            place_info = _validate_place_name(place_name, strict,
-                                              locale_scopes, fuzzy_cutoff)
-            return bool(place_info)
+        if type(place_name) is EorzeaPlaceName:
+            return True
 
-        except InvalidEorzeaPlaceName:
-            return False
+        if type(place_name) is str:
+            try:
+                place_info = _validate_place_name(
+                    place_name,
+                    strict,
+                    locale_scopes,
+                    fuzzy_cutoff)
+                return bool(place_info)
+            except InvalidEorzeaPlaceName:
+                return False
+
+        return False
 
     def __str__(self):
         return self.value

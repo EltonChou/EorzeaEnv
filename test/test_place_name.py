@@ -48,6 +48,9 @@ class TestPlaceName:
         assert not EorzeaPlaceName.validate('The Ruby See', strict=True)
         with pytest.raises(ValueError):
             EorzeaPlaceName.validate('The Ruby Sea', strict=True, fuzzy_cutoff=120)
+        ruby_sea = EorzeaPlaceName('The Ruby Sea')
+        assert EorzeaPlaceName.validate(ruby_sea, strict=True)
+        assert not EorzeaPlaceName.validate(1, strict=False)  # type: ignore
 
     def test_place_name_property(self):
         place_name = EorzeaPlaceName('The Ruby Sea')
