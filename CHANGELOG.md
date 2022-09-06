@@ -4,6 +4,10 @@
 - Diamondust predictor.
 - Aurora predictor.
 
+## [2.2.5] - 2022-09-07
+### Added
+- Suuport type checking.
+
 ## [2.2.4] - 2022-08-29
 ### Fixed
 - Fix package python requirement.
