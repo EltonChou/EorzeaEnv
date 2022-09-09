@@ -37,7 +37,9 @@ class TestRainbow:
         rainbow_times: list[datetime] = []
         expected_rainbow_count = random.randint(1, 20)
 
-        for et in EorzeaTime.weather_period(step='inf', from_=datetime(2022, 8, 25, 0, 0).timestamp()):
+        for et in EorzeaTime.weather_period(
+            step="inf", from_=datetime(2022, 8, 25, 0, 0).timestamp()
+        ):
             the_rainbow.append(et, EorzeaWeather.forecast(place, et, raw=True))
             if the_rainbow.is_appear:
                 rainbow_times.append(datetime.fromtimestamp(et.get_unix_time()))

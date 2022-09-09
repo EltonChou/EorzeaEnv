@@ -17,7 +17,7 @@ DEFAULT_LOCALE_SCOPES: List[LocaleScope] = [
     EorzeaLang.EN,
     EorzeaLang.JA,
     EorzeaLang.FR,
-    EorzeaLang.DE
+    EorzeaLang.DE,
 ]
 
 
@@ -51,6 +51,7 @@ class EorzeaPlaceName:
     :class:`EorzeaEnv.errors.InvalidEorzeaPlaceName`
         When place_name is invalid.
     """
+
     __index: int
     __value: str
 
@@ -59,13 +60,14 @@ class EorzeaPlaceName:
         place_name: str,
         strict: bool = True,
         locale_scopes: List[LocaleScope] = DEFAULT_LOCALE_SCOPES,
-        fuzzy_cutoff: FuzzyCutoff = DEFAULT_CUTOFF
+        fuzzy_cutoff: FuzzyCutoff = DEFAULT_CUTOFF,
     ) -> None:
         place_info = _validate_place_name(
             place_name,
             is_strict=strict,
             fuzzy_cutoff=fuzzy_cutoff,
-            locale_scopes=locale_scopes)
+            locale_scopes=locale_scopes,
+        )
 
         self.__index = place_info.index
         self.__value = place_info.place_name
@@ -80,7 +82,7 @@ class EorzeaPlaceName:
 
     @staticmethod
     def validate(
-        place_name: Union[str, 'EorzeaPlaceName'],
+        place_name: Union[str, "EorzeaPlaceName"],
         strict: bool,
         locale_scopes: List[LocaleScope] = DEFAULT_LOCALE_SCOPES,
         fuzzy_cutoff: FuzzyCutoff = DEFAULT_CUTOFF,
@@ -91,10 +93,8 @@ class EorzeaPlaceName:
         if type(place_name) is str:
             try:
                 place_info = _validate_place_name(
-                    place_name,
-                    strict,
-                    locale_scopes,
-                    fuzzy_cutoff)
+                    place_name, strict, locale_scopes, fuzzy_cutoff
+                )
                 return bool(place_info)
             except InvalidEorzeaPlaceName:
                 return False
@@ -122,35 +122,38 @@ def _validate_place_name(
 ) -> PlaceInfo:
     if type(place_name) is not str:
         raise TypeError(
-            f"place_name should be `str`. ({place_name} is {type(place_name)})")
+            f"place_name should be `str`. ({place_name} is {type(place_name)})"
+        )
     if fuzzy_cutoff > 100 or fuzzy_cutoff < 0:
-        raise ValueError('Cutoff value should be in 0-100.')
+        raise ValueError("Cutoff value should be in 0-100.")
 
     possible_place_name = None
     place_name = place_name.lower()
-    place_name = re.sub('^the ', '', place_name)
-    place_names_dictionary = _bulid_dictionary_by_locales(locale_scopes)
+    place_name = re.sub("^the ", "", place_name)
+    place_names_reference = _bulid_reference_by_locales(locale_scopes)
 
     if is_strict:
-        place_info = place_names_dictionary.get(place_name)
+        place_info = place_names_reference.get(place_name)
         if place_info:
             return PlaceInfo(**place_info)
 
     else:
         result = fuzz_process.extractOne(
-            place_name, place_names_dictionary.keys(), score_cutoff=fuzzy_cutoff)
+            place_name, place_names_reference.keys(), score_cutoff=fuzzy_cutoff
+        )
 
         if result:
             possible_place_name, score, index = result
-            place_info = place_names_dictionary.get(possible_place_name)
+            place_info = place_names_reference.get(possible_place_name)
             if place_info:
                 return PlaceInfo(**place_info)
 
-    raise InvalidEorzeaPlaceName(
-        place_name=place_name, is_strict=is_strict)
+    raise InvalidEorzeaPlaceName(place_name=place_name, is_strict=is_strict)
 
 
-def _bulid_dictionary_by_locales(locales: List[LocaleScope]) -> Mapping[str, PlaceInfoDict]:
+def _bulid_reference_by_locales(
+    locales: List[LocaleScope],
+) -> Mapping[str, PlaceInfoDict]:
     dictionary: Mapping[str, PlaceInfoDict] = {}
     for locale in locales:
         dictionary.update(_place_names[locale])  # type: ignore

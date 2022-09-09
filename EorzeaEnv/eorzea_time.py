@@ -13,6 +13,7 @@ class EorzeaTime:
     """
     EorzeaTime
     """
+
     _bell: int
     _minute: int
     _moon: int
@@ -20,7 +21,7 @@ class EorzeaTime:
     _year: int
 
     _last_now_update: int = int(round(_time()))
-    _now: Optional['EorzeaTime'] = None
+    _now: Optional["EorzeaTime"] = None
 
     def __init__(self, timestamp: Optional[float] = None):
         ts = timestamp or _time()
@@ -148,10 +149,8 @@ class EorzeaTime:
 
     @classmethod
     def weather_period(
-        cls,
-        step: Union[int, Literal['inf']] = 5,
-        from_: Optional[float] = None
-    ) -> Iterator['EorzeaTime']:
+        cls, step: Union[int, Literal["inf"]] = 5, from_: Optional[float] = None
+    ) -> Iterator["EorzeaTime"]:
         """
         generate weather period
 
@@ -174,30 +173,30 @@ class EorzeaTime:
             raise TypeError("integer or Literal['inf'] argument required")
 
         if type(step) is str:
-            if step != 'inf':
+            if step != "inf":
                 raise TypeError("integer or Literal['inf'] argument required")
 
         ts = from_ or _time()
         weather_start = cls(timestamp=ts - (ts % _LOCAL_WEATHER_INTERVAL))
 
         current_step = 0
-        while True if step == 'inf' else current_step < step:
+        while True if step == "inf" else current_step < step:
             yield weather_start
             weather_start.bell = weather_start.bell + 8
             current_step += 1
 
     def __repr__(self):
-        return "{}({})".format(
-            self.__class__.__qualname__,
-            self.get_unix_time()
-        )
+        return "{}({})".format(self.__class__.__qualname__, self.get_unix_time())
 
     def __str__(self):
         return "{}({}, {}, {:02d}, {:02d}, Phase:{:.2f}, {})".format(
             self.__class__.__qualname__,
-            self.moon_name, self.sun,
-            self.hour, self.minute, self.moon_phase,
-            self.guardian
+            self.moon_name,
+            self.sun,
+            self.hour,
+            self.minute,
+            self.moon_phase,
+            self.guardian,
         )
 
     def __lt__(self, that: object):
@@ -244,7 +243,7 @@ def _get_guardian_by_moon(moon: int) -> str:
         "Azeyma",
         "Nald'thal",
         "Nophica",
-        "Althyk"
+        "Althyk",
     )
     return the_twelve[moon - 1]
 

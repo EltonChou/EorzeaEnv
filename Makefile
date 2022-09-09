@@ -22,6 +22,9 @@ lint: # Lint the code.
 type-check: # Check the type.
 	mypy
 
+format: # Format the code.
+	black .
+
 update-version: # Sync package file version.
 	sed -i "s/[0-9]\.[0-9]\.[0-9]/$$(poetry version --short)/1" EorzeaEnv/__init__.py
 
