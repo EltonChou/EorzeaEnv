@@ -94,7 +94,12 @@ class EorzeaWeather:
         ----------
         place_name : Union[str, EorzeaPlaceName]
             a valid Eorzea place name
-        timestamp : Union[int, float, EorzeaTime, Iterable[Union[int, float, EorzeaTime]]]
+        timestamp : Union[
+            int,
+            float,
+            EorzeaTime,
+            Iterable[Union[int, float, EorzeaTime]]
+        ]
             unix timestamp or EorzeaTime instance.
             int and float type supporting would be removed from 2.5.0
         lang : Lang, optional
