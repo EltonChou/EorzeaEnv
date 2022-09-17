@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "EorzeaEnv"
-version = "2.2.5"
+version = "2.3.0"
 description = "Final Fantasy XIV weather & time tools."
 keywords = ["eorzea", "ffxiv", "ff14", "final fantasy"]
 authors = ["Elton Chou <plscd748@gmail.com>"]

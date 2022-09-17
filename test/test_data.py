@@ -6,7 +6,14 @@ from EorzeaEnv.Data.WeatherRate import weather_rate
 
 
 def test_data_integrity():
-    locales = [EorzeaLang.DE, EorzeaLang.EN, EorzeaLang.FR, EorzeaLang.JA]
+    locales = [
+        EorzeaLang.DE,
+        EorzeaLang.EN,
+        EorzeaLang.FR,
+        EorzeaLang.JA,
+        EorzeaLang.KO,
+        EorzeaLang.ZH_SC,
+    ]
     for k in locales:
         place_dict = place_name[k]
         assert place_dict

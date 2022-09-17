@@ -11,7 +11,7 @@ from .eorzea_place_name import EorzeaPlaceName
 from .eorzea_time import EorzeaTime
 from .errors import WeatherRateDataError
 
-Lang = Union[Literal["en", "ja", "de", "fr"], EorzeaLang]
+Lang = Union[Literal["en", "ja", "de", "fr", "ko", "cn"], EorzeaLang]
 ValidPlaceName = Union[str, EorzeaPlaceName]
 Timestamp = Union[EorzeaTime, float, int]
 
