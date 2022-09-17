@@ -5,7 +5,13 @@ repos:
       - id: flake8
       - id: check-merge-conflict
       - id: check-yaml
+
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: ''
+    rev: "v0.971"
     hooks:
       - id: mypy
+
+  - repo: https://github.com/psf/black
+    rev: "22.8.0"
+    hooks:
+      - id: black

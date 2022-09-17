@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "EorzeaEnv"
-version = "2.2.5"
+version = "2.3.0"
 description = "Final Fantasy XIV weather & time tools."
 keywords = ["eorzea", "ffxiv", "ff14", "final fantasy"]
 authors = ["Elton Chou <plscd748@gmail.com>"]
@@ -38,6 +38,7 @@ coverage = { extras = ["toml"], version = "^6.4.4" }
 flake8 = "^5.0.4"
 pre-commit = "^2.20.0"
 mypy = "^0.971"
+black = "^22.8.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -45,6 +46,11 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.mypy]
 files = ["EorzeaEnv/**/*.py"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
 
 [tool.pytest.ini_options]
 junit_family = "xunit2"

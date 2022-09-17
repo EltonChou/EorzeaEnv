@@ -1,6 +1,5 @@
 import warnings
-from typing import (Any, Iterable, List, Literal, Union,
-                    overload)
+from typing import Any, Iterable, List, Literal, Union, overload
 
 from numpy import uint32
 
@@ -12,7 +11,7 @@ from .eorzea_place_name import EorzeaPlaceName
 from .eorzea_time import EorzeaTime
 from .errors import WeatherRateDataError
 
-Lang = Union[Literal['en', 'ja', 'de', 'fr'], EorzeaLang]
+Lang = Union[Literal["en", "ja", "de", "fr", "ko", "cn"], EorzeaLang]
 ValidPlaceName = Union[str, EorzeaPlaceName]
 Timestamp = Union[EorzeaTime, float, int]
 
@@ -21,12 +20,13 @@ class EorzeaWeather:
     """
     EoreaWeather
     """
+
     FUZZY_CUTOFF: Union[int, float] = 80
 
     @classmethod
     def set_fuzzy_cutoff(cls, cutoff: Union[int, float]):
         if cutoff > 100 or cutoff < 0:
-            raise ValueError('cutoff value should be in 0-100.')
+            raise ValueError("cutoff value should be in 0-100.")
         cls.FUZZY_CUTOFF = cutoff
 
     @overload
@@ -37,8 +37,9 @@ class EorzeaWeather:
         timestamp: Iterable[Timestamp],
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
-        raw: Literal[False] = False
-    ) -> List[str]: ...
+        raw: Literal[False] = False,
+    ) -> List[str]:
+        ...
 
     @overload
     @classmethod
@@ -49,8 +50,9 @@ class EorzeaWeather:
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         *,
-        raw: Literal[True]
-    ) -> List[int]: ...
+        raw: Literal[True],
+    ) -> List[int]:
+        ...
 
     @overload
     @classmethod
@@ -60,8 +62,9 @@ class EorzeaWeather:
         timestamp: Timestamp,
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
-        raw: Literal[False] = False
-    ) -> str: ...
+        raw: Literal[False] = False,
+    ) -> str:
+        ...
 
     @overload
     @classmethod
@@ -72,8 +75,9 @@ class EorzeaWeather:
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         *,
-        raw: Literal[True]
-    ) -> int: ...
+        raw: Literal[True],
+    ) -> int:
+        ...
 
     @classmethod
     def forecast(
@@ -82,7 +86,7 @@ class EorzeaWeather:
         timestamp: Union[Timestamp, Iterable[Timestamp]],
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
-        raw: bool = False
+        raw: bool = False,
     ):
         """Forecast Eorzea weather by place
 
@@ -90,7 +94,12 @@ class EorzeaWeather:
         ----------
         place_name : Union[str, EorzeaPlaceName]
             a valid Eorzea place name
-        timestamp : Union[int, float, EorzeaTime, Iterable[Union[int, float, EorzeaTime]]]
+        timestamp : Union[
+            int,
+            float,
+            EorzeaTime,
+            Iterable[Union[int, float, EorzeaTime]]
+        ]
             unix timestamp or EorzeaTime instance.
             int and float type supporting would be removed from 2.5.0
         lang : Lang, optional
@@ -116,7 +125,8 @@ class EorzeaWeather:
         ...
         if type(place_name) is str:
             place_name = EorzeaPlaceName(
-                place_name, strict, fuzzy_cutoff=cls.FUZZY_CUTOFF)
+                place_name, strict, fuzzy_cutoff=cls.FUZZY_CUTOFF
+            )
 
         assert type(place_name) is EorzeaPlaceName
         weather_rate = _territory_weather[place_name.index]
@@ -153,24 +163,22 @@ def _ensure_timestamp(timestamp: Any) -> EorzeaTime:
         return timestamp
     if type(timestamp) in (float, int):
         warnings.warn(
-            "timestamp in float and int type is deprecated. It will be unsupported at 2.5.0. Please use EorzeaTime instead.",
-            DeprecationWarning
+            "timestamp in float and int type is deprecated."
+            " It will be unsupported at 2.5.0. Please use EorzeaTime instead.",
+            DeprecationWarning,
         )
         return EorzeaTime(timestamp=timestamp)
-    raise TypeError(
-        "timestamp should be type of int, float, EorzeaTime."
-    )
+    raise TypeError("timestamp should be type of int, float, EorzeaTime.")
 
 
-def _generate_result(
-    target: int,
-    weather_rate: int
-) -> int:
+def _generate_result(target: int, weather_rate: int) -> int:
     for rate, weather in _weather_rate[weather_rate]:
         if target < rate:
             return weather
 
-    raise WeatherRateDataError("No matched rate in data. Please contact with developer.")
+    raise WeatherRateDataError(
+        "No matched rate in data. Please contact with developer."
+    )
 
 
 def _calculate_forecast_target(the_time: EorzeaTime) -> int:

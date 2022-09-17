@@ -12,75 +12,60 @@ class MockDict(dict):
 
 class TestForecast:
     def test_forecast(self):
-        assert EorzeaWeather.forecast(
-            'Eureka Pagos', 1542651599.999
-        ) == 'Fog'
-        assert EorzeaWeather.forecast(
-            'Eureka Pyros', 1542591400.045
-        ) == 'Umbral Wind'
-        assert EorzeaWeather.forecast(
-            'Sigmascape V4.0', 1542591400.045
-        ) == 'Dimensional Disruption'
-        assert EorzeaWeather.forecast(
-            'Bowl of Embers', 1542591400.045
-        ) == 'Heat Waves'
-        assert EorzeaWeather.forecast(
-            'the ruby sea', 1542591400.045
-        ) == 'Fair Skies'
-        assert EorzeaWeather.forecast(
-            'sea of clouds', 1542591400
-        ) == 'Fog'
-        assert EorzeaWeather.forecast(
-            'asdfUpper aetheroacoustic exploratory sitea dsf',
-            1542591400.045,
-            strict=False
-        ) == 'Fair Skies'
+        assert EorzeaWeather.forecast("Eureka Pagos", 1542651599.999) == "Fog"
+        assert EorzeaWeather.forecast("Eureka Pyros", 1542591400.045) == "Umbral Wind"
+        assert (
+            EorzeaWeather.forecast("Sigmascape V4.0", 1542591400.045)
+            == "Dimensional Disruption"
+        )
+        assert EorzeaWeather.forecast("Bowl of Embers", 1542591400.045) == "Heat Waves"
+        assert EorzeaWeather.forecast("the ruby sea", 1542591400.045) == "Fair Skies"
+        assert EorzeaWeather.forecast("sea of clouds", 1542591400) == "Fog"
+        assert (
+            EorzeaWeather.forecast(
+                "asdfUpper aetheroacoustic exploratory sitea dsf",
+                1542591400.045,
+                strict=False,
+            )
+            == "Fair Skies"
+        )
 
         with pytest.raises(TypeError):
-            EorzeaWeather.forecast(
-                'sea of clouds', '1542591400'  # type: ignore
-            )
+            EorzeaWeather.forecast("sea of clouds", "1542591400")  # type: ignore
 
     def test_field(self):
-        weathers = EorzeaWeather.forecast(
-            'Eureka Pyros', EorzeaTime.weather_period(10))
+        weathers = EorzeaWeather.forecast("Eureka Pyros", EorzeaTime.weather_period(10))
 
         for weather in weathers:
             assert isinstance(weather, str)
 
         with pytest.raises(ValueError):
-            EorzeaWeather.forecast(
-                'EuPyros', 1542591400.045
-            )
+            EorzeaWeather.forecast("EuPyros", 1542591400.045)
 
     def test_localize(self):
-        assert EorzeaWeather.forecast(
-            'Eureka Pagos',
-            1542651599.999,
-            lang=EorzeaLang.EN
-        ) == 'Fog'
-        assert EorzeaWeather.forecast(
-            'Eureka Pagos',
-            1542651599.999,
-            lang=EorzeaLang.JA
-        ) == '霧'
-        assert EorzeaWeather.forecast(
-            'Eureka Pagos',
-            1542651599.999,
-            lang=EorzeaLang.DE
-        ) == 'Neblig'
-        assert EorzeaWeather.forecast(
-            'Eureka Pagos',
-            1542651599.999,
-            lang=EorzeaLang.FR
-        ) == 'Brouillard'
+        assert (
+            EorzeaWeather.forecast("Eureka Pagos", 1542651599.999, lang=EorzeaLang.EN)
+            == "Fog"
+        )
+        assert (
+            EorzeaWeather.forecast("Eureka Pagos", 1542651599.999, lang=EorzeaLang.JA)
+            == "霧"
+        )
+        assert (
+            EorzeaWeather.forecast("Eureka Pagos", 1542651599.999, lang=EorzeaLang.DE)
+            == "Neblig"
+        )
+        assert (
+            EorzeaWeather.forecast("Eureka Pagos", 1542651599.999, lang=EorzeaLang.FR)
+            == "Brouillard"
+        )
 
     def test_placename_error(self):
         with pytest.raises(InvalidEorzeaPlaceName):
-            EorzeaWeather.forecast('!!!!!!!!!!!!!!', 145354.99, strict=True)
+            EorzeaWeather.forecast("!!!!!!!!!!!!!!", 145354.99, strict=True)
 
         with pytest.raises(InvalidEorzeaPlaceName):
-            EorzeaWeather.forecast('kadsf', 1214, strict=False)
+            EorzeaWeather.forecast("kadsf", 1214, strict=False)
 
     def test_cutoff_setter(self):
         EorzeaWeather.set_fuzzy_cutoff(50)
@@ -94,18 +79,10 @@ class TestForecast:
         assert weather == "雷雨"
 
     def test_get_weather_result_as_raw_value(self):
-        raw_weather = EorzeaWeather.forecast(
-            'Eureka Pagos',
-            1542651599.999,
-            raw=True
-        )
+        raw_weather = EorzeaWeather.forecast("Eureka Pagos", 1542651599.999, raw=True)
         assert raw_weather == 4
 
-    @mock.patch('EorzeaEnv.eorzea_weather._weather_rate', MockDict())
+    @mock.patch("EorzeaEnv.eorzea_weather._weather_rate", MockDict())
     def test_weather_data_missing(self):
         with pytest.raises(WeatherRateDataError):
-            EorzeaWeather.forecast(
-                'Eureka Pagos',
-                1542651599.999,
-                raw=True
-            )
+            EorzeaWeather.forecast("Eureka Pagos", 1542651599.999, raw=True)

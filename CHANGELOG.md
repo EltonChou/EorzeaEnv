@@ -4,6 +4,10 @@
 - Diamondust predictor.
 - Aurora predictor.
 
+## [2.3.0] - 20XX-09-XX
+### Added
+- Add Chinese data and Korean data.
+
 ## [2.2.5] - 2022-09-07
 ### Added
 - Suuport type checking.

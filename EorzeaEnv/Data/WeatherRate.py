@@ -161,5 +161,5 @@ weather_rate: Mapping[int, Sequence[Tuple[int, int]]] = {
     157: [],
     158: [],
     159: [],
-    160: []
+    160: [],
 }

@@ -11,7 +11,7 @@ class TestTime:
         assert len(timelist) == 10
 
         count = 0
-        for _ in EorzeaTime.weather_period(step='inf'):
+        for _ in EorzeaTime.weather_period(step="inf"):
             count += 1
             if count == 1000:
                 break
@@ -19,7 +19,7 @@ class TestTime:
         assert count == 1000
 
         with pytest.raises(TypeError):
-            for _ in EorzeaTime.weather_period('many'):  # type: ignore
+            for _ in EorzeaTime.weather_period("many"):  # type: ignore
                 pass
 
         with pytest.raises(TypeError):
@@ -63,15 +63,15 @@ class TestTime:
     def test_property(self):
         ts = 12700000
         et = EorzeaTime(ts)
-        assert et.guardian == 'Nophica'
+        assert et.guardian == "Nophica"
         assert et.moon_phase == 0.75
-        assert et.moon_name == 'Sixth Astral Moon'
+        assert et.moon_name == "Sixth Astral Moon"
 
         ts = 12879000
         et = EorzeaTime(ts)
-        assert et.guardian == 'Althyk'
+        assert et.guardian == "Althyk"
         assert et.moon_phase == 0.50
-        assert et.moon_name == 'Sixth Embral Moon'
+        assert et.moon_name == "Sixth Embral Moon"
 
         et = EorzeaTime()
         et.moon += 13
@@ -85,7 +85,7 @@ class TestTime:
 
     def test_repr(self):
         et = EorzeaTime.now()
-        assert repr(et) == f'EorzeaTime({et.get_unix_time()})'
+        assert repr(et) == f"EorzeaTime({et.get_unix_time()})"
 
     def test_act_as_str(self):
         et = EorzeaTime.now()
