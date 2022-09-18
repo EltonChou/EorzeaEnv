@@ -6,5 +6,5 @@ class EorzeaLang(str, Enum):
     JA = "ja"
     DE = "de"
     FR = "fr"
-    ZH_SC = "cn"
     KO = "ko"
+    ZH_SC = "cn"
