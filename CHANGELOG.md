@@ -4,6 +4,10 @@
 - Diamondust predictor.
 - Aurora predictor.
 
+## [2.2.7] - 2022-09-21
+### Fixed
+- Add `EorzeaLang.KO` and `EorzeaLang.ZH_SC` to default locale scopes for EorzeaPlaceName.
+
 ## [2.2.6] - 2022-09-21
 ### Added
 - Add Chinese data and Korean data.

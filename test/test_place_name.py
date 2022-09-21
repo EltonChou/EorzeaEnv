@@ -10,6 +10,8 @@ class TestPlaceName:
         EorzeaPlaceName("ruby sea")
         EorzeaPlaceName("rubinsee")
         EorzeaPlaceName("紅玉海")
+        EorzeaPlaceName("黑衣森林东部林区")
+        EorzeaPlaceName("수투 훈련장")
         with pytest.raises(InvalidEorzeaPlaceName):
             EorzeaPlaceName("The Ruby See")
 

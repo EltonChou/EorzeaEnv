@@ -18,6 +18,8 @@ DEFAULT_LOCALE_SCOPES: List[LocaleScope] = [
     EorzeaLang.JA,
     EorzeaLang.FR,
     EorzeaLang.DE,
+    EorzeaLang.KO,
+    EorzeaLang.ZH_SC,
 ]
 
 
