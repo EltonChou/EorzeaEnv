@@ -18,6 +18,18 @@ pip install eorzeaenv
 from EorzeaEnv import EorzeaLang, EorzeaTime, EorzeaWeather, EorzeaPlaceName
 ```
 
+### Eorzea Language enum
+```py
+support_langs = [
+    EorzeaLang.EN,
+    EorzeaLang.JA,
+    EorzeaLang.DE,
+    EorzeaLang.FR,
+    EorzeaLang.ZH_SC,
+    EorzeaLang.KO,
+]
+```
+
 ### Eorzea Time
 
 ```sh
