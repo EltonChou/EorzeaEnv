@@ -4,7 +4,7 @@
 - Diamondust predictor.
 - Aurora predictor.
 
-## [2.3.0] - 20XX-09-XX
+## [2.2.6] - 2022-09-21
 ### Added
 - Add Chinese data and Korean data.
 
