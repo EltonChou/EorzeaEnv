@@ -34,31 +34,6 @@ class EorzeaWeather:
     def forecast(
         cls,
         place_name: ValidPlaceName,
-        timestamp: Iterable[Timestamp],
-        lang: Lang = EorzeaLang.EN,
-        strict: bool = True,
-        raw: Literal[False] = False,
-    ) -> List[str]:
-        ...
-
-    @overload
-    @classmethod
-    def forecast(
-        cls,
-        place_name: ValidPlaceName,
-        timestamp: Iterable[Timestamp],
-        lang: Lang = EorzeaLang.EN,
-        strict: bool = True,
-        *,
-        raw: Literal[True],
-    ) -> List[int]:
-        ...
-
-    @overload
-    @classmethod
-    def forecast(
-        cls,
-        place_name: ValidPlaceName,
         timestamp: Timestamp,
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
@@ -77,6 +52,31 @@ class EorzeaWeather:
         *,
         raw: Literal[True],
     ) -> int:
+        ...
+
+    @overload
+    @classmethod
+    def forecast(
+        cls,
+        place_name: ValidPlaceName,
+        timestamp: Iterable[Timestamp],
+        lang: Lang = EorzeaLang.EN,
+        strict: bool = True,
+        raw: Literal[False] = False,
+    ) -> List[str]:
+        ...
+
+    @overload
+    @classmethod
+    def forecast(
+        cls,
+        place_name: ValidPlaceName,
+        timestamp: Iterable[Timestamp],
+        lang: Lang = EorzeaLang.EN,
+        strict: bool = True,
+        *,
+        raw: Literal[True],
+    ) -> List[int]:
         ...
 
     @classmethod
