@@ -2,7 +2,7 @@ name: Test
 
 on:
   push:
-    branches: [master, dev]
+    branches: [master, dev, fix_ci]
     tags-ignore:
       - "**"
   pull_request:
