@@ -2,7 +2,7 @@ name: Test
 
 on:
   push:
-    branches: [master, dev]
+    branches: [master, dev, fix_ci]
     tags-ignore:
       - "**"
   pull_request:
@@ -42,14 +42,6 @@ jobs:
       - name: Run pytest
         run: |
           coverage run -m pytest
-
-  finish:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Combine coverage data
-        run: |
-          coverage combine
           coverage xml
 
       - name: Upload coverage reports to Codecov with GitHub Action
