@@ -127,6 +127,11 @@ class EorzeaWeather:
         """
         ...
         if type(place_name) is str:
+            warnings.warn(
+                "place_name in `str` is deprecated from 2.5.0."
+                " Please use the EorzeaPlaceName instead.",
+                DeprecationWarning,
+            )
             place_name = EorzeaPlaceName(
                 place_name, strict, fuzzy_cutoff=cls.FUZZY_CUTOFF
             )
