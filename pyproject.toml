@@ -37,7 +37,7 @@ tox = "^3.25.1"
 coverage = { extras = ["toml"], version = "^6.4.4" }
 flake8 = "^5.0.4"
 pre-commit = "^2.20.0"
-mypy = "^0.971"
+mypy = ">0.971"
 black = "^22.8.0"
 
 [build-system]
