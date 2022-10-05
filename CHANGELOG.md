@@ -4,6 +4,10 @@
 - Diamondust predictor.
 - Aurora predictor.
 
+## [2.2.8] - 2022-10-05
+### Change
+- change `EorzeaWeather.forecast` arguments. (5309a6b)
+
 ## [2.2.7] - 2022-09-21
 ### Fixed
 - Add `EorzeaLang.KO` and `EorzeaLang.ZH_SC` to default locale scopes for EorzeaPlaceName.
