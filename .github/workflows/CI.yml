@@ -49,8 +49,8 @@ jobs:
     steps:
       - name: Combine coverage data
         run: |
-          poetry run coverage combine
-          poetry run coverage xml
+          coverage combine
+          coverage xml
 
       - name: Upload coverage reports to Codecov with GitHub Action
         uses: codecov/codecov-action@v3
