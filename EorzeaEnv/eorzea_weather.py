@@ -35,6 +35,7 @@ class EorzeaWeather:
         cls,
         place_name: ValidPlaceName,
         timestamp: Timestamp,
+        *,
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: Literal[False] = False,
@@ -47,9 +48,9 @@ class EorzeaWeather:
         cls,
         place_name: ValidPlaceName,
         timestamp: Timestamp,
+        *,
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
-        *,
         raw: Literal[True],
     ) -> int:
         ...
@@ -60,6 +61,7 @@ class EorzeaWeather:
         cls,
         place_name: ValidPlaceName,
         timestamp: Iterable[Timestamp],
+        *,
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: Literal[False] = False,
@@ -72,9 +74,9 @@ class EorzeaWeather:
         cls,
         place_name: ValidPlaceName,
         timestamp: Iterable[Timestamp],
+        *,
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
-        *,
         raw: Literal[True],
     ) -> List[int]:
         ...
@@ -84,6 +86,7 @@ class EorzeaWeather:
         cls,
         place_name: ValidPlaceName,
         timestamp: Union[Timestamp, Iterable[Timestamp]],
+        *,
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: bool = False,
