@@ -4,6 +4,11 @@
 - Diamondust predictor.
 - Aurora predictor.
 
+## [2.2.9] - 2023-02-01
+### Added
+- Add patch 6.3 data.
+- Add CN and KO patch data.
+
 ## [2.2.8] - 2022-10-05
 ### Change
 - change `EorzeaWeather.forecast` arguments. (5309a6b)
