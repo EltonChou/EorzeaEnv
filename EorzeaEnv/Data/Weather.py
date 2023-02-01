@@ -1275,7 +1275,7 @@ weather: Mapping[
         "en": "Transcendence",
         "fr": "Mythologique",
         "ja": "神域",
-        "ko": None,
+        "ko": "신역",
     },
     163: {
         "cn": "神域",
@@ -1283,7 +1283,7 @@ weather: Mapping[
         "en": "Transcendence",
         "fr": "Mythologique",
         "ja": "神域",
-        "ko": None,
+        "ko": "신역",
     },
     164: {
         "cn": "神域",
@@ -1291,7 +1291,7 @@ weather: Mapping[
         "en": "Transcendence",
         "fr": "Mythologique",
         "ja": "神域",
-        "ko": None,
+        "ko": "신역",
     },
     165: {
         "cn": "神域",
@@ -1299,7 +1299,7 @@ weather: Mapping[
         "en": "Transcendence",
         "fr": "Mythologique",
         "ja": "神域",
-        "ko": None,
+        "ko": "신역",
     },
     166: {
         "cn": "神域",
@@ -1307,7 +1307,7 @@ weather: Mapping[
         "en": "Transcendence",
         "fr": "Mythologique",
         "ja": "神域",
-        "ko": None,
+        "ko": "신역",
     },
     167: {
         "cn": "神域",
@@ -1315,7 +1315,7 @@ weather: Mapping[
         "en": "Transcendence",
         "fr": "Mythologique",
         "ja": "神域",
-        "ko": None,
+        "ko": "신역",
     },
     168: {
         "cn": "神域",
@@ -1323,7 +1323,7 @@ weather: Mapping[
         "en": "Transcendence",
         "fr": "Mythologique",
         "ja": "神域",
-        "ko": None,
+        "ko": "신역",
     },
     169: {
         "cn": "神域",
@@ -1331,7 +1331,7 @@ weather: Mapping[
         "en": "Transcendence",
         "fr": "Mythologique",
         "ja": "神域",
-        "ko": None,
+        "ko": "신역",
     },
     170: {
         "cn": "邪天",
@@ -1339,10 +1339,10 @@ weather: Mapping[
         "en": "Dragonstorms",
         "fr": "Tempête de haine",
         "ja": "邪天",
-        "ko": None,
+        "ko": "사룡의 원념",
     },
     171: {
-        "cn": None,
+        "cn": "虚无",
         "de": "Leere",
         "en": "Vacuity",
         "fr": "Néant",
@@ -1350,7 +1350,7 @@ weather: Mapping[
         "ko": None,
     },
     172: {
-        "cn": None,
+        "cn": "虚无",
         "de": "Leere",
         "en": "Vacuity",
         "fr": "Néant",
@@ -1358,11 +1358,35 @@ weather: Mapping[
         "ko": None,
     },
     173: {
-        "cn": None,
+        "cn": "虚无",
         "de": "Leere",
         "en": "Vacuity",
         "fr": "Néant",
         "ja": "虚無",
+        "ko": None,
+    },
+    174: {
+        "cn": None,
+        "de": "Dimensionsspaltend",
+        "en": "Dimensional Disruption",
+        "fr": "Perturbation dimensionnelle",
+        "ja": "次元",
+        "ko": None,
+    },
+    175: {
+        "cn": None,
+        "de": "Dimensionsspaltend",
+        "en": "Dimensional Disruption",
+        "fr": "Perturbation dimensionnelle",
+        "ja": "次元",
+        "ko": None,
+    },
+    176: {
+        "cn": None,
+        "de": "Dimensionsspaltend",
+        "en": "Dimensional Disruption",
+        "fr": "Perturbation dimensionnelle",
+        "ja": "次元",
         "ko": None,
     },
 }
