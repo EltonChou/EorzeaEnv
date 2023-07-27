@@ -7,6 +7,21 @@ _EORZEA_TIME_CONST = 3600.0 / 175.0
 _LOCAL_WEATHER_INTERVAL = 1400
 # _EROZEA_WEATHER_INTERVAL = 28800
 _DATETIME_ZERO = datetime(1970, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
+_GUARDIANS = (
+    "Halone",
+    "Menphina",
+    "Thaliak",
+    "Nymeia",
+    "Llymlaen",
+    "Oschon",
+    "Byregot",
+    "Rhalgr",
+    "Azeyma",
+    "Nald'thal",
+    "Nophica",
+    "Althyk",
+)
+_MOON_PREFIXS = ("First", "Second", "Third", "Fourth", "Fifth", "Sixth")
 
 
 class EorzeaTime:
@@ -231,26 +246,11 @@ class EorzeaTime:
 
 
 def _get_guardian_by_moon(moon: int) -> str:
-    the_twelve = (
-        "Halone",
-        "Menphina",
-        "Thaliak",
-        "Nymeia",
-        "Llymlaen",
-        "Oschon",
-        "Byregot",
-        "Rhalgr",
-        "Azeyma",
-        "Nald'thal",
-        "Nophica",
-        "Althyk",
-    )
-    return the_twelve[moon - 1]
+    return _GUARDIANS[moon - 1]
 
 
 def _calculate_moon(moon: int) -> str:
-    moon_orders = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth"]
-    moon_order = moon_orders[math.ceil(moon / 2) - 1]
+    moon_order = _MOON_PREFIXS[math.ceil(moon / 2) - 1]
     moon_type = _astral_or_embral(moon)
     return "{} {} Moon".format(moon_order, moon_type)
 

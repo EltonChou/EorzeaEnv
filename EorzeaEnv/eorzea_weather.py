@@ -26,7 +26,7 @@ class EorzeaWeather:
     @classmethod
     def set_fuzzy_cutoff(cls, cutoff: Union[int, float]):
         if cutoff > 100 or cutoff < 0:
-            raise ValueError("cutoff value should be in 0-100.")
+            raise ValueError("Cutoff value should be in 0-100.")
         cls.FUZZY_CUTOFF = cutoff
 
     @overload
