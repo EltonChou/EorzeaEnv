@@ -55,7 +55,7 @@ ignore_missing_imports = true
 
 [tool.black]
 line-length = 88
-target-version = ['py312']
+target-version = ['py311']
 
 [tool.pytest.ini_options]
 junit_family = "xunit2"
