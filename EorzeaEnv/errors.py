@@ -1,5 +1,4 @@
-class EorzeaEnvError(Exception):
-    ...
+class EorzeaEnvError(Exception): ...
 
 
 class InvalidEorzeaPlaceName(EorzeaEnvError, ValueError):
@@ -9,5 +8,4 @@ class InvalidEorzeaPlaceName(EorzeaEnvError, ValueError):
         super().__init__(message)
 
 
-class WeatherRateDataError(EorzeaEnvError):
-    ...
+class WeatherRateDataError(EorzeaEnvError): ...

@@ -12,6 +12,6 @@ repos:
       - id: mypy
 
   - repo: https://github.com/psf/black
-    rev: "22.8.0"
+    rev: "24.4.2"
     hooks:
       - id: black

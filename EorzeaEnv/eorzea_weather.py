@@ -39,8 +39,7 @@ class EorzeaWeather:
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: Literal[False] = False,
-    ) -> str:
-        ...
+    ) -> str: ...
 
     @overload
     @classmethod
@@ -52,8 +51,7 @@ class EorzeaWeather:
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: Literal[True],
-    ) -> int:
-        ...
+    ) -> int: ...
 
     @overload
     @classmethod
@@ -65,8 +63,7 @@ class EorzeaWeather:
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: Literal[False] = False,
-    ) -> List[str]:
-        ...
+    ) -> List[str]: ...
 
     @overload
     @classmethod
@@ -78,8 +75,7 @@ class EorzeaWeather:
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: Literal[True],
-    ) -> List[int]:
-        ...
+    ) -> List[int]: ...
 
     @classmethod
     def forecast(
