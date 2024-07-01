@@ -15,6 +15,8 @@ classifiers = [
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
@@ -26,8 +28,11 @@ include = ["README.md", "CHANGELOG.md", "LICENSE"]
 "Bug Reports" = "https://github.com/EltonChou/EorzeaEnv/issues"
 
 [tool.poetry.dependencies]
-python = ">=3.8"
-numpy = "^1.19.0"
+python = ">=3.8,<=3.13"
+numpy = [
+    { version = "^1.19.0", python = ">=3.8,<3.12" },
+    { version = "^2.0", python = ">=3.12" },
+]
 rapidfuzz = "^2.0.11"
 
 [tool.poetry.dev-dependencies]
@@ -46,11 +51,11 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.mypy]
 files = ["EorzeaEnv/**/*.py"]
+ignore_missing_imports = true
 
 [tool.black]
 line-length = 88
-target-version = ['py38']
-include = '\.pyi?$'
+target-version = ['py312']
 
 [tool.pytest.ini_options]
 junit_family = "xunit2"
@@ -69,4 +74,5 @@ exclude_lines = [
     "@overload",
     "pass",
     "raise NotImplementedError",
+    "warnings.warn",
 ]
