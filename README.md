@@ -121,10 +121,10 @@ for t in EorzeaTime.weather_period(step=3, from_=datetime(2025, 10, 25).timestam
 ```
 + Using period generator directly
 ```py
-weather = EorzeaWeather.forecast('Eureka Pyros', EorzeaTime.weather_period(step=3))
+weathers = EorzeaWeather.forecast('Eureka Pyros', EorzeaTime.weather_period(step=3))
 ```
 ```sh
->>> print(weather_en)
+>>> print(weathers)
 ['Thunder', 'Snow', 'Blizzards']
 ```
 
