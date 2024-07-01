@@ -8,7 +8,14 @@ weather: Mapping[
         Union[EorzeaLang, Literal["de", "en", "fr", "ja", "ko", "cn"]], Optional[str]
     ],
 ] = {
-    0: {"cn": None, "de": None, "en": None, "fr": None, "ja": None, "ko": "●설명용 날씨"},
+    0: {
+        "cn": None,
+        "de": None,
+        "en": None,
+        "fr": None,
+        "ja": None,
+        "ko": "●설명용 날씨",
+    },
     1: {
         "cn": "碧空",
         "de": "Klar",
@@ -41,7 +48,14 @@ weather: Mapping[
         "ja": "霧",
         "ko": "안개",
     },
-    5: {"cn": "微风", "de": "Windig", "en": "Wind", "fr": "Vent", "ja": "風", "ko": "바람"},
+    5: {
+        "cn": "微风",
+        "de": "Windig",
+        "en": "Wind",
+        "fr": "Vent",
+        "ja": "風",
+        "ko": "바람",
+    },
     6: {
         "cn": "强风",
         "de": "Stürmisch",
@@ -114,7 +128,14 @@ weather: Mapping[
         "ja": "灼熱波",
         "ko": "작열파",
     },
-    15: {"cn": "小雪", "de": "Schnee", "en": "Snow", "fr": "Neige", "ja": "雪", "ko": "눈"},
+    15: {
+        "cn": "小雪",
+        "de": "Schnee",
+        "en": "Snow",
+        "fr": "Neige",
+        "ja": "雪",
+        "ko": "눈",
+    },
     16: {
         "cn": "暴雪",
         "de": "Schneesturm",
