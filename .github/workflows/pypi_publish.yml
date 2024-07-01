@@ -38,7 +38,7 @@ jobs:
 
       - name: Publish package
         run: |
-          poetry publish --build -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }}
+          poetry publish --build -u ${{ secrets.PYPI_API_TOKEN }}
 
       - name: Set release data
         id: release_settings
