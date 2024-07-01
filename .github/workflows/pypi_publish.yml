@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.9"]
+        python-version: ["3.11"]
     steps:
       - uses: actions/checkout@v2
 
@@ -31,6 +31,10 @@ jobs:
       - name: Type check
         run: |
           poetry run mypy
+
+      - name: Test
+        run: |
+          poetry run coverage run -m pytest
 
       - name: Publish package
         run: |
