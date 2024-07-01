@@ -4,6 +4,12 @@
 - Diamondust predictor.
 - Aurora predictor.
 
+## [2.2.10] - 2024-07-02
+### Added
+- Add patch 7.0 data.
+- Add python 3.11 support.
+- Add python 3.12 support.
+
 ## [2.2.9] - 2023-02-01
 ### Added
 - Add patch 6.3 data.
