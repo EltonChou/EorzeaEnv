@@ -12,6 +12,13 @@ class MockDict(dict):
 
 
 class TestForecast:
+    def test_legacy_forecast(self):
+        assert (
+            EorzeaWeather.forecast(EorzeaPlaceName("sea of clouds"), 1542591400)
+            == "Fog"
+        )
+        assert EorzeaWeather.forecast("sea of clouds", EorzeaTime(1542591400)) == "Fog"
+
     def test_forecast(self):
         assert (
             EorzeaWeather.forecast(
