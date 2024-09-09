@@ -106,7 +106,7 @@ class EorzeaTime:
             self._bell += 24
             self.sun = self.sun - 1
 
-        while self._bell > 24:
+        while self._bell >= 24:
             self._bell -= 24
             self.sun = self.sun + 1
 
@@ -121,7 +121,7 @@ class EorzeaTime:
             self._minute += 60
             self.bell = self.bell - 1
 
-        while self._minute > 60:
+        while self._minute >= 60:
             self._minute -= 60
             self.bell = self.bell + 1
 

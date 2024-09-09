@@ -60,6 +60,29 @@ class TestTime:
         assert t1 != 1
         assert not t1 == 1
 
+    def test_rollover(self):
+        et = EorzeaTime()
+        et.sun = 1
+        et.bell = 23
+        et.minute = 59
+
+        et.minute += 1
+
+        assert et.minute == 0
+        assert et.bell == 0
+        assert et.sun == 2
+        assert et.moon == 2
+
+        et.minute += 121
+
+        assert et.minute == 1
+        assert et.bell == 2
+
+        et.bell += 49
+
+        assert et.bell == 3
+        assert et.sun == 4
+
     def test_property(self):
         ts = 12700000
         et = EorzeaTime(ts)
