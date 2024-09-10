@@ -62,16 +62,19 @@ class TestTime:
 
     def test_positive_rollover(self):
         et = EorzeaTime()
-        et.sun = 1
-        et.bell = 23
         et.minute = 59
+        et.bell = 23
+        et.sun = 32
+        et.moon = 12
+        et.year = 999
 
         et.minute += 1
 
         assert et.minute == 0
         assert et.bell == 0
-        assert et.sun == 2
-        assert et.moon == 2
+        assert et.sun == 1
+        assert et.moon == 1
+        assert et.year == 1000
 
         et.minute += 121
 
@@ -81,13 +84,15 @@ class TestTime:
         et.bell += 49
 
         assert et.bell == 3
-        assert et.sun == 4
+        assert et.sun == 3
 
     def test_negative_rollover(self):
         et = EorzeaTime()
-        et.sun = 1
-        et.bell = 0
         et.minute = 0
+        et.bell = 0
+        et.sun = 1
+        et.moon = 2
+        et.year = 1000
 
         et.minute -= 1
 
@@ -95,7 +100,6 @@ class TestTime:
         assert et.bell == 23
         assert et.sun == 32
         assert et.moon == 1
-        assert et.year == 1070
 
         et.minute -= 119
 
@@ -112,7 +116,7 @@ class TestTime:
         et.moon -= 11
 
         assert et.moon == 2
-        assert et.year == 1069
+        assert et.year == 999
 
     def test_property(self):
         ts = 12700000
