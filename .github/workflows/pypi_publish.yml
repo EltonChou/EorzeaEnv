@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -34,12 +34,11 @@ jobs:
         run: |
           BODY_FILE=release_note.md
           make print-changelog >> ${BODY_FILE}
-          echo "::set-output name=version::${GITHUB_REF#refs/*/}"
-          echo "::set-output name=body_file::${BODY_FILE}"
+          echo "release_body_filename=${BODY_FILE}" >> $GITHUB_OUTPUT
 
       - name: Create Repository Release
         uses: ncipollo/release-action@v1
         with:
-          name: "EorzeaEnv ${{ steps.release_settings.outputs.version }}"
+          name: "EorzeaEnv ${{ github.ref_name }}"
           token: ${{ secrets.GITHUB_TOKEN }}
-          bodyFile: ${{ steps.release_settings.outputs.body_file }}
+          bodyFile: ${{ steps.release_settings.outputs.release_body_filename }}
