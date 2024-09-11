@@ -23,7 +23,7 @@ jobs:
 
       - name: Run test
         run: |
-          tox -e "py312, lint, type, gh-cov-report"
+          poetry run tox -e "py312, lint, type, gh-cov-report"
 
       - name: Publish package
         run: |
