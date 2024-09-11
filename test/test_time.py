@@ -60,6 +60,64 @@ class TestTime:
         assert t1 != 1
         assert not t1 == 1
 
+    def test_positive_rollover(self):
+        et = EorzeaTime()
+        et.minute = 59
+        et.bell = 23
+        et.sun = 32
+        et.moon = 12
+        et.year = 999
+
+        et.minute += 1
+
+        assert et.minute == 0
+        assert et.bell == 0
+        assert et.sun == 1
+        assert et.moon == 1
+        assert et.year == 1000
+
+        et.minute += 121
+
+        assert et.minute == 1
+        assert et.bell == 2
+
+        et.bell += 49
+
+        assert et.bell == 3
+        assert et.sun == 3
+
+    def test_negative_rollover(self):
+        et = EorzeaTime()
+        et.minute = 0
+        et.bell = 0
+        et.sun = 1
+        et.moon = 2
+        et.year = 1000
+
+        et.minute -= 1
+
+        assert et.minute == 59
+        assert et.bell == 23
+        assert et.sun == 32
+        assert et.moon == 1
+
+        et.minute -= 119
+
+        assert et.minute == 0
+        assert et.bell == 22
+
+        et.bell -= 48
+
+        assert et.minute == 0
+        assert et.bell == 22
+        assert et.sun == 30
+        assert et.moon == 1
+
+        et.moon -= 11
+
+        assert et.moon == 2
+        assert et.year == 999
+
     def test_property(self):
         ts = 12700000
         et = EorzeaTime(ts)
@@ -72,16 +130,6 @@ class TestTime:
         assert et.guardian == "Althyk"
         assert et.moon_phase == 0.50
         assert et.moon_name == "Sixth Embral Moon"
-
-        et = EorzeaTime()
-        et.moon += 13
-        et.sun += 33
-        et.bell += 26
-        et.minute += 65
-        et.moon -= 13
-        et.sun -= 33
-        et.bell -= 26
-        et.minute -= 65
 
     def test_repr(self):
         et = EorzeaTime.now()
