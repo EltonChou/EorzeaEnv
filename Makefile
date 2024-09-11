@@ -14,7 +14,10 @@ cov-report: cov-test # Show the coverage of tests.
 	coverage report -m
 
 freeze: # Export the requirements.txt file.
-	poetry export --with dev --without-hashes -f requirements.txt --output requirements.txt
+	poetry export --without-hashes -f requirements.txt --output requirements.txt
+	poetry export --with dev --without-hashes -f requirements.txt --output requirements-dev.txt
+	poetry export --with test --without-hashes -f requirements.txt --output requirements-test.txt
+	poetry export --with dev --without-hashes -f constraints.txt --output constraints.txt
 
 lint: # Lint the code.
 	flake8
