@@ -68,6 +68,7 @@ testpaths = ["test"]
 
 [tool.coverage.run]
 omit = ["*/site-packages/*", "*/tests/*", "*/test/*"]
+parallel = true
 
 [tool.coverage.report]
 show_missing = true
