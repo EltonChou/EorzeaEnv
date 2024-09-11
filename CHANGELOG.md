@@ -3,6 +3,8 @@
 ## Unreleased
 - Diamondust predictor.
 - Aurora predictor.
+### Fixed
+- Fix EorzeaTime rollover issue by [@mwishum](https://github.com/mwishum) ([#14](https://github.com/EltonChou/EorzeaEnv/issues/14))
 
 ## [2.2.10] - 2024-07-02
 ### Added
