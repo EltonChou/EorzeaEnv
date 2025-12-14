@@ -37,19 +37,24 @@ class EorzeaRainbow:
 
     @property
     def is_appear(self):
-        if len(self._weather_slot) == 2 and self.is_possible:
-            prev_weather, current_weather = self._weather_slot
-            if (
-                prev_weather.raw_weather in RAINY_WEATHERS
-                and current_weather.raw_weather not in RAINY_WEATHERS
-            ):
-                if (
-                    _check_sun(current_weather.time.sun)
-                    and current_weather.time > prev_weather.time
-                ):
-                    time_ticket = _generate_time_ticket(current_weather.time)
-                    return 600 <= time_ticket <= 1800
-        return False
+        if len(self._weather_slot) != 2 or not self.is_possible:
+            return False
+
+        prev_weather, current_weather = self._weather_slot
+        if (
+            prev_weather.raw_weather not in RAINY_WEATHERS
+            or current_weather.raw_weather in RAINY_WEATHERS
+        ):
+            return False
+
+        if (
+            not _check_sun(current_weather.time.sun)
+            or current_weather.time <= prev_weather.time
+        ):
+            return False
+
+        time_ticket = _generate_time_ticket(current_weather.time)
+        return 600 <= time_ticket <= 1800
 
     def append(self, time: EorzeaTime, raw_weather: int):
         self._weather_slot.append(
