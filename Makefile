@@ -29,7 +29,8 @@ format: # Format the code.
 	black .
 
 update-version: # Sync package file version.
-	sed -i -E "s/[0-9]+\.[0-9]+\.[0-9]+/$$(poetry version --short)/1" EorzeaEnv/__init__.py
+# 	sed -i -E "s/[0-9]+\.[0-9]+\.[0-9]+/$$(poetry version --short)/1" EorzeaEnv/__init__.py
+	python utils/sync_version.py
 
 print-changelog: # Print changelog of current version.
 	@awk -v ver=$$(poetry version --short) '/^#+ \[/ { if (p) { exit }; if ($$2 == "["ver"]") { p=1; next } } p && NF' CHANGELOG.md
