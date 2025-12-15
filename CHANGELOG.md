@@ -4,6 +4,10 @@
 - Diamondust predictor.
 - Aurora predictor.
 
+## [2.2.12] - 2025-12-15
+### Added
+- Update data to 7.38
+
 ## [2.2.11] - 2024-09-11
 ### Fixed
 - Fix `EorzeaTime` rollover issue([#14](https://github.com/EltonChou/EorzeaEnv/issues/14)) by [@mwishum](https://github.com/mwishum)
