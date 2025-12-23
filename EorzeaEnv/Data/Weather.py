@@ -1618,4 +1618,22 @@ weather: Mapping[
         "ja": "グラスレイン",
         "ko": "유리비",
     },
+    203: {
+        "cn": "打雷",
+        "de": "Gewittrig",
+        "en": "Thunder",
+        "fr": "Orages",
+        "ja": "雷",
+        "ko": None,
+    },
+    204: {
+        "cn": "打雷",
+        "de": "Gewittrig",
+        "en": "Thunder",
+        "fr": "Orages",
+        "ja": "雷",
+        "ko": None,
+    },
+    205: {"cn": None, "de": None, "en": None, "fr": None, "ja": None, "ko": None},
+    206: {"cn": None, "de": None, "en": None, "fr": None, "ja": None, "ko": None},
 }
