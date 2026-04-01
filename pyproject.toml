@@ -44,7 +44,7 @@ coverage = { extras = ["toml"], version = "^6.4.4" }
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
 autopep8 = "^1.6.0"
-tox = "^3.25.1"
+tox = "^4"
 coverage = { extras = ["toml"], version = "^6.4.4" }
 flake8 = "^5.0.4"
 pre-commit = "^2.20.0"
