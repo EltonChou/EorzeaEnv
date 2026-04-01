@@ -40,9 +40,10 @@ deps = ["coverage[toml]"]
 commands = [["coverage", "combine"], ["coverage", "report"], ["coverage", "html"]]
 
 [env.gh-cov-report]
-base = ["env.cov-report"]
 description = "combine coverage for CI"
 depends = ["py{38,39,310,311,312,313,314}"]
+skip_install = true
+deps = ["coverage[toml]"]
 commands = [["coverage", "combine"], ["coverage", "report"], ["coverage", "xml"]]
 
 [env.clean]
