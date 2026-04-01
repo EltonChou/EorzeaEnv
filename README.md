@@ -26,6 +26,7 @@ support_langs = [
     EorzeaLang.DE,
     EorzeaLang.FR,
     EorzeaLang.ZH_SC,
+    EorzeaLang.ZH_TC,
     EorzeaLang.KO,
 ]
 ```
