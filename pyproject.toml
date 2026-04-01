@@ -30,7 +30,7 @@ include = ["README.md", "CHANGELOG.md", "LICENSE"]
 "Bug Reports" = "https://github.com/EltonChou/EorzeaEnv/issues"
 
 [tool.poetry.dependencies]
-python = ">=3.8,<=3.14"
+python = ">=3.8,<=3.15"
 numpy = [
     { version = "^1.19.0", python = ">=3.8,<3.12" },
     { version = "^2.0", python = ">=3.12" },
