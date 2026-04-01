@@ -17,6 +17,8 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
@@ -28,7 +30,7 @@ include = ["README.md", "CHANGELOG.md", "LICENSE"]
 "Bug Reports" = "https://github.com/EltonChou/EorzeaEnv/issues"
 
 [tool.poetry.dependencies]
-python = ">=3.8,<=3.13"
+python = ">=3.8,<=3.14"
 numpy = [
     { version = "^1.19.0", python = ">=3.8,<3.12" },
     { version = "^2.0", python = ">=3.12" },
@@ -59,7 +61,7 @@ ignore_missing_imports = true
 
 [tool.black]
 line-length = 88
-target-version = ['py311']
+target-version = ['py314']
 
 [tool.pytest.ini_options]
 junit_family = "xunit2"
