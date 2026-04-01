@@ -17,7 +17,7 @@ env_list = ["clean", "py{38,39,310,311,312,313,314}", "lint", "type", "cov-repor
 
 [env_run_base]
 description = "run tests"
-deps = ["-r requirements-test.txt"]
+deps = ["pytest>=6.2.5", "coverage[toml]>=6.4.4"]
 commands = [["coverage", "run", "-m", "pytest"]]
 
 [env.lint]
