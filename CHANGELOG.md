@@ -4,6 +4,11 @@
 - Diamondust predictor.
 - Aurora predictor.
 
+## [2.2.14] - 2026-04-01
+### Added
+- Add python 3.13, 3.14 supports.
+- Add TC language data.
+
 ## [2.2.12] - 2025-12-15
 ### Added
 - Update data to 7.38
