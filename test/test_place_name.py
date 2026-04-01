@@ -4,22 +4,50 @@ from EorzeaEnv.errors import InvalidEorzeaPlaceName
 
 
 class TestPlaceName:
-    def test_default(self):
-        EorzeaPlaceName("The Ruby Sea")
-        EorzeaPlaceName("the ruby sea")
-        EorzeaPlaceName("ruby sea")
-        EorzeaPlaceName("rubinsee")
-        EorzeaPlaceName("紅玉海")
-        EorzeaPlaceName("黑衣森林东部林区")
-        EorzeaPlaceName("수투 훈련장")
+    @pytest.mark.parametrize(
+        ("place"),
+        [
+            "The Ruby Sea",
+            "the ruby sea",
+            "ruby sea",
+            "rubinsee",
+            "紅玉海",
+            "수투 훈련장",
+            "福隆戴爾藥學院兒科病房",
+        ],
+    )
+    def test_default(self, place: str):
+        EorzeaPlaceName(place)
+
+    def test_default_fuzzy_cutoff(self):
         with pytest.raises(InvalidEorzeaPlaceName):
             EorzeaPlaceName("The Ruby See")
 
-    def test_specified_locale_scope(self):
-        EorzeaPlaceName("The Ruby Sea", locale_scopes=[EorzeaLang.EN])
+    @pytest.mark.parametrize(
+        ("place", "lang"),
+        [
+            ("The Ruby Sea", EorzeaLang.EN),
+            ("rubinsee", EorzeaLang.DE),
+            ("mer de rubis", EorzeaLang.FR),
+            ("紅玉海", EorzeaLang.JA),
+            ("红玉海", EorzeaLang.ZH_SC),
+            ("紅玉海", EorzeaLang.ZH_TC),
+        ],
+    )
+    def test_specified_locale_scopes(self, place: str, lang: EorzeaLang):
+        EorzeaPlaceName(place, locale_scopes=[lang])
+
+    def test_invalid_eorzea_palce_name_for_certain_scope(self):
         with pytest.raises(InvalidEorzeaPlaceName):
             EorzeaPlaceName(
-                "The Ruby Sea", locale_scopes=[EorzeaLang.JA, EorzeaLang.DE]
+                "The Ruby Sea",
+                locale_scopes=[
+                    EorzeaLang.JA,
+                    EorzeaLang.DE,
+                    EorzeaLang.ZH_TC,
+                    EorzeaLang.ZH_SC,
+                    EorzeaLang.FR,
+                ],
             )
 
     def test_fuzzy(self):

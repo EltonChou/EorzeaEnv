@@ -19,43 +19,33 @@ class TestForecast:
         )
         assert EorzeaWeather.forecast("sea of clouds", EorzeaTime(1542591400)) == "Fog"
 
-    def test_forecast(self):
-        assert (
-            EorzeaWeather.forecast(
-                EorzeaPlaceName("Eureka Pagos"), EorzeaTime(1542651599.999)
-            )
-            == "Fog"
-        )
-        assert (
-            EorzeaWeather.forecast(
-                EorzeaPlaceName("Eureka Pyros"), EorzeaTime(1542591400.045)
-            )
-            == "Umbral Wind"
-        )
-        assert (
-            EorzeaWeather.forecast(
-                EorzeaPlaceName("Sigmascape V4.0"), EorzeaTime(1542591400.045)
-            )
-            == "Dimensional Disruption"
-        )
-        assert (
-            EorzeaWeather.forecast(
-                EorzeaPlaceName("Bowl of Embers"), EorzeaTime(1542591400.045)
-            )
-            == "Heat Waves"
-        )
-        assert (
-            EorzeaWeather.forecast(
-                EorzeaPlaceName("the ruby sea"), EorzeaTime(1542591400.045)
-            )
-            == "Fair Skies"
-        )
-        assert (
-            EorzeaWeather.forecast(
-                EorzeaPlaceName("sea of clouds"), EorzeaTime(1542591400)
-            )
-            == "Fog"
-        )
+    @pytest.mark.parametrize(
+        ("place", "time", "weather"),
+        [
+            (EorzeaPlaceName("Eureka Pagos"), EorzeaTime(1542651599.999), "Fog"),
+            (
+                EorzeaPlaceName("Eureka Pyros"),
+                EorzeaTime(1542591400.045),
+                "Umbral Wind",
+            ),
+            (
+                EorzeaPlaceName("Sigmascape V4.0"),
+                EorzeaTime(1542591400.045),
+                "Dimensional Disruption",
+            ),
+            (
+                EorzeaPlaceName("Bowl of Embers"),
+                EorzeaTime(1542591400.045),
+                "Heat Waves",
+            ),
+            (EorzeaPlaceName("the ruby sea"), EorzeaTime(1542591400.045), "Fair Skies"),
+            (EorzeaPlaceName("sea of clouds"), EorzeaTime(1542591400.045), "Fog"),
+        ],
+    )
+    def test_forecast(self, place: EorzeaPlaceName, time: EorzeaTime, weather: str):
+        assert EorzeaWeather.forecast(place, time) == weather
+
+    def test_forecast_strict_mode(self):
         assert (
             EorzeaWeather.forecast(
                 EorzeaPlaceName(
@@ -67,6 +57,7 @@ class TestForecast:
             == "Fair Skies"
         )
 
+    def test_forecast_should_raise_error(self):
         with pytest.raises(TypeError):
             EorzeaWeather.forecast(
                 EorzeaPlaceName("sea of clouds"), "1542591400"  # type: ignore
@@ -80,31 +71,22 @@ class TestForecast:
         for weather in weathers:
             assert isinstance(weather, str)
 
-    def test_localize(self):
+    @pytest.mark.parametrize(
+        ("lang", "weather"),
+        [
+            (EorzeaLang.EN, "Fog"),
+            (EorzeaLang.JA, "霧"),
+            (EorzeaLang.DE, "Neblig"),
+            (EorzeaLang.FR, "Brouillard"),
+            (EorzeaLang.ZH_TC, "薄霧"),
+            (EorzeaLang.ZH_SC, "薄雾"),
+        ],
+    )
+    def test_localize(self, lang: EorzeaLang, weather: str):
         eureka_pagos = EorzeaPlaceName("Eureka Pagos")
         assert (
-            EorzeaWeather.forecast(
-                eureka_pagos, EorzeaTime(1542651599.999), lang=EorzeaLang.EN
-            )
-            == "Fog"
-        )
-        assert (
-            EorzeaWeather.forecast(
-                eureka_pagos, EorzeaTime(1542651599.999), lang=EorzeaLang.JA
-            )
-            == "霧"
-        )
-        assert (
-            EorzeaWeather.forecast(
-                eureka_pagos, EorzeaTime(1542651599.999), lang=EorzeaLang.DE
-            )
-            == "Neblig"
-        )
-        assert (
-            EorzeaWeather.forecast(
-                eureka_pagos, EorzeaTime(1542651599.999), lang=EorzeaLang.FR
-            )
-            == "Brouillard"
+            EorzeaWeather.forecast(eureka_pagos, EorzeaTime(1542651599.999), lang=lang)
+            == weather
         )
 
     def test_cutoff_setter(self):

@@ -12,6 +12,7 @@ def test_data_integrity():
         EorzeaLang.FR,
         EorzeaLang.JA,
         EorzeaLang.KO,
+        EorzeaLang.ZH_TC,
         EorzeaLang.ZH_SC,
     ]
     for k in locales:

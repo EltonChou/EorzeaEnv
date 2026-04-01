@@ -5,7 +5,8 @@ from ..eorzea_lang import EorzeaLang
 weather: Mapping[
     int,
     Mapping[
-        Union[EorzeaLang, Literal["de", "en", "fr", "ja", "ko", "cn"]], Optional[str]
+        Union[EorzeaLang, Literal["de", "en", "fr", "ja", "ko", "cn", "tc"]],
+        Optional[str],
     ],
 ] = {
     0: {
@@ -15,6 +16,7 @@ weather: Mapping[
         "fr": None,
         "ja": None,
         "ko": "●설명용 날씨",
+        "tc": None,
     },
     1: {
         "cn": "碧空",
@@ -23,6 +25,7 @@ weather: Mapping[
         "fr": "Dégagé",
         "ja": "快晴",
         "ko": "쾌청",
+        "tc": "碧空",
     },
     2: {
         "cn": "晴朗",
@@ -31,6 +34,7 @@ weather: Mapping[
         "fr": "Clair",
         "ja": "晴れ",
         "ko": "맑음",
+        "tc": "晴朗",
     },
     3: {
         "cn": "阴云",
@@ -39,6 +43,7 @@ weather: Mapping[
         "fr": "Couvert",
         "ja": "曇り",
         "ko": "흐림",
+        "tc": "陰雲",
     },
     4: {
         "cn": "薄雾",
@@ -47,6 +52,7 @@ weather: Mapping[
         "fr": "Brouillard",
         "ja": "霧",
         "ko": "안개",
+        "tc": "薄霧",
     },
     5: {
         "cn": "微风",
@@ -55,6 +61,7 @@ weather: Mapping[
         "fr": "Vent",
         "ja": "風",
         "ko": "바람",
+        "tc": "微風",
     },
     6: {
         "cn": "强风",
@@ -63,6 +70,7 @@ weather: Mapping[
         "fr": "Vents violents",
         "ja": "暴風",
         "ko": "폭풍",
+        "tc": "強風",
     },
     7: {
         "cn": "小雨",
@@ -71,6 +79,7 @@ weather: Mapping[
         "fr": "Pluie",
         "ja": "雨",
         "ko": "비",
+        "tc": "小雨",
     },
     8: {
         "cn": "暴雨",
@@ -79,6 +88,7 @@ weather: Mapping[
         "fr": "Pluie torrentielle",
         "ja": "暴雨",
         "ko": "폭우",
+        "tc": "暴雨",
     },
     9: {
         "cn": "打雷",
@@ -87,6 +97,7 @@ weather: Mapping[
         "fr": "Orages",
         "ja": "雷",
         "ko": "번개",
+        "tc": "打雷",
     },
     10: {
         "cn": "雷雨",
@@ -95,6 +106,7 @@ weather: Mapping[
         "fr": "Orages violents",
         "ja": "雷雨",
         "ko": "뇌우",
+        "tc": "雷雨",
     },
     11: {
         "cn": "扬沙",
@@ -103,6 +115,7 @@ weather: Mapping[
         "fr": "Tempêtes de poussière",
         "ja": "砂塵",
         "ko": "모래먼지",
+        "tc": "揚沙",
     },
     12: {
         "cn": "沙尘暴",
@@ -111,6 +124,7 @@ weather: Mapping[
         "fr": "Tempêtes de sable",
         "ja": "砂嵐",
         "ko": "모래폭풍",
+        "tc": "沙塵暴",
     },
     13: {
         "cn": "高温",
@@ -119,6 +133,7 @@ weather: Mapping[
         "fr": "Chaud",
         "ja": "熱波",
         "ko": "열파",
+        "tc": "高溫",
     },
     14: {
         "cn": "热浪",
@@ -127,6 +142,7 @@ weather: Mapping[
         "fr": "Torride",
         "ja": "灼熱波",
         "ko": "작열파",
+        "tc": "熱浪",
     },
     15: {
         "cn": "小雪",
@@ -135,6 +151,7 @@ weather: Mapping[
         "fr": "Neige",
         "ja": "雪",
         "ko": "눈",
+        "tc": "小雪",
     },
     16: {
         "cn": "暴雪",
@@ -143,6 +160,7 @@ weather: Mapping[
         "fr": "Blizzard",
         "ja": "吹雪",
         "ko": "눈보라",
+        "tc": "暴雪",
     },
     17: {
         "cn": "妖雾",
@@ -151,6 +169,7 @@ weather: Mapping[
         "fr": "Nébuleux",
         "ja": "妖霧",
         "ko": "요마의 안개",
+        "tc": "妖霧",
     },
     18: {
         "cn": "极光",
@@ -159,6 +178,7 @@ weather: Mapping[
         "fr": "Aurore",
         "ja": "オーロラ",
         "ko": "오로라",
+        "tc": "極光",
     },
     19: {
         "cn": "黑暗",
@@ -167,6 +187,7 @@ weather: Mapping[
         "fr": "Ténèbres",
         "ja": "闇",
         "ko": "어둠",
+        "tc": "黑暗",
     },
     20: {
         "cn": "绝命",
@@ -175,6 +196,7 @@ weather: Mapping[
         "fr": "Désespérance",
         "ja": "闘気",
         "ko": "투기",
+        "tc": "絕命",
     },
     21: {
         "cn": "阴云",
@@ -183,6 +205,7 @@ weather: Mapping[
         "fr": "Couvert",
         "ja": "曇り",
         "ko": "흐림",
+        "tc": "陰雲",
     },
     22: {
         "cn": "雷云",
@@ -191,6 +214,7 @@ weather: Mapping[
         "fr": "Orageux",
         "ja": "雷雲",
         "ko": "뇌운",
+        "tc": "雷雲",
     },
     23: {
         "cn": "暴风雨",
@@ -199,6 +223,7 @@ weather: Mapping[
         "fr": "Houle",
         "ja": "時化",
         "ko": "파랑",
+        "tc": "暴風雨",
     },
     24: {
         "cn": "暴风雨",
@@ -207,6 +232,7 @@ weather: Mapping[
         "fr": "Houle",
         "ja": "時化",
         "ko": "파랑",
+        "tc": "暴風雨",
     },
     25: {
         "cn": "阴沉",
@@ -215,6 +241,7 @@ weather: Mapping[
         "fr": "Nuageux",
         "ja": "曇天",
         "ko": "먹구름",
+        "tc": "陰沉",
     },
     26: {
         "cn": "热浪",
@@ -223,6 +250,7 @@ weather: Mapping[
         "fr": "Torride",
         "ja": "灼熱波",
         "ko": "작열파",
+        "tc": "熱浪",
     },
     27: {
         "cn": "妖雾",
@@ -231,6 +259,7 @@ weather: Mapping[
         "fr": "Nébuleux",
         "ja": "妖霧",
         "ko": "요마의 안개",
+        "tc": "妖霧",
     },
     28: {
         "cn": "暴风",
@@ -239,6 +268,7 @@ weather: Mapping[
         "fr": "Vents violents",
         "ja": "暴風",
         "ko": "폭풍",
+        "tc": "暴風",
     },
     29: {
         "cn": "烟雾",
@@ -247,6 +277,7 @@ weather: Mapping[
         "fr": "Éruptions",
         "ja": "噴煙",
         "ko": "분화",
+        "tc": "煙霧",
     },
     30: {
         "cn": "晴朗",
@@ -255,6 +286,7 @@ weather: Mapping[
         "fr": "Clair",
         "ja": "晴れ",
         "ko": "맑음",
+        "tc": "晴朗",
     },
     31: {
         "cn": "晴朗",
@@ -263,6 +295,7 @@ weather: Mapping[
         "fr": "Clair",
         "ja": "晴れ",
         "ko": "맑음",
+        "tc": "晴朗",
     },
     32: {
         "cn": "晴朗",
@@ -271,6 +304,7 @@ weather: Mapping[
         "fr": "Clair",
         "ja": "晴れ",
         "ko": "맑음",
+        "tc": "晴朗",
     },
     33: {
         "cn": "晴朗",
@@ -279,6 +313,7 @@ weather: Mapping[
         "fr": "Clair",
         "ja": "晴れ",
         "ko": "맑음",
+        "tc": "晴朗",
     },
     34: {
         "cn": "晴朗",
@@ -287,6 +322,7 @@ weather: Mapping[
         "fr": "Clair",
         "ja": "晴れ",
         "ko": "맑음",
+        "tc": "晴朗",
     },
     35: {
         "cn": "极光",
@@ -295,6 +331,7 @@ weather: Mapping[
         "fr": "Rayonnement",
         "ja": "極光",
         "ko": "극광",
+        "tc": "極光",
     },
     36: {
         "cn": "辉核",
@@ -303,6 +340,7 @@ weather: Mapping[
         "fr": "Radiations du Cœur",
         "ja": "龍核",
         "ko": "용핵",
+        "tc": "輝核",
     },
     37: {
         "cn": "辉核",
@@ -311,6 +349,7 @@ weather: Mapping[
         "fr": "Radiations du Cœur",
         "ja": "龍核",
         "ko": "용핵",
+        "tc": "輝核",
     },
     38: {
         "cn": "辉核",
@@ -319,6 +358,7 @@ weather: Mapping[
         "fr": "Radiations du Cœur",
         "ja": "龍核",
         "ko": "용핵",
+        "tc": "輝核",
     },
     39: {
         "cn": "辉核",
@@ -327,6 +367,7 @@ weather: Mapping[
         "fr": "Radiations du Cœur",
         "ja": "龍核",
         "ko": "용핵",
+        "tc": "輝核",
     },
     40: {
         "cn": "滩云",
@@ -335,6 +376,7 @@ weather: Mapping[
         "fr": "Amas nuageux",
         "ja": "群雲",
         "ko": "떼구름",
+        "tc": "灘雲",
     },
     41: {
         "cn": "滩云",
@@ -343,6 +385,7 @@ weather: Mapping[
         "fr": "Amas nuageux",
         "ja": "群雲",
         "ko": "떼구름",
+        "tc": "灘雲",
     },
     42: {
         "cn": "滩云",
@@ -351,6 +394,7 @@ weather: Mapping[
         "fr": "Amas nuageux",
         "ja": "群雲",
         "ko": "떼구름",
+        "tc": "灘雲",
     },
     43: {
         "cn": "滩云",
@@ -359,6 +403,7 @@ weather: Mapping[
         "fr": "Amas nuageux",
         "ja": "群雲",
         "ko": "떼구름",
+        "tc": "灘雲",
     },
     44: {
         "cn": "神意",
@@ -367,6 +412,7 @@ weather: Mapping[
         "fr": "Oppression",
         "ja": "神意",
         "ko": "섭리",
+        "tc": "神意",
     },
     45: {
         "cn": "神意",
@@ -375,6 +421,7 @@ weather: Mapping[
         "fr": "Oppression",
         "ja": "神意",
         "ko": "섭리",
+        "tc": "神意",
     },
     46: {
         "cn": "神意",
@@ -383,6 +430,7 @@ weather: Mapping[
         "fr": "Oppression",
         "ja": "神意",
         "ko": "섭리",
+        "tc": "神意",
     },
     47: {
         "cn": "神意",
@@ -391,6 +439,7 @@ weather: Mapping[
         "fr": "Oppression",
         "ja": "神意",
         "ko": "섭리",
+        "tc": "神意",
     },
     48: {
         "cn": "神意",
@@ -399,6 +448,7 @@ weather: Mapping[
         "fr": "Oppression",
         "ja": "神意",
         "ko": "섭리",
+        "tc": "神意",
     },
     49: {
         "cn": "灵风",
@@ -407,6 +457,7 @@ weather: Mapping[
         "fr": "Vent ombral",
         "ja": "霊風",
         "ko": "그림자바람",
+        "tc": "靈風",
     },
     50: {
         "cn": "灵电",
@@ -415,6 +466,7 @@ weather: Mapping[
         "fr": "Charges ombrales",
         "ja": "放電",
         "ko": "방전",
+        "tc": "靈電",
     },
     51: {
         "cn": "烟武",
@@ -423,6 +475,7 @@ weather: Mapping[
         "fr": "Fumées",
         "ja": "煙霧",
         "ko": "연무",
+        "tc": "煙武",
     },
     52: {
         "cn": "晴朗",
@@ -431,6 +484,7 @@ weather: Mapping[
         "fr": "Clair",
         "ja": "晴れ",
         "ko": "맑음",
+        "tc": "晴朗",
     },
     53: {
         "cn": "兽雷",
@@ -439,6 +493,7 @@ weather: Mapping[
         "fr": "Éclairs royaux",
         "ja": "獣雷",
         "ko": "야수번개",
+        "tc": "獸雷",
     },
     54: {
         "cn": "雷波",
@@ -447,6 +502,7 @@ weather: Mapping[
         "fr": "Hyperélectricité",
         "ja": "雷波",
         "ko": "번개파동",
+        "tc": "雷波",
     },
     55: {
         "cn": "兽雷",
@@ -455,6 +511,7 @@ weather: Mapping[
         "fr": "Éclairs royaux",
         "ja": "獣雷",
         "ko": "야수번개",
+        "tc": "獸雷",
     },
     56: {
         "cn": "神意",
@@ -463,6 +520,7 @@ weather: Mapping[
         "fr": "Oppression",
         "ja": "神意",
         "ko": "섭리",
+        "tc": "神意",
     },
     57: {
         "cn": "打雷",
@@ -471,6 +529,7 @@ weather: Mapping[
         "fr": "Orages",
         "ja": "雷",
         "ko": "번개",
+        "tc": "打雷",
     },
     58: {
         "cn": "打雷",
@@ -479,8 +538,17 @@ weather: Mapping[
         "fr": "Orages",
         "ja": "雷",
         "ko": "번개",
+        "tc": "打雷",
     },
-    59: {"cn": None, "de": None, "en": "CutScene", "fr": None, "ja": None, "ko": None},
+    59: {
+        "cn": None,
+        "de": None,
+        "en": "CutScene",
+        "fr": None,
+        "ja": None,
+        "ko": None,
+        "tc": None,
+    },
     60: {
         "cn": "神秘",
         "de": "Mystisch",
@@ -488,6 +556,7 @@ weather: Mapping[
         "fr": "Multiplicité",
         "ja": "神秘",
         "ko": "신비",
+        "tc": "神秘",
     },
     61: {
         "cn": "神秘",
@@ -496,6 +565,7 @@ weather: Mapping[
         "fr": "Multiplicité",
         "ja": "神秘",
         "ko": "신비",
+        "tc": "神秘",
     },
     62: {
         "cn": "小雨",
@@ -504,6 +574,7 @@ weather: Mapping[
         "fr": "Pluie",
         "ja": "雨",
         "ko": "비",
+        "tc": "小雨",
     },
     63: {
         "cn": "晴朗",
@@ -512,6 +583,7 @@ weather: Mapping[
         "fr": "Clair",
         "ja": "晴れ",
         "ko": "맑음",
+        "tc": "晴朗",
     },
     64: {
         "cn": "小雨",
@@ -520,6 +592,7 @@ weather: Mapping[
         "fr": "Pluie",
         "ja": "雨",
         "ko": "비",
+        "tc": "小雨",
     },
     65: {
         "cn": "晴朗",
@@ -528,6 +601,7 @@ weather: Mapping[
         "fr": "Clair",
         "ja": "晴れ",
         "ko": "맑음",
+        "tc": "晴朗",
     },
     66: {
         "cn": "邪天",
@@ -536,6 +610,7 @@ weather: Mapping[
         "fr": "Tempête de haine",
         "ja": "邪天",
         "ko": "사룡의 원념",
+        "tc": "邪天",
     },
     67: {
         "cn": "邪天",
@@ -544,6 +619,7 @@ weather: Mapping[
         "fr": "Tempête de haine",
         "ja": "邪天",
         "ko": "사룡의 원념",
+        "tc": "邪天",
     },
     68: {
         "cn": "晴朗",
@@ -552,6 +628,7 @@ weather: Mapping[
         "fr": "Souterrain",
         "ja": "晴れ",
         "ko": "맑음",
+        "tc": "晴朗",
     },
     69: {
         "cn": "平衡",
@@ -560,6 +637,7 @@ weather: Mapping[
         "fr": "Harmonie",
         "ja": "調和",
         "ko": "조화",
+        "tc": "平衡",
     },
     70: {
         "cn": "平衡",
@@ -568,6 +646,7 @@ weather: Mapping[
         "fr": "Harmonie",
         "ja": "調和",
         "ko": "조화",
+        "tc": "平衡",
     },
     71: {
         "cn": "时光",
@@ -576,6 +655,7 @@ weather: Mapping[
         "fr": "Hors du temps",
         "ja": "時流",
         "ko": "시류",
+        "tc": "時光",
     },
     72: {
         "cn": "时光",
@@ -584,6 +664,7 @@ weather: Mapping[
         "fr": "Hors du temps",
         "ja": "時流",
         "ko": "시류",
+        "tc": "時光",
     },
     73: {
         "cn": "时光",
@@ -592,6 +673,7 @@ weather: Mapping[
         "fr": "Hors du temps",
         "ja": "時流",
         "ko": "시류",
+        "tc": "時光",
     },
     74: {
         "cn": "鬼气",
@@ -600,6 +682,7 @@ weather: Mapping[
         "fr": "Infini démoniaque",
         "ja": "鬼気",
         "ko": "귀기",
+        "tc": "鬼氣",
     },
     75: {
         "cn": "鬼气",
@@ -608,6 +691,7 @@ weather: Mapping[
         "fr": "Infini démoniaque",
         "ja": "鬼気",
         "ko": "귀기",
+        "tc": "鬼氣",
     },
     76: {
         "cn": "鬼气",
@@ -616,6 +700,7 @@ weather: Mapping[
         "fr": "Infini démoniaque",
         "ja": "鬼気",
         "ko": "귀기",
+        "tc": "鬼氣",
     },
     77: {
         "cn": "次元",
@@ -624,6 +709,7 @@ weather: Mapping[
         "fr": "Perturbation dimensionnelle",
         "ja": "次元",
         "ko": "차원",
+        "tc": "次元",
     },
     78: {
         "cn": "次元",
@@ -632,6 +718,7 @@ weather: Mapping[
         "fr": "Perturbation dimensionnelle",
         "ja": "次元",
         "ko": "차원",
+        "tc": "次元",
     },
     79: {
         "cn": "次元",
@@ -640,6 +727,7 @@ weather: Mapping[
         "fr": "Perturbation dimensionnelle",
         "ja": "次元",
         "ko": "차원",
+        "tc": "次元",
     },
     80: {
         "cn": "豪雨",
@@ -648,6 +736,7 @@ weather: Mapping[
         "fr": "Tempête festive",
         "ja": "嵐天",
         "ko": "호우",
+        "tc": "豪雨",
     },
     81: {
         "cn": "豪雨",
@@ -656,6 +745,7 @@ weather: Mapping[
         "fr": "Tempête festive",
         "ja": "嵐天",
         "ko": "호우",
+        "tc": "豪雨",
     },
     82: {
         "cn": "极乐",
@@ -664,6 +754,7 @@ weather: Mapping[
         "fr": "Béatitude éternelle",
         "ja": "美天",
         "ko": "미혹",
+        "tc": "極樂",
     },
     83: {
         "cn": "极乐",
@@ -672,6 +763,7 @@ weather: Mapping[
         "fr": "Béatitude éternelle",
         "ja": "美天",
         "ko": "미혹",
+        "tc": "極樂",
     },
     84: {
         "cn": "龙威",
@@ -680,6 +772,7 @@ weather: Mapping[
         "fr": "Tempête draconique",
         "ja": "龍天",
         "ko": "신룡의 폭풍",
+        "tc": "龍威",
     },
     85: {
         "cn": "龙威",
@@ -688,6 +781,7 @@ weather: Mapping[
         "fr": "Tempête draconique",
         "ja": "龍天",
         "ko": "신룡의 폭풍",
+        "tc": "龍威",
     },
     86: {
         "cn": "豪雨",
@@ -696,6 +790,7 @@ weather: Mapping[
         "fr": "Tempête festive",
         "ja": "嵐天",
         "ko": "호우",
+        "tc": "豪雨",
     },
     87: {
         "cn": "迅雷",
@@ -704,6 +799,7 @@ weather: Mapping[
         "fr": "Vif-orage",
         "ja": "迅雷",
         "ko": "전선뇌우",
+        "tc": "迅雷",
     },
     88: {
         "cn": "打雷",
@@ -712,6 +808,7 @@ weather: Mapping[
         "fr": "Orages",
         "ja": "雷",
         "ko": "번개",
+        "tc": "打雷",
     },
     89: {
         "cn": "次元",
@@ -720,6 +817,7 @@ weather: Mapping[
         "fr": "Perturbation dimensionnelle",
         "ja": "次元",
         "ko": "차원",
+        "tc": "次元",
     },
     90: {
         "cn": "晴朗",
@@ -728,6 +826,7 @@ weather: Mapping[
         "fr": "Clair",
         "ja": "晴れ",
         "ko": "맑음",
+        "tc": "晴朗",
     },
     91: {
         "cn": "碧空",
@@ -736,6 +835,7 @@ weather: Mapping[
         "fr": "Dégagé",
         "ja": "快晴",
         "ko": "쾌청",
+        "tc": "碧空",
     },
     92: {
         "cn": "白旋风",
@@ -744,6 +844,7 @@ weather: Mapping[
         "fr": "Tempête blanche",
         "ja": "白嵐",
         "ko": "하얀 폭풍",
+        "tc": "白旋風",
     },
     93: {
         "cn": "白旋风",
@@ -752,6 +853,7 @@ weather: Mapping[
         "fr": "Tempête blanche",
         "ja": "白嵐",
         "ko": "하얀 폭풍",
+        "tc": "白旋風",
     },
     94: {
         "cn": "白旋风",
@@ -760,6 +862,7 @@ weather: Mapping[
         "fr": "Tempête blanche",
         "ja": "白嵐",
         "ko": "하얀 폭풍",
+        "tc": "白旋風",
     },
     95: {
         "cn": "幻想",
@@ -768,6 +871,7 @@ weather: Mapping[
         "fr": "Fantasmagorique",
         "ja": "幻想",
         "ko": "환상",
+        "tc": "幻想",
     },
     96: {
         "cn": "白旋风",
@@ -776,6 +880,7 @@ weather: Mapping[
         "fr": "Tempête blanche",
         "ja": "白嵐",
         "ko": "하얀 폭풍",
+        "tc": "白旋風",
     },
     97: {
         "cn": "月夜",
@@ -784,6 +889,7 @@ weather: Mapping[
         "fr": "Clair de lune",
         "ja": "月夜",
         "ko": "달빛",
+        "tc": "月夜",
     },
     98: {
         "cn": "月夜",
@@ -792,6 +898,7 @@ weather: Mapping[
         "fr": "Clair de lune",
         "ja": "月夜",
         "ko": "달빛",
+        "tc": "月夜",
     },
     99: {
         "cn": "月夜",
@@ -800,6 +907,7 @@ weather: Mapping[
         "fr": "Clair de lune",
         "ja": "月夜",
         "ko": "달빛",
+        "tc": "月夜",
     },
     100: {
         "cn": "月夜",
@@ -808,6 +916,7 @@ weather: Mapping[
         "fr": "Clair de lune",
         "ja": "月夜",
         "ko": "달빛",
+        "tc": "月夜",
     },
     101: {
         "cn": "红月下",
@@ -816,6 +925,7 @@ weather: Mapping[
         "fr": "Lune rouge",
         "ja": "紅月下",
         "ko": "붉은 달",
+        "tc": "紅月下",
     },
     102: {
         "cn": "朱炎",
@@ -824,6 +934,7 @@ weather: Mapping[
         "fr": "Vermillon",
         "ja": "朱炎",
         "ko": "붉은 불꽃 ",
+        "tc": "朱炎",
     },
     103: {
         "cn": "朱炎",
@@ -832,6 +943,7 @@ weather: Mapping[
         "fr": "Vermillon",
         "ja": "朱炎",
         "ko": "붉은 불꽃 ",
+        "tc": "朱炎",
     },
     104: {
         "cn": "朱炎",
@@ -840,6 +952,7 @@ weather: Mapping[
         "fr": "Vermillon",
         "ja": "朱炎",
         "ko": "붉은 불꽃 ",
+        "tc": "朱炎",
     },
     105: {
         "cn": "晴朗",
@@ -848,6 +961,7 @@ weather: Mapping[
         "fr": "Clair",
         "ja": "晴れ",
         "ko": "맑음",
+        "tc": "晴朗",
     },
     106: {
         "cn": "晴朗",
@@ -856,6 +970,7 @@ weather: Mapping[
         "fr": "Clair",
         "ja": "晴れ",
         "ko": "맑음",
+        "tc": "晴朗",
     },
     107: {
         "cn": "晴朗",
@@ -864,6 +979,7 @@ weather: Mapping[
         "fr": "Clair",
         "ja": "晴れ",
         "ko": "맑음",
+        "tc": "晴朗",
     },
     108: {
         "cn": "晴朗",
@@ -872,6 +988,7 @@ weather: Mapping[
         "fr": "Clair",
         "ja": "晴れ",
         "ko": "맑음",
+        "tc": "晴朗",
     },
     109: {
         "cn": "烈焰",
@@ -880,6 +997,7 @@ weather: Mapping[
         "fr": "Flammes",
         "ja": "火炎",
         "ko": "화염",
+        "tc": "烈焰",
     },
     110: {
         "cn": "海啸",
@@ -888,6 +1006,7 @@ weather: Mapping[
         "fr": "Raz-de-marée",
         "ja": "津波",
         "ko": "해일",
+        "tc": "海嘯",
     },
     111: {
         "cn": "龙卷风",
@@ -896,6 +1015,7 @@ weather: Mapping[
         "fr": "Tornade",
         "ja": "竜巻",
         "ko": "회오리",
+        "tc": "龍捲風",
     },
     112: {
         "cn": "地震",
@@ -904,6 +1024,7 @@ weather: Mapping[
         "fr": "Séisme",
         "ja": "地震",
         "ko": "지진",
+        "tc": "地震",
     },
     113: {
         "cn": "青空",
@@ -912,6 +1033,7 @@ weather: Mapping[
         "fr": "Azur",
         "ja": "青春",
         "ko": "푸른 봄날",
+        "tc": "青空",
     },
     114: {
         "cn": "青空",
@@ -920,6 +1042,7 @@ weather: Mapping[
         "fr": "Azur",
         "ja": "青春",
         "ko": "푸른 봄날",
+        "tc": "青空",
     },
     115: {
         "cn": "青空",
@@ -928,6 +1051,7 @@ weather: Mapping[
         "fr": "Azur",
         "ja": "青春",
         "ko": "푸른 봄날",
+        "tc": "青空",
     },
     116: {
         "cn": "乱灵流",
@@ -936,6 +1060,7 @@ weather: Mapping[
         "fr": "Turbulences ombrales",
         "ja": "乱霊流",
         "ko": "난령류",
+        "tc": "亂靈流",
     },
     117: {
         "cn": "青空",
@@ -944,6 +1069,7 @@ weather: Mapping[
         "fr": "Azur",
         "ja": "青春",
         "ko": "푸른 봄날",
+        "tc": "青空",
     },
     118: {
         "cn": "无尽光",
@@ -952,6 +1078,7 @@ weather: Mapping[
         "fr": "Clarté éternelle",
         "ja": "無尽光",
         "ko": "끝없는 빛",
+        "tc": "無盡光",
     },
     119: {
         "cn": "暴风",
@@ -960,6 +1087,7 @@ weather: Mapping[
         "fr": "Vents violents",
         "ja": "暴風",
         "ko": "폭풍",
+        "tc": "暴風",
     },
     120: {
         "cn": "末日",
@@ -968,6 +1096,7 @@ weather: Mapping[
         "fr": "Apocalypse",
         "ja": "終末",
         "ko": "종말",
+        "tc": "末日",
     },
     121: {
         "cn": "末日",
@@ -976,6 +1105,7 @@ weather: Mapping[
         "fr": "Apocalypse",
         "ja": "終末",
         "ko": "종말",
+        "tc": "末日",
     },
     122: {
         "cn": "妖梦",
@@ -984,6 +1114,7 @@ weather: Mapping[
         "fr": "Rêverie",
         "ja": "妖夢",
         "ko": "이상한 꿈",
+        "tc": "妖夢",
     },
     123: {
         "cn": "妖梦",
@@ -992,6 +1123,7 @@ weather: Mapping[
         "fr": "Rêverie",
         "ja": "妖夢",
         "ko": "이상한 꿈",
+        "tc": "妖夢",
     },
     124: {
         "cn": "妖梦",
@@ -1000,6 +1132,7 @@ weather: Mapping[
         "fr": "Rêverie",
         "ja": "妖夢",
         "ko": "이상한 꿈",
+        "tc": "妖夢",
     },
     125: {
         "cn": "光天",
@@ -1008,6 +1141,7 @@ weather: Mapping[
         "fr": "Radiance divine",
         "ja": "光天",
         "ko": "눈부신 하늘",
+        "tc": "光天",
     },
     126: {
         "cn": "光天",
@@ -1016,6 +1150,7 @@ weather: Mapping[
         "fr": "Radiance divine",
         "ja": "光天",
         "ko": "눈부신 하늘",
+        "tc": "光天",
     },
     127: {
         "cn": "末日",
@@ -1024,6 +1159,7 @@ weather: Mapping[
         "fr": "Apocalypse",
         "ja": "終末",
         "ko": "종말",
+        "tc": "末日",
     },
     128: {
         "cn": "末日",
@@ -1032,6 +1168,7 @@ weather: Mapping[
         "fr": "Apocalypse",
         "ja": "終末",
         "ko": "종말",
+        "tc": "末日",
     },
     129: {
         "cn": "无尽光",
@@ -1040,6 +1177,7 @@ weather: Mapping[
         "fr": "Clarté éternelle",
         "ja": "無尽光",
         "ko": "끝없는 빛",
+        "tc": "無盡光",
     },
     130: {
         "cn": "烟雾",
@@ -1048,6 +1186,7 @@ weather: Mapping[
         "fr": "Éruptions",
         "ja": "噴煙",
         "ko": "분화",
+        "tc": "煙霧",
     },
     131: {
         "cn": "末日",
@@ -1056,6 +1195,7 @@ weather: Mapping[
         "fr": "Apocalypse",
         "ja": "終末",
         "ko": "종말",
+        "tc": "末日",
     },
     132: {
         "cn": "晴朗",
@@ -1064,6 +1204,7 @@ weather: Mapping[
         "fr": "Clair",
         "ja": "晴れ",
         "ko": "맑음",
+        "tc": "晴朗",
     },
     133: {
         "cn": "灵烈火",
@@ -1072,6 +1213,7 @@ weather: Mapping[
         "fr": "Vent ombral de feu",
         "ja": "焔霊風",
         "ko": "화속성풍",
+        "tc": "靈烈火",
     },
     134: {
         "cn": "灵飘尘",
@@ -1080,6 +1222,7 @@ weather: Mapping[
         "fr": "Vent ombral de terre",
         "ja": "土霊風",
         "ko": "토속성풍",
+        "tc": "靈飄塵",
     },
     135: {
         "cn": "灵飞电",
@@ -1088,6 +1231,7 @@ weather: Mapping[
         "fr": "Vent ombral de foudre",
         "ja": "雷霊風",
         "ko": "뇌속성풍",
+        "tc": "靈飛電",
     },
     136: {
         "cn": "灵罡风",
@@ -1096,6 +1240,7 @@ weather: Mapping[
         "fr": "Vent ombral des tempêtes",
         "ja": "嵐霊風",
         "ko": "풍속성풍",
+        "tc": "靈罡風",
     },
     137: {
         "cn": "流星雨",
@@ -1104,6 +1249,7 @@ weather: Mapping[
         "fr": "Pluie d'étoiles",
         "ja": "流星雨",
         "ko": "유성우",
+        "tc": "流星雨",
     },
     138: {
         "cn": "记忆乱流",
@@ -1112,6 +1258,7 @@ weather: Mapping[
         "fr": "Tempête de souvenirs",
         "ja": "記憶乱流",
         "ko": "기억난류",
+        "tc": "記憶亂流",
     },
     139: {
         "cn": "阴云",
@@ -1120,6 +1267,7 @@ weather: Mapping[
         "fr": "Couvert",
         "ja": "曇り",
         "ko": "흐림",
+        "tc": "陰雲",
     },
     140: {
         "cn": "阴云",
@@ -1128,6 +1276,7 @@ weather: Mapping[
         "fr": "Couvert",
         "ja": "曇り",
         "ko": "흐림",
+        "tc": "陰雲",
     },
     141: {
         "cn": "极光",
@@ -1136,6 +1285,7 @@ weather: Mapping[
         "fr": "Rayonnement",
         "ja": "極光",
         "ko": "극광",
+        "tc": "極光",
     },
     142: {
         "cn": "极光",
@@ -1144,6 +1294,7 @@ weather: Mapping[
         "fr": "Rayonnement",
         "ja": "極光",
         "ko": "극광",
+        "tc": "極光",
     },
     143: {
         "cn": "雷云",
@@ -1152,6 +1303,7 @@ weather: Mapping[
         "fr": "Orageux",
         "ja": "雷雲",
         "ko": "뇌운",
+        "tc": "雷雲",
     },
     144: {
         "cn": "火风暴",
@@ -1160,6 +1312,7 @@ weather: Mapping[
         "fr": "Tempête de feu",
         "ja": "焔嵐\xa0",
         "ko": "불바람",
+        "tc": "火風暴",
     },
     145: {
         "cn": "幻海流",
@@ -1168,8 +1321,17 @@ weather: Mapping[
         "fr": "Courant spectral",
         "ja": "幻海流\xa0",
         "ko": "환해류",
+        "tc": "幻海流",
     },
-    146: {"cn": None, "de": None, "en": None, "fr": None, "ja": None, "ko": None},
+    146: {
+        "cn": None,
+        "de": None,
+        "en": None,
+        "fr": None,
+        "ja": None,
+        "ko": None,
+        "tc": None,
+    },
     147: {
         "cn": "决战",
         "de": "Endzeitig",
@@ -1177,6 +1339,7 @@ weather: Mapping[
         "fr": "Fatidique",
         "ja": "決戦",
         "ko": "결전",
+        "tc": "決戰",
     },
     148: {
         "cn": "月尘",
@@ -1185,6 +1348,7 @@ weather: Mapping[
         "fr": "Tempêtes de régolithe",
         "ja": "月砂塵",
         "ko": "달모래먼지",
+        "tc": "月塵",
     },
     149: {
         "cn": "磁暴",
@@ -1193,6 +1357,7 @@ weather: Mapping[
         "fr": "Astromagnétique",
         "ja": "磁気嵐",
         "ko": "자기 폭풍",
+        "tc": "磁暴",
     },
     150: {
         "cn": "末日",
@@ -1201,6 +1366,7 @@ weather: Mapping[
         "fr": "Apocalypse",
         "ja": "終末",
         "ko": "종말",
+        "tc": "末日",
     },
     151: {
         "cn": "星灵",
@@ -1209,6 +1375,7 @@ weather: Mapping[
         "fr": "Polarisation",
         "ja": "星霊",
         "ko": "별빛그림자",
+        "tc": "星靈",
     },
     152: {
         "cn": "星灵",
@@ -1217,6 +1384,7 @@ weather: Mapping[
         "fr": "Polarisation",
         "ja": "星霊",
         "ko": "별빛그림자",
+        "tc": "星靈",
     },
     153: {
         "cn": "星灵",
@@ -1225,6 +1393,7 @@ weather: Mapping[
         "fr": "Polarisation",
         "ja": "星霊",
         "ko": "별빛그림자",
+        "tc": "星靈",
     },
     154: {
         "cn": "星灵",
@@ -1233,6 +1402,7 @@ weather: Mapping[
         "fr": "Polarisation",
         "ja": "星霊",
         "ko": "별빛그림자",
+        "tc": "星靈",
     },
     155: {
         "cn": "星灵",
@@ -1241,6 +1411,7 @@ weather: Mapping[
         "fr": "Polarisation",
         "ja": "星霊",
         "ko": "별빛그림자",
+        "tc": "星靈",
     },
     156: {
         "cn": "虚拟",
@@ -1249,6 +1420,7 @@ weather: Mapping[
         "fr": "Virtuel",
         "ja": "仮想",
         "ko": "가상",
+        "tc": "虛擬",
     },
     157: {
         "cn": "万魔殿",
@@ -1257,6 +1429,7 @@ weather: Mapping[
         "fr": "Pandæmonium",
         "ja": "万魔殿",
         "ko": "마의 전당",
+        "tc": "萬魔殿",
     },
     158: {
         "cn": "万魔殿",
@@ -1265,6 +1438,7 @@ weather: Mapping[
         "fr": "Pandæmonium",
         "ja": "万魔殿",
         "ko": "마의 전당",
+        "tc": "萬魔殿",
     },
     159: {
         "cn": "万魔殿",
@@ -1273,6 +1447,7 @@ weather: Mapping[
         "fr": "Pandæmonium",
         "ja": "万魔殿",
         "ko": "마의 전당",
+        "tc": "萬魔殿",
     },
     160: {
         "cn": "终极",
@@ -1281,6 +1456,7 @@ weather: Mapping[
         "fr": "Eschatologique",
         "ja": "終極",
         "ko": "종극",
+        "tc": "終極",
     },
     161: {
         "cn": "绝望",
@@ -1289,6 +1465,7 @@ weather: Mapping[
         "fr": "Désespoir",
         "ja": "絶望",
         "ko": "절망",
+        "tc": "絕望",
     },
     162: {
         "cn": "神域",
@@ -1297,6 +1474,7 @@ weather: Mapping[
         "fr": "Mythologique",
         "ja": "神域",
         "ko": "신역",
+        "tc": "神域",
     },
     163: {
         "cn": "神域",
@@ -1305,6 +1483,7 @@ weather: Mapping[
         "fr": "Mythologique",
         "ja": "神域",
         "ko": "신역",
+        "tc": "神域",
     },
     164: {
         "cn": "神域",
@@ -1313,6 +1492,7 @@ weather: Mapping[
         "fr": "Mythologique",
         "ja": "神域",
         "ko": "신역",
+        "tc": "神域",
     },
     165: {
         "cn": "神域",
@@ -1321,6 +1501,7 @@ weather: Mapping[
         "fr": "Mythologique",
         "ja": "神域",
         "ko": "신역",
+        "tc": "神域",
     },
     166: {
         "cn": "神域",
@@ -1329,6 +1510,7 @@ weather: Mapping[
         "fr": "Mythologique",
         "ja": "神域",
         "ko": "신역",
+        "tc": "神域",
     },
     167: {
         "cn": "神域",
@@ -1337,6 +1519,7 @@ weather: Mapping[
         "fr": "Mythologique",
         "ja": "神域",
         "ko": "신역",
+        "tc": "神域",
     },
     168: {
         "cn": "神域",
@@ -1345,6 +1528,7 @@ weather: Mapping[
         "fr": "Mythologique",
         "ja": "神域",
         "ko": "신역",
+        "tc": "神域",
     },
     169: {
         "cn": "神域",
@@ -1353,6 +1537,7 @@ weather: Mapping[
         "fr": "Mythologique",
         "ja": "神域",
         "ko": "신역",
+        "tc": "神域",
     },
     170: {
         "cn": "邪天",
@@ -1361,6 +1546,7 @@ weather: Mapping[
         "fr": "Tempête de haine",
         "ja": "邪天",
         "ko": "사룡의 원념",
+        "tc": "邪天",
     },
     171: {
         "cn": "虚无",
@@ -1369,6 +1555,7 @@ weather: Mapping[
         "fr": "Néant",
         "ja": "虚無",
         "ko": "허무",
+        "tc": "虛無",
     },
     172: {
         "cn": "虚无",
@@ -1377,6 +1564,7 @@ weather: Mapping[
         "fr": "Néant",
         "ja": "虚無",
         "ko": "허무",
+        "tc": "虛無",
     },
     173: {
         "cn": "虚无",
@@ -1385,6 +1573,7 @@ weather: Mapping[
         "fr": "Néant",
         "ja": "虚無",
         "ko": "허무",
+        "tc": "虛無",
     },
     174: {
         "cn": "次元",
@@ -1393,6 +1582,7 @@ weather: Mapping[
         "fr": "Perturbation dimensionnelle",
         "ja": "次元",
         "ko": "차원",
+        "tc": "次元",
     },
     175: {
         "cn": "次元",
@@ -1401,6 +1591,7 @@ weather: Mapping[
         "fr": "Perturbation dimensionnelle",
         "ja": "次元",
         "ko": "차원",
+        "tc": "次元",
     },
     176: {
         "cn": "次元",
@@ -1409,6 +1600,7 @@ weather: Mapping[
         "fr": "Perturbation dimensionnelle",
         "ja": "次元",
         "ko": "차원",
+        "tc": "次元",
     },
     177: {
         "cn": "万魔殿",
@@ -1417,6 +1609,7 @@ weather: Mapping[
         "fr": "Pandæmonium",
         "ja": "万魔殿",
         "ko": "마의 전당",
+        "tc": "萬魔殿",
     },
     178: {
         "cn": "万魔殿",
@@ -1425,6 +1618,7 @@ weather: Mapping[
         "fr": "Pandæmonium",
         "ja": "万魔殿",
         "ko": "마의 전당",
+        "tc": "萬魔殿",
     },
     179: {
         "cn": "诗想",
@@ -1433,6 +1627,7 @@ weather: Mapping[
         "fr": "Imaginaire",
         "ja": "詩想",
         "ko": "시상",
+        "tc": "詩想",
     },
     180: {
         "cn": "虚无",
@@ -1441,6 +1636,7 @@ weather: Mapping[
         "fr": "Néant",
         "ja": "虚無",
         "ko": "허무",
+        "tc": "虛無",
     },
     181: {
         "cn": "阈限",
@@ -1449,6 +1645,7 @@ weather: Mapping[
         "fr": "Ombrageux",
         "ja": "暗天",
         "ko": "어두운 하늘",
+        "tc": "閾限",
     },
     182: {
         "cn": "阈限",
@@ -1457,6 +1654,7 @@ weather: Mapping[
         "fr": "Ombrageux",
         "ja": "暗天",
         "ko": "어두운 하늘",
+        "tc": "閾限",
     },
     183: {
         "cn": "虚拟",
@@ -1465,6 +1663,7 @@ weather: Mapping[
         "fr": "Virtuel",
         "ja": "仮想",
         "ko": "가상",
+        "tc": "虛擬",
     },
     184: {
         "cn": "虚拟",
@@ -1473,6 +1672,7 @@ weather: Mapping[
         "fr": "Virtuel",
         "ja": "仮想",
         "ko": "가상",
+        "tc": "虛擬",
     },
     185: {
         "cn": "虚拟",
@@ -1481,6 +1681,7 @@ weather: Mapping[
         "fr": "Virtuel",
         "ja": "仮想",
         "ko": "가상",
+        "tc": "虛擬",
     },
     186: {
         "cn": "虚拟",
@@ -1489,6 +1690,7 @@ weather: Mapping[
         "fr": "Virtuel",
         "ja": "仮想",
         "ko": "가상",
+        "tc": "虛擬",
     },
     187: {
         "cn": "记忆",
@@ -1497,6 +1699,7 @@ weather: Mapping[
         "fr": "Mémoriel",
         "ja": "記憶",
         "ko": "기억",
+        "tc": "記憶",
     },
     188: {
         "cn": "战云",
@@ -1505,6 +1708,7 @@ weather: Mapping[
         "fr": "Brume spectrale",
         "ja": "暗雲",
         "ko": "암운",
+        "tc": "戰雲",
     },
     189: {
         "cn": "虚拟",
@@ -1513,6 +1717,7 @@ weather: Mapping[
         "fr": "Virtuel",
         "ja": "仮想",
         "ko": "가상",
+        "tc": None,
     },
     190: {
         "cn": "幻怪",
@@ -1521,6 +1726,7 @@ weather: Mapping[
         "fr": "Fantasmes",
         "ja": "幻怪",
         "ko": "환영",
+        "tc": None,
     },
     191: {
         "cn": "幻妖",
@@ -1529,6 +1735,7 @@ weather: Mapping[
         "fr": "Illusions",
         "ja": "幻妖",
         "ko": "환시",
+        "tc": None,
     },
     192: {
         "cn": "蜃景",
@@ -1537,6 +1744,7 @@ weather: Mapping[
         "fr": "Mirages",
         "ja": "蜃気楼",
         "ko": "신기루",
+        "tc": None,
     },
     193: {
         "cn": "魔尘",
@@ -1545,6 +1753,7 @@ weather: Mapping[
         "fr": "Malsain",
         "ja": "魔塵",
         "ko": "정전기먼지",
+        "tc": None,
     },
     194: {
         "cn": "流星雨",
@@ -1553,6 +1762,7 @@ weather: Mapping[
         "fr": "Pluie de météorites",
         "ja": "流星",
         "ko": "유성",
+        "tc": None,
     },
     195: {
         "cn": "流星雨",
@@ -1561,6 +1771,7 @@ weather: Mapping[
         "fr": "Pluie de météorites",
         "ja": "流星",
         "ko": "유성",
+        "tc": None,
     },
     196: {
         "cn": "磁暴",
@@ -1569,6 +1780,7 @@ weather: Mapping[
         "fr": "Tempête magnétique",
         "ja": "磁気嵐",
         "ko": "자기 폭풍",
+        "tc": None,
     },
     197: {
         "cn": "孢子雾",
@@ -1577,6 +1789,7 @@ weather: Mapping[
         "fr": "Nuages de spores",
         "ja": "胞子霧",
         "ko": "포자 안개",
+        "tc": None,
     },
     198: {
         "cn": "死气",
@@ -1585,6 +1798,7 @@ weather: Mapping[
         "fr": "Atmosphère mortifère",
         "ja": "死気",
         "ko": "죽음의 기운",
+        "tc": None,
     },
     199: {
         "cn": "死气",
@@ -1593,6 +1807,7 @@ weather: Mapping[
         "fr": "Atmosphère mortifère",
         "ja": "死気",
         "ko": "죽음의 기운",
+        "tc": None,
     },
     200: {
         "cn": "死气",
@@ -1601,6 +1816,7 @@ weather: Mapping[
         "fr": "Atmosphère mortifère",
         "ja": "死気",
         "ko": "죽음의 기운",
+        "tc": None,
     },
     201: {
         "cn": "寒冷气流",
@@ -1609,6 +1825,7 @@ weather: Mapping[
         "fr": "Courants glaciaux",
         "ja": "寒冷気流",
         "ko": "한랭 기류",
+        "tc": None,
     },
     202: {
         "cn": "玻璃雨",
@@ -1617,6 +1834,7 @@ weather: Mapping[
         "fr": "Pluie de verre",
         "ja": "グラスレイン",
         "ko": "유리비",
+        "tc": None,
     },
     203: {
         "cn": "打雷",
@@ -1624,7 +1842,8 @@ weather: Mapping[
         "en": "Thunder",
         "fr": "Orages",
         "ja": "雷",
-        "ko": None,
+        "ko": "번개",
+        "tc": None,
     },
     204: {
         "cn": "打雷",
@@ -1632,8 +1851,25 @@ weather: Mapping[
         "en": "Thunder",
         "fr": "Orages",
         "ja": "雷",
-        "ko": None,
+        "ko": "번개",
+        "tc": None,
     },
-    205: {"cn": None, "de": None, "en": None, "fr": None, "ja": None, "ko": None},
-    206: {"cn": None, "de": None, "en": None, "fr": None, "ja": None, "ko": None},
+    205: {
+        "cn": "重力紊乱",
+        "de": None,
+        "en": None,
+        "fr": None,
+        "ja": None,
+        "ko": "난중력",
+        "tc": None,
+    },
+    206: {
+        "cn": "水泡风暴",
+        "de": None,
+        "en": None,
+        "fr": None,
+        "ja": None,
+        "ko": "물거품 폭풍",
+        "tc": None,
+    },
 }

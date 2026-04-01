@@ -8,3 +8,4 @@ class EorzeaLang(str, Enum):
     FR = "fr"
     KO = "ko"
     ZH_SC = "cn"
+    ZH_TC = "tc"
