@@ -537,21 +537,21 @@ place_name: Mapping[
     "de": {
         "abalathisches wolkenmeer": {
             "index": 2100,
-            "place_name": "Abalathisches " "Wolkenmeer",
+            "place_name": "Abalathisches Wolkenmeer",
         },
         "abanisches grenzland": {
             "index": 2406,
-            "place_name": "Abanisches " "Grenzland",
+            "place_name": "Abanisches Grenzland",
         },
         "abendrot-wacht": {"index": 2214, "place_name": "Abendrot-Wacht"},
         "achtzehnter stock": {"index": 1660, "place_name": "Achtzehnter Stock"},
         "adlerblick (eingangshalle)": {
             "index": 3694,
-            "place_name": "Adlerblick " "(Eingangshalle)",
+            "place_name": "Adlerblick (Eingangshalle)",
         },
         "adlerblick (wohnung)": {
             "index": 3695,
-            "place_name": "Adlerblick " "(Wohnung)",
+            "place_name": "Adlerblick (Wohnung)",
         },
         "admiralsbrücke": {"index": 351, "place_name": "Admiralsbrücke"},
         "aglaia": {"index": 4167, "place_name": "Aglaia"},
@@ -563,18 +563,18 @@ place_name: Mapping[
         "alexandria": {"index": 3799, "place_name": "Alexandria"},
         "alexandrias ruinenring": {
             "index": 4762,
-            "place_name": "Alexandrias " "Ruinenring",
+            "place_name": "Alexandrias Ruinenring",
         },
         "alt-gridania": {"index": 53, "place_name": "Alt-Gridania"},
         "alt-sharlayan": {"index": 3706, "place_name": "Alt-Sharlayan"},
         "altar von djanan qhat": {
             "index": 2339,
-            "place_name": "Altar von Djanan " "Qhat",
+            "place_name": "Altar von Djanan Qhat",
         },
         "alter stollen": {"index": 3427, "place_name": "Alter Stollen"},
         "alzadaals vermächtnis": {
             "index": 4154,
-            "place_name": "Alzadaals " "Vermächtnis",
+            "place_name": "Alzadaals Vermächtnis",
         },
         "am rande des endes": {"index": 3686, "place_name": "Am Rande des Endes"},
         "amaurot": {"index": 2985, "place_name": "Amaurot"},
@@ -583,11 +583,11 @@ place_name: Mapping[
         "antiturm": {"index": 2088, "place_name": "Antiturm"},
         "antriebszylinder der ragnarök": {
             "index": 467,
-            "place_name": "Antriebszylinder " "der " "Ragnarök",
+            "place_name": "Antriebszylinder der Ragnarök",
         },
         "anwesen der fortemps": {
             "index": 2320,
-            "place_name": "Anwesen der " "Fortemps",
+            "place_name": "Anwesen der Fortemps",
         },
         "aquapolis": {"index": 1799, "place_name": "Aquapolis"},
         "arayas palast": {"index": 4377, "place_name": "Arayas Palast"},
@@ -615,7 +615,7 @@ place_name: Mapping[
         "baum des urteils": {"index": 1363, "place_name": "Baum des Urteils"},
         "beichtstuhl von toupasa dem älteren": {
             "index": 3228,
-            "place_name": "Beichtstuhl " "von " "Toupasa " "dem " "Älteren",
+            "place_name": "Beichtstuhl von Toupasa dem Älteren",
         },
         "belah'dias fall": {"index": 2498, "place_name": "Belah'dias Fall"},
         "berg der tortur": {"index": 4289, "place_name": "Berg der Tortur"},
@@ -640,7 +640,7 @@ place_name: Mapping[
         "das herz": {"index": 3214, "place_name": "Das Herz"},
         "das karussell von lyhe ghiah": {
             "index": 3644,
-            "place_name": "Das " "Karussell " "von Lyhe " "Ghiah",
+            "place_name": "Das Karussell von Lyhe Ghiah",
         },
         "das sternengrab": {"index": 4100, "place_name": "Das Sternengrab"},
         "das tosende auge": {"index": 459, "place_name": "Das Tosende Auge"},
@@ -651,34 +651,34 @@ place_name: Mapping[
         "delubrum reginae": {"index": 3597, "place_name": "Delubrum Reginae"},
         "der große wald rak'tika": {
             "index": 2957,
-            "place_name": "Der Große Wald " "Rak'tika",
+            "place_name": "Der Große Wald Rak'tika",
         },
         "der hüter des sees": {"index": 418, "place_name": "Der Hüter des Sees"},
         "der kaiserliche thron": {
             "index": 3568,
-            "place_name": "Der Kaiserliche " "Thron",
+            "place_name": "Der Kaiserliche Thron",
         },
         "der nabel": {"index": 359, "place_name": "Der Nabel"},
         "der trauernde heilige ": {
             "index": 392,
-            "place_name": "Der Trauernde " "Heilige ",
+            "place_name": "Der Trauernde Heilige ",
         },
         "der traumbaum": {"index": 548, "place_name": "Der Traumbaum"},
         "der turm, paradigmenbrecher": {
             "index": 3647,
-            "place_name": "Der Turm, " "Paradigmenbrecher",
+            "place_name": "Der Turm, Paradigmenbrecher",
         },
         "der wogenbrecher": {"index": 1334, "place_name": "Der Wogenbrecher"},
         "die endeavor": {"index": 3477, "place_name": "Die Endeavor"},
         "die fraktal-kontinuum": {
             "index": 2148,
-            "place_name": "Die " "Fraktal-Kontinuum",
+            "place_name": "Die Fraktal-Kontinuum",
         },
         "die große leere": {"index": 3225, "place_name": "Die Große Leere"},
         "die kopierte fabrik": {"index": 3425, "place_name": "Die kopierte Fabrik"},
         "die königliche stadt rabanastre": {
             "index": 2372,
-            "place_name": "Die " "königliche " "Stadt " "Rabanastre",
+            "place_name": "Die königliche Stadt Rabanastre",
         },
         "die misery": {"index": 1960, "place_name": "Die Misery"},
         "die puppenfestung": {"index": 3576, "place_name": "Die Puppenfestung"},
@@ -686,15 +686,15 @@ place_name: Mapping[
         "die sanduhr": {"index": 617, "place_name": "Die Sanduhr"},
         "die stadt der tränen": {
             "index": 1742,
-            "place_name": "Die Stadt der " "Tränen",
+            "place_name": "Die Stadt der Tränen",
         },
         "die verschlungenen schatten von bahamut": {
             "index": 1759,
-            "place_name": "Die " "Verschlungenen " "Schatten " "von " "Bahamut",
+            "place_name": "Die Verschlungenen Schatten von Bahamut",
         },
         "die versunkene stadt skalla": {
             "index": 2367,
-            "place_name": "Die " "versunkene " "Stadt Skalla",
+            "place_name": "Die versunkene Stadt Skalla",
         },
         "die zinnen": {"index": 2407, "place_name": "Die Zinnen"},
         "dohn mheg": {"index": 2979, "place_name": "Dohn Mheg"},
@@ -705,11 +705,11 @@ place_name: Mapping[
         "dornmarsch": {"index": 360, "place_name": "Dornmarsch"},
         "dravanisches hinterland": {
             "index": 2001,
-            "place_name": "Dravanisches " "Hinterland",
+            "place_name": "Dravanisches Hinterland",
         },
         "dravanisches vorland": {
             "index": 2000,
-            "place_name": "Dravanisches " "Vorland",
+            "place_name": "Dravanisches Vorland",
         },
         "dun scaith": {"index": 1868, "place_name": "Dun Scaith"},
         "dæmonisches nest": {"index": 4362, "place_name": "Dæmonisches Nest"},
@@ -726,7 +726,7 @@ place_name: Mapping[
         "erzbasilika": {"index": 2327, "place_name": "Erzbasilika"},
         "estiniens räumlichkeiten": {
             "index": 4380,
-            "place_name": "Estiniens " "Räumlichkeiten",
+            "place_name": "Estiniens Räumlichkeiten",
         },
         "eulmore": {"index": 2952, "place_name": "Eulmore"},
         "euphoratron": {"index": 4111, "place_name": "Euphoratron"},
@@ -744,22 +744,17 @@ place_name: Mapping[
         "feste dzemael": {"index": 64, "place_name": "Feste Dzemael"},
         "fockmast (eingangshalle)": {
             "index": 1811,
-            "place_name": "Fockmast " "(Eingangshalle)",
+            "place_name": "Fockmast (Eingangshalle)",
         },
         "fockmast (wohnung)": {"index": 1812, "place_name": "Fockmast (Wohnung)"},
         "forschungstrakt für die geheimnisse des lebens": {
             "index": 4250,
-            "place_name": "Forschungstrakt "
-            "für "
-            "die "
-            "Geheimnisse "
-            "des "
-            "Lebens",
+            "place_name": "Forschungstrakt für die Geheimnisse des Lebens",
         },
         "frohehalde": {"index": 2082, "place_name": "Frohehalde"},
         "frondales physiatrische akademie": {
             "index": 695,
-            "place_name": "Frondales " "Physiatrische " "Akademie",
+            "place_name": "Frondales Physiatrische Akademie",
         },
         "fundamente": {"index": 2300, "place_name": "Fundamente"},
         "fülle des todes": {"index": 5284, "place_name": "Fülle des Todes"},
@@ -768,37 +763,37 @@ place_name: Mapping[
         "garlemald": {"index": 3710, "place_name": "Garlemald"},
         "gasthaus gaffelschoner": {
             "index": 733,
-            "place_name": "Gasthaus " "Gaffelschoner",
+            "place_name": "Gasthaus Gaffelschoner",
         },
         "gefechtsplattform des g-retters": {
             "index": 3663,
-            "place_name": "Gefechtsplattform " "des " "G-Retters",
+            "place_name": "Gefechtsplattform des G-Retters",
         },
         "geisterschloss": {"index": 1834, "place_name": "Geisterschloss"},
         "gerichtssaal": {"index": 2336, "place_name": "Gerichtssaal"},
         "geschlossene raumzeit": {
             "index": 3017,
-            "place_name": "Geschlossene " "Raumzeit",
+            "place_name": "Geschlossene Raumzeit",
         },
         "gesellschaftswerkstätte: dorf des nebels": {
             "index": 1227,
-            "place_name": "Gesellschaftswerkstätte: " "Dorf " "des " "Nebels",
+            "place_name": "Gesellschaftswerkstätte: Dorf des Nebels",
         },
         "gesellschaftswerkstätte: empyreum": {
             "index": 3693,
-            "place_name": "Gesellschaftswerkstätte: " "Empyreum",
+            "place_name": "Gesellschaftswerkstätte: Empyreum",
         },
         "gesellschaftswerkstätte: kelchkuppe": {
             "index": 1228,
-            "place_name": "Gesellschaftswerkstätte: " "Kelchkuppe",
+            "place_name": "Gesellschaftswerkstätte: Kelchkuppe",
         },
         "gesellschaftswerkstätte: lavendelbeete": {
             "index": 1229,
-            "place_name": "Gesellschaftswerkstätte: " "Lavendelbeete",
+            "place_name": "Gesellschaftswerkstätte: Lavendelbeete",
         },
         "gesellschaftswerkstätte: shirogane": {
             "index": 2271,
-            "place_name": "Gesellschaftswerkstätte: " "Shirogane",
+            "place_name": "Gesellschaftswerkstätte: Shirogane",
         },
         "ghimlyt-finsternis": {"index": 2586, "place_name": "Ghimlyt-Finsternis"},
         "gletscher": {"index": 3487, "place_name": "Gletscher"},
@@ -810,31 +805,31 @@ place_name: Mapping[
         "grenzenloses blau": {"index": 2151, "place_name": "Grenzenloses Blau"},
         "große gubal-bibliothek": {
             "index": 2038,
-            "place_name": "Große " "Gubal-Bibliothek",
+            "place_name": "Große Gubal-Bibliothek",
         },
         "grund des mondes": {"index": 3684, "place_name": "Grund des Mondes"},
         "gulg": {"index": 2997, "place_name": "Gulg"},
         "gymnasion agonon": {"index": 4287, "place_name": "Gymnasion Agonon"},
         "gästezimmer des meghaduta-tempels": {
             "index": 4039,
-            "place_name": "Gästezimmer " "des " "Meghaduta-Tempels",
+            "place_name": "Gästezimmer des Meghaduta-Tempels",
         },
         "göttlicher thron": {"index": 4375, "place_name": "Göttlicher Thron"},
         "gütergleise": {"index": 5367, "place_name": "Gütergleise"},
         "halatali": {"index": 49, "place_name": "Halatali"},
         "halle der beschwörung": {
             "index": 379,
-            "place_name": "Halle der " "Beschwörung",
+            "place_name": "Halle der Beschwörung",
         },
         "halle der bestie": {"index": 694, "place_name": "Halle der Bestie"},
         "halle der glücksaltäre": {
             "index": 2485,
-            "place_name": "Halle der " "Glücksaltäre",
+            "place_name": "Halle der Glücksaltäre",
         },
         "halle der prüfung": {"index": 3471, "place_name": "Halle der Prüfung"},
         "halle der vierzehn sitze": {
             "index": 4307,
-            "place_name": "Halle der " "Vierzehn Sitze",
+            "place_name": "Halle der Vierzehn Sitze",
         },
         "handelshaus-sitzungsraum": {
             "index": 2927,
@@ -843,35 +838,35 @@ place_name: Mapping[
         "haukke-herrenhaus": {"index": 59, "place_name": "Haukke-Herrenhaus"},
         "hauptquartier der allianz": {
             "index": 2862,
-            "place_name": "Hauptquartier " "der Allianz",
+            "place_name": "Hauptquartier der Allianz",
         },
         "hauptquartier der lemuren": {
             "index": 4022,
-            "place_name": "Hauptquartier " "der Lemuren",
+            "place_name": "Hauptquartier der Lemuren",
         },
         "hauptquartier der palastwache": {
             "index": 354,
-            "place_name": "Hauptquartier " "der " "Palastwache",
+            "place_name": "Hauptquartier der Palastwache",
         },
         "hauptsaal": {"index": 3817, "place_name": "Hauptsaal"},
         "heiligtum der qalyana": {
             "index": 2299,
-            "place_name": "Heiligtum der " "Qalyana",
+            "place_name": "Heiligtum der Qalyana",
         },
         "heiligtum der schlange": {
             "index": 2510,
-            "place_name": "Heiligtum der " "Schlange",
+            "place_name": "Heiligtum der Schlange",
         },
         "herz des schöpfers": {"index": 1847, "place_name": "Herz des Schöpfers"},
         "himmelsstadt": {"index": 3435, "place_name": "Himmelsstadt"},
         "himmelssäule": {"index": 2775, "place_name": "Himmelssäule"},
         "himmelstiefer cenote": {
             "index": 5027,
-            "place_name": "Himmelstiefer " "Cenote",
+            "place_name": "Himmelstiefer Cenote",
         },
         "himmlische arena": {"index": 2548, "place_name": "Himmlische Arena"},
         "hinterzimmer": {"index": 4654, "place_name": "Hinterzimmer"},
-        "historisches amdapor": {"index": 125, "place_name": "Historisches " "Amdapor"},
+        "historisches amdapor": {"index": 125, "place_name": "Historisches Amdapor"},
         "holminster": {"index": 3050, "place_name": "Holminster"},
         "holosphäre": {"index": 1304, "place_name": "Holosphäre"},
         "höllengrund": {"index": 2496, "place_name": "Höllengrund"},
@@ -881,16 +876,16 @@ place_name: Mapping[
         "immerspitze": {"index": 5117, "place_name": "Immerspitze"},
         "interdimensionale ekliptik": {
             "index": 5116,
-            "place_name": "Interdimensionale " "Ekliptik",
+            "place_name": "Interdimensionale Ekliptik",
         },
         "interdimensionaler riss": {
             "index": 4288,
-            "place_name": "Interdimensionaler " "Riss",
+            "place_name": "Interdimensionaler Riss",
         },
         "irrungen der qitari": {"index": 3018, "place_name": "Irrungen der Qitari"},
         "isolationstrakt für parasitäre lebensformen": {
             "index": 4196,
-            "place_name": "Isolationstrakt " "für " "parasitäre " "Lebensformen",
+            "place_name": "Isolationstrakt für parasitäre Lebensformen",
         },
         "isomorph-quartiere": {"index": 3222, "place_name": "Isomorph-Quartiere"},
         "jadelichtung": {"index": 2354, "place_name": "Jadelichtung"},
@@ -903,11 +898,11 @@ place_name: Mapping[
         "kelchkuppe - zimmer": {"index": 1158, "place_name": "Kelchkuppe - Zimmer"},
         "keller des verlassenen gebäudes": {
             "index": 5120,
-            "place_name": "Keller " "des " "verlassenen " "Gebäudes",
+            "place_name": "Keller des verlassenen Gebäudes",
         },
         "kernsektor der ragnarök": {
             "index": 468,
-            "place_name": "Kernsektor der " "Ragnarök",
+            "place_name": "Kernsektor der Ragnarök",
         },
         "khadga-felsen": {"index": 4293, "place_name": "Khadga-Felsen"},
         "kholusia": {"index": 2954, "place_name": "Kholusia"},
@@ -915,44 +910,44 @@ place_name: Mapping[
         "kienkan": {"index": 2847, "place_name": "Kienkan"},
         "klause der grimmigen": {
             "index": 2805,
-            "place_name": "Klause der " "Grimmigen",
+            "place_name": "Klause der Grimmigen",
         },
         "kloster von orbonne": {"index": 2864, "place_name": "Kloster von Orbonne"},
         "kobai goten (eingangshalle)": {
             "index": 2272,
-            "place_name": "Kobai Goten " "(Eingangshalle)",
+            "place_name": "Kobai Goten (Eingangshalle)",
         },
         "kobai goten (wohnung)": {
             "index": 2273,
-            "place_name": "Kobai Goten " "(Wohnung)",
+            "place_name": "Kobai Goten (Wohnung)",
         },
         "kommandantur des großmeisters": {
             "index": 2335,
-            "place_name": "Kommandantur " "des " "Großmeisters",
+            "place_name": "Kommandantur des Großmeisters",
         },
         "kommandobrücke der ragnarök": {
             "index": 469,
-            "place_name": "Kommandobrücke " "der Ragnarök",
+            "place_name": "Kommandobrücke der Ragnarök",
         },
         "kommandobrücke rvh-03": {
             "index": 1305,
-            "place_name": "Kommandobrücke " "RVH-03",
+            "place_name": "Kommandobrücke RVH-03",
         },
         "kommandobrücke rvh-04": {
             "index": 1410,
-            "place_name": "Kommandobrücke " "RVH-04",
+            "place_name": "Kommandobrücke RVH-04",
         },
         "kommandobrücke rvh-06": {
             "index": 1408,
-            "place_name": "Kommandobrücke " "RVH-06",
+            "place_name": "Kommandobrücke RVH-06",
         },
         "kommandozimmer von nophicas schar ": {
             "index": 346,
-            "place_name": "Kommandozimmer " "von " "Nophicas " "Schar ",
+            "place_name": "Kommandozimmer von Nophicas Schar ",
         },
         "kompass der schwalbe": {
             "index": 2801,
-            "place_name": "Kompass der " "Schwalbe",
+            "place_name": "Kompass der Schwalbe",
         },
         "kozama'uka": {"index": 4506, "place_name": "Kozama'uka"},
         "kristallzwilling": {"index": 2982, "place_name": "Kristallzwilling"},
@@ -965,21 +960,21 @@ place_name: Mapping[
         "kupferglocken-mine": {"index": 48, "place_name": "Kupferglocken-Mine"},
         "kuriose unterstadt von sil'dih": {
             "index": 4227,
-            "place_name": "Kuriose " "Unterstadt " "von " "Sil'dih",
+            "place_name": "Kuriose Unterstadt von Sil'dih",
         },
         "kurioser rokkon": {"index": 4338, "place_name": "Kurioser Rokkon"},
         "königliche menagerie": {
             "index": 2709,
-            "place_name": "Königliche " "Menagerie",
+            "place_name": "Königliche Menagerie",
         },
         "königlicher luftschiff-landeplatz": {
             "index": 2708,
-            "place_name": "Königlicher " "Luftschiff-Landeplatz",
+            "place_name": "Königlicher Luftschiff-Landeplatz",
         },
         "königlicher palast": {"index": 2294, "place_name": "Königlicher Palast"},
         "königlicher tanzgarten": {
             "index": 3218,
-            "place_name": "Königlicher " "Tanzgarten",
+            "place_name": "Königlicher Tanzgarten",
         },
         "labyrinth der alten": {"index": 478, "place_name": "Labyrinth der Alten"},
         "labyrinthos": {"index": 3708, "place_name": "Labyrinthos"},
@@ -990,7 +985,7 @@ place_name: Mapping[
         "lavendelbeete": {"index": 426, "place_name": "Lavendelbeete"},
         "lavendelbeete - zimmer": {
             "index": 1159,
-            "place_name": "Lavendelbeete - " "Zimmer",
+            "place_name": "Lavendelbeete - Zimmer",
         },
         "lebende erinnerung": {"index": 4510, "place_name": "Lebende Erinnerung"},
         "leichtfeder-arena": {"index": 2313, "place_name": "Leichtfeder-Arena"},
@@ -999,11 +994,11 @@ place_name: Mapping[
         "lied der flammen": {"index": 4442, "place_name": "Lied der Flammen"},
         "lilienhügel (eingangshalle)": {
             "index": 1813,
-            "place_name": "Lilienhügel " "(Eingangshalle)",
+            "place_name": "Lilienhügel (Eingangshalle)",
         },
         "lilienhügel (wohnung)": {
             "index": 1814,
-            "place_name": "Lilienhügel " "(Wohnung)",
+            "place_name": "Lilienhügel (Wohnung)",
         },
         "lustiges bankett": {"index": 3696, "place_name": "Lustiges Bankett"},
         "lösung neun": {"index": 4503, "place_name": "Lösung Neun"},
@@ -1022,11 +1017,11 @@ place_name: Mapping[
         "nald-kreuzgang": {"index": 40, "place_name": "Nald-Kreuzgang"},
         "nanamo-windrad (eingangshalle)": {
             "index": 1815,
-            "place_name": "Nanamo-Windrad " "(Eingangshalle)",
+            "place_name": "Nanamo-Windrad (Eingangshalle)",
         },
         "nanamo-windrad (wohnung)": {
             "index": 1816,
-            "place_name": "Nanamo-Windrad " "(Wohnung)",
+            "place_name": "Nanamo-Windrad (Wohnung)",
         },
         "nebeldorf - zimmer": {"index": 1157, "place_name": "Nebeldorf - Zimmer"},
         "nebeltrift": {"index": 5350, "place_name": "Nebeltrift"},
@@ -1035,7 +1030,7 @@ place_name: Mapping[
         "neu-gridania": {"index": 52, "place_name": "Neu-Gridania"},
         "neubaugebiet der achten ebene": {
             "index": 5155,
-            "place_name": "Neubaugebiet " "der achten " "Ebene",
+            "place_name": "Neubaugebiet der achten Ebene",
         },
         "nichts-arche": {"index": 2181, "place_name": "Nichts-Arche"},
         "nichtssphäre": {"index": 3596, "place_name": "Nichtssphäre"},
@@ -1046,7 +1041,7 @@ place_name: Mapping[
         "obere decks": {"index": 28, "place_name": "Obere Decks"},
         "obere ätheroakustische grabung": {
             "index": 464,
-            "place_name": "Obere " "ätheroakustische " "Grabung",
+            "place_name": "Obere ätheroakustische Grabung",
         },
         "oberes la noscea": {"index": 34, "place_name": "Oberes La Noscea"},
         "okular": {"index": 3223, "place_name": "Okular"},
@@ -1059,10 +1054,10 @@ place_name: Mapping[
         "paglth'an": {"index": 2936, "place_name": "Paglth'an"},
         "palast der toten": {"index": 1793, "place_name": "Palast der Toten"},
         "palast der träume": {"index": 5121, "place_name": "Palast der Träume"},
-        "palast des wanderers": {"index": 37, "place_name": "Palast des " "Wanderers"},
+        "palast des wanderers": {"index": 37, "place_name": "Palast des Wanderers"},
         "pforten des pandæmoniums": {
             "index": 3769,
-            "place_name": "Pforten des " "Pandæmoniums",
+            "place_name": "Pforten des Pandæmoniums",
         },
         "phaenna": {"index": 5301, "place_name": "Phaenna"},
         "pharos sirius": {"index": 230, "place_name": "Pharos Sirius"},
@@ -1071,63 +1066,63 @@ place_name: Mapping[
         "praetorium": {"index": 430, "place_name": "Praetorium"},
         "privathaus (dorf des nebels)": {
             "index": 1101,
-            "place_name": "Privathaus " "(Dorf des " "Nebels)",
+            "place_name": "Privathaus (Dorf des Nebels)",
         },
         "privathaus (empyreum)": {
             "index": 3690,
-            "place_name": "Privathaus " "(Empyreum)",
+            "place_name": "Privathaus (Empyreum)",
         },
         "privathaus (kelchkuppe)": {
             "index": 1104,
-            "place_name": "Privathaus " "(Kelchkuppe)",
+            "place_name": "Privathaus (Kelchkuppe)",
         },
         "privathaus (lavendelbeete)": {
             "index": 1107,
-            "place_name": "Privathaus " "(Lavendelbeete)",
+            "place_name": "Privathaus (Lavendelbeete)",
         },
         "privathaus (shirogane)": {
             "index": 1894,
-            "place_name": "Privathaus " "(Shirogane)",
+            "place_name": "Privathaus (Shirogane)",
         },
         "privathütte (dorf des nebels)": {
             "index": 1100,
-            "place_name": "Privathütte " "(Dorf des " "Nebels)",
+            "place_name": "Privathütte (Dorf des Nebels)",
         },
         "privathütte (empyreum)": {
             "index": 3689,
-            "place_name": "Privathütte " "(Empyreum)",
+            "place_name": "Privathütte (Empyreum)",
         },
         "privathütte (kelchkuppe)": {
             "index": 1103,
-            "place_name": "Privathütte " "(Kelchkuppe)",
+            "place_name": "Privathütte (Kelchkuppe)",
         },
         "privathütte (lavendelbeete)": {
             "index": 1106,
-            "place_name": "Privathütte " "(Lavendelbeete)",
+            "place_name": "Privathütte (Lavendelbeete)",
         },
         "privathütte (shirogane)": {
             "index": 1893,
-            "place_name": "Privathütte " "(Shirogane)",
+            "place_name": "Privathütte (Shirogane)",
         },
         "privatresidenz (dorf des nebels)": {
             "index": 1102,
-            "place_name": "Privatresidenz " "(Dorf " "des " "Nebels)",
+            "place_name": "Privatresidenz (Dorf des Nebels)",
         },
         "privatresidenz (empyreum)": {
             "index": 3691,
-            "place_name": "Privatresidenz " "(Empyreum)",
+            "place_name": "Privatresidenz (Empyreum)",
         },
         "privatresidenz (kelchkuppe)": {
             "index": 1105,
-            "place_name": "Privatresidenz " "(Kelchkuppe)",
+            "place_name": "Privatresidenz (Kelchkuppe)",
         },
         "privatresidenz (lavendelbeete)": {
             "index": 1108,
-            "place_name": "Privatresidenz " "(Lavendelbeete)",
+            "place_name": "Privatresidenz (Lavendelbeete)",
         },
         "privatresidenz (shirogane)": {
             "index": 1895,
-            "place_name": "Privatresidenz " "(Shirogane)",
+            "place_name": "Privatresidenz (Shirogane)",
         },
         "propylaion": {"index": 3926, "place_name": "Propylaion"},
         "psimetrie 1.0": {"index": 2725, "place_name": "Psimetrie 1.0"},
@@ -1136,11 +1131,11 @@ place_name: Mapping[
         "radz-at-han": {"index": 3707, "place_name": "Radz-at-Han"},
         "raum der transparenz": {
             "index": 2715,
-            "place_name": "Raum der " "Transparenz",
+            "place_name": "Raum der Transparenz",
         },
         "regenerationssektor rvh-06": {
             "index": 1407,
-            "place_name": "Regenerationssektor " "RVH-06",
+            "place_name": "Regenerationssektor RVH-06",
         },
         "reisen-schrein": {"index": 2392, "place_name": "Reisen-Schrein"},
         "reisen-schreinweg": {"index": 2391, "place_name": "Reisen-Schreinweg"},
@@ -1149,7 +1144,7 @@ place_name: Mapping[
         "rhotano-see": {"index": 462, "place_name": "Rhotano-See"},
         "richtfeuer von ridorana": {
             "index": 2483,
-            "place_name": "Richtfeuer von " "Ridorana",
+            "place_name": "Richtfeuer von Ridorana",
         },
         "ridorana-katarakt": {"index": 2451, "place_name": "Ridorana-Katarakt"},
         "robbenholm": {"index": 496, "place_name": "Robbenholm"},
@@ -1161,15 +1156,15 @@ place_name: Mapping[
         "ruinen von amdapor": {"index": 128, "place_name": "Ruinen von Amdapor"},
         "san d'oria: die zweite etappe": {
             "index": 5240,
-            "place_name": "San d'Oria: " "Die zweite " "Etappe",
+            "place_name": "San d'Oria: Die zweite Etappe",
         },
         "sankt endalim-theologikum": {
             "index": 2337,
-            "place_name": "Sankt " "Endalim-Theologikum",
+            "place_name": "Sankt Endalim-Theologikum",
         },
         "sankt mocianne-arboretum": {
             "index": 2034,
-            "place_name": "Sankt " "Mocianne-Arboretum",
+            "place_name": "Sankt Mocianne-Arboretum",
         },
         "sastasha-höhle": {"index": 35, "place_name": "Sastasha-Höhle"},
         "schatzkammer": {"index": 2295, "place_name": "Schatzkammer"},
@@ -1177,24 +1172,24 @@ place_name: Mapping[
         "schiffbrecher-insel": {"index": 1377, "place_name": "Schiffbrecher-Insel"},
         "schlacht um norvrandt": {
             "index": 3511,
-            "place_name": "Schlacht um " "Norvrandt",
+            "place_name": "Schlacht um Norvrandt",
         },
         "schloss kugane": {"index": 2298, "place_name": "Schloss Kugane"},
         "schneekleid": {"index": 404, "place_name": "Schneekleid"},
         "schwarzer hof von troia": {
             "index": 4180,
-            "place_name": "Schwarzer Hof von " "Troia",
+            "place_name": "Schwarzer Hof von Troia",
         },
         "schwebende stadt nym": {
             "index": 2527,
-            "place_name": "Schwebende Stadt " "Nym",
+            "place_name": "Schwebende Stadt Nym",
         },
         "seele des schöpfers": {"index": 1853, "place_name": "Seele des Schöpfers"},
         "seenland": {"index": 2953, "place_name": "Seenland"},
         "senatus": {"index": 4381, "place_name": "Senatus"},
         "separationstrakt für pflanzliche lebensformen": {
             "index": 4198,
-            "place_name": "Separationstrakt " "für " "pflanzliche " "Lebensformen",
+            "place_name": "Separationstrakt für pflanzliche Lebensformen",
         },
         "shaaloani": {"index": 4508, "place_name": "Shaaloani"},
         "shirogane": {"index": 2412, "place_name": "Shirogane"},
@@ -1202,7 +1197,7 @@ place_name: Mapping[
         "shisui-palast": {"index": 2779, "place_name": "Shisui-Palast"},
         "sicherheitstrakt für toxische lebenformen": {
             "index": 4249,
-            "place_name": "Sicherheitstrakt " "für " "toxische " "Lebenformen",
+            "place_name": "Sicherheitstrakt für toxische Lebenformen",
         },
         "sigmametrie 1.0": {"index": 2717, "place_name": "Sigmametrie 1.0"},
         "sigmametrie 2.0": {"index": 2718, "place_name": "Sigmametrie 2.0"},
@@ -1220,7 +1215,7 @@ place_name: Mapping[
         "sonnenwind": {"index": 356, "place_name": "Sonnenwind"},
         "sphäre des pandæmoniums": {
             "index": 4358,
-            "place_name": "Sphäre des " "Pandæmoniums",
+            "place_name": "Sphäre des Pandæmoniums",
         },
         "steinerne wacht": {"index": 401, "place_name": "Steinerne Wacht"},
         "sternenlicht-stände": {"index": 4754, "place_name": "Sternenlicht-Stände"},
@@ -1229,7 +1224,7 @@ place_name: Mapping[
         "stolperville-platz": {"index": 4468, "place_name": "Stolperville-Platz"},
         "strahlenkranz der makellosigkeit": {
             "index": 3219,
-            "place_name": "Strahlenkranz " "der " "Makellosigkeit",
+            "place_name": "Strahlenkranz der Makellosigkeit",
         },
         "strategieraum": {"index": 4023, "place_name": "Strategieraum"},
         "strebewerk": {"index": 2301, "place_name": "Strebewerk"},
@@ -1240,7 +1235,7 @@ place_name: Mapping[
         "sägerschrei": {"index": 47, "place_name": "Sägerschrei"},
         "südliches kreszentia": {
             "index": 4932,
-            "place_name": "Südliches " "Kreszentia",
+            "place_name": "Südliches Kreszentia",
         },
         "südliches thanalan": {"index": 45, "place_name": "Südliches Thanalan"},
         "südwald": {"index": 56, "place_name": "Südwald"},
@@ -1248,7 +1243,7 @@ place_name: Mapping[
         "tatzentrio-training": {"index": 4655, "place_name": "Tatzentrio-Training"},
         "tausend löcher von toto-rak": {
             "index": 61,
-            "place_name": "Tausend " "Löcher von " "Toto-Rak",
+            "place_name": "Tausend Löcher von Toto-Rak",
         },
         "tempel der faust": {"index": 2707, "place_name": "Tempel der Faust"},
         "tempest": {"index": 2958, "place_name": "Tempest"},
@@ -1258,12 +1253,12 @@ place_name: Mapping[
         "thok ast thok": {"index": 2081, "place_name": "Thok ast Thok"},
         "tiefen des roten mondes": {
             "index": 4441,
-            "place_name": "Tiefen des roten " "Mondes",
+            "place_name": "Tiefen des roten Mondes",
         },
         "tiefer wald": {"index": 54, "place_name": "Tiefer Wald"},
         "tiefste tiefen des himmelstiefen cenote": {
             "index": 4751,
-            "place_name": "Tiefste " "Tiefen " "des " "Himmelstiefen " "Cenote",
+            "place_name": "Tiefste Tiefen des Himmelstiefen Cenote",
         },
         "tiefstes inneres": {"index": 152, "place_name": "Tiefstes Inneres"},
         "totenacker tam-tara": {"index": 58, "place_name": "Totenacker Tam-Tara"},
@@ -1276,7 +1271,7 @@ place_name: Mapping[
         "trister limbus": {"index": 3798, "place_name": "Trister Limbus"},
         "trockendock von castrum marinum": {
             "index": 3581,
-            "place_name": "Trockendock " "von " "Castrum " "Marinum",
+            "place_name": "Trockendock von Castrum Marinum",
         },
         "trugstadt": {"index": 4757, "place_name": "Trugstadt"},
         "tuliyollal": {"index": 4504, "place_name": "Tuliyollal"},
@@ -1288,17 +1283,17 @@ place_name: Mapping[
         "untere decks": {"index": 29, "place_name": "Untere Decks"},
         "untere ätheroakustische grabung": {
             "index": 465,
-            "place_name": "Untere " "ätheroakustische " "Grabung",
+            "place_name": "Untere ätheroakustische Grabung",
         },
         "unteres la noscea": {"index": 31, "place_name": "Unteres La Noscea"},
         "unterfried": {"index": 5156, "place_name": "Unterfried"},
         "unterschlupf im irdenen himmel": {
             "index": 4748,
-            "place_name": "Unterschlupf " "im Irdenen " "Himmel",
+            "place_name": "Unterschlupf im Irdenen Himmel",
         },
         "unterstadt von sil'dih": {
             "index": 4199,
-            "place_name": "Unterstadt von " "Sil'dih",
+            "place_name": "Unterstadt von Sil'dih",
         },
         "urkristall": {"index": 3685, "place_name": "Urkristall"},
         "urqopacha": {"index": 4505, "place_name": "Urqopacha"},
@@ -1309,32 +1304,32 @@ place_name: Mapping[
         "verlies von eulmore": {"index": 3595, "place_name": "Verlies von Eulmore"},
         "verliese von lyhe ghiah": {
             "index": 3229,
-            "place_name": "Verliese von Lyhe " "Ghiah",
+            "place_name": "Verliese von Lyhe Ghiah",
         },
         "verlorene ruinen": {"index": 3542, "place_name": "Verlorene Ruinen"},
         "versteck der kürbishexe": {
             "index": 4040,
-            "place_name": "Versteck der " "Kürbishexe",
+            "place_name": "Versteck der Kürbishexe",
         },
         "versunkener tempel von qarn": {
             "index": 50,
-            "place_name": "Versunkener " "Tempel von " "Qarn",
+            "place_name": "Versunkener Tempel von Qarn",
         },
         "verteidigungslinie ghimlyt": {
             "index": 3442,
-            "place_name": "Verteidigungslinie " "Ghimlyt",
+            "place_name": "Verteidigungslinie Ghimlyt",
         },
         "wachstube der bruderschaft": {
             "index": 1800,
-            "place_name": "Wachstube der " "Bruderschaft",
+            "place_name": "Wachstube der Bruderschaft",
         },
         "wachstube der legion": {
             "index": 1801,
-            "place_name": "Wachstube der " "Legion",
+            "place_name": "Wachstube der Legion",
         },
         "wachstube des mahlstroms": {
             "index": 1802,
-            "place_name": "Wachstube des " "Mahlstroms",
+            "place_name": "Wachstube des Mahlstroms",
         },
         "wallende nebel": {"index": 2002, "place_name": "Wallende Nebel"},
         "warteraum": {"index": 4749, "place_name": "Warteraum"},
@@ -1345,9 +1340,9 @@ place_name: Mapping[
         "wendeklipp-küste": {"index": 3570, "place_name": "Wendeklipp-Küste"},
         "westliches hochland von coerthas": {
             "index": 2200,
-            "place_name": "Westliches " "Hochland " "von " "Coerthas",
+            "place_name": "Westliches Hochland von Coerthas",
         },
-        "westliches la noscea": {"index": 33, "place_name": "Westliches La " "Noscea"},
+        "westliches la noscea": {"index": 33, "place_name": "Westliches La Noscea"},
         "westliches thanalan": {"index": 42, "place_name": "Westliches Thanalan"},
         "wildebene": {"index": 5276, "place_name": "Wildebene"},
         "wolfshöhlen-pier": {"index": 358, "place_name": "Wolfshöhlen-Pier"},
@@ -1363,25 +1358,25 @@ place_name: Mapping[
         "zentrale decks": {"index": 1303, "place_name": "Zentrale Decks"},
         "zentrale decks rvh-06": {
             "index": 1406,
-            "place_name": "Zentrale Decks " "RVH-06",
+            "place_name": "Zentrale Decks RVH-06",
         },
         "zentrales hochland von coerthas": {
             "index": 63,
-            "place_name": "Zentrales " "Hochland " "von " "Coerthas",
+            "place_name": "Zentrales Hochland von Coerthas",
         },
         "zentrales la noscea": {"index": 30, "place_name": "Zentrales La Noscea"},
         "zentrales thanalan": {"index": 43, "place_name": "Zentrales Thanalan"},
         "zeros unterschlupf": {"index": 4038, "place_name": "Zeros Unterschlupf"},
         "zirgorteh der grüßende": {
             "index": 4949,
-            "place_name": "Zirgorteh der " "Grüßende",
+            "place_name": "Zirgorteh der Grüßende",
         },
         "zorgor die weite": {"index": 4526, "place_name": "Zorgor die Weite"},
         "zum wolkenschäfchen": {"index": 2310, "place_name": "Zum Wolkenschäfchen"},
         "ätherborn": {"index": 4297, "place_name": "Ätherborn"},
         "ätherochemisches forschungslabor": {
             "index": 2147,
-            "place_name": "Ätherochemisches " "Forschungslabor",
+            "place_name": "Ätherochemisches Forschungslabor",
         },
         "äußere ruinen": {"index": 1374, "place_name": "Äußere Ruinen"},
         "äußere schächte": {"index": 1302, "place_name": "Äußere Schächte"},
@@ -1398,18 +1393,18 @@ place_name: Mapping[
         "aetherial slough": {"index": 4358, "place_name": "The Aetherial Slough"},
         "aetherochemical research facility": {
             "index": 2147,
-            "place_name": "Aetherochemical " "Research " "Facility",
+            "place_name": "Aetherochemical Research Facility",
         },
         "ageless necropolis": {
             "index": 5284,
-            "place_name": "The Ageless " "Necropolis",
+            "place_name": "The Ageless Necropolis",
         },
         "aglaia": {"index": 4167, "place_name": "Aglaia"},
         "aitiascope": {"index": 4146, "place_name": "The Aitiascope"},
         "akadaemia anyder": {"index": 3007, "place_name": "Akadaemia Anyder"},
         "akh afah amphitheatre": {
             "index": 1399,
-            "place_name": "Akh Afah " "Amphitheatre",
+            "place_name": "Akh Afah Amphitheatre",
         },
         "ala mhigo": {"index": 2691, "place_name": "Ala Mhigo"},
         "alexander": {"index": 2041, "place_name": "Alexander"},
@@ -1423,11 +1418,11 @@ place_name: Mapping[
         "andron": {"index": 3818, "place_name": "Andron"},
         "another mount rokkon": {
             "index": 4338,
-            "place_name": "Another Mount " "Rokkon",
+            "place_name": "Another Mount Rokkon",
         },
         "another sil'dihn subterrane": {
             "index": 4227,
-            "place_name": "Another " "Sil'dihn " "Subterrane",
+            "place_name": "Another Sil'dihn Subterrane",
         },
         "antitower": {"index": 2088, "place_name": "The Antitower"},
         "aquapolis": {"index": 1799, "place_name": "The Aquapolis"},
@@ -1447,7 +1442,7 @@ place_name: Mapping[
         "bentini depot": {"index": 4763, "place_name": "Bentini Depot"},
         "binding coil of bahamut": {
             "index": 1759,
-            "place_name": "The Binding Coil " "of Bahamut",
+            "place_name": "The Binding Coil of Bahamut",
         },
         "blasting ring": {"index": 5114, "place_name": "Blasting Ring"},
         "blessed treasury": {"index": 2295, "place_name": "The Blessed Treasury"},
@@ -1458,17 +1453,17 @@ place_name: Mapping[
         "bowl of embers": {"index": 357, "place_name": "Bowl of Embers"},
         "bozjan southern front": {
             "index": 3534,
-            "place_name": "Bozjan Southern " "Front",
+            "place_name": "Bozjan Southern Front",
         },
         "brayflox's longstop": {"index": 36, "place_name": "Brayflox's Longstop"},
         "break room": {"index": 4759, "place_name": "Break Room"},
         "breath of the creator": {
             "index": 1841,
-            "place_name": "Breath of the " "Creator",
+            "place_name": "Breath of the Creator",
         },
         "burden of the father": {
             "index": 1645,
-            "place_name": "The Burden of the " "Father",
+            "place_name": "The Burden of the Father",
         },
         "burden of the son": {"index": 1731, "place_name": "The Burden of the Son"},
         "burn": {"index": 2851, "place_name": "The Burn"},
@@ -1476,13 +1471,13 @@ place_name: Mapping[
         "bygone gaol": {"index": 3595, "place_name": "Bygone Gaol"},
         "carteneau flats: borderland ruins": {
             "index": 1374,
-            "place_name": "Carteneau " "Flats: " "Borderland " "Ruins",
+            "place_name": "Carteneau Flats: Borderland Ruins",
         },
         "castrum abania": {"index": 2665, "place_name": "Castrum Abania"},
         "castrum fluminis": {"index": 2799, "place_name": "Castrum Fluminis"},
         "castrum marinum drydocks": {
             "index": 3581,
-            "place_name": "Castrum Marinum " "Drydocks",
+            "place_name": "Castrum Marinum Drydocks",
         },
         "castrum meridianum": {"index": 260, "place_name": "Castrum Meridianum"},
         "caustic purgatory": {"index": 4249, "place_name": "The Caustic Purgatory"},
@@ -1493,7 +1488,7 @@ place_name: Mapping[
         "central thanalan": {"index": 43, "place_name": "Central Thanalan"},
         "chamber of fourteen": {
             "index": 4307,
-            "place_name": "The Chamber of " "Fourteen",
+            "place_name": "The Chamber of Fourteen",
         },
         "chocobo square": {"index": 1500, "place_name": "Chocobo Square"},
         "chrysalis": {"index": 1390, "place_name": "The Chrysalis"},
@@ -1502,52 +1497,52 @@ place_name: Mapping[
         "cloud nine": {"index": 2310, "place_name": "Cloud Nine"},
         "coerthas central highlands": {
             "index": 63,
-            "place_name": "Coerthas " "Central " "Highlands",
+            "place_name": "Coerthas Central Highlands",
         },
         "coerthas western highlands": {
             "index": 2200,
-            "place_name": "Coerthas " "Western " "Highlands",
+            "place_name": "Coerthas Western Highlands",
         },
         "command room": {"index": 351, "place_name": "Command Room"},
         "company workshop - empyreum": {
             "index": 3693,
-            "place_name": "Company " "Workshop - " "Empyreum",
+            "place_name": "Company Workshop - Empyreum",
         },
         "company workshop - mist": {
             "index": 1227,
-            "place_name": "Company Workshop " "- Mist",
+            "place_name": "Company Workshop - Mist",
         },
         "company workshop - shirogane": {
             "index": 2271,
-            "place_name": "Company " "Workshop - " "Shirogane",
+            "place_name": "Company Workshop - Shirogane",
         },
         "company workshop - the goblet": {
             "index": 1228,
-            "place_name": "Company " "Workshop - " "The Goblet",
+            "place_name": "Company Workshop - The Goblet",
         },
         "company workshop - the lavender beds": {
             "index": 1229,
-            "place_name": "Company " "Workshop " "- " "The " "Lavender " "Beds",
+            "place_name": "Company Workshop - The Lavender Beds",
         },
         "confessional of toupasa the elder": {
             "index": 3228,
-            "place_name": "The " "Confessional " "of " "Toupasa " "the " "Elder",
+            "place_name": "The Confessional of Toupasa the Elder",
         },
         "containment bay p1t6": {
             "index": 2265,
-            "place_name": "Containment Bay " "P1T6",
+            "place_name": "Containment Bay P1T6",
         },
         "containment bay s1t7": {
             "index": 2256,
-            "place_name": "Containment Bay " "S1T7",
+            "place_name": "Containment Bay S1T7",
         },
         "containment bay z1t9": {
             "index": 2266,
-            "place_name": "Containment Bay " "Z1T9",
+            "place_name": "Containment Bay Z1T9",
         },
         "containment complex 10-29": {
             "index": 4948,
-            "place_name": "Containment " "Complex 10-29",
+            "place_name": "Containment Complex 10-29",
         },
         "copied factory": {"index": 3425, "place_name": "The Copied Factory"},
         "copperbell mines": {"index": 48, "place_name": "Copperbell Mines"},
@@ -1555,12 +1550,12 @@ place_name: Mapping[
         "crown": {"index": 5371, "place_name": "The Crown"},
         "crown of the immaculate": {
             "index": 3219,
-            "place_name": "The Crown of the " "Immaculate",
+            "place_name": "The Crown of the Immaculate",
         },
         "crystarium": {"index": 2951, "place_name": "The Crystarium"},
         "cuff of the father": {
             "index": 1633,
-            "place_name": "The Cuff of the " "Father",
+            "place_name": "The Cuff of the Father",
         },
         "cuff of the son": {"index": 1714, "place_name": "The Cuff of the Son"},
         "cutter's cry": {"index": 47, "place_name": "Cutter's Cry"},
@@ -1579,21 +1574,21 @@ place_name: Mapping[
         "doman enclave": {"index": 2813, "place_name": "The Doman Enclave"},
         "dravanian forelands": {
             "index": 2000,
-            "place_name": "The Dravanian " "Forelands",
+            "place_name": "The Dravanian Forelands",
         },
         "dravanian hinterlands": {
             "index": 2001,
-            "place_name": "The Dravanian " "Hinterlands",
+            "place_name": "The Dravanian Hinterlands",
         },
         "dreamlike palace": {"index": 5121, "place_name": "Dreamlike Palace"},
         "drowned city of skalla": {
             "index": 2367,
-            "place_name": "The Drowned City " "of Skalla",
+            "place_name": "The Drowned City of Skalla",
         },
         "dun scaith": {"index": 1868, "place_name": "Dun Scaith"},
         "dungeons of lyhe ghiah": {
             "index": 3229,
-            "place_name": "The Dungeons of " "Lyhe Ghiah",
+            "place_name": "The Dungeons of Lyhe Ghiah",
         },
         "dusk vigil": {"index": 2214, "place_name": "Dusk Vigil"},
         "dzemael darkhold": {"index": 64, "place_name": "Dzemael Darkhold"},
@@ -1611,7 +1606,7 @@ place_name: Mapping[
         "endeavor": {"index": 3477, "place_name": "The Endeavor"},
         "eorzean alliance headquarters": {
             "index": 2862,
-            "place_name": "Eorzean " "Alliance " "Headquarters",
+            "place_name": "Eorzean Alliance Headquarters",
         },
         "eorzean subterrane": {"index": 152, "place_name": "Eorzean Subterrane"},
         "estinien's chambers": {"index": 4380, "place_name": "Estinien's Chambers"},
@@ -1628,12 +1623,12 @@ place_name: Mapping[
         "fall of belah'dia": {"index": 2498, "place_name": "The Fall of Belah'dia"},
         "falling city of nym": {
             "index": 2527,
-            "place_name": "The Falling City of " "Nym",
+            "place_name": "The Falling City of Nym",
         },
         "feasting grounds": {"index": 1664, "place_name": "The Feasting Grounds"},
         "fell court of troia": {
             "index": 4180,
-            "place_name": "The Fell Court of " "Troia",
+            "place_name": "The Fell Court of Troia",
         },
         "fervid limbo": {"index": 3797, "place_name": "The Fervid Limbo"},
         "fields of glory": {"index": 1740, "place_name": "The Fields of Glory"},
@@ -1641,11 +1636,11 @@ place_name: Mapping[
         "firmament": {"index": 3435, "place_name": "The Firmament"},
         "first altar of djanan qhat": {
             "index": 2339,
-            "place_name": "The First " "Altar of " "Djanan Qhat",
+            "place_name": "The First Altar of Djanan Qhat",
         },
         "fist of the father": {
             "index": 1628,
-            "place_name": "The Fist of the " "Father",
+            "place_name": "The Fist of the Father",
         },
         "fist of the son": {"index": 1708, "place_name": "The Fist of the Son"},
         "flame barracks": {"index": 1801, "place_name": "Flame Barracks"},
@@ -1656,19 +1651,19 @@ place_name: Mapping[
         "fringes": {"index": 2406, "place_name": "The Fringes"},
         "frondale's home for friendless foundlings": {
             "index": 695,
-            "place_name": "Frondale's " "Home " "for " "Friendless " "Foundlings",
+            "place_name": "Frondale's Home for Friendless Foundlings",
         },
         "g-savior deck": {"index": 3663, "place_name": "G-Savior Deck"},
         "gandof thunder plains": {
             "index": 3468,
-            "place_name": "The Gandof Thunder " "Plains",
+            "place_name": "The Gandof Thunder Plains",
         },
         "gangos": {"index": 3478, "place_name": "Gangos"},
         "garden of nowhere": {"index": 3635, "place_name": "The Garden of Nowhere"},
         "garlemald": {"index": 3710, "place_name": "Garlemald"},
         "gates of pandæmonium": {
             "index": 3769,
-            "place_name": "The Gates of " "Pandæmonium",
+            "place_name": "The Gates of Pandæmonium",
         },
         "ghimlyt dark": {"index": 2586, "place_name": "The Ghimlyt Dark"},
         "gilded araya": {"index": 4377, "place_name": "The Gilded Araya"},
@@ -1678,7 +1673,7 @@ place_name: Mapping[
         "great glacier": {"index": 3487, "place_name": "Great Glacier"},
         "great gubal library": {
             "index": 2038,
-            "place_name": "The Great Gubal " "Library",
+            "place_name": "The Great Gubal Library",
         },
         "great hunt": {"index": 2448, "place_name": "The Great Hunt"},
         "greenroom": {"index": 4749, "place_name": "Greenroom"},
@@ -1688,7 +1683,7 @@ place_name: Mapping[
         "hall of summoning": {"index": 379, "place_name": "Hall of Summoning"},
         "hall of the bestiarii": {
             "index": 694,
-            "place_name": "Hall of the " "Bestiarii",
+            "place_name": "Hall of the Bestiarii",
         },
         "hall of the unbound": {"index": 4755, "place_name": "Hall of the Unbound"},
         "halo": {"index": 3470, "place_name": "The Halo"},
@@ -1696,7 +1691,7 @@ place_name: Mapping[
         "haunted manor": {"index": 1834, "place_name": "Haunted Manor"},
         "heart of the creator": {
             "index": 1847,
-            "place_name": "Heart of the " "Creator",
+            "place_name": "Heart of the Creator",
         },
         "heart of the sworn": {"index": 354, "place_name": "Heart of the Sworn"},
         "heaven-on-high": {"index": 2775, "place_name": "Heaven-on-High"},
@@ -1712,7 +1707,7 @@ place_name: Mapping[
         "hourglass": {"index": 617, "place_name": "The Hourglass"},
         "house of the fierce": {
             "index": 2805,
-            "place_name": "The House of the " "Fierce",
+            "place_name": "The House of the Fierce",
         },
         "howling eye": {"index": 459, "place_name": "The Howling Eye"},
         "hullbreaker isle": {"index": 1377, "place_name": "Hullbreaker Isle"},
@@ -1722,7 +1717,7 @@ place_name: Mapping[
         "ic-06 main bridge": {"index": 1408, "place_name": "IC-06 Main Bridge"},
         "ic-06 regeneration grid": {
             "index": 1407,
-            "place_name": "IC-06 " "Regeneration " "Grid",
+            "place_name": "IC-06 Regeneration Grid",
         },
         "idyllshire": {"index": 2082, "place_name": "Idyllshire"},
         "ihuykatumu": {"index": 4602, "place_name": "Ihuykatumu"},
@@ -1730,26 +1725,26 @@ place_name: Mapping[
         "ingleside apartment": {"index": 3695, "place_name": "Ingleside Apartment"},
         "ingleside apartment lobby": {
             "index": 3694,
-            "place_name": "Ingleside " "Apartment " "Lobby",
+            "place_name": "Ingleside Apartment Lobby",
         },
         "intercessory": {"index": 1429, "place_name": "Intercessory"},
         "interdimensional rift": {
             "index": 4288,
-            "place_name": "The " "Interdimensional " "Rift",
+            "place_name": "The Interdimensional Rift",
         },
         "interphos": {"index": 5116, "place_name": "Interphos"},
         "jade stoa": {"index": 2354, "place_name": "The Jade Stoa"},
-        "keeper of the lake": {"index": 418, "place_name": "The Keeper of the " "Lake"},
+        "keeper of the lake": {"index": 418, "place_name": "The Keeper of the Lake"},
         "khadga": {"index": 4293, "place_name": "Khadga"},
         "kholusia": {"index": 2954, "place_name": "Kholusia"},
         "kienkan": {"index": 2847, "place_name": "Kienkan"},
         "kobai goten apartment": {
             "index": 2273,
-            "place_name": "Kobai Goten " "Apartment",
+            "place_name": "Kobai Goten Apartment",
         },
         "kobai goten apartment lobby": {
             "index": 2272,
-            "place_name": "Kobai Goten " "Apartment " "Lobby",
+            "place_name": "Kobai Goten Apartment Lobby",
         },
         "kozama'uka": {"index": 4506, "place_name": "Kozama'uka"},
         "ktisis hyperboreia": {"index": 3759, "place_name": "Ktisis Hyperboreia"},
@@ -1758,7 +1753,7 @@ place_name: Mapping[
         "kugane ohashi": {"index": 2499, "place_name": "Kugane Ohashi"},
         "labyrinth of the ancients": {
             "index": 478,
-            "place_name": "Labyrinth of " "the Ancients",
+            "place_name": "Labyrinth of the Ancients",
         },
         "labyrinthos": {"index": 3708, "place_name": "Labyrinthos"},
         "lakeland": {"index": 2953, "place_name": "Lakeland"},
@@ -1768,47 +1763,47 @@ place_name: Mapping[
         "laxan loft": {"index": 3620, "place_name": "Laxan Loft"},
         "lemures headquarters": {
             "index": 4022,
-            "place_name": "Lemures " "Headquarters",
+            "place_name": "Lemures Headquarters",
         },
         "leofard's chambers": {"index": 1804, "place_name": "Leofard's Chambers"},
         "lightfeather proving grounds": {
             "index": 2313,
-            "place_name": "The " "Lightfeather " "Proving " "Grounds",
+            "place_name": "The Lightfeather Proving Grounds",
         },
         "lily hills apartment": {
             "index": 1814,
-            "place_name": "Lily Hills " "Apartment",
+            "place_name": "Lily Hills Apartment",
         },
         "lily hills apartment lobby": {
             "index": 1813,
-            "place_name": "Lily Hills " "Apartment " "Lobby",
+            "place_name": "Lily Hills Apartment Lobby",
         },
         "lilyswim": {"index": 5445, "place_name": "Lilyswim"},
         "liminal space": {"index": 3017, "place_name": "Liminal Space"},
         "limitless blue": {"index": 2151, "place_name": "The Limitless Blue"},
         "limsa lominsa lower decks": {
             "index": 29,
-            "place_name": "Limsa Lominsa " "Lower Decks",
+            "place_name": "Limsa Lominsa Lower Decks",
         },
         "limsa lominsa upper decks": {
             "index": 28,
-            "place_name": "Limsa Lominsa " "Upper Decks",
+            "place_name": "Limsa Lominsa Upper Decks",
         },
         "living memory": {"index": 4510, "place_name": "Living Memory"},
         "lochs": {"index": 2408, "place_name": "The Lochs"},
         "lost canals of uznair": {
             "index": 2340,
-            "place_name": "The Lost Canals of " "Uznair",
+            "place_name": "The Lost Canals of Uznair",
         },
         "lost city of amdapor": {
             "index": 125,
-            "place_name": "The Lost City of " "Amdapor",
+            "place_name": "The Lost City of Amdapor",
         },
         "lotus stand": {"index": 347, "place_name": "Lotus Stand"},
         "lovely lovering": {"index": 5102, "place_name": "Lovely Lovering"},
         "lower aetheroacoustic exploratory site": {
             "index": 465,
-            "place_name": "Lower " "Aetheroacoustic " "Exploratory " "Site",
+            "place_name": "Lower Aetheroacoustic Exploratory Site",
         },
         "lower jeuno": {"index": 5139, "place_name": "Lower Jeuno"},
         "lower la noscea": {"index": 31, "place_name": "Lower La Noscea"},
@@ -1820,7 +1815,7 @@ place_name: Mapping[
         "malikah's well": {"index": 3139, "place_name": "Malikah's Well"},
         "manderville tables": {
             "index": 2549,
-            "place_name": "The Manderville " "Tables",
+            "place_name": "The Manderville Tables",
         },
         "manor basement": {"index": 5120, "place_name": "Manor Basement"},
         "mare lamentorum": {"index": 3711, "place_name": "Mare Lamentorum"},
@@ -1829,7 +1824,7 @@ place_name: Mapping[
         "medias res": {"index": 4098, "place_name": "Medias Res"},
         "meghaduta guest chambers": {
             "index": 4039,
-            "place_name": "Meghaduta Guest " "Chambers",
+            "place_name": "Meghaduta Guest Chambers",
         },
         "memory of embers": {"index": 4442, "place_name": "The Memory of Embers"},
         "meso terminal": {"index": 5266, "place_name": "The Meso Terminal"},
@@ -1864,17 +1859,17 @@ place_name: Mapping[
         "paglth'an": {"index": 2936, "place_name": "Paglth'an"},
         "palace of the dead": {
             "index": 1793,
-            "place_name": "The Palace of the " "Dead",
+            "place_name": "The Palace of the Dead",
         },
         "parrock": {"index": 1803, "place_name": "The Parrock"},
         "peaks": {"index": 2407, "place_name": "The Peaks"},
         "pendants personal suite": {
             "index": 3222,
-            "place_name": "The Pendants " "Personal Suite",
+            "place_name": "The Pendants Personal Suite",
         },
         "pestilent purgatory": {
             "index": 4196,
-            "place_name": "The Pestilent " "Purgatory",
+            "place_name": "The Pestilent Purgatory",
         },
         "phaenna": {"index": 5301, "place_name": "Phaenna"},
         "phantom village": {"index": 4757, "place_name": "Phantom Village"},
@@ -1886,91 +1881,91 @@ place_name: Mapping[
         "praetorium": {"index": 430, "place_name": "The Praetorium"},
         "prima vista bridge": {
             "index": 2371,
-            "place_name": "The Prima Vista " "Bridge",
+            "place_name": "The Prima Vista Bridge",
         },
         "prima vista tiring room": {
             "index": 2370,
-            "place_name": "The Prima Vista " "Tiring Room",
+            "place_name": "The Prima Vista Tiring Room",
         },
         "private chambers - empyreum": {
             "index": 3692,
-            "place_name": "Private " "Chambers - " "Empyreum",
+            "place_name": "Private Chambers - Empyreum",
         },
         "private chambers - mist": {
             "index": 1157,
-            "place_name": "Private Chambers " "- Mist",
+            "place_name": "Private Chambers - Mist",
         },
         "private chambers - shirogane": {
             "index": 2270,
-            "place_name": "Private " "Chambers - " "Shirogane",
+            "place_name": "Private Chambers - Shirogane",
         },
         "private chambers - the goblet": {
             "index": 1158,
-            "place_name": "Private " "Chambers - " "The Goblet",
+            "place_name": "Private Chambers - The Goblet",
         },
         "private chambers - the lavender beds": {
             "index": 1159,
-            "place_name": "Private " "Chambers " "- " "The " "Lavender " "Beds",
+            "place_name": "Private Chambers - The Lavender Beds",
         },
         "private cottage - empyreum": {
             "index": 3689,
-            "place_name": "Private " "Cottage - " "Empyreum",
+            "place_name": "Private Cottage - Empyreum",
         },
         "private cottage - mist": {
             "index": 1100,
-            "place_name": "Private Cottage - " "Mist",
+            "place_name": "Private Cottage - Mist",
         },
         "private cottage - shirogane": {
             "index": 1893,
-            "place_name": "Private " "Cottage - " "Shirogane",
+            "place_name": "Private Cottage - Shirogane",
         },
         "private cottage - the goblet": {
             "index": 1103,
-            "place_name": "Private " "Cottage - " "The Goblet",
+            "place_name": "Private Cottage - The Goblet",
         },
         "private cottage - the lavender beds": {
             "index": 1106,
-            "place_name": "Private " "Cottage " "- The " "Lavender " "Beds",
+            "place_name": "Private Cottage - The Lavender Beds",
         },
         "private house - empyreum": {
             "index": 3690,
-            "place_name": "Private House - " "Empyreum",
+            "place_name": "Private House - Empyreum",
         },
         "private house - mist": {
             "index": 1101,
-            "place_name": "Private House - " "Mist",
+            "place_name": "Private House - Mist",
         },
         "private house - shirogane": {
             "index": 1894,
-            "place_name": "Private House - " "Shirogane",
+            "place_name": "Private House - Shirogane",
         },
         "private house - the goblet": {
             "index": 1104,
-            "place_name": "Private House " "- The Goblet",
+            "place_name": "Private House - The Goblet",
         },
         "private house - the lavender beds": {
             "index": 1107,
-            "place_name": "Private " "House - " "The " "Lavender " "Beds",
+            "place_name": "Private House - The Lavender Beds",
         },
         "private mansion - empyreum": {
             "index": 3691,
-            "place_name": "Private " "Mansion - " "Empyreum",
+            "place_name": "Private Mansion - Empyreum",
         },
         "private mansion - mist": {
             "index": 1102,
-            "place_name": "Private Mansion - " "Mist",
+            "place_name": "Private Mansion - Mist",
         },
         "private mansion - shirogane": {
             "index": 1895,
-            "place_name": "Private " "Mansion - " "Shirogane",
+            "place_name": "Private Mansion - Shirogane",
         },
         "private mansion - the goblet": {
             "index": 1105,
-            "place_name": "Private " "Mansion - " "The Goblet",
+            "place_name": "Private Mansion - The Goblet",
         },
         "private mansion - the lavender beds": {
             "index": 1108,
-            "place_name": "Private " "Mansion " "- The " "Lavender " "Beds",
+            "place_name": "Private Mansion - The Lavender Beds",
         },
         "propylaion": {"index": 3926, "place_name": "Propylaion"},
         "psiscape v1.0": {"index": 2725, "place_name": "Psiscape V1.0"},
@@ -1982,16 +1977,16 @@ place_name: Mapping[
         "ragnarok": {"index": 466, "place_name": "The Ragnarok"},
         "ragnarok central core": {
             "index": 468,
-            "place_name": "Ragnarok Central " "Core",
+            "place_name": "Ragnarok Central Core",
         },
         "ragnarok drive cylinder": {
             "index": 467,
-            "place_name": "Ragnarok Drive " "Cylinder",
+            "place_name": "Ragnarok Drive Cylinder",
         },
-        "ragnarok main bridge": {"index": 469, "place_name": "Ragnarok Main " "Bridge"},
+        "ragnarok main bridge": {"index": 469, "place_name": "Ragnarok Main Bridge"},
         "rak'tika greatwood": {
             "index": 2957,
-            "place_name": "The Rak'tika " "Greatwood",
+            "place_name": "The Rak'tika Greatwood",
         },
         "rebel ring": {"index": 5175, "place_name": "Rebel Ring"},
         "recollection": {"index": 5153, "place_name": "Recollection"},
@@ -2005,18 +2000,18 @@ place_name: Mapping[
         "ridorana cataract": {"index": 2451, "place_name": "The Ridorana Cataract"},
         "ridorana lighthouse": {
             "index": 2483,
-            "place_name": "The Ridorana " "Lighthouse",
+            "place_name": "The Ridorana Lighthouse",
         },
         "ring noir": {"index": 5369, "place_name": "Ring Noir"},
         "rising stones": {"index": 481, "place_name": "The Rising Stones"},
         "roost": {"index": 548, "place_name": "The Roost"},
         "royal airship landing": {
             "index": 2708,
-            "place_name": "The Royal Airship " "Landing",
+            "place_name": "The Royal Airship Landing",
         },
         "royal city of rabanastre": {
             "index": 2372,
-            "place_name": "The Royal City " "of Rabanastre",
+            "place_name": "The Royal City of Rabanastre",
         },
         "royal menagerie": {"index": 2709, "place_name": "The Royal Menagerie"},
         "royal palace": {"index": 2294, "place_name": "Royal Palace"},
@@ -2026,19 +2021,19 @@ place_name: Mapping[
         "sacrificial chamber": {"index": 2083, "place_name": "Sacrificial Chamber"},
         "saint endalim's scholasticate": {
             "index": 2337,
-            "place_name": "Saint " "Endalim's " "Scholasticate",
+            "place_name": "Saint Endalim's Scholasticate",
         },
         "saint mocianne's arboretum": {
             "index": 2034,
-            "place_name": "Saint " "Mocianne's " "Arboretum",
+            "place_name": "Saint Mocianne's Arboretum",
         },
         "san d'oria: the second walk": {
             "index": 5240,
-            "place_name": "San d'Oria: " "The Second " "Walk",
+            "place_name": "San d'Oria: The Second Walk",
         },
         "sanctum of the twelve": {
             "index": 112,
-            "place_name": "Sanctum of the " "Twelve",
+            "place_name": "Sanctum of the Twelve",
         },
         "sanguine limbo": {"index": 4135, "place_name": "The Sanguine Limbo"},
         "sastasha": {"index": 35, "place_name": "Sastasha"},
@@ -2048,30 +2043,30 @@ place_name: Mapping[
         "seat of sacrifice": {"index": 3568, "place_name": "The Seat of Sacrifice"},
         "seat of the first bow": {
             "index": 346,
-            "place_name": "Seat of the First " "Bow",
+            "place_name": "Seat of the First Bow",
         },
         "seat of the lord commander": {
             "index": 2335,
-            "place_name": "Seat of the " "Lord " "Commander",
+            "place_name": "Seat of the Lord Commander",
         },
         "senatus": {"index": 4381, "place_name": "Senatus"},
         "shaaloani": {"index": 4508, "place_name": "Shaaloani"},
         "shifting altars of uznair": {
             "index": 2485,
-            "place_name": "The Shifting " "Altars of " "Uznair",
+            "place_name": "The Shifting Altars of Uznair",
         },
         "shifting gymnasion agonon": {
             "index": 4287,
-            "place_name": "The Shifting " "Gymnasion " "Agonon",
+            "place_name": "The Shifting Gymnasion Agonon",
         },
         "shifting oubliettes of lyhe ghiah": {
             "index": 3644,
-            "place_name": "The " "Shifting " "Oubliettes " "of Lyhe " "Ghiah",
+            "place_name": "The Shifting Oubliettes of Lyhe Ghiah",
         },
         "shirogane": {"index": 2412, "place_name": "Shirogane"},
         "shisui of the violet tides": {
             "index": 2779,
-            "place_name": "Shisui of the " "Violet Tides",
+            "place_name": "Shisui of the Violet Tides",
         },
         "sigmascape v1.0": {"index": 2717, "place_name": "Sigmascape V1.0"},
         "sigmascape v2.0": {"index": 2718, "place_name": "Sigmascape V2.0"},
@@ -2079,7 +2074,7 @@ place_name: Mapping[
         "sigmascape v4.0": {"index": 2720, "place_name": "Sigmascape V4.0"},
         "sil'dihn subterrane": {
             "index": 4199,
-            "place_name": "The Sil'dihn " "Subterrane",
+            "place_name": "The Sil'dihn Subterrane",
         },
         "singularity reactor": {"index": 2178, "place_name": "Singularity Reactor"},
         "sinus ardorum": {"index": 5219, "place_name": "Sinus Ardorum"},
@@ -2087,7 +2082,7 @@ place_name: Mapping[
         "skydeep cenote": {"index": 5027, "place_name": "The Skydeep Cenote"},
         "skydeep cenote inner chamber": {
             "index": 4751,
-            "place_name": "Skydeep " "Cenote Inner " "Chamber",
+            "place_name": "Skydeep Cenote Inner Chamber",
         },
         "smileton": {"index": 3770, "place_name": "Smileton"},
         "sneaky hollow": {"index": 4040, "place_name": "Sneaky Hollow"},
@@ -2111,31 +2106,31 @@ place_name: Mapping[
         "striking tree": {"index": 1363, "place_name": "The Striking Tree"},
         "stygian insenescence cells": {
             "index": 4250,
-            "place_name": "Stygian " "Insenescence " "Cells",
+            "place_name": "Stygian Insenescence Cells",
         },
         "sultana's breath apartment": {
             "index": 1816,
-            "place_name": "Sultana's " "Breath " "Apartment",
+            "place_name": "Sultana's Breath Apartment",
         },
         "sultana's breath apartment lobby": {
             "index": 1815,
-            "place_name": "Sultana's " "Breath " "Apartment " "Lobby",
+            "place_name": "Sultana's Breath Apartment Lobby",
         },
         "summit of everkeep": {"index": 5117, "place_name": "Summit of Everkeep"},
         "sunken temple of qarn": {
             "index": 50,
-            "place_name": "The Sunken Temple " "of Qarn",
+            "place_name": "The Sunken Temple of Qarn",
         },
         "sunperch": {"index": 4523, "place_name": "Sunperch"},
         "swallow's compass": {"index": 2801, "place_name": "The Swallow's Compass"},
         "sylphstep": {"index": 2528, "place_name": "Sylphstep"},
         "syrcus tower": {"index": 493, "place_name": "Syrcus Tower"},
         "syrcus trench": {"index": 3221, "place_name": "The Syrcus Trench"},
-        "tam-tara deepcroft": {"index": 58, "place_name": "The Tam-Tara " "Deepcroft"},
+        "tam-tara deepcroft": {"index": 58, "place_name": "The Tam-Tara Deepcroft"},
         "tempest": {"index": 2958, "place_name": "The Tempest"},
         "temple of the fist": {
             "index": 2707,
-            "place_name": "The Temple of the " "Fist",
+            "place_name": "The Temple of the Fist",
         },
         "tender valley": {"index": 4926, "place_name": "Tender Valley"},
         "terncliff": {"index": 3571, "place_name": "Terncliff"},
@@ -2145,24 +2140,24 @@ place_name: Mapping[
         "thornmarch": {"index": 360, "place_name": "Thornmarch"},
         "thousand maws of toto-rak": {
             "index": 61,
-            "place_name": "The Thousand " "Maws of " "Toto-Rak",
+            "place_name": "The Thousand Maws of Toto-Rak",
         },
         "throne room": {"index": 4760, "place_name": "Throne Room"},
         "thundering": {"index": 5103, "place_name": "The Thundering"},
         "topmast apartment": {"index": 1812, "place_name": "Topmast Apartment"},
         "topmast apartment lobby": {
             "index": 1811,
-            "place_name": "Topmast Apartment " "Lobby",
+            "place_name": "Topmast Apartment Lobby",
         },
         "tower at paradigm's breach": {
             "index": 3647,
-            "place_name": "The Tower at " "Paradigm's " "Breach",
+            "place_name": "The Tower at Paradigm's Breach",
         },
         "tower of babil": {"index": 4118, "place_name": "The Tower of Babil"},
         "tower of zot": {"index": 3736, "place_name": "The Tower of Zot"},
         "transmission control": {
             "index": 3486,
-            "place_name": "Transmission " "Control",
+            "place_name": "Transmission Control",
         },
         "transparency": {"index": 2715, "place_name": "Transparency"},
         "treno": {"index": 4765, "place_name": "Treno"},
@@ -2173,11 +2168,11 @@ place_name: Mapping[
         "twinning": {"index": 2982, "place_name": "The Twinning"},
         "ul'dah - steps of nald": {
             "index": 40,
-            "place_name": "Ul'dah - Steps of " "Nald",
+            "place_name": "Ul'dah - Steps of Nald",
         },
         "ul'dah - steps of thal": {
             "index": 41,
-            "place_name": "Ul'dah - Steps of " "Thal",
+            "place_name": "Ul'dah - Steps of Thal",
         },
         "ultima thule": {"index": 3712, "place_name": "Ultima Thule"},
         "ultimacy": {"index": 2449, "place_name": "Ultimacy"},
@@ -2185,7 +2180,7 @@ place_name: Mapping[
         "unnamed island": {"index": 4043, "place_name": "Unnamed Island"},
         "upper aetheroacoustic exploratory site": {
             "index": 464,
-            "place_name": "Upper " "Aetheroacoustic " "Exploratory " "Site",
+            "place_name": "Upper Aetheroacoustic Exploratory Site",
         },
         "upper la noscea": {"index": 34, "place_name": "Upper La Noscea"},
         "urqopacha": {"index": 4505, "place_name": "Urqopacha"},
@@ -2199,7 +2194,7 @@ place_name: Mapping[
         "wanderer's palace": {"index": 37, "place_name": "The Wanderer's Palace"},
         "weeping city of mhach": {
             "index": 1742,
-            "place_name": "The Weeping City of " "Mhach",
+            "place_name": "The Weeping City of Mhach",
         },
         "weeping saint": {"index": 392, "place_name": "The Weeping Saint"},
         "western la noscea": {"index": 33, "place_name": "Western La Noscea"},
@@ -2220,23 +2215,23 @@ place_name: Mapping[
         "zero's domain": {"index": 4038, "place_name": "Zero's Domain"},
         "zirgorteh the open-armed": {
             "index": 4949,
-            "place_name": "Zirgorteh the " "Open-armed",
+            "place_name": "Zirgorteh the Open-armed",
         },
         "zorgor the boundless": {
             "index": 4526,
-            "place_name": "Zorgor the " "Boundless",
+            "place_name": "Zorgor the Boundless",
         },
     },
     "fr": {
         "abîme infini de bahamut": {
             "index": 1759,
-            "place_name": "Abîme infini de " "Bahamut",
+            "place_name": "Abîme infini de Bahamut",
         },
         "akadaemia anydre": {"index": 3007, "place_name": "Akadaemia Anydre"},
         "ala mhigo": {"index": 2691, "place_name": "Ala Mhigo"},
         "alentours du lac aux nénuphars": {
             "index": 5445,
-            "place_name": "Alentours " "du lac aux " "Nénuphars",
+            "place_name": "Alentours du lac aux Nénuphars",
         },
         "alexander": {"index": 2041, "place_name": "Alexander"},
         "alexandrie": {"index": 3799, "place_name": "Alexandrie"},
@@ -2244,64 +2239,64 @@ place_name: Mapping[
         "amh araeng": {"index": 2955, "place_name": "Amh Araeng"},
         "amphithéâtre d'akh afah": {
             "index": 1399,
-            "place_name": "Amphithéâtre " "d'Akh Afah",
+            "place_name": "Amphithéâtre d'Akh Afah",
         },
         "anamnesis anydre": {"index": 3467, "place_name": "Anamnesis Anydre"},
         "antichambre de l'épreuve": {
             "index": 3471,
-            "place_name": "Antichambre de " "l'épreuve",
+            "place_name": "Antichambre de l'épreuve",
         },
         "appartements du palais du meghaduta": {
             "index": 4039,
-            "place_name": "Appartements " "du " "palais " "du " "Meghaduta",
+            "place_name": "Appartements du palais du Meghaduta",
         },
         "aquapole": {"index": 1799, "place_name": "Aquapole"},
         "arboretum sainte-mocianne": {
             "index": 2034,
-            "place_name": "Arboretum " "Sainte-Mocianne",
+            "place_name": "Arboretum Sainte-Mocianne",
         },
         "arbre du jugement": {"index": 1363, "place_name": "Arbre du jugement"},
         "arche du néant": {"index": 2181, "place_name": "Arche du néant"},
         "archives interdites du noumène": {
             "index": 4034,
-            "place_name": "Archives " "interdites " "du " "Noumène",
+            "place_name": "Archives interdites du Noumène",
         },
         "arrière-pays dravanien": {
             "index": 2001,
-            "place_name": "Arrière-pays " "dravanien",
+            "place_name": "Arrière-pays dravanien",
         },
         "arène triple triade": {"index": 1665, "place_name": "Arène Triple Triade"},
         "atelier abandonné de matoya": {
             "index": 3590,
-            "place_name": "Atelier " "abandonné de " "Matoya",
+            "place_name": "Atelier abandonné de Matoya",
         },
         "atelier de compagnie - brumée": {
             "index": 1227,
-            "place_name": "Atelier de " "compagnie - " "Brumée",
+            "place_name": "Atelier de compagnie - Brumée",
         },
         "atelier de compagnie - empyrée": {
             "index": 3693,
-            "place_name": "Atelier de " "compagnie " "- Empyrée",
+            "place_name": "Atelier de compagnie - Empyrée",
         },
         "atelier de compagnie - la coupe": {
             "index": 1228,
-            "place_name": "Atelier " "de " "compagnie " "- La " "Coupe",
+            "place_name": "Atelier de compagnie - La Coupe",
         },
         "atelier de compagnie - lavandière": {
             "index": 1229,
-            "place_name": "Atelier " "de " "compagnie " "- " "Lavandière",
+            "place_name": "Atelier de compagnie - Lavandière",
         },
         "atelier de compagnie - shirogane": {
             "index": 2271,
-            "place_name": "Atelier " "de " "compagnie " "- " "Shirogane",
+            "place_name": "Atelier de compagnie - Shirogane",
         },
-        "auberge de l'artimon": {"index": 733, "place_name": "Auberge de " "L'Artimon"},
+        "auberge de l'artimon": {"index": 733, "place_name": "Auberge de L'Artimon"},
         "auberge du bokairo": {"index": 2413, "place_name": "Auberge du Bokairo"},
         "autel de zirgorteh": {"index": 4949, "place_name": "Autel de Zirgorteh"},
         "avancée de la foi": {"index": 406, "place_name": "Avancée de la Foi"},
         "avant-pays dravanien": {
             "index": 2000,
-            "place_name": "Avant-pays " "dravanien",
+            "place_name": "Avant-pays dravanien",
         },
         "avenirs réécrits": {"index": 5137, "place_name": "Avenirs réécrits"},
         "azurée": {"index": 3435, "place_name": "Azurée"},
@@ -2309,27 +2304,27 @@ place_name: Mapping[
         "aérodrome royal": {"index": 2708, "place_name": "Aérodrome royal"},
         "banquet cauchemardesque": {
             "index": 3696,
-            "place_name": "Banquet " "cauchemardesque",
+            "place_name": "Banquet cauchemardesque",
         },
         "bas jeuno": {"index": 5139, "place_name": "Bas Jeuno"},
         "base militaire des pantins": {
             "index": 3576,
-            "place_name": "Base militaire " "des Pantins",
+            "place_name": "Base militaire des Pantins",
         },
         "basse-noscea": {"index": 31, "place_name": "Basse-Noscea"},
         "bassin cendreux": {"index": 3469, "place_name": "Bassin cendreux"},
         "bivouac de brayflox": {"index": 36, "place_name": "Bivouac de Brayflox"},
         "bloc des créations arborescentes": {
             "index": 4198,
-            "place_name": "Bloc des " "créations " "arborescentes",
+            "place_name": "Bloc des créations arborescentes",
         },
         "bloc des créatures extrêmement nocives": {
             "index": 4249,
-            "place_name": "Bloc " "des " "créatures " "extrêmement " "nocives",
+            "place_name": "Bloc des créatures extrêmement nocives",
         },
         "bloc des organismes parasites": {
             "index": 4196,
-            "place_name": "Bloc des " "organismes " "parasites",
+            "place_name": "Bloc des organismes parasites",
         },
         "blunderville": {"index": 4469, "place_name": "Blunderville"},
         "briseur de marées": {"index": 1334, "place_name": "Briseur de marées"},
@@ -2338,75 +2333,75 @@ place_name: Mapping[
         "cabines de proue": {"index": 4540, "place_name": "Cabines de Proue"},
         "cale sèche de castrum marinum": {
             "index": 3581,
-            "place_name": "Cale sèche " "de Castrum " "Marinum",
+            "place_name": "Cale sèche de Castrum Marinum",
         },
         "canalisations sildiennes": {
             "index": 4199,
-            "place_name": "Canalisations " "sildiennes",
+            "place_name": "Canalisations sildiennes",
         },
         "canalisations sildiennes annexes": {
             "index": 4227,
-            "place_name": "Canalisations " "sildiennes " "annexes",
+            "place_name": "Canalisations sildiennes annexes",
         },
         "canaux perdus d'uznair": {
             "index": 2340,
-            "place_name": "Canaux perdus " "d'Uznair",
+            "place_name": "Canaux perdus d'Uznair",
         },
         "carrière de lesteplume": {
             "index": 2313,
-            "place_name": "Carrière de " "Lesteplume",
+            "place_name": "Carrière de Lesteplume",
         },
         "caserne de l'ordre des deux vipères": {
             "index": 1800,
-            "place_name": "Caserne " "de " "l'ordre " "des " "Deux " "Vipères",
+            "place_name": "Caserne de l'ordre des Deux Vipères",
         },
         "caserne des immortels": {
             "index": 1801,
-            "place_name": "Caserne des " "Immortels",
+            "place_name": "Caserne des Immortels",
         },
         "caserne du maelstrom": {
             "index": 1802,
-            "place_name": "Caserne du " "Maelstrom",
+            "place_name": "Caserne du Maelstrom",
         },
         "castrum abania": {"index": 2665, "place_name": "Castrum Abania"},
         "castrum fluminis": {"index": 2799, "place_name": "Castrum Fluminis"},
         "castrum meridianum": {"index": 260, "place_name": "Castrum Meridianum"},
         "cataractes de ridorana": {
             "index": 2451,
-            "place_name": "Cataractes de " "Ridorana",
+            "place_name": "Cataractes de Ridorana",
         },
         "caverne de matoya": {"index": 2036, "place_name": "Caverne de Matoya"},
         "cercle des intrépides": {
             "index": 2805,
-            "place_name": "Cercle des " "Intrépides",
+            "place_name": "Cercle des Intrépides",
         },
         "chaire du lotus": {"index": 347, "place_name": "Chaire du Lotus"},
         "chambre d'estinien": {"index": 4380, "place_name": "Chambre d'Estinien"},
         "chambre individuelle - brumée": {
             "index": 1157,
-            "place_name": "Chambre " "individuelle " "- Brumée",
+            "place_name": "Chambre individuelle - Brumée",
         },
         "chambre individuelle - empyrée": {
             "index": 3692,
-            "place_name": "Chambre " "individuelle " "- Empyrée",
+            "place_name": "Chambre individuelle - Empyrée",
         },
         "chambre individuelle - la coupe": {
             "index": 1158,
-            "place_name": "Chambre " "individuelle " "- La " "Coupe",
+            "place_name": "Chambre individuelle - La Coupe",
         },
         "chambre individuelle - lavandière": {
             "index": 1159,
-            "place_name": "Chambre " "individuelle " "- " "Lavandière",
+            "place_name": "Chambre individuelle - Lavandière",
         },
         "chambre individuelle - shirogane": {
             "index": 2270,
-            "place_name": "Chambre " "individuelle " "- " "Shirogane",
+            "place_name": "Chambre individuelle - Shirogane",
         },
         "chambre à coucher": {"index": 3818, "place_name": "Chambre à coucher"},
         "champs de la gloire": {"index": 1740, "place_name": "Champs de la Gloire"},
         "chemin du sanctuaire reisen": {
             "index": 2391,
-            "place_name": "Chemin du " "sanctuaire " "Reisen",
+            "place_name": "Chemin du sanctuaire Reisen",
         },
         "chutes de belah'dia": {"index": 2498, "place_name": "Chutes de Belah'dia"},
         "château d'amdapor": {"index": 128, "place_name": "Château d'Amdapor"},
@@ -2416,48 +2411,42 @@ place_name: Mapping[
         "ciel azur": {"index": 2548, "place_name": "Ciel azur"},
         "cité croulante de nym": {
             "index": 2527,
-            "place_name": "Cité croulante de " "Nym",
+            "place_name": "Cité croulante de Nym",
         },
         "cité défendue de mhach": {
             "index": 1742,
-            "place_name": "Cité défendue de " "Mhach",
+            "place_name": "Cité défendue de Mhach",
         },
         "cité engloutie de skalla": {
             "index": 2367,
-            "place_name": "Cité engloutie " "de Skalla",
+            "place_name": "Cité engloutie de Skalla",
         },
         "cité royale de rabanastre": {
             "index": 2372,
-            "place_name": "Cité royale de " "Rabanastre",
+            "place_name": "Cité royale de Rabanastre",
         },
         "clairière de jade": {"index": 2354, "place_name": "Clairière de Jade"},
         "clinique pédiatrique de l'académie médicale de frondale": {
             "index": 695,
-            "place_name": "Clinique "
-            "pédiatrique "
-            "de "
-            "l'Académie "
-            "médicale "
-            "de "
-            "Frondale",
+            "place_name": "Clinique pédiatrique de l'Académie médicale de Frondale",
         },
         "coffre d'oneiron": {"index": 5297, "place_name": "Coffre d'Oneiron"},
         "compas de l'hirondelle": {
             "index": 2801,
-            "place_name": "Compas de " "l'Hirondelle",
+            "place_name": "Compas de l'Hirondelle",
         },
         "confessionnal de toupasa l'ancien": {
             "index": 3228,
-            "place_name": "Confessionnal " "de " "Toupasa " "l'ancien",
+            "place_name": "Confessionnal de Toupasa l'ancien",
         },
         "cosmos coruscant": {"index": 3385, "place_name": "Cosmos coruscant"},
         "couronne de l'immaculé": {
             "index": 3219,
-            "place_name": "Couronne de " "l'Immaculé",
+            "place_name": "Couronne de l'Immaculé",
         },
         "couvercle des enfers": {
             "index": 2762,
-            "place_name": "Couvercle des " "enfers",
+            "place_name": "Couvercle des enfers",
         },
         "cratère des tisons": {"index": 357, "place_name": "Cratère des tisons"},
         "crique aux tributs": {"index": 2295, "place_name": "Crique aux tributs"},
@@ -2465,11 +2454,11 @@ place_name: Mapping[
         "cristarium": {"index": 2951, "place_name": "Cristarium"},
         "cylindre propulseur du ragnarok": {
             "index": 467,
-            "place_name": "Cylindre " "propulseur " "du " "Ragnarok",
+            "place_name": "Cylindre propulseur du Ragnarok",
         },
         "cénote des cieux infinis": {
             "index": 5027,
-            "place_name": "Cénote des Cieux " "infinis",
+            "place_name": "Cénote des Cieux infinis",
         },
         "cénote ja ja gural": {"index": 5000, "place_name": "Cénote Ja Ja Gural"},
         "cœur d'azys lla": {"index": 2179, "place_name": "Cœur d'Azys Lla"},
@@ -2477,7 +2466,7 @@ place_name: Mapping[
         "cœur de bahamut": {"index": 1409, "place_name": "Cœur de Bahamut"},
         "cœur de la lune rouge": {
             "index": 4441,
-            "place_name": "Cœur de la lune " "rouge",
+            "place_name": "Cœur de la lune rouge",
         },
         "deltastice v1.0": {"index": 2357, "place_name": "Deltastice v1.0"},
         "deltastice v2.0": {"index": 2358, "place_name": "Deltastice v2.0"},
@@ -2486,35 +2475,28 @@ place_name: Mapping[
         "delubrum reginae": {"index": 3597, "place_name": "Delubrum Reginae"},
         "demeure de la femme à tête de citrouille": {
             "index": 4040,
-            "place_name": "Demeure "
-            "de "
-            "la "
-            "femme "
-            "à "
-            "tête "
-            "de "
-            "citrouille",
+            "place_name": "Demeure de la femme à tête de citrouille",
         },
         "division d'entreposage 10-29": {
             "index": 4948,
-            "place_name": "Division " "d'entreposage " "10-29",
+            "place_name": "Division d'entreposage 10-29",
         },
         "dohn mheg": {"index": 2979, "place_name": "Dohn Mheg"},
         "domaine divin - aglaé": {
             "index": 4167,
-            "place_name": "Domaine divin - " "Aglaé",
+            "place_name": "Domaine divin - Aglaé",
         },
         "domaine divin - euphrosyne": {
             "index": 4258,
-            "place_name": "Domaine divin " "- Euphrosyne",
+            "place_name": "Domaine divin - Euphrosyne",
         },
         "domaine du roi des cieux": {
             "index": 2448,
-            "place_name": "Domaine du roi " "des cieux",
+            "place_name": "Domaine du roi des cieux",
         },
         "donjon hypogéen du lyhe ghiah": {
             "index": 3229,
-            "place_name": "Donjon " "hypogéen du " "Lyhe Ghiah",
+            "place_name": "Donjon hypogéen du Lyhe Ghiah",
         },
         "dun scaith": {"index": 1868, "place_name": "Dun Scaith"},
         "dédale antique": {"index": 478, "place_name": "Dédale antique"},
@@ -2523,11 +2505,11 @@ place_name: Mapping[
         "empyrée": {"index": 4139, "place_name": "Empyrée"},
         "enchevêtrement des qitari": {
             "index": 3018,
-            "place_name": "Enchevêtrement " "des Qitari",
+            "place_name": "Enchevêtrement des Qitari",
         },
         "entrée des ruines mécaniques": {
             "index": 3427,
-            "place_name": "Entrée des " "ruines " "mécaniques",
+            "place_name": "Entrée des ruines mécaniques",
         },
         "eulmore": {"index": 2952, "place_name": "Eulmore"},
         "eurêka anemos": {"index": 2414, "place_name": "Eurêka Anemos"},
@@ -2537,18 +2519,18 @@ place_name: Mapping[
         "eurêka pyros": {"index": 2530, "place_name": "Eurêka Pyros"},
         "fantasmagorie d'ultima": {
             "index": 2449,
-            "place_name": "Fantasmagorie " "d'Ultima",
+            "place_name": "Fantasmagorie d'Ultima",
         },
         "festin des loups": {"index": 1664, "place_name": "Festin des loups"},
         "fissure interdimensionnelle": {
             "index": 4288,
-            "place_name": "Fissure " "interdimensionnelle",
+            "place_name": "Fissure interdimensionnelle",
         },
         "fond des enfers": {"index": 2496, "place_name": "Fond des enfers"},
         "force de bardam": {"index": 2833, "place_name": "Force de Bardam"},
         "forteresse de dzemael": {
             "index": 64,
-            "place_name": "Forteresse de " "Dzemael",
+            "place_name": "Forteresse de Dzemael",
         },
         "forêt centrale": {"index": 54, "place_name": "Forêt centrale"},
         "forêt de l'est": {"index": 55, "place_name": "Forêt de l'est"},
@@ -2560,7 +2542,7 @@ place_name: Mapping[
         "gardien du lac": {"index": 418, "place_name": "Gardien du lac"},
         "gardienne de l'immémorial": {
             "index": 5156,
-            "place_name": "Gardienne de " "l'Immémorial",
+            "place_name": "Gardienne de l'Immémorial",
         },
         "gare de bendini": {"index": 4763, "place_name": "Gare de Bendini"},
         "gare de senatus": {"index": 4381, "place_name": "Gare de Senatus"},
@@ -2572,13 +2554,13 @@ place_name: Mapping[
         "gouffre hurlant": {"index": 47, "place_name": "Gouffre hurlant"},
         "grand autel de djanan qhat": {
             "index": 2339,
-            "place_name": "Grand autel de " "Djanan Qhat",
+            "place_name": "Grand autel de Djanan Qhat",
         },
         "grand glacier": {"index": 3487, "place_name": "Grand Glacier"},
         "grand-lac": {"index": 2953, "place_name": "Grand-Lac"},
         "grande bibliothèque de gubal": {
             "index": 2038,
-            "place_name": "Grande " "bibliothèque " "de Gubal",
+            "place_name": "Grande bibliothèque de Gubal",
         },
         "halatali": {"index": 49, "place_name": "Halatali"},
         "hall d'argent": {"index": 354, "place_name": "Hall d'argent"},
@@ -2587,15 +2569,15 @@ place_name: Mapping[
         "haute-noscea": {"index": 34, "place_name": "Haute-Noscea"},
         "hautes terres du coerthas central": {
             "index": 63,
-            "place_name": "Hautes " "terres " "du " "Coerthas " "central",
+            "place_name": "Hautes terres du Coerthas central",
         },
         "hautes terres du coerthas occidental": {
             "index": 2200,
-            "place_name": "Hautes " "terres " "du " "Coerthas " "occidental",
+            "place_name": "Hautes terres du Coerthas occidental",
         },
         "hauts plateaux de zadnor": {
             "index": 3662,
-            "place_name": "Hauts plateaux " "de Zadnor",
+            "place_name": "Hauts plateaux de Zadnor",
         },
         "holminster": {"index": 3050, "place_name": "Holminster"},
         "hurlœil": {"index": 361, "place_name": "Hurlœil"},
@@ -2608,28 +2590,28 @@ place_name: Mapping[
         "il mheg": {"index": 2956, "place_name": "Il Mheg"},
         "interstice du chant onirique": {
             "index": 4442,
-            "place_name": "Interstice " "du chant " "onirique",
+            "place_name": "Interstice du chant onirique",
         },
         "ishgard - l'assise": {"index": 2300, "place_name": "Ishgard - L'Assise"},
         "ishgard - les contreforts": {
             "index": 2301,
-            "place_name": "Ishgard - Les " "Contreforts",
+            "place_name": "Ishgard - Les Contreforts",
         },
         "jardin du désespoir": {"index": 3635, "place_name": "Jardin du désespoir"},
         "jardin secret du lyhe ghiah": {
             "index": 3644,
-            "place_name": "Jardin secret " "du Lyhe " "Ghiah",
+            "place_name": "Jardin secret du Lyhe Ghiah",
         },
         "jetée de l'antre des loups": {
             "index": 358,
-            "place_name": "Jetée de " "l'Antre des " "loups",
+            "place_name": "Jetée de l'Antre des loups",
         },
         "khadga": {"index": 4293, "place_name": "Khadga"},
         "kholusia": {"index": 2954, "place_name": "Kholusia"},
         "kienkan": {"index": 2847, "place_name": "Kienkan"},
         "kobai goten (appartement)": {
             "index": 2273,
-            "place_name": "Kobai Goten " "(appartement)",
+            "place_name": "Kobai Goten (appartement)",
         },
         "kobai goten (hall)": {"index": 2272, "place_name": "Kobai Goten (hall)"},
         "kozama'uka": {"index": 4506, "place_name": "Kozama'uka"},
@@ -2643,7 +2625,7 @@ place_name: Mapping[
         "l'immensité bleue": {"index": 2151, "place_name": "L'Immensité bleue"},
         "l'issue aux impasses": {
             "index": 4100,
-            "place_name": "L'Issue aux " "Impasses",
+            "place_name": "L'Issue aux Impasses",
         },
         "l'observatoire": {"index": 3223, "place_name": "L'Observatoire"},
         "l'origenèse": {"index": 5007, "place_name": "L'Origenèse"},
@@ -2651,11 +2633,11 @@ place_name: Mapping[
         "l'écheveau": {"index": 1302, "place_name": "L'Écheveau"},
         "l'écume des cieux d'abalathia": {
             "index": 2100,
-            "place_name": "L'Écume des " "cieux " "d'Abalathia",
+            "place_name": "L'Écume des cieux d'Abalathia",
         },
         "l'écume des cieux de dravania": {
             "index": 2002,
-            "place_name": "L'Écume des " "cieux de " "Dravania",
+            "place_name": "L'Écume des cieux de Dravania",
         },
         "l'étendue de rhalgr": {"index": 2403, "place_name": "L'Étendue de Rhalgr"},
         "la chrysalide": {"index": 1390, "place_name": "La Chrysalide"},
@@ -2665,40 +2647,35 @@ place_name: Mapping[
         "la voûte": {"index": 2327, "place_name": "La Voûte"},
         "laboratoire d'études des secrets du vivant": {
             "index": 4250,
-            "place_name": "Laboratoire " "d'études " "des " "secrets " "du " "vivant",
+            "place_name": "Laboratoire d'études des secrets du vivant",
         },
         "laboratoire de magismologie": {
             "index": 2147,
-            "place_name": "Laboratoire " "de " "magismologie",
+            "place_name": "Laboratoire de magismologie",
         },
         "laboratoire impérial d'étude sur les résonnants": {
             "index": 2296,
-            "place_name": "Laboratoire "
-            "impérial "
-            "d'étude "
-            "sur "
-            "les "
-            "Résonnants",
+            "place_name": "Laboratoire impérial d'étude sur les Résonnants",
         },
         "lapis manalis": {"index": 4270, "place_name": "Lapis Manalis"},
         "large de rocasternes": {
             "index": 3570,
-            "place_name": "Large de " "Rocasternes",
+            "place_name": "Large de Rocasternes",
         },
         "lavandière": {"index": 426, "place_name": "Lavandière"},
         "le bras du fils": {"index": 1723, "place_name": "Le Bras du Fils"},
         "le bras du père": {"index": 1638, "place_name": "Le Bras du Père"},
         "le coin de l'âtre (appartement)": {
             "index": 3695,
-            "place_name": "Le Coin " "de l'Âtre " "(appartement)",
+            "place_name": "Le Coin de l'Âtre (appartement)",
         },
         "le coin de l'âtre (hall)": {
             "index": 3694,
-            "place_name": "Le Coin de " "l'Âtre (hall)",
+            "place_name": "Le Coin de l'Âtre (hall)",
         },
         "le continuum fractal": {
             "index": 2148,
-            "place_name": "Le Continuum " "fractal",
+            "place_name": "Le Continuum fractal",
         },
         "le cœur du créateur": {"index": 1847, "place_name": "Le Cœur du Créateur"},
         "le diadème": {"index": 1647, "place_name": "Le Diadème"},
@@ -2709,18 +2686,18 @@ place_name: Mapping[
         "le misère": {"index": 1960, "place_name": "Le Misère"},
         "le mât de hune (appartement)": {
             "index": 1812,
-            "place_name": "Le Mât de " "hune " "(appartement)",
+            "place_name": "Le Mât de hune (appartement)",
         },
         "le mât de hune (hall)": {
             "index": 1811,
-            "place_name": "Le Mât de hune " "(hall)",
+            "place_name": "Le Mât de hune (hall)",
         },
         "le nombril": {"index": 359, "place_name": "Le Nombril"},
         "le paddock": {"index": 1803, "place_name": "Le Paddock"},
         "le perchoir": {"index": 548, "place_name": "Le Perchoir"},
         "le phare de ridorana": {
             "index": 2483,
-            "place_name": "Le Phare de " "Ridorana",
+            "place_name": "Le Phare de Ridorana",
         },
         "le poignet du fils": {"index": 1714, "place_name": "Le Poignet du Fils"},
         "le poignet du père": {"index": 1633, "place_name": "Le Poignet du Père"},
@@ -2733,19 +2710,19 @@ place_name: Mapping[
         "le saint affligé": {"index": 392, "place_name": "Le Saint affligé"},
         "le souffle de la sultane (appartement)": {
             "index": 1816,
-            "place_name": "Le " "Souffle " "de " "la " "Sultane " "(appartement)",
+            "place_name": "Le Souffle de la Sultane (appartement)",
         },
         "le souffle de la sultane (hall)": {
             "index": 1815,
-            "place_name": "Le " "Souffle " "de la " "Sultane " "(hall)",
+            "place_name": "Le Souffle de la Sultane (hall)",
         },
         "le souffle du créateur": {
             "index": 1841,
-            "place_name": "Le Souffle du " "Créateur",
+            "place_name": "Le Souffle du Créateur",
         },
         "le trône du sacrifice": {
             "index": 3568,
-            "place_name": "Le Trône du " "Sacrifice",
+            "place_name": "Le Trône du Sacrifice",
         },
         "legs d'alzadaal": {"index": 4154, "place_name": "Legs d'Alzadaal"},
         "les lacs": {"index": 2408, "place_name": "Les Lacs"},
@@ -2753,69 +2730,69 @@ place_name: Mapping[
         "les neuf-nuages": {"index": 2310, "place_name": "Les Neuf-Nuages"},
         "les nuées de brandons": {
             "index": 3442,
-            "place_name": "Les Nuées de " "Brandons",
+            "place_name": "Les Nuées de Brandons",
         },
         "les pendants": {"index": 3222, "place_name": "Les Pendants"},
         "les pics": {"index": 2407, "place_name": "Les Pics"},
         "les ténèbres de ghimlyt": {
             "index": 2586,
-            "place_name": "Les Ténèbres de " "Ghimlyt",
+            "place_name": "Les Ténèbres de Ghimlyt",
         },
         "les yeux du créateur": {
             "index": 1835,
-            "place_name": "Les Yeux du " "Créateur",
+            "place_name": "Les Yeux du Créateur",
         },
         "limbes du pandæmonium - abîme": {
             "index": 4135,
-            "place_name": "Limbes du " "Pandæmonium " "- Abîme",
+            "place_name": "Limbes du Pandæmonium - Abîme",
         },
         "limbes du pandæmonium - cloaque": {
             "index": 3798,
-            "place_name": "Limbes du " "Pandæmonium " "- " "Cloaque",
+            "place_name": "Limbes du Pandæmonium - Cloaque",
         },
         "limbes du pandæmonium - fournaise": {
             "index": 3797,
-            "place_name": "Limbes " "du " "Pandæmonium " "- " "Fournaise",
+            "place_name": "Limbes du Pandæmonium - Fournaise",
         },
         "limbes du pandæmonium - parvis": {
             "index": 3769,
-            "place_name": "Limbes du " "Pandæmonium " "- Parvis",
+            "place_name": "Limbes du Pandæmonium - Parvis",
         },
         "limsa lominsa - l'entrepont": {
             "index": 29,
-            "place_name": "Limsa Lominsa " "- " "L'Entrepont",
+            "place_name": "Limsa Lominsa - L'Entrepont",
         },
         "limsa lominsa - le tillac": {
             "index": 28,
-            "place_name": "Limsa Lominsa - " "Le Tillac",
+            "place_name": "Limsa Lominsa - Le Tillac",
         },
         "lisière de ronces": {"index": 360, "place_name": "Lisière de ronces"},
         "locaux de la société de l'arcadion": {
             "index": 4749,
-            "place_name": "Locaux " "de la " "Société " "de " "l'Arcadion",
+            "place_name": "Locaux de la Société de l'Arcadion",
         },
         "ludodrome": {"index": 4111, "place_name": "Ludodrome"},
         "lune rouge": {"index": 4382, "place_name": "Lune rouge"},
         "macle de syrcus": {"index": 2982, "place_name": "Macle de Syrcus"},
         "maisonnette - brumée": {
             "index": 1100,
-            "place_name": "Maisonnette - " "Brumée",
+            "place_name": "Maisonnette - Brumée",
         },
         "maisonnette - empyrée": {
             "index": 3689,
-            "place_name": "Maisonnette - " "Empyrée",
+            "place_name": "Maisonnette - Empyrée",
         },
         "maisonnette - la coupe": {
             "index": 1103,
-            "place_name": "Maisonnette - La " "Coupe",
+            "place_name": "Maisonnette - La Coupe",
         },
         "maisonnette - lavandière": {
             "index": 1106,
-            "place_name": "Maisonnette - " "Lavandière",
+            "place_name": "Maisonnette - Lavandière",
         },
         "maisonnette - shirogane": {
             "index": 1893,
-            "place_name": "Maisonnette - " "Shirogane",
+            "place_name": "Maisonnette - Shirogane",
         },
         "manoir des fortemps": {"index": 2320, "place_name": "Manoir des Fortemps"},
         "manoir des haukke": {"index": 59, "place_name": "Manoir des Haukke"},
@@ -2825,21 +2802,21 @@ place_name: Mapping[
         "mare lamentorum": {"index": 3711, "place_name": "Mare Lamentorum"},
         "maternité démoniaque": {
             "index": 4362,
-            "place_name": "Maternité " "démoniaque",
+            "place_name": "Maternité démoniaque",
         },
         "mer de rhotano": {"index": 462, "place_name": "Mer de Rhotano"},
         "mer de rubis": {"index": 2409, "place_name": "Mer de Rubis"},
         "mer du chant des sirènes": {
             "index": 2297,
-            "place_name": "Mer du Chant des " "sirènes",
+            "place_name": "Mer du Chant des sirènes",
         },
         "mille gueules de toto-rak": {
             "index": 61,
-            "place_name": "Mille Gueules " "de Toto-Rak",
+            "place_name": "Mille Gueules de Toto-Rak",
         },
         "mines de clochecuivre": {
             "index": 48,
-            "place_name": "Mines de " "Clochecuivre",
+            "place_name": "Mines de Clochecuivre",
         },
         "monastère d'orbonne": {"index": 2864, "place_name": "Monastère d'Orbonne"},
         "monde des ténèbres": {"index": 1431, "place_name": "Monde des Ténèbres"},
@@ -2861,11 +2838,11 @@ place_name: Mapping[
         "nouvelle gridania": {"index": 52, "place_name": "Nouvelle Gridania"},
         "noyau central du ragnarok": {
             "index": 468,
-            "place_name": "Noyau central " "du Ragnarok",
+            "place_name": "Noyau central du Ragnarok",
         },
         "nécropole intemporelle": {
             "index": 5284,
-            "place_name": "Nécropole " "intemporelle",
+            "place_name": "Nécropole intemporelle",
         },
         "ombrage du météore": {"index": 1301, "place_name": "Ombrage du Météore"},
         "omphalos": {"index": 4031, "place_name": "Omphalos"},
@@ -2874,17 +2851,17 @@ place_name: Mapping[
         "paglth'an": {"index": 2936, "place_name": "Paglth'an"},
         "palais au parfum onirique": {
             "index": 5121,
-            "place_name": "Palais au " "parfum " "onirique",
+            "place_name": "Palais au parfum onirique",
         },
         "palais aux marées violettes": {
             "index": 2779,
-            "place_name": "Palais aux " "Marées " "violettes",
+            "place_name": "Palais aux Marées violettes",
         },
         "palais des morts": {"index": 1793, "place_name": "Palais des morts"},
         "palais du vagabond": {"index": 37, "place_name": "Palais du Vagabond"},
         "palais royal d'ala mhigo": {
             "index": 2294,
-            "place_name": "Palais royal " "d'Ala Mhigo",
+            "place_name": "Palais royal d'Ala Mhigo",
         },
         "parc-aux-errants": {"index": 5105, "place_name": "Parc-aux-Errants"},
         "pavillon - brumée": {"index": 1101, "place_name": "Pavillon - Brumée"},
@@ -2892,26 +2869,26 @@ place_name: Mapping[
         "pavillon - la coupe": {"index": 1104, "place_name": "Pavillon - La Coupe"},
         "pavillon - lavandière": {
             "index": 1107,
-            "place_name": "Pavillon - " "Lavandière",
+            "place_name": "Pavillon - Lavandière",
         },
         "pavillon - shirogane": {
             "index": 1894,
-            "place_name": "Pavillon - " "Shirogane",
+            "place_name": "Pavillon - Shirogane",
         },
         "phaenna": {"index": 5301, "place_name": "Phaenna"},
         "phare de sirius": {"index": 230, "place_name": "Phare de Sirius"},
         "pilier des cieux": {"index": 2775, "place_name": "Pilier des Cieux"},
         "plaine foudroyée de gandof": {
             "index": 3468,
-            "place_name": "Plaine " "foudroyée de " "Gandof",
+            "place_name": "Plaine foudroyée de Gandof",
         },
         "plaine-aux-lys (appartement)": {
             "index": 1814,
-            "place_name": "Plaine-aux-Lys " "(appartement)",
+            "place_name": "Plaine-aux-Lys (appartement)",
         },
         "plaine-aux-lys (hall)": {
             "index": 1813,
-            "place_name": "Plaine-aux-Lys " "(hall)",
+            "place_name": "Plaine-aux-Lys (hall)",
         },
         "plaines venteuses": {"index": 5276, "place_name": "Plaines venteuses"},
         "pont du navire": {"index": 4758, "place_name": "Pont du navire"},
@@ -2919,19 +2896,19 @@ place_name: Mapping[
         "pont ohashi": {"index": 2499, "place_name": "Pont Ohashi"},
         "pont principal du ragnarok": {
             "index": 469,
-            "place_name": "Pont principal " "du Ragnarok",
+            "place_name": "Pont principal du Ragnarok",
         },
         "pont principal rci-04": {
             "index": 1410,
-            "place_name": "Pont principal " "RCI-04",
+            "place_name": "Pont principal RCI-04",
         },
         "pont principal rci-06": {
             "index": 1408,
-            "place_name": "Pont principal " "RCI-06",
+            "place_name": "Pont principal RCI-06",
         },
         "pont supérieur d'éden": {
             "index": 3470,
-            "place_name": "Pont supérieur " "d'Éden",
+            "place_name": "Pont supérieur d'Éden",
         },
         "ponton du gardien-g": {"index": 3663, "place_name": "Ponton du Gardien-G"},
         "porta decumana": {"index": 4032, "place_name": "Porta Decumana"},
@@ -2943,32 +2920,32 @@ place_name: Mapping[
         "prison lunaire": {"index": 3684, "place_name": "Prison lunaire"},
         "profondeurs du cénote des cieux infinis": {
             "index": 4751,
-            "place_name": "Profondeurs " "du " "cénote " "des " "Cieux " "infinis",
+            "place_name": "Profondeurs du cénote des Cieux infinis",
         },
         "prétoire des quatorze": {
             "index": 4307,
-            "place_name": "Prétoire des " "Quatorze",
+            "place_name": "Prétoire des Quatorze",
         },
         "psistice v1.0": {"index": 2725, "place_name": "Psistice v1.0"},
         "psistice v2.0": {"index": 2736, "place_name": "Psistice v2.0"},
         "puits de malikah": {"index": 3139, "place_name": "Puits de Malikah"},
         "pâtisserie de la valention": {
             "index": 5278,
-            "place_name": "Pâtisserie de " "la Valention",
+            "place_name": "Pâtisserie de la Valention",
         },
         "quartier enclavé de doma": {
             "index": 2813,
-            "place_name": "Quartier enclavé " "de Doma",
+            "place_name": "Quartier enclavé de Doma",
         },
         "quartier général de l'alliance": {
             "index": 2862,
-            "place_name": "Quartier " "général de " "l'Alliance",
+            "place_name": "Quartier général de l'Alliance",
         },
         "radz-at-han": {"index": 3707, "place_name": "Radz-at-Han"},
         "rak'tika": {"index": 2957, "place_name": "Rak'tika"},
         "refuge des cavernes célestes": {
             "index": 4748,
-            "place_name": "Refuge des " "Cavernes " "célestes",
+            "place_name": "Refuge des Cavernes célestes",
         },
         "refuge des roches": {"index": 481, "place_name": "Refuge des roches"},
         "refuge des sables": {"index": 356, "place_name": "Refuge des sables"},
@@ -2976,32 +2953,32 @@ place_name: Mapping[
         "ring arcadien": {"index": 5405, "place_name": "Ring arcadien"},
         "ring de l'amour mielleux": {
             "index": 5102,
-            "place_name": "Ring de l'Amour " "mielleux",
+            "place_name": "Ring de l'Amour mielleux",
         },
         "ring de l'inspiration artistique": {
             "index": 5175,
-            "place_name": "Ring de " "l'Inspiration " "artistique",
+            "place_name": "Ring de l'Inspiration artistique",
         },
         "ring des chorégraphies endiablées": {
             "index": 5176,
-            "place_name": "Ring " "des " "Chorégraphies " "endiablées",
+            "place_name": "Ring des Chorégraphies endiablées",
         },
         "ring des griffes félines": {
             "index": 5104,
-            "place_name": "Ring des Griffes " "félines",
+            "place_name": "Ring des Griffes félines",
         },
         "ring du bombardement brutal": {
             "index": 5114,
-            "place_name": "Ring du " "Bombardement " "brutal",
+            "place_name": "Ring du Bombardement brutal",
         },
         "ring du champion": {"index": 5371, "place_name": "Ring du champion"},
         "ring du champion lupin": {
             "index": 5177,
-            "place_name": "Ring du Champion " "lupin",
+            "place_name": "Ring du Champion lupin",
         },
         "ring du tonnerre terrifiant": {
             "index": 5103,
-            "place_name": "Ring du " "Tonnerre " "terrifiant",
+            "place_name": "Ring du Tonnerre terrifiant",
         },
         "ring extrême": {"index": 5370, "place_name": "Ring extrême"},
         "ring fatal": {"index": 5369, "place_name": "Ring fatal"},
@@ -3011,98 +2988,98 @@ place_name: Mapping[
         "ruines frontalières": {"index": 1374, "place_name": "Ruines frontalières"},
         "réacteur de singularité": {
             "index": 2178,
-            "place_name": "Réacteur de " "singularité",
+            "place_name": "Réacteur de singularité",
         },
         "réplique de l'usine désaffectée": {
             "index": 3425,
-            "place_name": "Réplique " "de " "l'usine " "désaffectée",
+            "place_name": "Réplique de l'usine désaffectée",
         },
         "réseau de régénération rci-06": {
             "index": 1407,
-            "place_name": "Réseau de " "régénération " "RCI-06",
+            "place_name": "Réseau de régénération RCI-06",
         },
         "rêve électrique de stigma-4": {
             "index": 3783,
-            "place_name": "Rêve " "électrique de " "Stigma-4",
+            "place_name": "Rêve électrique de Stigma-4",
         },
         "salle d'accueil du bazar de rubis": {
             "index": 2927,
-            "place_name": "Salle " "d'accueil " "du " "Bazar " "de " "Rubis",
+            "place_name": "Salle d'accueil du Bazar de Rubis",
         },
         "salle d'audition des affranchis": {
             "index": 4755,
-            "place_name": "Salle " "d'audition " "des " "Affranchis",
+            "place_name": "Salle d'audition des Affranchis",
         },
         "salle de bal de titania": {
             "index": 3218,
-            "place_name": "Salle de bal de " "Titania",
+            "place_name": "Salle de bal de Titania",
         },
         "salle de commandement du carquois": {
             "index": 346,
-            "place_name": "Salle " "de " "commandement " "du " "Carquois",
+            "place_name": "Salle de commandement du Carquois",
         },
         "salle de contrôle": {"index": 3486, "place_name": "Salle de contrôle"},
         "salle de contrôle d'oméga": {
             "index": 1887,
-            "place_name": "Salle de " "contrôle " "d'Oméga",
+            "place_name": "Salle de contrôle d'Oméga",
         },
         "salle de contrôle rci-03": {
             "index": 1304,
-            "place_name": "Salle de " "contrôle RCI-03",
+            "place_name": "Salle de contrôle RCI-03",
         },
         "salle de l'aurore": {"index": 4523, "place_name": "Salle de l'Aurore"},
         "salle de repos": {"index": 4759, "place_name": "Salle de repos"},
         "salle de réception": {"index": 1429, "place_name": "Salle de réception"},
         "salle de répétition du prima vista": {
             "index": 2370,
-            "place_name": "Salle " "de " "répétition " "du " "Prima " "Vista",
+            "place_name": "Salle de répétition du Prima Vista",
         },
         "salle des convocations": {
             "index": 379,
-            "place_name": "Salle des " "convocations",
+            "place_name": "Salle des convocations",
         },
         "salle des développeurs": {
             "index": 1660,
-            "place_name": "Salle des " "développeurs",
+            "place_name": "Salle des développeurs",
         },
         "salle des offrandes": {"index": 2083, "place_name": "Salle des offrandes"},
         "salle des opérations": {
             "index": 4023,
-            "place_name": "Salle des " "opérations",
+            "place_name": "Salle des opérations",
         },
         "salle des sentences": {"index": 2336, "place_name": "Salle des sentences"},
         "salle du trône séculaire": {
             "index": 4760,
-            "place_name": "Salle du trône " "séculaire",
+            "place_name": "Salle du trône séculaire",
         },
         "salon de l'amiral": {"index": 351, "place_name": "Salon de l'Amiral"},
         "salon principal": {"index": 3817, "place_name": "Salon principal"},
         "san d'oria - la deuxième perambulation": {
             "index": 5240,
-            "place_name": "San " "d'Oria " "- " "La " "deuxième " "perambulation",
+            "place_name": "San d'Oria - La deuxième perambulation",
         },
-        "sanctuaire des douze": {"index": 112, "place_name": "Sanctuaire des " "Douze"},
+        "sanctuaire des douze": {"index": 112, "place_name": "Sanctuaire des Douze"},
         "sanctuaire des pèlerins": {
             "index": 5277,
-            "place_name": "Sanctuaire des " "pèlerins",
+            "place_name": "Sanctuaire des pèlerins",
         },
         "sanctuaire du grand serpent": {
             "index": 2510,
-            "place_name": "Sanctuaire du " "Grand " "Serpent",
+            "place_name": "Sanctuaire du Grand Serpent",
         },
         "sanctuaire reisen": {"index": 2392, "place_name": "Sanctuaire Reisen"},
         "sastasha": {"index": 35, "place_name": "Sastasha"},
         "scolasticat saint-endalim": {
             "index": 2337,
-            "place_name": "Scolasticat " "Saint-Endalim",
+            "place_name": "Scolasticat Saint-Endalim",
         },
         "secteur central rci-03": {
             "index": 1303,
-            "place_name": "Secteur central " "RCI-03",
+            "place_name": "Secteur central RCI-03",
         },
         "secteur central rci-06": {
             "index": 1406,
-            "place_name": "Secteur central " "RCI-06",
+            "place_name": "Secteur central RCI-06",
         },
         "shaaloani": {"index": 4508, "place_name": "Shaaloani"},
         "shirogane": {"index": 2412, "place_name": "Shirogane"},
@@ -3114,30 +3091,30 @@ place_name: Mapping[
         "sinus ardorum": {"index": 5219, "place_name": "Sinus Ardorum"},
         "site de construction du huitième étage": {
             "index": 5155,
-            "place_name": "Site " "de " "construction " "du " "huitième " "étage",
+            "place_name": "Site de construction du huitième étage",
         },
         "site impérial d'exploration inférieur": {
             "index": 465,
-            "place_name": "Site " "impérial " "d'exploration " "inférieur",
+            "place_name": "Site impérial d'exploration inférieur",
         },
         "site impérial d'exploration supérieur": {
             "index": 464,
-            "place_name": "Site " "impérial " "d'exploration " "supérieur",
+            "place_name": "Site impérial d'exploration supérieur",
         },
         "siège du capitaine général": {
             "index": 2335,
-            "place_name": "Siège du " "capitaine " "général",
+            "place_name": "Siège du capitaine général",
         },
         "sohm al": {"index": 2031, "place_name": "Sohm Al"},
         "sohr khai": {"index": 2090, "place_name": "Sohr Khai"},
         "solution neuf": {"index": 4503, "place_name": "Solution Neuf"},
         "sommet de la gardienne de l'éternité": {
             "index": 5117,
-            "place_name": "Sommet " "de " "la " "Gardienne " "de " "l'Éternité",
+            "place_name": "Sommet de la Gardienne de l'Éternité",
         },
         "sous-sol du vieux manoir": {
             "index": 5120,
-            "place_name": "Sous-sol du " "vieux manoir",
+            "place_name": "Sous-sol du vieux manoir",
         },
         "sous-sol éorzéen": {"index": 152, "place_name": "Sous-sol éorzéen"},
         "souterrain lunaire": {"index": 4431, "place_name": "Souterrain lunaire"},
@@ -3145,26 +3122,26 @@ place_name: Mapping[
         "square des chocobos": {"index": 1500, "place_name": "Square des chocobos"},
         "square du blunderville": {
             "index": 4468,
-            "place_name": "Square du " "Blunderville",
+            "place_name": "Square du Blunderville",
         },
         "steppe d'azim": {"index": 2411, "place_name": "Steppe d'Azim"},
         "sylve sylphe sibylline": {
             "index": 2528,
-            "place_name": "Sylve sylphe " "sibylline",
+            "place_name": "Sylve sylphe sibylline",
         },
         "tables des manderville": {
             "index": 2549,
-            "place_name": "Tables des " "Manderville",
+            "place_name": "Tables des Manderville",
         },
         "temple d'araya": {"index": 4377, "place_name": "Temple d'Araya"},
         "temple du poing": {"index": 2707, "place_name": "Temple du Poing"},
         "temple enseveli de qarn": {
             "index": 50,
-            "place_name": "Temple enseveli " "de Qarn",
+            "place_name": "Temple enseveli de Qarn",
         },
         "temple sacré d'uznair": {
             "index": 2485,
-            "place_name": "Temple sacré " "d'Uznair",
+            "place_name": "Temple sacré d'Uznair",
         },
         "territoire de zero": {"index": 4038, "place_name": "Territoire de Zero"},
         "thanalan central": {"index": 43, "place_name": "Thanalan central"},
@@ -3173,7 +3150,7 @@ place_name: Mapping[
         "thanalan oriental": {"index": 44, "place_name": "Thanalan oriental"},
         "thanalan septentrional": {
             "index": 46,
-            "place_name": "Thanalan " "septentrional",
+            "place_name": "Thanalan septentrional",
         },
         "thavnair": {"index": 3709, "place_name": "Thavnair"},
         "thok ast thok": {"index": 2081, "place_name": "Thok ast Thok"},
@@ -3181,7 +3158,7 @@ place_name: Mapping[
         "tour de babil": {"index": 4118, "place_name": "Tour de Babil"},
         "tour de la contingence": {
             "index": 3647,
-            "place_name": "Tour de la " "Contingence",
+            "place_name": "Tour de la Contingence",
         },
         "tour de syrcus": {"index": 493, "place_name": "Tour de Syrcus"},
         "tour de zott": {"index": 3736, "place_name": "Tour de Zott"},
@@ -3189,37 +3166,37 @@ place_name: Mapping[
         "traverse de zorgor": {"index": 4526, "place_name": "Traverse de Zorgor"},
         "traversée de norvrandt": {
             "index": 3511,
-            "place_name": "Traversée de " "Norvrandt",
+            "place_name": "Traversée de Norvrandt",
         },
-        "traversée du griffon": {"index": 386, "place_name": "Traversée du " "Griffon"},
+        "traversée du griffon": {"index": 386, "place_name": "Traversée du Griffon"},
         "trois queues": {"index": 4655, "place_name": "Trois Queues"},
         "tréno": {"index": 4765, "place_name": "Tréno"},
         "trône divin": {"index": 4375, "place_name": "Trône divin"},
         "tuliyollal": {"index": 4504, "place_name": "Tuliyollal"},
         "ul'dah - faubourg de nald": {
             "index": 40,
-            "place_name": "Ul'dah - " "Faubourg de " "Nald",
+            "place_name": "Ul'dah - Faubourg de Nald",
         },
         "ul'dah - faubourg de thal": {
             "index": 41,
-            "place_name": "Ul'dah - " "Faubourg de " "Thal",
+            "place_name": "Ul'dah - Faubourg de Thal",
         },
         "ultima thulé": {"index": 3712, "place_name": "Ultima Thulé"},
         "unité de contention p1p6": {
             "index": 2265,
-            "place_name": "Unité de " "contention P1P6",
+            "place_name": "Unité de contention P1P6",
         },
         "unité de contention s1p7": {
             "index": 2256,
-            "place_name": "Unité de " "contention S1P7",
+            "place_name": "Unité de contention S1P7",
         },
         "unité de contention z1p9": {
             "index": 2266,
-            "place_name": "Unité de " "contention Z1P9",
+            "place_name": "Unité de contention Z1P9",
         },
         "univers différentiel": {
             "index": 3017,
-            "place_name": "Univers " "différentiel",
+            "place_name": "Univers différentiel",
         },
         "urqopacha": {"index": 4505, "place_name": "Urqopacha"},
         "val d'aurum": {"index": 65, "place_name": "Val d'Aurum"},
@@ -3227,11 +3204,11 @@ place_name: Mapping[
         "vanaspati": {"index": 4015, "place_name": "Vanaspati"},
         "vestiges d'alexandrie": {
             "index": 4762,
-            "place_name": "Vestiges " "d'Alexandrie",
+            "place_name": "Vestiges d'Alexandrie",
         },
         "vestiges de la cité d'amdapor": {
             "index": 125,
-            "place_name": "Vestiges de " "la cité " "d'Amdapor",
+            "place_name": "Vestiges de la cité d'Amdapor",
         },
         "vestiges oubliés": {"index": 3542, "place_name": "Vestiges oubliés"},
         "vieille gridania": {"index": 53, "place_name": "Vieille Gridania"},
@@ -3239,7 +3216,7 @@ place_name: Mapping[
         "vigile de pierre": {"index": 401, "place_name": "Vigile de Pierre"},
         "vigile du crépuscule": {
             "index": 2214,
-            "place_name": "Vigile du " "Crépuscule",
+            "place_name": "Vigile du Crépuscule",
         },
         "villa - brumée": {"index": 1102, "place_name": "Villa - Brumée"},
         "villa - empyrée": {"index": 3691, "place_name": "Villa - Empyrée"},
@@ -3256,7 +3233,7 @@ place_name: Mapping[
         "yuweyawata": {"index": 5126, "place_name": "Yuweyawata"},
         "écliptique dimensionnelle": {
             "index": 5116,
-            "place_name": "Écliptique " "dimensionnelle",
+            "place_name": "Écliptique dimensionnelle",
         },
         "élysée": {"index": 4042, "place_name": "Élysée"},
         "émanation": {"index": 2299, "place_name": "Émanation"},
@@ -3264,7 +3241,7 @@ place_name: Mapping[
         "île de haam": {"index": 4297, "place_name": "Île de Haam"},
         "île de lunule méridionale": {
             "index": 4932,
-            "place_name": "Île de Lunule " "méridionale",
+            "place_name": "Île de Lunule méridionale",
         },
         "île sans nom": {"index": 4043, "place_name": "Île sans nom"},
     },

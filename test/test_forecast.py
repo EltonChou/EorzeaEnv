@@ -60,7 +60,8 @@ class TestForecast:
     def test_forecast_should_raise_error(self):
         with pytest.raises(TypeError):
             EorzeaWeather.forecast(
-                EorzeaPlaceName("sea of clouds"), "1542591400"  # type: ignore
+                EorzeaPlaceName("sea of clouds"),
+                "1542591400",  # type: ignore
             )
 
     def test_field(self):

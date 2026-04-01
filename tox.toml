@@ -1,0 +1,63 @@
+# Local usage:
+#   tox                          run full env_list (clean → py3.x matrix → lint → type → cov-report)
+#   tox -e py312                 run tests for a single Python version
+#   tox -e lint                  run ruff format check + ruff lint
+#   tox -e type                  run mypy
+#   tox -e cov-report            combine .coverage.* files and generate HTML report (requires prior test runs)
+#   tox -e clean                 erase all coverage data
+#
+# GitHub Actions (tox-gh):
+#   Install tox-gh alongside tox: pip install tox-gh>=1.2
+#   tox-gh reads the [gh] table below and maps the runner's Python version to a subset of envs.
+#   Each matrix leg runs only its designated envs instead of the full env_list.
+#   Python 3.11 additionally runs lint and type checks (one leg is enough for static analysis).
+
+[tox]
+env_list = ["clean", "py{38,39,310,311,312,313,314}", "lint", "type", "cov-report"]
+
+[env_run_base]
+description = "run tests"
+deps = ["-r requirements-test.txt"]
+commands = [["coverage", "run", "-m", "pytest"]]
+
+[env.lint]
+description = "run linters"
+skip_install = true
+deps = ["ruff"]
+commands = [["ruff", "format", "--check", "{posargs:.}"], ["ruff", "check", "."]]
+
+[env.type]
+description = "run type checks"
+skip_install = true
+deps = ["mypy > 0.971"]
+commands = [["mypy"]]
+
+[env.cov-report]
+description = "report coverage"
+depends = ["py{38,39,310,311,312,313,314}"]
+skip_install = true
+deps = ["coverage[toml]"]
+commands = [["coverage", "combine"], ["coverage", "report"], ["coverage", "html"]]
+
+[env.gh-cov-report]
+base = ["env.cov-report"]
+description = "combine coverage for CI"
+depends = ["py{38,39,310,311,312,313,314}"]
+commands = [["coverage", "combine"], ["coverage", "report"], ["coverage", "xml"]]
+
+[env.clean]
+skip_install = true
+deps = ["coverage[toml]"]
+commands = [["coverage", "erase"]]
+
+# [gh] is consumed by tox-gh (https://github.com/tox-dev/tox-gh).
+# Each key is the Python version reported by the runner; the value lists the tox envs to run.
+# gh-cov-report (xml) is used by every leg so Codecov receives per-version coverage.
+[gh]
+python."3.14" = ["py314", "gh-cov-report"]
+python."3.13" = ["py313", "gh-cov-report"]
+python."3.12" = ["py312", "gh-cov-report"]
+python."3.11" = ["py311", "lint", "type", "gh-cov-report"]
+python."3.10" = ["py310", "gh-cov-report"]
+python."3.9" = ["py39", "gh-cov-report"]
+python."3.8" = ["py38", "gh-cov-report"]
