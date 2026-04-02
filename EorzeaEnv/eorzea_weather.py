@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import warnings
-from typing import Any, Iterable, Literal, Union, overload
+from typing import Any, Iterable, Literal, Union, cast, overload
 
 from numpy import uint32
 
@@ -142,7 +142,10 @@ class EorzeaWeather:
             return result
 
         if isinstance(timestamp, Iterable):
-            return [make_result(_ensure_timestamp(t)) for t in timestamp]
+            return cast(
+                "list[str] | list[int]",
+                [make_result(_ensure_timestamp(t)) for t in timestamp],
+            )
 
         timestamp = _ensure_timestamp(timestamp)
         result = make_result(timestamp)
