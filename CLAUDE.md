@@ -44,17 +44,30 @@ make freeze
 
 ## Architecture
 
-Five public classes exported from `EorzeaEnv/__init__.py`:
+Seven public classes exported from `EorzeaEnv/__init__.py`:
 
 - **`EorzeaTime`** — Converts Unix timestamps to Eorzea in-game time using the constant `3600.0 / 175.0`. Exposes properties like `bell`, `sun`, `moon`, `phase`, and supports comparison operators. `now()` returns a cached current Eorzea time. `weather_period()` is a generator yielding 8-bell intervals used for weather forecasting.
 
-- **`EorzeaWeather`** — Forecasts weather for a location at a given time. Accepts single timestamps or iterables, and either `EorzeaTime` or Unix floats. Uses the Rogueadyn SaintCoinach algorithm against lookup tables in `EorzeaEnv/Data/`.
+- **`EorzeaWeather`** — Forecasts weather for a location at a given time. Accepts single timestamps or iterables, and either `EorzeaTime` or Unix floats. Uses the Rogueadyn SaintCoinach algorithm against lookup tables in `EorzeaEnv/Data/`. Also defines the shared `WeatherInfo` dataclass used internally by all special weather predictors.
 
 - **`EorzeaPlaceName`** — Validates and normalizes FFXIV location names. Two modes: strict (exact match) or fuzzy (RapidFuzz, default cutoff 80). Raises `InvalidEorzeaPlaceName` on failure. Stores an internal index used by `EorzeaWeather` lookups.
 
 - **`EorzeaLang`** — Enum of supported locales: `EN`, `JA`, `DE`, `FR`, `KO`, `ZH_SC`, `ZH_TC`.
 
 - **`EorzeaRainbow`** — Predicts rainbow appearances. Tracks a 2-slot weather history (deque); rainbows appear when rainy weather (indices 7, 8, 10) transitions to clear during sun phases 27–32 or 1–6.
+
+- **`EorzeaAurora`** — Predicts Aurora appearances. Aurora occurs in Coerthas Western Highlands and Old Sharlayan when weather is Fair Skies at bell 0 (ET 00:00–08:00 period).
+
+- **`EorzeaDiamondDust`** — Predicts Diamond Dust appearances in Coerthas Western Highlands. Two conditions: Fair Skies at bell 0 (dust at ET 06:00–08:00), or transition from non-Fair Skies to Fair Skies at bell 8 (dust at ET 08:00–10:00).
+
+### Special Weather Sub-package (`EorzeaEnv/special_weather/`)
+
+All three predictors live under `EorzeaEnv/special_weather/` and are re-exported from both `EorzeaEnv.special_weather` and the top-level `EorzeaEnv` package. Place name constants for Aurora and Diamond Dust are defined in `EorzeaEnv/places.py`:
+
+```python
+from EorzeaEnv.places import COERTHAS_WESTERN_HIGHLANDS, OLD_SHARLAYAN
+from EorzeaEnv.special_weather import EorzeaAurora, EorzeaDiamondDust, EorzeaRainbow
+```
 
 ### Data Layer (`EorzeaEnv/Data/`)
 
@@ -73,7 +86,6 @@ EorzeaEnvError
 
 ## Development Notes
 
-- Python 3.8–3.14 supported; numpy version differs by Python version (1.19+ for 3.8–3.11, 2.0+ for 3.12+).
+- Python 3.10–3.14 supported; no numpy dependency (removed in favour of `ctypes.c_uint32`).
 - `tox.toml` defines environments per Python version plus `lint`, `type`, `cov-report`, and `clean`. In CI, `tox-gh` (≥1.2) maps each runner's Python version to a subset of envs via the `[gh]` table — Python 3.11 additionally runs `lint` and `type`; all legs run `gh-cov-report` (XML) for Codecov upload.
 - `utils/sync_version.py` reads version from `pyproject.toml` and writes it to `EorzeaEnv/__init__.py`.
-- Unreleased features in CHANGELOG: Diamondust and Aurora predictors (similar pattern to `EorzeaRainbow`).
