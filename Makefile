@@ -8,10 +8,11 @@ install: # Install requirements of project.
 	poetry install
 
 cov-test: # Run the tests.
-	coverage run -m pytest
+	poetry run coverage run -m pytest
 
 cov-report: cov-test # Show the coverage of tests.
-	coverage report -m
+	poetry run coverage combine
+	poetry run coverage report -m
 
 freeze: # Export the requirements.txt file.
 	poetry export --without-hashes -f requirements.txt --output requirements.txt

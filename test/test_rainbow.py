@@ -31,6 +31,19 @@ class TestRainbow:
         assert the_rainbow.is_appear
         assert not impossible_rainbow.is_appear
 
+    def test_deprecated_append(self):
+        place = EorzeaPlaceName("eastern la noscea")
+        the_rainbow = EorzeaRainbow(place)
+        et1 = EorzeaTime(1661184000)
+        et2 = EorzeaTime(1661185440)
+        import pytest
+
+        with pytest.warns(DeprecationWarning):
+            the_rainbow.append(et1, EorzeaWeather.forecast(place, et1, raw=True))
+        with pytest.warns(DeprecationWarning):
+            the_rainbow.append(et2, EorzeaWeather.forecast(place, et2, raw=True))
+        assert the_rainbow.is_appear
+
     def test_used_with_weather_period_generator(self):
         place = EorzeaPlaceName("東ラノシア")
         the_rainbow = EorzeaRainbow(place_name=place)

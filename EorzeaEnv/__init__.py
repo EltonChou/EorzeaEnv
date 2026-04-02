@@ -1,3 +1,5 @@
+from .aurora import EorzeaAurora
+from .diamond_dust import EorzeaDiamondDust
 from .lang import EorzeaLang
 from .place_name import EorzeaPlaceName
 from .rainbow import EorzeaRainbow
@@ -10,6 +12,8 @@ __all__ = [
     "EorzeaPlaceName",
     "EorzeaLang",
     "EorzeaRainbow",
+    "EorzeaAurora",
+    "EorzeaDiamondDust",
 ]
 
 
