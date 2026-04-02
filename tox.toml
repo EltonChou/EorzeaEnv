@@ -13,7 +13,7 @@
 #   Python 3.11 additionally runs lint and type checks (one leg is enough for static analysis).
 
 [tox]
-env_list = ["clean", "py{38,39,310,311,312,313,314}", "lint", "type", "cov-report"]
+env_list = ["clean", "py{310,311,312,313,314}", "lint", "type", "cov-report"]
 
 [env_run_base]
 description = "run tests"
@@ -34,14 +34,14 @@ commands = [["mypy"]]
 
 [env.cov-report]
 description = "report coverage"
-depends = ["py{38,39,310,311,312,313,314}"]
+depends = ["py{310,311,312,313,314}"]
 skip_install = true
 deps = ["coverage[toml]"]
 commands = [["coverage", "combine"], ["coverage", "report"], ["coverage", "html"]]
 
 [env.gh-cov-report]
 description = "combine coverage for CI"
-depends = ["py{38,39,310,311,312,313,314}"]
+depends = ["py{310,311,312,313,314}"]
 skip_install = true
 deps = ["coverage[toml]"]
 commands = [["coverage", "combine"], ["coverage", "report"], ["coverage", "xml"]]
@@ -60,5 +60,3 @@ python."3.13" = ["py313", "gh-cov-report"]
 python."3.12" = ["py312", "gh-cov-report"]
 python."3.11" = ["py311", "lint", "type", "gh-cov-report"]
 python."3.10" = ["py310", "gh-cov-report"]
-python."3.9" = ["py39", "gh-cov-report"]
-python."3.8" = ["py38", "gh-cov-report"]
