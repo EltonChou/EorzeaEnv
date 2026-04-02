@@ -1,22 +1,16 @@
 import copy
-from dataclasses import dataclass
 from typing import Final
 
-from .place_name import EorzeaPlaceName
-from .places import COERTHAS_WESTERN_HIGHLANDS, OLD_SHARLAYAN
-from .time import EorzeaTime
+from ..place_name import EorzeaPlaceName
+from ..places import COERTHAS_WESTERN_HIGHLANDS, OLD_SHARLAYAN
+from ..time import EorzeaTime
+from ..weather import WeatherInfo
 
 FAIR_SKIES: Final = 2
 
 _AURORA_PLACES: Final = frozenset(
     [COERTHAS_WESTERN_HIGHLANDS.index, OLD_SHARLAYAN.index]
 )
-
-
-@dataclass
-class _WeatherInfo:
-    time: EorzeaTime
-    raw_weather: int
 
 
 class EorzeaAurora:
@@ -34,8 +28,8 @@ class EorzeaAurora:
     --------
     ```python
     from EorzeaEnv import EorzeaTime, EorzeaWeather
-    from EorzeaEnv.aurora import EorzeaAurora
     from EorzeaEnv.places import COERTHAS_WESTERN_HIGHLANDS
+    from EorzeaEnv.special_weather import EorzeaAurora
 
     aurora = EorzeaAurora(COERTHAS_WESTERN_HIGHLANDS)
     for et in EorzeaTime.weather_period(step='inf'):
@@ -49,7 +43,7 @@ class EorzeaAurora:
 
     def __init__(self, place_name: EorzeaPlaceName) -> None:
         self._place_name = place_name
-        self._last: _WeatherInfo | None = None
+        self._last: WeatherInfo | None = None
         self._is_possible = place_name.index in _AURORA_PLACES
 
     @property
@@ -67,4 +61,4 @@ class EorzeaAurora:
         return self._last.raw_weather == FAIR_SKIES and self._last.time.bell == 0
 
     def observe(self, time: EorzeaTime, raw_weather: int) -> None:
-        self._last = _WeatherInfo(time=copy.copy(time), raw_weather=raw_weather)
+        self._last = WeatherInfo(time=copy.copy(time), raw_weather=raw_weather)

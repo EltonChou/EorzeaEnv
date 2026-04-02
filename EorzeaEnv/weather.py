@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import warnings
+from dataclasses import dataclass
 from typing import Any, Iterable, Literal, Union, cast, overload
 
 from numpy import uint32
@@ -13,6 +14,13 @@ from .place_name import EorzeaPlaceName, FuzzyCutoff
 
 from .time import EorzeaTime
 from .errors import WeatherRateDataError
+
+
+@dataclass
+class WeatherInfo:
+    time: EorzeaTime
+    raw_weather: int
+
 
 Lang = Union[Literal["en", "ja", "de", "fr", "ko", "cn", "tc"], EorzeaLang]
 ValidPlaceName = str | EorzeaPlaceName

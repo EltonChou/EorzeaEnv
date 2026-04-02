@@ -1,8 +1,6 @@
-from .aurora import EorzeaAurora
-from .diamond_dust import EorzeaDiamondDust
 from .lang import EorzeaLang
 from .place_name import EorzeaPlaceName
-from .rainbow import EorzeaRainbow
+from .special_weather import EorzeaAurora, EorzeaDiamondDust, EorzeaRainbow
 from .time import EorzeaTime
 from .weather import EorzeaWeather
 

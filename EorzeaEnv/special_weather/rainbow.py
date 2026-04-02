@@ -1,24 +1,18 @@
 import copy
 import warnings
 from collections import deque
-from dataclasses import dataclass
 from typing import Final, MutableSequence, Set
 
-from .Data.TerritoryWeather import territory_weather as _territory_weather
-from .Data.WeatherRate import weather_rate as _weather_rate
-from .place_name import EorzeaPlaceName
-from .time import EorzeaTime
+from ..Data.TerritoryWeather import territory_weather as _territory_weather
+from ..Data.WeatherRate import weather_rate as _weather_rate
+from ..place_name import EorzeaPlaceName
+from ..time import EorzeaTime
+from ..weather import WeatherInfo
 
 RAIN: Final = 7
 SHOWERS: Final = 8
 THUNDER_STORMS: Final = 10
 RAINY_WEATHERS: Final = {RAIN, SHOWERS, THUNDER_STORMS}
-
-
-@dataclass
-class WeatherInfo:
-    time: EorzeaTime
-    raw_weather: int
 
 
 class EorzeaRainbow:

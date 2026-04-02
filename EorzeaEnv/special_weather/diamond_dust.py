@@ -1,21 +1,15 @@
 import copy
 from collections import deque
-from dataclasses import dataclass
 from typing import Final, MutableSequence
 
-from .place_name import EorzeaPlaceName
-from .places import COERTHAS_WESTERN_HIGHLANDS
-from .time import EorzeaTime
+from ..place_name import EorzeaPlaceName
+from ..places import COERTHAS_WESTERN_HIGHLANDS
+from ..time import EorzeaTime
+from ..weather import WeatherInfo
 
 FAIR_SKIES: Final = 2
 
 _DIAMOND_DUST_PLACES: Final = frozenset([COERTHAS_WESTERN_HIGHLANDS.index])
-
-
-@dataclass
-class _WeatherInfo:
-    time: EorzeaTime
-    raw_weather: int
 
 
 class EorzeaDiamondDust:
@@ -38,8 +32,8 @@ class EorzeaDiamondDust:
     --------
     ```python
     from EorzeaEnv import EorzeaTime, EorzeaWeather
-    from EorzeaEnv.diamond_dust import EorzeaDiamondDust
     from EorzeaEnv.places import COERTHAS_WESTERN_HIGHLANDS
+    from EorzeaEnv.special_weather import EorzeaDiamondDust
 
     dd = EorzeaDiamondDust(COERTHAS_WESTERN_HIGHLANDS)
     for et in EorzeaTime.weather_period(step='inf'):
@@ -49,7 +43,7 @@ class EorzeaDiamondDust:
     ```
     """
 
-    _weather_slot: MutableSequence[_WeatherInfo]
+    _weather_slot: MutableSequence[WeatherInfo]
 
     def __init__(self, place_name: EorzeaPlaceName) -> None:
         self._place_name = place_name
@@ -89,5 +83,5 @@ class EorzeaDiamondDust:
 
     def observe(self, time: EorzeaTime, raw_weather: int) -> None:
         self._weather_slot.append(
-            _WeatherInfo(time=copy.copy(time), raw_weather=raw_weather)
+            WeatherInfo(time=copy.copy(time), raw_weather=raw_weather)
         )

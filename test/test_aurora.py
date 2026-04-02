@@ -1,5 +1,5 @@
 from EorzeaEnv import EorzeaPlaceName, EorzeaTime, EorzeaWeather
-from EorzeaEnv.aurora import EorzeaAurora
+from EorzeaEnv.special_weather import EorzeaAurora
 from EorzeaEnv.places import COERTHAS_WESTERN_HIGHLANDS, OLD_SHARLAYAN
 
 FAIR_SKIES = 2

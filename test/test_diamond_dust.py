@@ -1,5 +1,5 @@
 from EorzeaEnv import EorzeaPlaceName, EorzeaTime, EorzeaWeather
-from EorzeaEnv.diamond_dust import EorzeaDiamondDust
+from EorzeaEnv.special_weather import EorzeaDiamondDust
 from EorzeaEnv.places import COERTHAS_WESTERN_HIGHLANDS
 
 FAIR_SKIES = 2
