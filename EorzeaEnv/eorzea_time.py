@@ -27,8 +27,33 @@ _MOON_PREFIXS: Final = ("First", "Second", "Third", "Fourth", "Fifth", "Sixth")
 
 
 class EorzeaTime:
-    """
-    EorzeaTime
+    """Converts Unix timestamps to Eorzea in-game time.
+
+    Examples
+    --------
+    ```python
+    et = EorzeaTime.now()
+    str(et)       # 'EorzeaTime(Sixth Embral Moon, 11, 21, 56, Phase:0.50, Althyk)'
+    et.moon_name  # 'Sixth Embral Moon'
+    et.sun        # 11
+    et.hour       # 21
+    et.minute     # 56
+    et.moon_phase # 0.5
+    et.guardian   # 'Althyk'
+    et.get_unix_time()    # 1661114514
+    et.get_eorzea_time()  # 34177649220
+    ```
+
+    Generate weather periods (each step is one 8-bell weather window):
+
+    ```python
+    periods = tuple(EorzeaTime.weather_period(step=3))
+    periods = tuple(EorzeaTime.weather_period(step=3, from_=1661184000.0))
+
+    # Use step='inf' for an infinite generator
+    for t in EorzeaTime.weather_period(step='inf'):
+        ...
+    ```
     """
 
     _bell: int

@@ -20,13 +20,13 @@ class TestRainbow:
 
         weather1 = EorzeaWeather.forecast(place_name1, et1, raw=True)
         weather2 = EorzeaWeather.forecast(place_name1, et2, raw=True)
-        the_rainbow.append(et1, weather1)
-        the_rainbow.append(et2, weather2)
+        the_rainbow.observe(et1, weather1)
+        the_rainbow.observe(et2, weather2)
 
         weather1 = EorzeaWeather.forecast(place_name2, et1, raw=True)
         weather2 = EorzeaWeather.forecast(place_name2, et2, raw=True)
-        impossible_rainbow.append(et1, weather1)
-        impossible_rainbow.append(et2, weather2)
+        impossible_rainbow.observe(et1, weather1)
+        impossible_rainbow.observe(et2, weather2)
 
         assert the_rainbow.is_appear
         assert not impossible_rainbow.is_appear
@@ -40,7 +40,7 @@ class TestRainbow:
         for et in EorzeaTime.weather_period(
             step="inf", from_=datetime(2022, 8, 25, 0, 0).timestamp()
         ):
-            the_rainbow.append(et, EorzeaWeather.forecast(place, et, raw=True))
+            the_rainbow.observe(et, EorzeaWeather.forecast(place, et, raw=True))
             if the_rainbow.is_appear:
                 rainbow_times.append(datetime.fromtimestamp(et.get_unix_time()))
             if len(rainbow_times) == expected_rainbow_count:

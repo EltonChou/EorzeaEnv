@@ -1,4 +1,5 @@
 import copy
+import warnings
 from collections import deque
 from dataclasses import dataclass
 from typing import Final, MutableSequence, Set
@@ -8,7 +9,10 @@ from .Data.WeatherRate import weather_rate as _weather_rate
 from .eorzea_place_name import EorzeaPlaceName
 from .eorzea_time import EorzeaTime
 
-RAINY_WEATHERS: Final = {7, 8, 10}
+RAIN: Final = 7
+SHOWERS: Final = 8
+THUNDER_STORMS: Final = 10
+RAINY_WEATHERS: Final = {RAIN, SHOWERS, THUNDER_STORMS}
 
 
 @dataclass
@@ -18,6 +22,35 @@ class WeatherInfo:
 
 
 class EorzeaRainbow:
+    """Predicts rainbow appearances for a given Eorzea location.
+
+    Feed consecutive weather observations via :meth:`observe`. After every
+    call, check :attr:`is_appear` to see whether a rainbow is visible.
+
+    A rainbow appears when rainy weather (Rain, Showers, or Thunder Storms)
+    transitions to any clear weather, during sun phases 27–32 or 1–6, between
+    06:00 and 18:00 Eorzea time.
+
+    Examples
+    --------
+    ```python
+    from datetime import datetime
+    from EorzeaEnv import EorzeaPlaceName, EorzeaRainbow, EorzeaTime, EorzeaWeather
+
+    place = EorzeaPlaceName('東ラノシア')
+    rainbow = EorzeaRainbow(place_name=place)
+    rainbow.is_possible  # True
+
+    rainbow_times = []
+    for t in EorzeaTime.weather_period(step='inf'):
+        rainbow.observe(t, EorzeaWeather.forecast(place, t, raw=True))
+        if rainbow.is_appear:
+            rainbow_times.append(datetime.fromtimestamp(t.get_unix_time()))
+        if len(rainbow_times) == 20:
+            break
+    ```
+    """
+
     _weather_slot: MutableSequence[WeatherInfo]
     _is_possible: bool
     _place_name: EorzeaPlaceName
@@ -56,10 +89,18 @@ class EorzeaRainbow:
         time_ticket = _generate_time_ticket(current_weather.time)
         return 600 <= time_ticket <= 1800
 
-    def append(self, time: EorzeaTime, raw_weather: int):
+    def observe(self, time: EorzeaTime, raw_weather: int) -> None:
         self._weather_slot.append(
             WeatherInfo(time=copy.copy(time), raw_weather=raw_weather)
         )
+
+    def append(self, time: EorzeaTime, raw_weather: int) -> None:
+        warnings.warn(
+            "append is deprecated from 2.5.0. Use observe instead.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        self.observe(time, raw_weather)
 
 
 def _is_rainbow_possible(place_name: EorzeaPlaceName) -> bool:

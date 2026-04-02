@@ -20,8 +20,40 @@ Timestamp = EorzeaTime | float | int
 
 
 class EorzeaWeather:
-    """
-    EoreaWeather
+    """Forecasts Eorzea weather for a location at a given time.
+
+    Examples
+    --------
+    Forecast for a list of weather periods:
+
+    ```python
+    from EorzeaEnv import EorzeaLang, EorzeaPlaceName, EorzeaTime, EorzeaWeather
+
+    place = EorzeaPlaceName('Eureka Pyros')
+    periods = tuple(EorzeaTime.weather_period(step=3))
+
+    # ['Thunder', 'Snow', 'Blizzards']
+    EorzeaWeather.forecast(place, periods)
+    # ['雷', '雪', '吹雪']
+    EorzeaWeather.forecast(place, periods, lang=EorzeaLang.JA)
+
+    ```
+
+    Pass a generator directly, or forecast a single period:
+
+    ```python
+    # ['Thunder', 'Snow', 'Blizzards']
+    EorzeaWeather.forecast(place, EorzeaTime.weather_period(step=3))
+    EorzeaWeather.forecast(place, EorzeaTime.now())           # 'Thunder'
+    EorzeaWeather.forecast(place, EorzeaTime.now(), raw=True) # 7 (raw index)
+    ```
+
+    Use fuzzy place name matching with a custom cutoff score (0–100):
+
+    ```python
+    EorzeaWeather.set_fuzzy_cutoff(95)
+    EorzeaWeather.forecast(place, EorzeaTime.now(), strict=False)
+    ```
     """
 
     FUZZY_CUTOFF: FuzzyCutoff = 80

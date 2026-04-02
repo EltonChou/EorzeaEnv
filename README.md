@@ -205,9 +205,9 @@ the_rainbow = EorzeaRainbow(place_name=place)
 
 
 for t in EorzeaTime.weather_period(step='inf'):
-    the_rainbow.append(t, EorzeaWeather.forecast(place, t, raw=True))
+    the_rainbow.observe(t, EorzeaWeather.forecast(place, t, raw=True))
     if the_rainbow.is_appear:
-        rainbow_times.append(datetime.fromtimestamp(t))
+        rainbow_times.append(datetime.fromtimestamp(t.get_unix_time()))
     if len(rainbow_times) == 20:
         break
 

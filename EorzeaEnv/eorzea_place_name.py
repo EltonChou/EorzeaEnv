@@ -33,28 +33,58 @@ class PlaceInfo:
 
 
 class EorzeaPlaceName:
-    """EorzeaPlaceName
+    """Validates and normalizes an FFXIV location name.
 
-    An EorzeaPlaceName instance is always a valid place name in EorzeaEnv.
-
+    An ``EorzeaPlaceName`` instance is always a valid place name in EorzeaEnv.
+    Construction raises :class:`EorzeaEnv.errors.InvalidEorzeaPlaceName` if the
+    name cannot be resolved.
 
     Parameters
     ----------
     place_name : str
-        should be a valid Eorzea place name.
+        A valid Eorzea place name (case-insensitive, leading "the" is stripped).
     strict : bool
-        True: strict mode.
-        False: fuzzy mode.
-        by default True.
+        ``True`` for strict (exact) matching, ``False`` for fuzzy matching.
+        By default ``True``.
     locale_scopes : List[LocaleScope]
-        Locale scope for searching placename, by default full scopes.
-    fuzzy_cutoff : int | float
-        The cutoff score used in fuzzy mode, should be 100 <= value <= 0, by default 80.
+        Locales to search when resolving the name. By default all supported
+        locales (EN, JA, FR, DE, KO, ZH_TC, ZH_SC).
+    fuzzy_cutoff : float
+        Minimum similarity score for fuzzy matching (0–100). By default 80.
 
     Raises
-    ----------
+    ------
     :class:`EorzeaEnv.errors.InvalidEorzeaPlaceName`
-        When place_name is invalid.
+        When the place name cannot be resolved.
+
+    Examples
+    --------
+    Strict mode (default) accepts substrings and any locale:
+
+    ```python
+    EorzeaPlaceName('The Ruby Sea')  # EorzeaPlaceName('The Ruby Sea')
+    EorzeaPlaceName('the ruby sea')  # EorzeaPlaceName('The Ruby Sea')
+    EorzeaPlaceName('ruby sea')      # EorzeaPlaceName('The Ruby Sea')
+    EorzeaPlaceName('rubinsee')      # EorzeaPlaceName('Rubinsee')
+    EorzeaPlaceName('紅玉海')         # EorzeaPlaceName('紅玉海')
+    ```
+
+    Restrict to specific locales:
+
+    ```python
+    scopes = [EorzeaLang.JA, EorzeaLang.DE]
+    EorzeaPlaceName('rubinsee', locale_scopes=scopes)      # EorzeaPlaceName('Rubinsee')
+    EorzeaPlaceName('The Ruby Sea', locale_scopes=scopes)  # raises
+    ```
+
+    Fuzzy mode tolerates typos:
+
+    ```python
+    # EorzeaPlaceName('The Ruby Sea')
+    EorzeaPlaceName('the ruby see', strict=False)
+    # EorzeaPlaceName('紅玉海')
+    EorzeaPlaceName('紅玉貝', strict=False, fuzzy_cutoff=66)
+    ```
     """
 
     __index: int
@@ -92,6 +122,36 @@ class EorzeaPlaceName:
         locale_scopes: List[LocaleScope] = DEFAULT_LOCALE_SCOPES,
         fuzzy_cutoff: FuzzyCutoff = DEFAULT_CUTOFF,
     ) -> bool:
+        """Check whether a place name is valid without raising an exception.
+
+        An ``EorzeaPlaceName`` instance always returns ``True``. For strings,
+        validation follows the same rules as the constructor.
+
+        Parameters
+        ----------
+        place_name : str | EorzeaPlaceName
+            The place name to validate.
+        strict : bool
+            ``True`` for strict (exact) matching, ``False`` for fuzzy matching.
+        locale_scopes : List[LocaleScope]
+            Locales to search. By default all supported locales.
+        fuzzy_cutoff : float
+            Minimum similarity score for fuzzy matching (0–100). By default 80.
+
+        Returns
+        -------
+        bool
+            ``True`` if the place name is valid, ``False`` otherwise.
+
+        Examples
+        --------
+        ```python
+        EorzeaPlaceName.validate('The Ruby Sea', strict=True)   # True
+        EorzeaPlaceName.validate('nowhere land', strict=True)   # False
+        EorzeaPlaceName.validate('ruby see', strict=False)      # True  (fuzzy)
+        EorzeaPlaceName.validate(EorzeaPlaceName('ruby sea'), strict=True)  # True
+        ```
+        """
         if type(place_name) is EorzeaPlaceName:
             return True
 
