@@ -1,13 +1,15 @@
+from __future__ import annotations
+
 import math
 from datetime import datetime, timezone
 from time import time as _time
-from typing import Iterator, Literal, Optional, Union
+from typing import Final, Iterator, Literal, Optional
 
-_EORZEA_TIME_CONST = 3600.0 / 175.0
-_LOCAL_WEATHER_INTERVAL = 1400
+_EORZEA_TIME_CONST: Final = 3600.0 / 175.0
+_LOCAL_WEATHER_INTERVAL: Final = 1400
 # _EROZEA_WEATHER_INTERVAL = 28800
-_DATETIME_ZERO = datetime(1970, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
-_GUARDIANS = (
+_DATETIME_ZERO: Final = datetime(1970, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
+_GUARDIANS: Final = (
     "Halone",
     "Menphina",
     "Thaliak",
@@ -21,7 +23,7 @@ _GUARDIANS = (
     "Nophica",
     "Althyk",
 )
-_MOON_PREFIXS = ("First", "Second", "Third", "Fourth", "Fifth", "Sixth")
+_MOON_PREFIXS: Final = ("First", "Second", "Third", "Fourth", "Fifth", "Sixth")
 
 
 class EorzeaTime:
@@ -164,14 +166,14 @@ class EorzeaTime:
 
     @classmethod
     def weather_period(
-        cls, step: Union[int, Literal["inf"]] = 5, from_: Optional[float] = None
+        cls, step: int | Literal["inf"] = 5, from_: Optional[float] = None
     ) -> Iterator["EorzeaTime"]:
         """
         generate weather period
 
         Parameters
         ----------
-        step : Union[int, Literal['inf']], optional
+        step : int | Literal['inf'], optional
             quantity of period you want, by default 5.
             'inf' means infinite.
 

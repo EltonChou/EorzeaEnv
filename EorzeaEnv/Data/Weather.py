@@ -1,11 +1,13 @@
-from typing import Literal, Mapping, Optional, Union
+from __future__ import annotations
+
+from typing import Literal, Mapping, Optional
 
 from ..eorzea_lang import EorzeaLang
 
 weather: Mapping[
     int,
     Mapping[
-        Union[EorzeaLang, Literal["de", "en", "fr", "ja", "ko", "cn", "tc"]],
+        EorzeaLang | Literal["de", "en", "fr", "ja", "ko", "cn", "tc"],
         Optional[str],
     ],
 ] = {

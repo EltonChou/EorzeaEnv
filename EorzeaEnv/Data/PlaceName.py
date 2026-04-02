@@ -1,4 +1,6 @@
-from typing import Literal, Mapping, TypedDict, Union
+from __future__ import annotations
+
+from typing import Literal, Mapping, TypedDict
 
 from ..eorzea_lang import EorzeaLang
 
@@ -9,7 +11,7 @@ class PlaceInfoDict(TypedDict):
 
 
 place_name: Mapping[
-    Union[EorzeaLang, Literal["de", "en", "fr", "ja", "cn", "ko", "tc"]],
+    EorzeaLang | Literal["de", "en", "fr", "ja", "cn", "ko", "tc"],
     Mapping[str, PlaceInfoDict],
 ] = {
     "cn": {

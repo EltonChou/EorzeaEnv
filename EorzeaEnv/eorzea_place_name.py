@@ -1,6 +1,8 @@
+from __future__ import annotations
+
 import re
 from dataclasses import dataclass
-from typing import List, Mapping, Union
+from typing import Final, List, Mapping
 
 from rapidfuzz import process as fuzz_process
 
@@ -9,11 +11,11 @@ from .Data.PlaceName import place_name as _place_names
 from .eorzea_lang import EorzeaLang
 from .errors import InvalidEorzeaPlaceName
 
-FuzzyCutoff = Union[int, float]
-LocaleScope = Union[EorzeaLang, str]
+FuzzyCutoff = int | float
+LocaleScope = EorzeaLang | str
 
-DEFAULT_CUTOFF = 80
-DEFAULT_LOCALE_SCOPES: List[LocaleScope] = [
+DEFAULT_CUTOFF: Final = 80
+DEFAULT_LOCALE_SCOPES: Final[List[LocaleScope]] = [
     EorzeaLang.EN,
     EorzeaLang.JA,
     EorzeaLang.FR,
@@ -85,7 +87,7 @@ class EorzeaPlaceName:
 
     @staticmethod
     def validate(
-        place_name: Union[str, "EorzeaPlaceName"],
+        place_name: str | EorzeaPlaceName,
         strict: bool,
         locale_scopes: List[LocaleScope] = DEFAULT_LOCALE_SCOPES,
         fuzzy_cutoff: FuzzyCutoff = DEFAULT_CUTOFF,

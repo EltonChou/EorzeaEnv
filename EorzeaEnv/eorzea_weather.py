@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 import warnings
-from typing import Any, Iterable, List, Literal, Union, overload
+from typing import Any, Iterable, Literal, Union, overload
 
 from numpy import uint32
 
@@ -7,13 +9,14 @@ from .Data.TerritoryWeather import territory_weather as _territory_weather
 from .Data.Weather import weather as _weather
 from .Data.WeatherRate import weather_rate as _weather_rate
 from .eorzea_lang import EorzeaLang
-from .eorzea_place_name import EorzeaPlaceName
+from .eorzea_place_name import EorzeaPlaceName, FuzzyCutoff
+
 from .eorzea_time import EorzeaTime
 from .errors import WeatherRateDataError
 
 Lang = Union[Literal["en", "ja", "de", "fr", "ko", "cn", "tc"], EorzeaLang]
-ValidPlaceName = Union[str, EorzeaPlaceName]
-Timestamp = Union[EorzeaTime, float, int]
+ValidPlaceName = str | EorzeaPlaceName
+Timestamp = EorzeaTime | float | int
 
 
 class EorzeaWeather:
@@ -21,10 +24,10 @@ class EorzeaWeather:
     EoreaWeather
     """
 
-    FUZZY_CUTOFF: Union[int, float] = 80
+    FUZZY_CUTOFF: FuzzyCutoff = 80
 
     @classmethod
-    def set_fuzzy_cutoff(cls, cutoff: Union[int, float]):
+    def set_fuzzy_cutoff(cls, cutoff: float):
         if cutoff > 100 or cutoff < 0:
             raise ValueError("Cutoff value should be in 0-100.")
         cls.FUZZY_CUTOFF = cutoff
@@ -63,7 +66,7 @@ class EorzeaWeather:
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: Literal[False] = False,
-    ) -> List[str]: ...
+    ) -> list[str]: ...
 
     @overload
     @classmethod
@@ -75,30 +78,25 @@ class EorzeaWeather:
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: Literal[True],
-    ) -> List[int]: ...
+    ) -> list[int]: ...
 
     @classmethod
     def forecast(
         cls,
         place_name: ValidPlaceName,
-        timestamp: Union[Timestamp, Iterable[Timestamp]],
+        timestamp: Timestamp | Iterable[Timestamp],
         *,
         lang: Lang = EorzeaLang.EN,
         strict: bool = True,
         raw: bool = False,
-    ):
+    ) -> list[str] | list[int] | str | int:
         """Forecast Eorzea weather by place
 
         Parameters
         ----------
-        place_name : Union[str, EorzeaPlaceName]
+        place_name : str | EorzeaPlaceName
             a valid Eorzea place name
-        timestamp : Union[
-            int,
-            float,
-            EorzeaTime,
-            Iterable[Union[int, float, EorzeaTime]]
-        ]
+        timestamp : int | float | EorzeaTime | Iterable[int | float | EorzeaTime]
             unix timestamp or EorzeaTime instance.
             int and float type supporting would be removed from 2.5.0
         lang : Lang, optional
@@ -113,7 +111,7 @@ class EorzeaWeather:
 
         Returns
         -------
-        Union[str, List[str], int,  List[int]]
+        str | list[str] | int | list[int]
             result of forecast
 
         Raises
@@ -144,14 +142,7 @@ class EorzeaWeather:
             return result
 
         if isinstance(timestamp, Iterable):
-            results = []
-
-            for t in timestamp:
-                t = _ensure_timestamp(t)
-                result = make_result(t)
-                results.append(result)
-
-            return results
+            return [make_result(_ensure_timestamp(t)) for t in timestamp]
 
         timestamp = _ensure_timestamp(timestamp)
         result = make_result(timestamp)
