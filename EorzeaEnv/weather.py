@@ -8,10 +8,10 @@ from numpy import uint32
 from .Data.TerritoryWeather import territory_weather as _territory_weather
 from .Data.Weather import weather as _weather
 from .Data.WeatherRate import weather_rate as _weather_rate
-from .eorzea_lang import EorzeaLang
-from .eorzea_place_name import EorzeaPlaceName, FuzzyCutoff
+from .lang import EorzeaLang
+from .place_name import EorzeaPlaceName, FuzzyCutoff
 
-from .eorzea_time import EorzeaTime
+from .time import EorzeaTime
 from .errors import WeatherRateDataError
 
 Lang = Union[Literal["en", "ja", "de", "fr", "ko", "cn", "tc"], EorzeaLang]

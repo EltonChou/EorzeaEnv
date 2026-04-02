@@ -8,7 +8,7 @@ from rapidfuzz import process as fuzz_process
 
 from .Data.PlaceName import PlaceInfoDict
 from .Data.PlaceName import place_name as _place_names
-from .eorzea_lang import EorzeaLang
+from .lang import EorzeaLang
 from .errors import InvalidEorzeaPlaceName
 
 FuzzyCutoff = int | float

@@ -6,8 +6,8 @@ from typing import Final, MutableSequence, Set
 
 from .Data.TerritoryWeather import territory_weather as _territory_weather
 from .Data.WeatherRate import weather_rate as _weather_rate
-from .eorzea_place_name import EorzeaPlaceName
-from .eorzea_time import EorzeaTime
+from .place_name import EorzeaPlaceName
+from .time import EorzeaTime
 
 RAIN: Final = 7
 SHOWERS: Final = 8

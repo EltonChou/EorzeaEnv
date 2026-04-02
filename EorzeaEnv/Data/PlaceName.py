@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Literal, Mapping, TypedDict
 
-from ..eorzea_lang import EorzeaLang
+from ..lang import EorzeaLang
 
 
 class PlaceInfoDict(TypedDict):

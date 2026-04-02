@@ -107,7 +107,7 @@ class TestForecast:
         )
         assert raw_weather == 4
 
-    @mock.patch("EorzeaEnv.eorzea_weather._weather_rate", MockDict())
+    @mock.patch("EorzeaEnv.weather._weather_rate", MockDict())
     def test_weather_data_missing(self):
         with pytest.raises(WeatherRateDataError):
             EorzeaWeather.forecast(

@@ -1,8 +1,8 @@
-from .eorzea_lang import EorzeaLang
-from .eorzea_place_name import EorzeaPlaceName
-from .eorzea_rainbow import EorzeaRainbow
-from .eorzea_time import EorzeaTime
-from .eorzea_weather import EorzeaWeather
+from .lang import EorzeaLang
+from .place_name import EorzeaPlaceName
+from .rainbow import EorzeaRainbow
+from .time import EorzeaTime
+from .weather import EorzeaWeather
 
 __all__ = [
     "EorzeaTime",
