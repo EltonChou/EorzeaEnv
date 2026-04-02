@@ -1,10 +1,10 @@
 from __future__ import annotations
 
 import warnings
+from ctypes import c_uint32
 from dataclasses import dataclass
 from typing import Any, Iterable, Literal, Union, cast, overload
 
-from numpy import uint32
 
 from .Data.TerritoryWeather import territory_weather as _territory_weather
 from .Data.Weather import weather as _weather
@@ -242,10 +242,13 @@ def _calculate_forecast_target(the_time: EorzeaTime) -> int:
 
     ts = the_time.get_unix_time()
 
+    def u32(x: float) -> int:
+        return c_uint32(int(x)).value
+
     bell = ts / 175
-    increment = uint32(bell + 8 - (bell % 8)) % 24
-    total_days = uint32(ts / 4200)
+    increment = u32(bell + 8 - (bell % 8)) % 24
+    total_days = u32(ts / 4200)
     calc_base = total_days * 0x64 + increment
-    step1 = uint32(calc_base << 0xB) ^ calc_base
-    step2 = uint32(step1 >> 8) ^ step1
+    step1 = u32(calc_base << 0xB) ^ calc_base
+    step2 = u32(step1 >> 8) ^ step1
     return int(step2 % 100)
