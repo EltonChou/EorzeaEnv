@@ -191,23 +191,23 @@ EorzeaPlaceName('紅玉貝', strict=False, fuzzy_cutoff=66) # valid `紅玉海`
 
 ### Eorzea rainbow predict
 
-Use EorzeaRainbow to predict when will the rainbow appears.
+Use `EorzeaRainbow` to predict when a rainbow appears. `forecast(t)` returns
+the rainbow start time if one occurs during `t`'s weather period, or `None`.
 
 ```py
 from datetime import datetime
 
-from EorzeaEnv import EorzeaPlaceName, EorzeaRainbow, EorzeaTime, EorzeaWeather
+from EorzeaEnv import EorzeaPlaceName, EorzeaRainbow, EorzeaTime
 
 rainbow_times: list[datetime] = []
 
 place = EorzeaPlaceName("東ラノシア")
 the_rainbow = EorzeaRainbow(place_name=place)
 
-
 for t in EorzeaTime.weather_period(step='inf'):
-    the_rainbow.observe(t, EorzeaWeather.forecast(place, t, raw=True))
-    if the_rainbow.is_appear:
-        rainbow_times.append(datetime.fromtimestamp(t.get_unix_time()))
+    result = the_rainbow.forecast(t)
+    if result is not None:
+        rainbow_times.append(datetime.fromtimestamp(result.get_unix_time()))
     if len(rainbow_times) == 20:
         break
 
@@ -217,22 +217,23 @@ print(rainbow_times)
 ### Eorzea Aurora predict
 
 Use `EorzeaAurora` to predict when Aurora appears. Aurora only occurs in
-Coerthas Western Highlands and Old Sharlayan. Use the provided place constants
-from `EorzeaEnv.places`.
+Coerthas Western Highlands and Old Sharlayan during ET 00:00–04:00 when
+the weather period has Fair Skies. Use the provided place constants from
+`EorzeaEnv.places`.
 
 ```py
 from datetime import datetime
 
-from EorzeaEnv import EorzeaAurora, EorzeaTime, EorzeaWeather
+from EorzeaEnv import EorzeaAurora, EorzeaTime
 from EorzeaEnv.places import COERTHAS_WESTERN_HIGHLANDS
 
 aurora = EorzeaAurora(COERTHAS_WESTERN_HIGHLANDS)
 aurora_times: list[datetime] = []
 
 for t in EorzeaTime.weather_period(step='inf'):
-    aurora.observe(t, EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, t, raw=True))
-    if aurora.is_appear:
-        aurora_times.append(datetime.fromtimestamp(t.get_unix_time()))
+    result = aurora.forecast(t)
+    if result is not None:
+        aurora_times.append(datetime.fromtimestamp(result.get_unix_time()))
     if len(aurora_times) == 20:
         break
 
@@ -244,22 +245,22 @@ print(aurora_times)
 Use `EorzeaDiamondDust` to predict when Diamond Dust appears. It only occurs
 in Coerthas Western Highlands. Diamond Dust appears when:
 
-1. Weather transitions from non-Fair Skies to Fair Skies at ET 08:00 (dust visible ET 08:00–10:00).
-2. Weather is Fair Skies at ET 00:00 (dust visible ET 06:00–08:00).
+1. Weather is Fair Skies at ET 00:00 (dust visible ET 06:00–08:00).
+2. Weather transitions from non-Fair Skies to Fair Skies at ET 08:00 (dust visible ET 08:00–10:00).
 
 ```py
 from datetime import datetime
 
-from EorzeaEnv import EorzeaDiamondDust, EorzeaTime, EorzeaWeather
+from EorzeaEnv import EorzeaDiamondDust, EorzeaTime
 from EorzeaEnv.places import COERTHAS_WESTERN_HIGHLANDS
 
 dd = EorzeaDiamondDust(COERTHAS_WESTERN_HIGHLANDS)
 dust_times: list[datetime] = []
 
 for t in EorzeaTime.weather_period(step='inf'):
-    dd.observe(t, EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, t, raw=True))
-    if dd.is_appear:
-        dust_times.append(datetime.fromtimestamp(t.get_unix_time()))
+    result = dd.forecast(t)
+    if result is not None:
+        dust_times.append(datetime.fromtimestamp(result.get_unix_time()))
     if len(dust_times) == 20:
         break
 
