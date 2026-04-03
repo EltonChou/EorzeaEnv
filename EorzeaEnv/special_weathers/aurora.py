@@ -60,7 +60,7 @@ class EorzeaAurora(SpecialWeather):
         if not self._is_possible:
             return None
 
-        window_start = time.weather_window_start()
+        window_start = time.weather_period_start()
         if window_start.bell != 0:
             return None
 

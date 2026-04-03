@@ -47,7 +47,7 @@ class TestAuroraForecast:
                 assert result is not None
                 assert result.bell == 0
                 assert (
-                    result.get_unix_time() == et.weather_window_start().get_unix_time()
+                    result.get_unix_time() == et.weather_period_start().get_unix_time()
                 )
                 break
 

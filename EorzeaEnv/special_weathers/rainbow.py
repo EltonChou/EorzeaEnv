@@ -65,7 +65,7 @@ class EorzeaRainbow(SpecialWeather):
         if raw in RAINY_WEATHERS:
             return None
 
-        prev = time.prev_weather_window_start()
+        prev = time.prev_weather_period_start()
         prev_raw = EorzeaWeather.forecast(self._place_name, prev, raw=True)
         if prev_raw not in RAINY_WEATHERS:
             return None

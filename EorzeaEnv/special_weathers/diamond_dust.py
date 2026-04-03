@@ -69,7 +69,7 @@ class EorzeaDiamondDust(SpecialWeather):
         if not self._is_possible:
             return None
 
-        window_start = time.weather_window_start()
+        window_start = time.weather_period_start()
 
         if window_start.bell == _COND2_WINDOW_BELL:
             if _COND2_START_BELL <= time.bell < _COND2_END_BELL:
@@ -88,7 +88,7 @@ class EorzeaDiamondDust(SpecialWeather):
                     == FAIR_SKIES
                 ):
                     prev_raw = EorzeaWeather.forecast(
-                        self._place_name, time.prev_weather_window_start(), raw=True
+                        self._place_name, time.prev_weather_period_start(), raw=True
                     )
                     if prev_raw != FAIR_SKIES:
                         return copy.copy(window_start)

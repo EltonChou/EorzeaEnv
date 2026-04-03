@@ -139,55 +139,55 @@ class TestTime:
         et = EorzeaTime.now()
         assert str(et)
 
-    def test_weather_window_start(self):
+    def test_weather_period_start(self):
         # window 8818 covers [12345200, 12346600); start is 12345200
         et = EorzeaTime(12346000)
-        start = et.weather_window_start()
+        start = et.weather_period_start()
         assert start.get_unix_time() == 12345200
 
         # any time within the same window shares the same start
-        assert EorzeaTime(12345200).weather_window_start().get_unix_time() == 12345200
-        assert EorzeaTime(12346599).weather_window_start().get_unix_time() == 12345200
+        assert EorzeaTime(12345200).weather_period_start().get_unix_time() == 12345200
+        assert EorzeaTime(12346599).weather_period_start().get_unix_time() == 12345200
 
         # a time in the next window has a different start
-        assert EorzeaTime(12346600).weather_window_start().get_unix_time() == 12346600
+        assert EorzeaTime(12346600).weather_period_start().get_unix_time() == 12346600
 
-    def test_prev_weather_window_start(self):
+    def test_prev_weather_period_start(self):
         # window 8818: [12345200, 12346600), prev window 8817: [12343800, 12345200)
         et = EorzeaTime(12346000)
-        prev = et.prev_weather_window_start()
+        prev = et.prev_weather_period_start()
         assert prev.get_unix_time() == 12343800
 
         # any time in the same window yields the same prev start
         assert (
-            EorzeaTime(12345200).prev_weather_window_start().get_unix_time() == 12343800
+            EorzeaTime(12345200).prev_weather_period_start().get_unix_time() == 12343800
         )
         assert (
-            EorzeaTime(12346599).prev_weather_window_start().get_unix_time() == 12343800
+            EorzeaTime(12346599).prev_weather_period_start().get_unix_time() == 12343800
         )
 
-    def test_is_same_weather_window(self):
+    def test_is_same_weather_period(self):
         # window 8818 covers [12345200, 12346600)
         t1 = EorzeaTime(12345200)
         t2 = EorzeaTime(12346599)
-        assert t1.is_same_weather_window(t2)
-        assert t2.is_same_weather_window(t1)
+        assert t1.is_same_weather_period(t2)
+        assert t2.is_same_weather_period(t1)
 
         # 12346600 starts window 8819
         t3 = EorzeaTime(12346600)
-        assert not t1.is_same_weather_window(t3)
+        assert not t1.is_same_weather_period(t3)
 
-    def test_is_next_weather_window(self):
+    def test_is_next_weather_period(self):
         # window 8818: [12345200, 12346600), window 8819: [12346600, 12348000)
         t1 = EorzeaTime(12345200)
         t2 = EorzeaTime(12346600)
-        assert t1.is_next_weather_window(t2)
-        assert t2.is_next_weather_window(t1)
+        assert t1.is_next_weather_period(t2)
+        assert t2.is_next_weather_period(t1)
 
         # two windows apart — not adjacent
         t3 = EorzeaTime(12348000)
-        assert not t1.is_next_weather_window(t3)
+        assert not t1.is_next_weather_period(t3)
 
         # same window — not adjacent
         t4 = EorzeaTime(12346000)
-        assert not t1.is_next_weather_window(t4)
+        assert not t1.is_next_weather_period(t4)

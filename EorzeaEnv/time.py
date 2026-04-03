@@ -241,25 +241,25 @@ class EorzeaTime:
             self.guardian,
         )
 
-    def weather_window_start(self) -> "EorzeaTime":
-        """Return a new EorzeaTime at the start of this time's 8-bell weather window."""
+    def weather_period_start(self) -> "EorzeaTime":
+        """Return a new EorzeaTime at the start of this time's 8-bell weather period."""
         ts = self.get_unix_time()
         return EorzeaTime(ts - (ts % _LOCAL_WEATHER_INTERVAL))
 
-    def prev_weather_window_start(self) -> "EorzeaTime":
-        """Return a new EorzeaTime at the start of the preceding weather window."""
+    def prev_weather_period_start(self) -> "EorzeaTime":
+        """Return a new EorzeaTime at the start of the preceding weather period."""
         ts = self.get_unix_time()
         return EorzeaTime(ts - (ts % _LOCAL_WEATHER_INTERVAL) - _LOCAL_WEATHER_INTERVAL)
 
-    def is_same_weather_window(self, that: "EorzeaTime") -> bool:
-        """Return True if both times fall within the same 8-bell weather window."""
+    def is_same_weather_period(self, that: "EorzeaTime") -> bool:
+        """Return True if both times fall within the same 8-bell weather period."""
         return (
             self.get_unix_time() // _LOCAL_WEATHER_INTERVAL
             == that.get_unix_time() // _LOCAL_WEATHER_INTERVAL
         )
 
-    def is_next_weather_window(self, that: "EorzeaTime") -> bool:
-        """Return True if the two times are in adjacent weather windows."""
+    def is_next_weather_period(self, that: "EorzeaTime") -> bool:
+        """Return True if the two times are in adjacent weather periods."""
         return (
             abs(
                 self.get_unix_time() // _LOCAL_WEATHER_INTERVAL
