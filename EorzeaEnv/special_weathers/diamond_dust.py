@@ -1,15 +1,22 @@
 import copy
-from collections import deque
-from typing import Final, MutableSequence
+from typing import Final
 
 from ..place_name import EorzeaPlaceName
 from ..places import COERTHAS_WESTERN_HIGHLANDS
 from ..time import EorzeaTime
-from ..weather import WeatherInfo
-
-FAIR_SKIES: Final = 2
+from ..weather import EorzeaWeather
+from ._constants import FAIR_SKIES
 
 _DIAMOND_DUST_PLACES: Final = frozenset([COERTHAS_WESTERN_HIGHLANDS.index])
+
+# Condition 2: Fair Skies at bell 0 → dust at ET 06:00–08:00 (bells 6–7)
+_COND2_WINDOW_BELL: Final = 0
+_COND2_START_BELL: Final = 6
+_COND2_END_BELL: Final = 8
+
+# Condition 1: transition to Fair Skies at bell 8 → dust at ET 08:00–10:00 (bells 8–9)
+_COND1_WINDOW_BELL: Final = 8
+_COND1_END_BELL: Final = 10
 
 
 class EorzeaDiamondDust:
@@ -19,35 +26,29 @@ class EorzeaDiamondDust:
 
         from EorzeaEnv.places import COERTHAS_WESTERN_HIGHLANDS
 
-    Two conditions trigger Diamond Dust during a period:
+    Two conditions trigger Diamond Dust:
 
-    1. Previous weather was not Fair Skies and transitions to Fair Skies at
+    1. Weather is Fair Skies at ET 00:00 (bell 0). Dust appears ET 06:00–08:00.
+    2. Previous weather was not Fair Skies and transitions to Fair Skies at
        ET 08:00 (bell 8). Dust appears ET 08:00–10:00.
-    2. Weather is Fair Skies at ET 00:00 (bell 0). Dust appears ET 06:00–08:00.
-
-    :attr:`is_appear` returns True if dust appears at any point during the
-    observed period. Check it after each :meth:`observe` call.
 
     Examples
     --------
     ```python
-    from EorzeaEnv import EorzeaTime, EorzeaWeather
+    from EorzeaEnv import EorzeaTime
     from EorzeaEnv.places import COERTHAS_WESTERN_HIGHLANDS
-    from EorzeaEnv.special_weather import EorzeaDiamondDust
+    from EorzeaEnv.special_weathers import EorzeaDiamondDust
 
     dd = EorzeaDiamondDust(COERTHAS_WESTERN_HIGHLANDS)
     for et in EorzeaTime.weather_period(step='inf'):
-        dd.observe(et, EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, et, raw=True))
-        if dd.is_appear:
-            print(et)
+        result = dd.forecast(et)
+        if result is not None:
+            print(result)
     ```
     """
 
-    _weather_slot: MutableSequence[WeatherInfo]
-
     def __init__(self, place_name: EorzeaPlaceName) -> None:
         self._place_name = place_name
-        self._weather_slot = deque([], maxlen=2)
         self._is_possible = place_name.index in _DIAMOND_DUST_PLACES
 
     @property
@@ -58,30 +59,37 @@ class EorzeaDiamondDust:
     def is_possible(self) -> bool:
         return self._is_possible
 
-    @property
-    def is_appear(self) -> bool:
-        if not self._is_possible or len(self._weather_slot) == 0:
-            return False
+    def forecast(self, time: EorzeaTime) -> EorzeaTime | None:
+        """Return the dust start time if Diamond Dust appears during *time*.
 
-        current = self._weather_slot[-1]
+        Checks which weather window contains *time*, evaluates the appropriate
+        condition, and returns the ET start of the dust period, or ``None``.
+        """
+        if not self._is_possible:
+            return None
 
-        # Condition 2: Fair Skies at bell 0 → dust at ET 06:00–08:00
-        if current.time.bell == 0 and current.raw_weather == FAIR_SKIES:
-            return True
+        window_start = time.weather_window_start()
 
-        # Condition 1: transition from non-Fair Skies to Fair Skies at bell 8
-        if (
-            len(self._weather_slot) == 2
-            and current.time.bell == 8
-            and current.raw_weather == FAIR_SKIES
-        ):
-            prev = self._weather_slot[0]
-            if prev.raw_weather != FAIR_SKIES:
-                return True
+        if window_start.bell == _COND2_WINDOW_BELL:
+            if _COND2_START_BELL <= time.bell < _COND2_END_BELL:
+                if (
+                    EorzeaWeather.forecast(self._place_name, window_start, raw=True)
+                    == FAIR_SKIES
+                ):
+                    result = copy.copy(window_start)
+                    result.bell = _COND2_START_BELL
+                    return result
 
-        return False
+        elif window_start.bell == _COND1_WINDOW_BELL:
+            if time.bell < _COND1_END_BELL:
+                if (
+                    EorzeaWeather.forecast(self._place_name, window_start, raw=True)
+                    == FAIR_SKIES
+                ):
+                    prev_raw = EorzeaWeather.forecast(
+                        self._place_name, time.prev_weather_window_start(), raw=True
+                    )
+                    if prev_raw != FAIR_SKIES:
+                        return copy.copy(window_start)
 
-    def observe(self, time: EorzeaTime, raw_weather: int) -> None:
-        self._weather_slot.append(
-            WeatherInfo(time=copy.copy(time), raw_weather=raw_weather)
-        )
+        return None

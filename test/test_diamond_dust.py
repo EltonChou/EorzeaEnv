@@ -1,7 +1,10 @@
+import copy
+
 from EorzeaEnv import EorzeaPlaceName, EorzeaTime, EorzeaWeather, EorzeaDiamondDust
 from EorzeaEnv.places import COERTHAS_WESTERN_HIGHLANDS
 
 FAIR_SKIES = 2
+_WEATHER_INTERVAL = 1400
 
 
 class TestDiamondDustConstants:
@@ -27,89 +30,104 @@ class TestDiamondDustIsPossible:
         assert not EorzeaDiamondDust(other).is_possible
 
 
-class TestDiamondDustIsAppear:
-    def test_condition1_non_fair_skies_transitions_to_fair_skies_at_bell_8(self):
-        # Condition 1: prev != Fair Skies, current == Fair Skies at bell 8
-        dd = EorzeaDiamondDust(COERTHAS_WESTERN_HIGHLANDS)
-        for et in EorzeaTime.weather_period(step="inf", from_=0.0):
-            raw = EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, et, raw=True)
-            if et.bell == 8 and raw == FAIR_SKIES:
-                # Need a preceding period with non-Fair Skies
-                # Go back one period (8 bells = 1400 real seconds)
-                prev_unix = et.get_unix_time() - 1400
-                prev_et = EorzeaTime(prev_unix)
-                prev_raw = EorzeaWeather.forecast(
-                    COERTHAS_WESTERN_HIGHLANDS, prev_et, raw=True
-                )
-                if prev_raw != FAIR_SKIES:
-                    dd.observe(prev_et, prev_raw)
-                    dd.observe(et, raw)
-                    assert dd.is_appear
-                    break
+class TestDiamondDustForecast:
+    def test_forecast_returns_none_for_impossible_place(self):
+        dd = EorzeaDiamondDust(EorzeaPlaceName("Eastern La Noscea"))
+        for et in EorzeaTime.weather_period(step=5, from_=0.0):
+            assert dd.forecast(et) is None
 
-    def test_condition1_not_appear_when_prev_also_fair_skies_at_bell_8(self):
-        # Condition 1 requires prev != Fair Skies; if prev is also Fair Skies, no dust
-        # from cond1. bell==8 here so cond2 (bell==0) cannot fire either.
-        dd = EorzeaDiamondDust(COERTHAS_WESTERN_HIGHLANDS)
-        for et in EorzeaTime.weather_period(step="inf", from_=0.0):
-            raw = EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, et, raw=True)
-            if et.bell == 8 and raw == FAIR_SKIES:
-                prev_unix = et.get_unix_time() - 1400
-                prev_et = EorzeaTime(prev_unix)
-                prev_raw = EorzeaWeather.forecast(
-                    COERTHAS_WESTERN_HIGHLANDS, prev_et, raw=True
-                )
-                if prev_raw == FAIR_SKIES:
-                    dd.observe(prev_et, prev_raw)
-                    dd.observe(et, raw)
-                    assert not dd.is_appear
-                    break
-
-    def test_condition2_fair_skies_at_bell_0(self):
-        # Condition 2: Fair Skies at bell 0
+    def test_condition2_returns_bell_6_for_any_time_in_dust_window(self):
+        # Condition 2: Fair Skies window at bell 0, time in bells 6-7 → dust at bell 6
         dd = EorzeaDiamondDust(COERTHAS_WESTERN_HIGHLANDS)
         for et in EorzeaTime.weather_period(step="inf", from_=0.0):
             raw = EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, et, raw=True)
             if et.bell == 0 and raw == FAIR_SKIES:
-                dd.observe(et, raw)
-                assert dd.is_appear
+                for dust_bell in [6, 7]:
+                    t = copy.copy(et)
+                    t.bell = dust_bell
+                    result = dd.forecast(t)
+                    assert result is not None
+                    assert result.bell == 6
                 break
 
-    def test_not_appear_when_bell_0_not_fair_skies(self):
+    def test_condition2_returns_none_outside_dust_window(self):
+        # Bells 0-5 and 8+ are outside ET 06:00-08:00
         dd = EorzeaDiamondDust(COERTHAS_WESTERN_HIGHLANDS)
         for et in EorzeaTime.weather_period(step="inf", from_=0.0):
             raw = EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, et, raw=True)
-            if et.bell == 0 and raw != FAIR_SKIES:
-                dd.observe(et, raw)
-                assert not dd.is_appear
+            if et.bell == 0 and raw == FAIR_SKIES:
+                for outside_bell in [0, 1, 5]:
+                    t = copy.copy(et)
+                    t.bell = outside_bell
+                    assert dd.forecast(t) is None
                 break
 
-    def test_not_appear_when_not_possible(self):
-        other = EorzeaPlaceName("Eastern La Noscea")
-        dd = EorzeaDiamondDust(other)
-        for et in EorzeaTime.weather_period(step="inf", from_=0.0):
-            raw = EorzeaWeather.forecast(other, et, raw=True)
-            if et.bell == 0:
-                dd.observe(et, raw)
-                assert not dd.is_appear
-                break
-
-    def test_no_observation_returns_false(self):
+    def test_condition1_transition_to_fair_skies_returns_bell_8(self):
+        # Condition 1: bell-8 window, Fair Skies, prev not Fair Skies → dust at bell 8
         dd = EorzeaDiamondDust(COERTHAS_WESTERN_HIGHLANDS)
-        assert not dd.is_appear
+        for et in EorzeaTime.weather_period(step="inf", from_=0.0):
+            raw = EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, et, raw=True)
+            if et.bell == 8 and raw == FAIR_SKIES:
+                prev_raw = EorzeaWeather.forecast(
+                    COERTHAS_WESTERN_HIGHLANDS,
+                    EorzeaTime(et.get_unix_time() - _WEATHER_INTERVAL),
+                    raw=True,
+                )
+                if prev_raw != FAIR_SKIES:
+                    for dust_bell in [8, 9]:
+                        t = copy.copy(et)
+                        t.bell = dust_bell
+                        result = dd.forecast(t)
+                        assert result is not None
+                        assert result.bell == 8
+                    break
 
-    def test_used_with_weather_period_generator(self):
+    def test_condition1_returns_none_when_prev_also_fair_skies(self):
+        dd = EorzeaDiamondDust(COERTHAS_WESTERN_HIGHLANDS)
+        for et in EorzeaTime.weather_period(step="inf", from_=0.0):
+            raw = EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, et, raw=True)
+            if et.bell == 8 and raw == FAIR_SKIES:
+                prev_raw = EorzeaWeather.forecast(
+                    COERTHAS_WESTERN_HIGHLANDS,
+                    EorzeaTime(et.get_unix_time() - _WEATHER_INTERVAL),
+                    raw=True,
+                )
+                if prev_raw == FAIR_SKIES:
+                    assert dd.forecast(et) is None
+                    break
+
+    def test_condition1_returns_none_outside_dust_window(self):
+        # Bell 10+ is outside ET 08:00-10:00
+        dd = EorzeaDiamondDust(COERTHAS_WESTERN_HIGHLANDS)
+        for et in EorzeaTime.weather_period(step="inf", from_=0.0):
+            raw = EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, et, raw=True)
+            if et.bell == 8 and raw == FAIR_SKIES:
+                prev_raw = EorzeaWeather.forecast(
+                    COERTHAS_WESTERN_HIGHLANDS,
+                    EorzeaTime(et.get_unix_time() - _WEATHER_INTERVAL),
+                    raw=True,
+                )
+                if prev_raw != FAIR_SKIES:
+                    t = copy.copy(et)
+                    t.bell = 10
+                    assert dd.forecast(t) is None
+                    break
+
+    def test_forecast_returns_none_when_no_condition_met(self):
+        dd = EorzeaDiamondDust(COERTHAS_WESTERN_HIGHLANDS)
+        for et in EorzeaTime.weather_period(step="inf", from_=0.0):
+            raw = EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, et, raw=True)
+            if raw != FAIR_SKIES:
+                assert dd.forecast(et) is None
+                break
+
+    def test_forecast_collects_multiple_dust_times(self):
         dd = EorzeaDiamondDust(COERTHAS_WESTERN_HIGHLANDS)
         dust_times = []
-        expected_count = 3
-
         for et in EorzeaTime.weather_period(step="inf", from_=0.0):
-            dd.observe(
-                et, EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, et, raw=True)
-            )
-            if dd.is_appear:
-                dust_times.append(et)
-            if len(dust_times) == expected_count:
+            result = dd.forecast(et)
+            if result is not None:
+                dust_times.append(result)
+            if len(dust_times) == 3:
                 break
-
-        assert len(dust_times) == expected_count
+        assert len(dust_times) == 3

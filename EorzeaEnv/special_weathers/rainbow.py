@@ -1,114 +1,87 @@
 import copy
-import warnings
-from collections import deque
-from typing import Final, MutableSequence, Set
+from typing import Final
 
 from ..Data.TerritoryWeather import territory_weather as _territory_weather
 from ..Data.WeatherRate import weather_rate as _weather_rate
 from ..place_name import EorzeaPlaceName
 from ..time import EorzeaTime
-from ..weather import WeatherInfo
+from ..weather import EorzeaWeather
+from ._constants import RAINY_WEATHERS
 
-RAIN: Final = 7
-SHOWERS: Final = 8
-THUNDER_STORMS: Final = 10
-RAINY_WEATHERS: Final = {RAIN, SHOWERS, THUNDER_STORMS}
+_RAINBOW_BELL: Final = 6
 
 
 class EorzeaRainbow:
     """Predicts rainbow appearances for a given Eorzea location.
 
-    Feed consecutive weather observations via :meth:`observe`. After every
-    call, check :attr:`is_appear` to see whether a rainbow is visible.
-
     A rainbow appears when rainy weather (Rain, Showers, or Thunder Storms)
     transitions to any clear weather, during sun phases 27–32 or 1–6, between
-    06:00 and 18:00 Eorzea time.
+    ET 06:00 and 18:00.
 
     Examples
     --------
     ```python
     from datetime import datetime
-    from EorzeaEnv import EorzeaPlaceName, EorzeaRainbow, EorzeaTime, EorzeaWeather
+    from EorzeaEnv import EorzeaPlaceName, EorzeaRainbow, EorzeaTime
 
     place = EorzeaPlaceName('東ラノシア')
     rainbow = EorzeaRainbow(place_name=place)
-    rainbow.is_possible  # True
 
     rainbow_times = []
     for t in EorzeaTime.weather_period(step='inf'):
-        rainbow.observe(t, EorzeaWeather.forecast(place, t, raw=True))
-        if rainbow.is_appear:
-            rainbow_times.append(datetime.fromtimestamp(t.get_unix_time()))
+        result = rainbow.forecast(t)
+        if result is not None:
+            rainbow_times.append(datetime.fromtimestamp(result.get_unix_time()))
         if len(rainbow_times) == 20:
             break
     ```
     """
 
-    _weather_slot: MutableSequence[WeatherInfo]
-    _is_possible: bool
-    _place_name: EorzeaPlaceName
-
     def __init__(self, place_name: EorzeaPlaceName) -> None:
         self._place_name = place_name
-        self._weather_slot = deque([], maxlen=2)
         self._is_possible = _is_rainbow_possible(place_name)
 
     @property
-    def place_name(self):
+    def place_name(self) -> EorzeaPlaceName:
         return self._place_name
 
     @property
-    def is_possible(self):
+    def is_possible(self) -> bool:
         return self._is_possible
 
-    @property
-    def is_appear(self):
-        if len(self._weather_slot) != 2 or not self.is_possible:
-            return False
+    def forecast(self, time: EorzeaTime) -> EorzeaTime | None:
+        """Return the rainbow start time if a rainbow appears in *time*'s window.
 
-        prev_weather, current_weather = self._weather_slot
-        if (
-            prev_weather.raw_weather not in RAINY_WEATHERS
-            or current_weather.raw_weather in RAINY_WEATHERS
-        ):
-            return False
+        Returns ``None`` when no rainbow occurs or :attr:`is_possible` is ``False``.
+        """
+        if not self._is_possible:
+            return None
 
-        if (
-            not _check_sun(current_weather.time.sun)
-            or current_weather.time <= prev_weather.time
-        ):
-            return False
+        if not _check_sun(time.sun):
+            return None
 
-        time_ticket = _generate_time_ticket(current_weather.time)
-        return 600 <= time_ticket <= 1800
+        raw = EorzeaWeather.forecast(self._place_name, time, raw=True)
+        if raw in RAINY_WEATHERS:
+            return None
 
-    def observe(self, time: EorzeaTime, raw_weather: int) -> None:
-        self._weather_slot.append(
-            WeatherInfo(time=copy.copy(time), raw_weather=raw_weather)
-        )
+        prev = time.prev_weather_window_start()
+        prev_raw = EorzeaWeather.forecast(self._place_name, prev, raw=True)
+        if prev_raw not in RAINY_WEATHERS:
+            return None
 
-    def append(self, time: EorzeaTime, raw_weather: int) -> None:
-        warnings.warn(
-            "append is deprecated from 2.5.0. Use observe instead.",
-            DeprecationWarning,
-            stacklevel=2,
-        )
-        self.observe(time, raw_weather)
+        result = copy.copy(time)
+        result.bell = _RAINBOW_BELL
+        return result
 
 
 def _is_rainbow_possible(place_name: EorzeaPlaceName) -> bool:
     weather_rate_index = _territory_weather[place_name.index]
     weather_rate = _weather_rate[weather_rate_index]
-    possible_weathers: Set[int] = {w[1] for w in weather_rate}
+    possible_weathers: set[int] = {w[1] for w in weather_rate}
     return bool(
         possible_weathers - RAINY_WEATHERS and RAINY_WEATHERS & possible_weathers
     )
 
 
-def _check_sun(sun: int):
+def _check_sun(sun: int) -> bool:
     return sun >= 27 or sun <= 6
-
-
-def _generate_time_ticket(time: EorzeaTime) -> int:
-    return time.hour * 100 + time.minute

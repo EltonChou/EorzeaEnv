@@ -139,6 +139,33 @@ class TestTime:
         et = EorzeaTime.now()
         assert str(et)
 
+    def test_weather_window_start(self):
+        # window 8818 covers [12345200, 12346600); start is 12345200
+        et = EorzeaTime(12346000)
+        start = et.weather_window_start()
+        assert start.get_unix_time() == 12345200
+
+        # any time within the same window shares the same start
+        assert EorzeaTime(12345200).weather_window_start().get_unix_time() == 12345200
+        assert EorzeaTime(12346599).weather_window_start().get_unix_time() == 12345200
+
+        # a time in the next window has a different start
+        assert EorzeaTime(12346600).weather_window_start().get_unix_time() == 12346600
+
+    def test_prev_weather_window_start(self):
+        # window 8818: [12345200, 12346600), prev window 8817: [12343800, 12345200)
+        et = EorzeaTime(12346000)
+        prev = et.prev_weather_window_start()
+        assert prev.get_unix_time() == 12343800
+
+        # any time in the same window yields the same prev start
+        assert (
+            EorzeaTime(12345200).prev_weather_window_start().get_unix_time() == 12343800
+        )
+        assert (
+            EorzeaTime(12346599).prev_weather_window_start().get_unix_time() == 12343800
+        )
+
     def test_is_same_weather_window(self):
         # window 8818 covers [12345200, 12346600)
         t1 = EorzeaTime(12345200)

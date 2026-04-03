@@ -1,62 +1,78 @@
-import random
 from datetime import datetime
 
 from EorzeaEnv import EorzeaPlaceName, EorzeaRainbow, EorzeaTime, EorzeaWeather
 
+_WEATHER_INTERVAL = 1400
+_EASTERN_LA_NOSCEA = "Eastern La Noscea"
+_FIELDS_OF_GLORY = "a future rewritten"
 
-class TestRainbow:
-    def test_rainbow(self):
-        place_name1 = EorzeaPlaceName("eastern la noscea")
-        place_name2 = EorzeaPlaceName("fields of glory")
 
-        the_rainbow = EorzeaRainbow(place_name1)
-        impossible_rainbow = EorzeaRainbow(place_name2)
+class TestRainbowPlaceName:
+    def test_place_name_property(self):
+        place = EorzeaPlaceName(_EASTERN_LA_NOSCEA)
+        assert EorzeaRainbow(place).place_name is place
 
-        assert the_rainbow.place_name is place_name1
-        assert impossible_rainbow.place_name is place_name2
 
-        et1 = EorzeaTime(1661184000)
-        et2 = EorzeaTime(1661185440)
+class TestRainbowIsPossible:
+    def test_is_possible_for_valid_place(self):
+        assert EorzeaRainbow(EorzeaPlaceName(_EASTERN_LA_NOSCEA)).is_possible
 
-        weather1 = EorzeaWeather.forecast(place_name1, et1, raw=True)
-        weather2 = EorzeaWeather.forecast(place_name1, et2, raw=True)
-        the_rainbow.observe(et1, weather1)
-        the_rainbow.observe(et2, weather2)
+    def test_is_not_possible_for_non_rainy_place(self):
+        assert not EorzeaRainbow(EorzeaPlaceName(_FIELDS_OF_GLORY)).is_possible
 
-        weather1 = EorzeaWeather.forecast(place_name2, et1, raw=True)
-        weather2 = EorzeaWeather.forecast(place_name2, et2, raw=True)
-        impossible_rainbow.observe(et1, weather1)
-        impossible_rainbow.observe(et2, weather2)
 
-        assert the_rainbow.is_appear
-        assert not impossible_rainbow.is_appear
+class TestRainbowForecast:
+    def test_forecast_returns_none_for_impossible_place(self):
+        rainbow = EorzeaRainbow(EorzeaPlaceName(_FIELDS_OF_GLORY))
+        for et in EorzeaTime.weather_period(step=5, from_=0.0):
+            assert rainbow.forecast(et) is None
 
-    def test_deprecated_append(self):
-        place = EorzeaPlaceName("eastern la noscea")
-        the_rainbow = EorzeaRainbow(place)
-        et1 = EorzeaTime(1661184000)
-        et2 = EorzeaTime(1661185440)
-        import pytest
+    def test_forecast_returns_bell_6_when_rainbow_appears(self):
+        place = EorzeaPlaceName(_EASTERN_LA_NOSCEA)
+        rainbow = EorzeaRainbow(place)
+        for et in EorzeaTime.weather_period(step="inf", from_=0.0):
+            result = rainbow.forecast(et)
+            if result is not None:
+                assert result.bell == 6
+                break
 
-        with pytest.warns(DeprecationWarning):
-            the_rainbow.append(et1, EorzeaWeather.forecast(place, et1, raw=True))
-        with pytest.warns(DeprecationWarning):
-            the_rainbow.append(et2, EorzeaWeather.forecast(place, et2, raw=True))
-        assert the_rainbow.is_appear
+    def test_forecast_returns_none_when_current_is_rainy(self):
+        from EorzeaEnv.special_weathers.rainbow import RAINY_WEATHERS
 
-    def test_used_with_weather_period_generator(self):
+        place = EorzeaPlaceName(_EASTERN_LA_NOSCEA)
+        rainbow = EorzeaRainbow(place)
+        for et in EorzeaTime.weather_period(step="inf", from_=0.0):
+            raw = EorzeaWeather.forecast(place, et, raw=True)
+            if raw in RAINY_WEATHERS:
+                assert rainbow.forecast(et) is None
+                break
+
+    def test_forecast_returns_none_when_prev_not_rainy(self):
+        from EorzeaEnv.special_weathers.rainbow import RAINY_WEATHERS
+
+        place = EorzeaPlaceName(_EASTERN_LA_NOSCEA)
+        rainbow = EorzeaRainbow(place)
+        for et in EorzeaTime.weather_period(step="inf", from_=0.0):
+            raw = EorzeaWeather.forecast(place, et, raw=True)
+            prev_raw = EorzeaWeather.forecast(
+                place,
+                EorzeaTime(et.get_unix_time() - _WEATHER_INTERVAL),
+                raw=True,
+            )
+            if raw not in RAINY_WEATHERS and prev_raw not in RAINY_WEATHERS:
+                assert rainbow.forecast(et) is None
+                break
+
+    def test_forecast_collects_multiple_rainbow_times(self):
         place = EorzeaPlaceName("東ラノシア")
-        the_rainbow = EorzeaRainbow(place_name=place)
+        rainbow = EorzeaRainbow(place)
         rainbow_times: list[datetime] = []
-        expected_rainbow_count = random.randint(1, 20)
-
         for et in EorzeaTime.weather_period(
             step="inf", from_=datetime(2022, 8, 25, 0, 0).timestamp()
         ):
-            the_rainbow.observe(et, EorzeaWeather.forecast(place, et, raw=True))
-            if the_rainbow.is_appear:
-                rainbow_times.append(datetime.fromtimestamp(et.get_unix_time()))
-            if len(rainbow_times) == expected_rainbow_count:
+            result = rainbow.forecast(et)
+            if result is not None:
+                rainbow_times.append(datetime.fromtimestamp(result.get_unix_time()))
+            if len(rainbow_times) == 5:
                 break
-
-        assert len(rainbow_times) == expected_rainbow_count
+        assert len(rainbow_times) == 5

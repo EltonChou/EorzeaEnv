@@ -1,3 +1,5 @@
+import copy
+
 from EorzeaEnv import EorzeaPlaceName, EorzeaTime, EorzeaWeather, EorzeaAurora
 from EorzeaEnv.places import COERTHAS_WESTERN_HIGHLANDS, OLD_SHARLAYAN
 
@@ -30,71 +32,85 @@ class TestAuroraIsPossible:
         assert not EorzeaAurora(other).is_possible
 
 
-class TestAuroraIsAppear:
-    def test_appear_when_fair_skies_at_bell_0(self):
-        # Find a timestamp where bell == 0 and weather is Fair Skies
+class TestAuroraForecast:
+    def test_forecast_returns_none_for_impossible_place(self):
+        aurora = EorzeaAurora(EorzeaPlaceName("Eastern La Noscea"))
+        for et in EorzeaTime.weather_period(step=5, from_=0.0):
+            assert aurora.forecast(et) is None
+
+    def test_forecast_returns_window_start_when_aurora_appears(self):
         aurora = EorzeaAurora(COERTHAS_WESTERN_HIGHLANDS)
         for et in EorzeaTime.weather_period(step="inf", from_=0.0):
             raw = EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, et, raw=True)
             if et.bell == 0 and raw == FAIR_SKIES:
-                aurora.observe(et, raw)
-                assert aurora.is_appear
+                result = aurora.forecast(et)
+                assert result is not None
+                assert result.bell == 0
+                assert (
+                    result.get_unix_time() == et.weather_window_start().get_unix_time()
+                )
                 break
 
-    def test_not_appear_when_fair_skies_but_not_bell_0(self):
-        # bell 8 or bell 16 with Fair Skies should not trigger aurora
+    def test_forecast_returns_same_start_for_any_time_within_aurora_window(self):
+        # bells 0-3 in a Fair Skies window all return the same start
         aurora = EorzeaAurora(COERTHAS_WESTERN_HIGHLANDS)
         for et in EorzeaTime.weather_period(step="inf", from_=0.0):
             raw = EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, et, raw=True)
-            if et.bell != 0 and raw == FAIR_SKIES:
-                aurora.observe(et, raw)
-                assert not aurora.is_appear
+            if et.bell == 0 and raw == FAIR_SKIES:
+                start = aurora.forecast(et)
+                assert start is not None
+                # bell 1, 2, 3 are inside ET 00:00-04:00 and same window
+                for offset_bell in [1, 2, 3]:
+                    later = copy.copy(et)
+                    later.bell = offset_bell
+                    result = aurora.forecast(later)
+                    assert result is not None
+                    assert result.get_unix_time() == start.get_unix_time()
                 break
 
-    def test_not_appear_when_bell_0_but_not_fair_skies(self):
+    def test_forecast_returns_none_at_bell_4_and_beyond(self):
+        # ET 04:00 (bell 4) is outside the aurora window
+        aurora = EorzeaAurora(COERTHAS_WESTERN_HIGHLANDS)
+        for et in EorzeaTime.weather_period(step="inf", from_=0.0):
+            raw = EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, et, raw=True)
+            if et.bell == 0 and raw == FAIR_SKIES:
+                for outside_bell in [4, 5, 7]:
+                    later = copy.copy(et)
+                    later.bell = outside_bell
+                    assert aurora.forecast(later) is None
+                break
+
+    def test_forecast_returns_none_when_not_fair_skies(self):
         aurora = EorzeaAurora(COERTHAS_WESTERN_HIGHLANDS)
         for et in EorzeaTime.weather_period(step="inf", from_=0.0):
             raw = EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, et, raw=True)
             if et.bell == 0 and raw != FAIR_SKIES:
-                aurora.observe(et, raw)
-                assert not aurora.is_appear
+                assert aurora.forecast(et) is None
                 break
 
-    def test_not_appear_when_not_possible(self):
-        other = EorzeaPlaceName("Eastern La Noscea")
-        aurora = EorzeaAurora(other)
-        for et in EorzeaTime.weather_period(step="inf", from_=0.0):
-            raw = EorzeaWeather.forecast(other, et, raw=True)
-            if et.bell == 0:
-                aurora.observe(et, raw)
-                assert not aurora.is_appear
-                break
-
-    def test_no_observation_returns_false(self):
+    def test_forecast_returns_none_when_window_does_not_start_at_bell_0(self):
+        # Windows at bell 8 or 16 can never produce aurora
         aurora = EorzeaAurora(COERTHAS_WESTERN_HIGHLANDS)
-        assert not aurora.is_appear
+        for et in EorzeaTime.weather_period(step="inf", from_=0.0):
+            if et.bell != 0:
+                assert aurora.forecast(et) is None
+                break
 
-    def test_aurora_appears_in_old_sharlayan(self):
+    def test_forecast_works_for_old_sharlayan(self):
         aurora = EorzeaAurora(OLD_SHARLAYAN)
         for et in EorzeaTime.weather_period(step="inf", from_=0.0):
             raw = EorzeaWeather.forecast(OLD_SHARLAYAN, et, raw=True)
             if et.bell == 0 and raw == FAIR_SKIES:
-                aurora.observe(et, raw)
-                assert aurora.is_appear
+                assert aurora.forecast(et) is not None
                 break
 
-    def test_used_with_weather_period_generator(self):
+    def test_forecast_collects_multiple_aurora_times(self):
         aurora = EorzeaAurora(COERTHAS_WESTERN_HIGHLANDS)
         aurora_times = []
-        expected_count = 3
-
         for et in EorzeaTime.weather_period(step="inf", from_=0.0):
-            aurora.observe(
-                et, EorzeaWeather.forecast(COERTHAS_WESTERN_HIGHLANDS, et, raw=True)
-            )
-            if aurora.is_appear:
-                aurora_times.append(et)
-            if len(aurora_times) == expected_count:
+            result = aurora.forecast(et)
+            if result is not None:
+                aurora_times.append(result)
+            if len(aurora_times) == 3:
                 break
-
-        assert len(aurora_times) == expected_count
+        assert len(aurora_times) == 3
