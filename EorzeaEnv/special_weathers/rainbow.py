@@ -7,11 +7,12 @@ from ..place_name import EorzeaPlaceName
 from ..time import EorzeaTime
 from ..weather import EorzeaWeather
 from ._constants import RAINY_WEATHERS
+from .protocols import SpecialWeather
 
 _RAINBOW_BELL: Final = 6
 
 
-class EorzeaRainbow:
+class EorzeaRainbow(SpecialWeather):
     """Predicts rainbow appearances for a given Eorzea location.
 
     A rainbow appears when rainy weather (Rain, Showers, or Thunder Storms)

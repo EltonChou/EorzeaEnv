@@ -6,6 +6,7 @@ from ..places import COERTHAS_WESTERN_HIGHLANDS
 from ..time import EorzeaTime
 from ..weather import EorzeaWeather
 from ._constants import FAIR_SKIES
+from .protocols import SpecialWeather
 
 _DIAMOND_DUST_PLACES: Final = frozenset([COERTHAS_WESTERN_HIGHLANDS.index])
 
@@ -19,7 +20,7 @@ _COND1_WINDOW_BELL: Final = 8
 _COND1_END_BELL: Final = 10
 
 
-class EorzeaDiamondDust:
+class EorzeaDiamondDust(SpecialWeather):
     """Predicts Diamond Dust appearances in Coerthas Western Highlands.
 
     Use the module-level constant from :mod:`EorzeaEnv.places` as the place argument:

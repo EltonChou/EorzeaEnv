@@ -1,6 +1,7 @@
 from typing import Protocol
 
-from EorzeaEnv import EorzeaPlaceName, EorzeaTime
+from ..place_name import EorzeaPlaceName
+from ..time import EorzeaTime
 
 
 class SpecialWeather(Protocol):

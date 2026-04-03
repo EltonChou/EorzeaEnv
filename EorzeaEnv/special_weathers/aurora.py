@@ -5,6 +5,7 @@ from ..places import COERTHAS_WESTERN_HIGHLANDS, OLD_SHARLAYAN
 from ..time import EorzeaTime
 from ..weather import EorzeaWeather
 from ._constants import FAIR_SKIES
+from .protocols import SpecialWeather
 
 _AURORA_PLACES: Final = frozenset(
     [COERTHAS_WESTERN_HIGHLANDS.index, OLD_SHARLAYAN.index]
@@ -14,7 +15,7 @@ _AURORA_PLACES: Final = frozenset(
 _AURORA_END_BELL: Final = 4
 
 
-class EorzeaAurora:
+class EorzeaAurora(SpecialWeather):
     """Predicts Aurora appearances for a given Eorzea location.
 
     Aurora only occurs in Coerthas Western Highlands and Old Sharlayan.
