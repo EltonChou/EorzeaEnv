@@ -76,6 +76,7 @@ exclude_lines = [
     "@abstract",
     "@overload",
     "pass",
+    "\\.\\.\\.",
     "raise NotImplementedError",
     "warnings.warn",
 ]
