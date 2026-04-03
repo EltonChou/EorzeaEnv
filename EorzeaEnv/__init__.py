@@ -1,6 +1,6 @@
 from .lang import EorzeaLang
 from .place_name import EorzeaPlaceName
-from .special_weather import EorzeaAurora, EorzeaDiamondDust, EorzeaRainbow
+from .special_weathers import EorzeaAurora, EorzeaDiamondDust, EorzeaRainbow
 from .time import EorzeaTime
 from .weather import EorzeaWeather
 
