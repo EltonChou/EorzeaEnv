@@ -138,3 +138,29 @@ class TestTime:
     def test_act_as_str(self):
         et = EorzeaTime.now()
         assert str(et)
+
+    def test_is_same_weather_window(self):
+        # window 8818 covers [12345200, 12346600)
+        t1 = EorzeaTime(12345200)
+        t2 = EorzeaTime(12346599)
+        assert t1.is_same_weather_window(t2)
+        assert t2.is_same_weather_window(t1)
+
+        # 12346600 starts window 8819
+        t3 = EorzeaTime(12346600)
+        assert not t1.is_same_weather_window(t3)
+
+    def test_is_next_weather_window(self):
+        # window 8818: [12345200, 12346600), window 8819: [12346600, 12348000)
+        t1 = EorzeaTime(12345200)
+        t2 = EorzeaTime(12346600)
+        assert t1.is_next_weather_window(t2)
+        assert t2.is_next_weather_window(t1)
+
+        # two windows apart — not adjacent
+        t3 = EorzeaTime(12348000)
+        assert not t1.is_next_weather_window(t3)
+
+        # same window — not adjacent
+        t4 = EorzeaTime(12346000)
+        assert not t1.is_next_weather_window(t4)

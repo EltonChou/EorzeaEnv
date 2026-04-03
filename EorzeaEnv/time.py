@@ -241,6 +241,23 @@ class EorzeaTime:
             self.guardian,
         )
 
+    def is_same_weather_window(self, that: "EorzeaTime") -> bool:
+        """Return True if both times fall within the same 8-bell weather window."""
+        return (
+            self.get_unix_time() // _LOCAL_WEATHER_INTERVAL
+            == that.get_unix_time() // _LOCAL_WEATHER_INTERVAL
+        )
+
+    def is_next_weather_window(self, that: "EorzeaTime") -> bool:
+        """Return True if the two times are in adjacent weather windows."""
+        return (
+            abs(
+                self.get_unix_time() // _LOCAL_WEATHER_INTERVAL
+                - that.get_unix_time() // _LOCAL_WEATHER_INTERVAL
+            )
+            == 1
+        )
+
     def __lt__(self, that: object):
         if isinstance(that, self.__class__):
             return self.get_unix_time() < that.get_unix_time()
